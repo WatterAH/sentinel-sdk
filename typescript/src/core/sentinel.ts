@@ -57,18 +57,19 @@ export class Sentinel {
       const result = this.engine.analyze(engineMessages);
 
       // 3. DETERMINE ACTION BASED ON SCORE
-      if (result.score <= 11) {
+      if (result.risk === "LOW") {
         return ok({
           messages_analyzed: messages.length,
           current_message: text,
           confidence: 1,
+          risk: result.risk,
           summary:
-            "Los patrones de lenguaje no coinciden con ninguna categoría de riesgo.",
+            "El análisis local determina que la conversación no presenta indicios de riesgo. El lenguaje utilizado y los patrones detectados corresponden a una interacción normal, sin señales de manipulación o captación.",
           stage: "NINGUNA",
           false_positive: false,
           ux_recommendation: "NONE",
         });
-      } else if (result.score > 11 && result.score <= 19) {
+      } else if (result.risk === "MEDIUM") {
         // 4. ESCALATE IF NEEDED
         const escalated = await this.escalate(result, messages);
         return ok({
@@ -81,11 +82,12 @@ export class Sentinel {
           messages_analyzed: messages.length,
           current_message: text,
           confidence: 1,
+          risk: result.risk,
           summary:
-            "Los patrones de lenguaje coinciden con la categoría de riesgo de captación.",
+            "ALERTA: El análisis local ha detectado patrones críticos de alta severidad. Las señales extraídas coinciden de manera explícita con tácticas coercitivas, de captación o grooming. Se requiere bloqueo o intervención inmediata.",
           stage: "CAPTACION",
           false_positive: false,
-          ux_recommendation: "NONE",
+          ux_recommendation: "HARD_BLOCK",
         });
       }
     } catch (e) {

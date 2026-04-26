@@ -49,6 +49,7 @@ export interface SentinelAnalysisResponse {
 }
 
 export interface ApiAnalysisResponse {
+  risk: RiskLevel;
   ux_recommendation: UXRecommendation;
   stage: Stage;
   confidence: number;
