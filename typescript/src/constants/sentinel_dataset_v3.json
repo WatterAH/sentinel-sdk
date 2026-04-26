@@ -1,0 +1,4281 @@
+{
+  "metadata": {
+    "name": "SENTINEL MX Dataset — Hackathon Edition",
+    "version": "3.0.0",
+    "focus": "Reclutamiento digital de Niñas, Niños y Adolescentes (NNA) por crimen organizado en México",
+    "hackathon_pillars": {
+      "pilar_1": "Contacto con desconocidos y ofertas engañosas → categorías: reclutamiento, oferta_economica, formalidad_deceptiva, logistica_fisica",
+      "pilar_2": "Falta de detección temprana → categorías: señal_debil (términos que solos no significan nada, pero combinados sí)",
+      "pilar_3": "Normalización de contenidos de riesgo → categorías: contenido_normalizado, slang_operativo, señal_emoji",
+      "pilar_4": "Manipulación y validación social → categorías: manipulacion_social, aislamiento, presion_de_grupo"
+    },
+    "architecture": "context-aware multi-category scoring sobre ventana de sesión",
+    "tier1_single_message_threshold": 12,
+    "tier1_session_threshold": 12,
+    "categories": [
+      "reclutamiento",
+      "oferta_economica",
+      "formalidad_deceptiva",
+      "logistica_fisica",
+      "slang_operativo",
+      "contenido_normalizado",
+      "manipulacion_social",
+      "aislamiento",
+      "presion_de_grupo",
+      "señal_debil",
+      "señal_emoji",
+      "cambio_canal",
+      "solicitud_informacion",
+      "videojuegos_vector",
+      "redes_sociales_vector"
+    ],
+    "multi_category_escalation_rules": {
+      "rules": [
+        {
+          "id": "MCR-001",
+          "name": "Triada clásica de reclutamiento",
+          "categories_required": [
+            "reclutamiento",
+            "logistica_fisica"
+          ],
+          "min_messages": 2,
+          "description": "Oferta de trabajo/actividad + punto de encuentro físico. Patrón documentado de reclutamiento narco."
+        },
+        {
+          "id": "MCR-002",
+          "name": "Enganche económico",
+          "categories_required": [
+            "reclutamiento",
+            "oferta_economica"
+          ],
+          "min_messages": 2,
+          "description": "Oferta laboral vaga + promesa económica. Señal de enganche activo."
+        },
+        {
+          "id": "MCR-003",
+          "name": "Formalidad deceptiva con logística",
+          "categories_required": [
+            "formalidad_deceptiva",
+            "logistica_fisica"
+          ],
+          "min_messages": 2,
+          "description": "Oferta laboral aparentemente formal + punto de encuentro o transporte. Patrón documentado de captación de perfiles técnicos y jóvenes."
+        },
+        {
+          "id": "MCR-004",
+          "name": "Cambio de canal más secrecía",
+          "categories_required": [
+            "cambio_canal",
+            "aislamiento"
+          ],
+          "min_messages": 2,
+          "description": "Migrar a plataforma privada + pedir silencio. Señal crítica de operación encubierta."
+        },
+        {
+          "id": "MCR-005",
+          "name": "Videojuegos como vector con oferta",
+          "categories_required": [
+            "videojuegos_vector",
+            "oferta_economica"
+          ],
+          "min_messages": 2,
+          "description": "Contacto inicial en videojuego + promesa de dinero/objetos. Patrón documentado de reclutamiento de NNA en plataformas de juego."
+        },
+        {
+          "id": "MCR-006",
+          "name": "Redes sociales con reclutamiento",
+          "categories_required": [
+            "redes_sociales_vector",
+            "reclutamiento"
+          ],
+          "min_messages": 2,
+          "description": "Contacto por red social + oferta de trabajo. Vector principal de captación de NNA."
+        },
+        {
+          "id": "MCR-007",
+          "name": "Triple categoría",
+          "min_categories": 3,
+          "min_messages": 3,
+          "description": "Tres categorías distintas en la misma sesión. Escalamiento automático."
+        },
+        {
+          "id": "MCR-008",
+          "name": "Manipulación más reclutamiento",
+          "categories_required": [
+            "manipulacion_social",
+            "reclutamiento"
+          ],
+          "min_messages": 2,
+          "description": "Presión social/coerción + oferta de actividad. Táctica de captación que explota necesidad de pertenencia."
+        },
+        {
+          "id": "MCR-009",
+          "name": "Presión de grupo más logística",
+          "categories_required": [
+            "presion_de_grupo",
+            "logistica_fisica"
+          ],
+          "min_messages": 2,
+          "description": "Presión de grupo para asistir + punto de encuentro real. Convocatoria encubierta."
+        },
+        {
+          "id": "MCR-010",
+          "name": "Solicitud de información con oferta",
+          "categories_required": [
+            "solicitud_informacion",
+            "oferta_economica"
+          ],
+          "min_messages": 2,
+          "description": "Recolección de datos personales (edad, colonia, horarios) + promesa económica. Patrón de perfilamiento previo al reclutamiento."
+        }
+      ]
+    },
+    "sources": [
+      "Análisis Lexicográfico y Estructural del Narcolenguaje en México",
+      "Protocolos de Reclutamiento y Evolución del Registro Lingüístico en las Organizaciones Criminales de México",
+      "SENTINEL MX Dataset v1 y v2"
+    ],
+    "weight_scale": "1-10: 1-3 señal débil sola, 4-6 señal media requiere combinación, 7-8 señal alta, 9-10 señal crítica por sí sola",
+    "last_updated": "2026-04-25",
+    "total_terms_this_file": 167
+  },
+  "terms": [
+    {
+      "id": "REC-001",
+      "term": "jale",
+      "variants": [
+        "jalee",
+        "el jale",
+        "hay jale",
+        "jalecito",
+        "un jale",
+        "jalito",
+        "jales",
+        "el jalecito",
+        "jaletito"
+      ],
+      "category": "reclutamiento",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Término ambiguo documentado: en español general = trabajo honesto; en contexto criminal = encargo ilícito (desde robo hasta ejecución). La ambigüedad es deliberada para comunicarse en público sin levantar sospechas.",
+      "false_positive_note": "Uso neutral muy común entre jóvenes mexicanos. NUNCA escalar por este término solo.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica",
+        "aislamiento"
+      ]
+    },
+    {
+      "id": "REC-002",
+      "term": "chamba",
+      "variants": [
+        "hay chamba",
+        "la chamba",
+        "una chamba",
+        "chambita",
+        "la chambita",
+        "chambear",
+        "hay chambita"
+      ],
+      "category": "reclutamiento",
+      "weight": 3,
+      "pilar": 1,
+      "context_note": "Equivalente de 'jale'. Actividad delictiva remunerada presentada como empleo. Señal muy débil sola.",
+      "false_positive_note": "Uso absolutamente neutro y muy común. Solo relevante en combinación.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "REC-003",
+      "term": "somos familia",
+      "variants": [
+        "eres familia",
+        "ya eres de los nuestros",
+        "eres uno de nosotros",
+        "acá te tratamos como familia",
+        "te vamos a tratar como familia",
+        "aquí todos somos familia",
+        "eres parte de la familia"
+      ],
+      "category": "reclutamiento",
+      "weight": 8,
+      "pilar": 1,
+      "context_note": "Construcción de falsa pertenencia. Documentado en análisis de reclutamiento narco como táctica para crear lealtad y dependencia emocional antes de revelar la actividad real.",
+      "false_positive_note": "Puede ser genuino en contexto familiar o de amistad muy consolidada.",
+      "escalation_combos": [
+        "oferta_economica",
+        "aislamiento"
+      ]
+    },
+    {
+      "id": "REC-004",
+      "term": "mandado",
+      "variants": [
+        "un mandadito",
+        "el mandado",
+        "hacer un mandado",
+        "solo un mandado",
+        "mandadito rápido",
+        "los mandados",
+        "hacer mandados",
+        "solo es un mandado"
+      ],
+      "category": "reclutamiento",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Eufemismo documentado para encargos ilícitos: transportar droga, dinero o mensajes entre células. Minimiza la percepción del riesgo al presentarlo como tarea doméstica cotidiana.",
+      "false_positive_note": "Puede ser literal (ir al super). Evaluar con contexto de sesión.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "REC-005",
+      "term": "la plaza",
+      "variants": [
+        "nuestra plaza",
+        "esta plaza",
+        "la plazita",
+        "el territorio",
+        "la zona",
+        "nuestra zona",
+        "el área"
+      ],
+      "category": "reclutamiento",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Zona de control territorial del crimen organizado. Documentado en análisis operativo. Alto riesgo en contexto de oferta de trabajo o 'somos familia'.",
+      "false_positive_note": "Puede ser referencia literal a una plaza comercial.",
+      "escalation_combos": [
+        "reclutamiento",
+        "slang_operativo"
+      ]
+    },
+    {
+      "id": "REC-006",
+      "term": "el patrón",
+      "variants": [
+        "el patron",
+        "mi patrón",
+        "el jefe",
+        "el señor",
+        "el mero mero",
+        "el grande",
+        "el boss",
+        "el mencho",
+        "el mero",
+        "el señor de los gallos"
+      ],
+      "category": "reclutamiento",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Referencia a líder de organización criminal. 'El Mencho' es nombre explícito del líder del CJNG. 'El Señor de los Gallos' también referencia directa. Riesgo alto en contexto de oferta.",
+      "false_positive_note": "Puede referirse a jefe laboral legítimo.",
+      "escalation_combos": [
+        "reclutamiento",
+        "slang_operativo"
+      ]
+    },
+    {
+      "id": "REC-007",
+      "term": "sin preguntas",
+      "variants": [
+        "no preguntes",
+        "sin hacer preguntas",
+        "no necesitas saber más",
+        "solo haz lo que te digo",
+        "no preguntes nada",
+        "mejor no saber",
+        "no hay que preguntar",
+        "no se pregunta"
+      ],
+      "category": "reclutamiento",
+      "weight": 9,
+      "pilar": 1,
+      "context_note": "Instrucción de silencio sobre la naturaleza de la actividad. Señal crítica documentada como red flag en protocolos de reclutamiento criminal. Oculta la ilicitud de la tarea.",
+      "false_positive_note": "Casi ningún contexto legítimo justifica esta instrucción a un menor.",
+      "escalation_combos": [
+        "reclutamiento",
+        "aislamiento"
+      ]
+    },
+    {
+      "id": "REC-008",
+      "term": "te cuido yo",
+      "variants": [
+        "yo te cuido",
+        "aquí te protegemos",
+        "nadie te va a tocar",
+        "estás protegido",
+        "te tenemos cubierto",
+        "con nosotros estás seguro",
+        "bajo nuestra protección",
+        "te respaldamos"
+      ],
+      "category": "reclutamiento",
+      "weight": 8,
+      "pilar": 1,
+      "context_note": "Oferta de protección falsa. Crea dependencia emocional y sensación de deuda. Documentado en análisis de ingeniería social narco.",
+      "false_positive_note": "Puede ser genuino en contexto familiar.",
+      "escalation_combos": [
+        "reclutamiento",
+        "manipulacion_social"
+      ]
+    },
+    {
+      "id": "REC-009",
+      "term": "trabajo para ti",
+      "variants": [
+        "tengo trabajo para ti",
+        "tengo un trabajo para ti",
+        "tengo un trabajito para ti",
+        "trabajito para ti",
+        "un trabajito para ti",
+        "hay trabajo para ti",
+        "un trabajo para ti",
+        "trabajo fácil",
+        "chamba fácil",
+        "chambita fácil",
+        "trabajo sencillo",
+        "es fácil el trabajo",
+        "es cosa de nada",
+        "no es difícil",
+        "solo tienes que"
+      ],
+      "category": "reclutamiento",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Oferta laboral vaga sin especificar actividad ni empresa. Minimiza la naturaleza real del encargo. Señal media en aislamiento, crítica combinada.",
+      "false_positive_note": "Muy común en trabajo legítimo también.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica",
+        "aislamiento"
+      ]
+    },
+    {
+      "id": "REC-010",
+      "term": "de confianza",
+      "variants": [
+        "eres de confianza",
+        "te tengo confianza",
+        "eres el indicado",
+        "confío en ti para esto",
+        "te lo digo porque confío en ti",
+        "persona de confianza",
+        "gente de confianza"
+      ],
+      "category": "reclutamiento",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Construcción de falsa confianza para generar obligación y lealtad prematura. Peso bajo solo.",
+      "false_positive_note": "Muy común en contextos legítimos.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "REC-011",
+      "term": "te necesitamos",
+      "variants": [
+        "te necesito",
+        "necesitamos alguien como tú",
+        "eres el que buscábamos",
+        "estábamos esperando a alguien como tú",
+        "buscamos gente como tú",
+        "eres lo que necesitamos"
+      ],
+      "category": "reclutamiento",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Apelación al ego del menor. Táctica de captación para hacer sentir al NNA valioso e irremplazable. Explota necesidad de pertenencia.",
+      "false_positive_note": "Puede ser genuino en trabajo legítimo.",
+      "escalation_combos": [
+        "reclutamiento",
+        "manipulacion_social"
+      ]
+    },
+    {
+      "id": "REC-012",
+      "term": "pasar el paquete",
+      "variants": [
+        "entregar el paquete",
+        "llevar el paquete",
+        "traer el paquete",
+        "recoger el paquete",
+        "el paquetito",
+        "mover el paquete",
+        "la mercancía",
+        "mover mercancía"
+      ],
+      "category": "reclutamiento",
+      "weight": 8,
+      "pilar": 1,
+      "context_note": "Eufemismo documentado para transporte de drogas o dinero ilícito. 'Los mandados' en la terminología criminal.",
+      "false_positive_note": "Puede ser literal en contexto de paquetería.",
+      "escalation_combos": [
+        "reclutamiento",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "REC-013",
+      "term": "solo por esta vez",
+      "variants": [
+        "es una sola vez",
+        "nada más esta vez",
+        "solo una vez",
+        "es la última vez",
+        "solo por ahora",
+        "para empezar nomás",
+        "una vez nada más"
+      ],
+      "category": "reclutamiento",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Minimización del compromiso para primer encargo. Táctica de entrada gradual al crimen organizado documentada. El primer 'mandado' crea vínculo y deuda.",
+      "false_positive_note": "Puede ser genuino entre amigos.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "REC-014",
+      "term": "sin riesgo",
+      "variants": [
+        "no hay riesgo",
+        "es seguro",
+        "no pasa nada",
+        "no hay bronca",
+        "no te va a pasar nada",
+        "está libre de peligro",
+        "sin peligro",
+        "no hay drama"
+      ],
+      "category": "reclutamiento",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Minimización del riesgo real de actividad ilícita. Documentado como red flag en protocolos de reclutamiento. El crimen organizado necesita convencer al recluta de que no habrá consecuencias.",
+      "false_positive_note": "Puede ser genuino en actividades recreativas.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "REC-015",
+      "term": "el movimiento",
+      "variants": [
+        "el movi",
+        "el movimiento va",
+        "estar en el movimiento",
+        "el negocio",
+        "la actividad",
+        "la empresa va bien"
+      ],
+      "category": "reclutamiento",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Tráfico de drogas o actividad operativa presentada como 'flujo económico' normal. Normalización semántica documentada.",
+      "false_positive_note": "Puede ser referencia a movimiento social, musical o deportivo.",
+      "escalation_combos": [
+        "reclutamiento",
+        "slang_operativo"
+      ]
+    },
+    {
+      "id": "REC-016",
+      "term": "la línea",
+      "variants": [
+        "estás en la línea",
+        "entrar a la línea",
+        "la línea de mando",
+        "la cadena",
+        "la estructura"
+      ],
+      "category": "reclutamiento",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Cadena de mando o estructura jerárquica criminal. Documentado en análisis lexicográfico narco.",
+      "false_positive_note": "Puede ser referencia a línea de trabajo, línea telefónica, etc.",
+      "escalation_combos": [
+        "reclutamiento",
+        "slang_operativo"
+      ]
+    },
+    {
+      "id": "REC-017",
+      "term": "reclutando",
+      "variants": [
+        "estamos reclutando",
+        "buscamos gente",
+        "buscamos personas",
+        "andamos buscando",
+        "necesitamos gente",
+        "estamos contratando gente",
+        "andamos reclutando"
+      ],
+      "category": "reclutamiento",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Señal directa de reclutamiento. Peso sube si no se especifica empresa o actividad legítima verificable.",
+      "false_positive_note": "Legítimo con datos de empresa verificables.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "REC-018",
+      "term": "la banda te recibe",
+      "variants": [
+        "la banda",
+        "mi banda",
+        "somos la banda",
+        "con la banda",
+        "la bandita",
+        "la banda te espera",
+        "te recibe la banda"
+      ],
+      "category": "reclutamiento",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Señal de pertenencia grupal. Peso bajo en aislamiento, alto con oferta económica o 'somos familia'.",
+      "false_positive_note": "Slang neutro muy común entre jóvenes mexicanos para referirse a amigos.",
+      "escalation_combos": [
+        "reclutamiento",
+        "presion_de_grupo"
+      ]
+    },
+    {
+      "id": "REC-019",
+      "term": "te damos chance",
+      "variants": [
+        "te damos oportunidad",
+        "es tu oportunidad",
+        "aprovecha",
+        "no la dejes ir",
+        "no pierdas esto",
+        "oportunidad única",
+        "no te la pierdas"
+      ],
+      "category": "reclutamiento",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Creación de urgencia falsa para evitar que el menor consulte con adultos de confianza. Documentado en protocolos de reclutamiento.",
+      "false_positive_note": "Común en ofertas comerciales legítimas.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "REC-020",
+      "term": "carne de cañón",
+      "variants": [
+        "eres carne de cañón",
+        "pura carne de cañón",
+        "los nuevos",
+        "los basura",
+        "los desechables"
+      ],
+      "category": "slang_operativo",
+      "weight": 9,
+      "pilar": 3,
+      "context_note": "Término interno documentado para reclutas nuevos enviados a zonas de conflicto para desgastar al enemigo antes de unidades élite. Señal crítica.",
+      "false_positive_note": "Raro fuera de contexto militar o criminal.",
+      "escalation_combos": [
+        "slang_operativo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "REC-021",
+      "term": "levantón",
+      "variants": [
+        "levantar",
+        "me levantaron",
+        "te van a levantar",
+        "levantar a alguien",
+        "un levantón"
+      ],
+      "category": "slang_operativo",
+      "weight": 10,
+      "pilar": 3,
+      "context_note": "Secuestro para interrogatorio, ejecución o reclutamiento forzado. Documentado en análisis lexicográfico. Peso máximo.",
+      "false_positive_note": "Prácticamente ningún contexto positivo.",
+      "escalation_combos": [
+        "slang_operativo"
+      ]
+    },
+    {
+      "id": "REC-022",
+      "term": "halcón",
+      "variants": [
+        "de halcón",
+        "hacer el halconeo",
+        "el halconeo",
+        "halconear",
+        "estar de halcón",
+        "puntero",
+        "de puntero",
+        "oreja",
+        "de oreja",
+        "estar de oreja"
+      ],
+      "category": "slang_operativo",
+      "weight": 9,
+      "pilar": 3,
+      "context_note": "Rol de vigilancia de bajo nivel en estructura criminal. Documentado como posición frecuentemente ofrecida a NNA. 5,000 MXN quincenales según análisis lexicográfico.",
+      "false_positive_note": "En contexto del ave o equipo deportivo es neutral.",
+      "escalation_combos": [
+        "slang_operativo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "REC-023",
+      "term": "zancudo",
+      "variants": [
+        "zancudos",
+        "los zancudos",
+        "ser zancudo"
+      ],
+      "category": "slang_operativo",
+      "weight": 9,
+      "pilar": 3,
+      "context_note": "Término documentado para jóvenes/adolescentes en posición de vigilancia. Ven en esta posición el inicio de 'un camino a la bonanza'. Señal crítica cuando se dirige a un menor.",
+      "false_positive_note": "Puede ser referencia al insecto.",
+      "escalation_combos": [
+        "slang_operativo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "REC-024",
+      "term": "la estaca",
+      "variants": [
+        "mi estaca",
+        "la estaquita",
+        "la tropa",
+        "somos la tropa"
+      ],
+      "category": "slang_operativo",
+      "weight": 8,
+      "pilar": 3,
+      "context_note": "Unidad operativa armada equivalente a pelotón militar. Documentado en análisis lexicográfico narco. Señal de estructura criminal militarizada.",
+      "false_positive_note": "Puede ser referencia literal a una estaca.",
+      "escalation_combos": [
+        "slang_operativo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "REC-025",
+      "term": "plaza caliente",
+      "variants": [
+        "la plaza está caliente",
+        "zona caliente",
+        "está caliente",
+        "calentar la plaza",
+        "la zona está caliente"
+      ],
+      "category": "slang_operativo",
+      "weight": 8,
+      "pilar": 3,
+      "context_note": "Zona con alta presencia de fuerzas federales o en disputa entre cárteles. Señal de operación criminal en curso.",
+      "false_positive_note": "Puede ser referencia climática literal.",
+      "escalation_combos": [
+        "slang_operativo"
+      ]
+    },
+    {
+      "id": "REC-026",
+      "term": "ponerse al tiro",
+      "variants": [
+        "ponte al tiro",
+        "ponerse cocodrilo",
+        "estar al tiro",
+        "al tiro",
+        "pónganse al tiro"
+      ],
+      "category": "slang_operativo",
+      "weight": 6,
+      "pilar": 3,
+      "context_note": "Estado de alerta máxima, frecuentemente bajo estimulantes. Documentado en diccionario operativo de campo criminal.",
+      "false_positive_note": "Entre jóvenes puede significar estar listo o atento sin connotación criminal.",
+      "escalation_combos": [
+        "slang_operativo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "REC-027",
+      "term": "bravo",
+      "variants": [
+        "los bravos",
+        "un bravo",
+        "de bravo",
+        "sicario",
+        "los sicarios"
+      ],
+      "category": "slang_operativo",
+      "weight": 8,
+      "pilar": 3,
+      "context_note": "Denominación de fuerza de choque (sicarios). Documentado: 15,000-60,000 MXN quincenales. Señal de estructura criminal.",
+      "false_positive_note": "Puede ser adjetivo positivo común.",
+      "escalation_combos": [
+        "slang_operativo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "REC-028",
+      "term": "mula",
+      "variants": [
+        "ser mula",
+        "de mula",
+        "el burrero",
+        "pasador",
+        "ser pasador",
+        "cruzar el material"
+      ],
+      "category": "slang_operativo",
+      "weight": 8,
+      "pilar": 3,
+      "context_note": "Rol de transportista en estructura criminal. Documentado: cruce de fronteras y retenes. Pago por evento/cargamento.",
+      "false_positive_note": "Puede ser referencia al animal.",
+      "escalation_combos": [
+        "slang_operativo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "REC-029",
+      "term": "cocinero",
+      "variants": [
+        "el cocinero",
+        "jalador",
+        "el jalador",
+        "técnico de laboratorio",
+        "laboratorio clandestino"
+      ],
+      "category": "slang_operativo",
+      "weight": 9,
+      "pilar": 3,
+      "context_note": "Especialista en fabricación de drogas sintéticas. Documentado: reclutado bajo pretexto de 'técnico de laboratorio' o 'procesos industriales'. Alta compensación por riesgo de laboratorio.",
+      "false_positive_note": "Puede ser referencia a chef o cocinero legítimo.",
+      "escalation_combos": [
+        "slang_operativo",
+        "formalidad_deceptiva"
+      ]
+    },
+    {
+      "id": "REC-030",
+      "term": "derecho de piso",
+      "variants": [
+        "la cuota",
+        "el impuesto",
+        "el cobro",
+        "hay que pagar la plaza",
+        "cobro de piso",
+        "la caseta",
+        "la maleta",
+        "el arreglo"
+      ],
+      "category": "slang_operativo",
+      "weight": 9,
+      "pilar": 3,
+      "context_note": "Extorsión estructurada. Documentado: el cártel como entidad paraestatal que extrae rentas. La 'cuota' o 'maleta' impone un orden donde la seguridad es vendida por quien amenaza.",
+      "false_positive_note": "Prácticamente ningún contexto neutral.",
+      "escalation_combos": [
+        "slang_operativo"
+      ]
+    },
+    {
+      "id": "OE-001",
+      "term": "buena lana",
+      "variants": [
+        "pagamos bien",
+        "pagan bien",
+        "pago bien",
+        "buen varo",
+        "buen dinero",
+        "buena feria",
+        "buen billete",
+        "lana fácil",
+        "varo fácil",
+        "dinero fácil",
+        "feria fácil",
+        "lana rápida",
+        "cash rápido",
+        "dinerito fácil",
+        "hartos billetes"
+      ],
+      "category": "oferta_economica",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Promesa económica sin especificar actividad. Señal media sola, crítica combinada con reclutamiento o logistica_fisica.",
+      "false_positive_note": "Común en trabajos legítimos también.",
+      "escalation_combos": [
+        "reclutamiento",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "OE-002",
+      "term": "ganar bien",
+      "variants": [
+        "se gana bien",
+        "ganas bien",
+        "te va ir bien",
+        "harás buen dinero",
+        "pa ganar bien",
+        "ganancia buena",
+        "ganancia asegurada"
+      ],
+      "category": "oferta_economica",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Promesa de ganancias altas sin especificar actividad. Señal débil sola.",
+      "false_positive_note": "Muy común en cualquier oferta laboral.",
+      "escalation_combos": [
+        "reclutamiento",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "OE-003",
+      "term": "te pago bien",
+      "variants": [
+        "buen pago",
+        "te recompensamos",
+        "el pago es bueno",
+        "el pago es en efectivo",
+        "te pago al instante",
+        "pago inmediato",
+        "pago al contado"
+      ],
+      "category": "oferta_economica",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Pago en efectivo sin contrato documentado como señal de empleo ilícito. El pago inmediato y en efectivo es característica del crimen organizado.",
+      "false_positive_note": "Puede ser legítimo en trabajos informales.",
+      "escalation_combos": [
+        "reclutamiento",
+        "formalidad_deceptiva"
+      ]
+    },
+    {
+      "id": "OE-004",
+      "term": "5 mil quincenales",
+      "variants": [
+        "5000 quincenales",
+        "cinco mil quincenales",
+        "diez mil mensuales",
+        "15 mil quincenales",
+        "60 mil al mes",
+        "buen salario",
+        "salario arriba del mercado"
+      ],
+      "category": "oferta_economica",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Compensaciones documentadas en análisis lexicográfico: halcón 5,000 MXN, sicario 15,000-60,000 MXN. Salario muy superior al mercado para perfil sin experiencia es red flag.",
+      "false_positive_note": "Puede ser salario legítimo en empleos formales.",
+      "escalation_combos": [
+        "reclutamiento",
+        "formalidad_deceptiva"
+      ]
+    },
+    {
+      "id": "OE-005",
+      "term": "objetos del juego",
+      "variants": [
+        "te doy skins",
+        "te doy v-bucks",
+        "te regalo robux",
+        "coins gratis",
+        "te doy items",
+        "te doy recursos",
+        "objetos gratis",
+        "te regalo cuentas",
+        "cuenta premium gratis",
+        "te paso recursos del juego"
+      ],
+      "category": "oferta_economica",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Oferta de objetos/monedas de videojuegos a cambio de información o encuentro. Vector documentado de reclutamiento de NNA en plataformas de juego. Señal alta en contexto de videojuegos.",
+      "false_positive_note": "Puede ser regalo genuino entre amigos de juego.",
+      "escalation_combos": [
+        "videojuegos_vector",
+        "solicitud_informacion"
+      ]
+    },
+    {
+      "id": "OE-006",
+      "term": "fama en redes",
+      "variants": [
+        "te hago famoso",
+        "te doy seguidores",
+        "te hago viral",
+        "colaboración",
+        "te pongo famoso",
+        "ganarás seguidores",
+        "crezco tu cuenta",
+        "te hago influencer"
+      ],
+      "category": "oferta_economica",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Promesa de fama o seguidores como gancho para NNA. Explota aspiraciones de visibilidad digital. Vector de contacto documentado en plataformas de redes sociales.",
+      "false_positive_note": "Puede ser colaboración legítima entre creadores.",
+      "escalation_combos": [
+        "redes_sociales_vector",
+        "solicitud_informacion"
+      ]
+    },
+    {
+      "id": "FD-001",
+      "term": "nómina",
+      "variants": [
+        "te pago en nómina",
+        "hay nómina",
+        "nómina quincenal",
+        "pago de nómina",
+        "nómina garantizada"
+      ],
+      "category": "formalidad_deceptiva",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Término administrativo para simular empleo legal. Documentado: en realidad es pago en efectivo condicionado a supervivencia. El recluta pierde su identidad civil.",
+      "false_positive_note": "Completamente legítimo en empleo formal real.",
+      "escalation_combos": [
+        "logistica_fisica",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "FD-002",
+      "term": "prestaciones de ley",
+      "variants": [
+        "con prestaciones",
+        "prestaciones completas",
+        "seguro médico incluido",
+        "imss incluido",
+        "beneficios de ley",
+        "prestaciones superiores"
+      ],
+      "category": "formalidad_deceptiva",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Promesa de beneficios laborales legales para captar perfiles jóvenes con estudios que buscan estabilidad. Documentado: el recluta pierde su identidad civil.",
+      "false_positive_note": "Completamente legítimo en empleo formal.",
+      "escalation_combos": [
+        "logistica_fisica",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "FD-003",
+      "term": "capacitación pagada",
+      "variants": [
+        "te capacitamos",
+        "entrenamiento pagado",
+        "te enseñamos",
+        "adiestramiento",
+        "te damos entrenamiento",
+        "te formamos"
+      ],
+      "category": "formalidad_deceptiva",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Documentado: justifica traslado a zonas remotas para adiestramiento en 'escuelas de terror'. Rangos, Jalisco y Teuchitlán como centros documentados.",
+      "false_positive_note": "Legítimo en empleo formal real.",
+      "escalation_combos": [
+        "logistica_fisica",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "FD-004",
+      "term": "retención de documentos",
+      "variants": [
+        "dame tu ine",
+        "necesito tu credencial",
+        "mándame foto de tu ine",
+        "lleva tu documentación",
+        "trae identificación original",
+        "necesito tu acta de nacimiento"
+      ],
+      "category": "formalidad_deceptiva",
+      "weight": 9,
+      "pilar": 1,
+      "context_note": "Red flag crítica documentada: exigencia de INE original o documentos antes de cualquier contrato. Permite identificar y controlar a la víctima.",
+      "false_positive_note": "Legítimo en contratación formal presencial con empresa verificable.",
+      "escalation_combos": [
+        "formalidad_deceptiva",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "FD-005",
+      "term": "vacantes disponibles hoy",
+      "variants": [
+        "vacante disponible",
+        "vacantes abiertas",
+        "aplica hoy",
+        "proceso de selección",
+        "reclutamiento de personal",
+        "gran oportunidad de vida",
+        "oferta de trabajo",
+        "solicitamos personal"
+      ],
+      "category": "formalidad_deceptiva",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Lenguaje de RH formal usado para camuflar oferta ilícita. Documentado: 'clichés administrativos con errores gramaticales básicos' como señal de alerta.",
+      "false_positive_note": "Completamente normal en ofertas de empleo legítimas.",
+      "escalation_combos": [
+        "logistica_fisica",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "FD-006",
+      "term": "bonos por desempeño",
+      "variants": [
+        "bono extra",
+        "extra por resultados",
+        "premio por cumplir",
+        "incentivo por meta",
+        "bonos por productividad"
+      ],
+      "category": "formalidad_deceptiva",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Documentado: 'incentivo por resultados' que en realidad es recompensa por actos violentos o ejecuciones exitosas.",
+      "false_positive_note": "Legítimo en empleo formal.",
+      "escalation_combos": [
+        "reclutamiento",
+        "formalidad_deceptiva"
+      ]
+    },
+    {
+      "id": "FD-007",
+      "term": "crecimiento a corto plazo",
+      "variants": [
+        "ascenso rápido",
+        "subes rápido",
+        "aquí se crece rápido",
+        "promoción rápida",
+        "en poco tiempo mandas",
+        "pronto mandas tú"
+      ],
+      "category": "formalidad_deceptiva",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Documentado: promesa de ascenso que en realidad refleja alta rotación de personal por mortalidad.",
+      "false_positive_note": "Legítimo en startups y empleos formales.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "FD-008",
+      "term": "supervisor de procesos",
+      "variants": [
+        "técnico de laboratorio",
+        "especialista en redes",
+        "supervisor industrial",
+        "técnico en telecomunicaciones",
+        "especialista en logística",
+        "procesos químicos avanzados"
+      ],
+      "category": "formalidad_deceptiva",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Documentado: términos usados para reclutar perfiles técnicos (químicos, ingenieros) sin mencionar sustancias controladas. 'Procesos químicos avanzados' = fabricación de fentanilo.",
+      "false_positive_note": "Completamente legítimo en industria formal.",
+      "escalation_combos": [
+        "formalidad_deceptiva",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "FD-009",
+      "term": "grupo de whatsapp de trabajo",
+      "variants": [
+        "te añado al grupo",
+        "grupo de trabajo",
+        "grupo oficial",
+        "grupo del equipo",
+        "grupo de la empresa",
+        "te meto al grupo"
+      ],
+      "category": "formalidad_deceptiva",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Documentado: grupos de WhatsApp separados para 'trabajo' y 'cotorreo', con mandos identificados como K20 o Comandante Calavera. Exigen seriedad y prohíben lenguaje vulgar.",
+      "false_positive_note": "Completamente normal en trabajo legítimo.",
+      "escalation_combos": [
+        "cambio_canal",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "LF-001",
+      "term": "central de autobuses",
+      "variants": [
+        "la central",
+        "central camionera",
+        "la terminal",
+        "nos vemos en la terminal",
+        "en la central te espero",
+        "la central de guadalajara",
+        "la central de reynosa"
+      ],
+      "category": "logistica_fisica",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Punto de encuentro de alto riesgo documentado. Tlaquepaque, Jalisco y Reynosa, Tamaulipas son nodos críticos. Decenas de desapariciones de jóvenes reportadas.",
+      "false_positive_note": "Punto de encuentro absolutamente normal entre amigos y familiares.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "LF-002",
+      "term": "manda tu ubicación",
+      "variants": [
+        "comparte ubicación",
+        "dónde estás exactamente",
+        "manda pin",
+        "comparte el pin",
+        "manda la dirección exacta",
+        "ubícate",
+        "dónde quedas exactamente"
+      ],
+      "category": "logistica_fisica",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Solicitud de ubicación exacta en tiempo real. Posible primer paso del protocolo de captura documentado.",
+      "false_positive_note": "Muy común para coordinar encuentros entre amigos.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "LF-003",
+      "term": "te mandamos el uber",
+      "variants": [
+        "te mandamos el carro",
+        "te enviamos transporte",
+        "pasamos por ti",
+        "te recogemos",
+        "manda tu ubicación que vamos",
+        "te mandamos chofer",
+        "el transporte está pagado"
+      ],
+      "category": "logistica_fisica",
+      "weight": 9,
+      "pilar": 1,
+      "context_note": "SEÑAL CRÍTICA documentada. El envío de Uber/Didi es el momento de captura. El conductor fotografía a la víctima y la envía al reclutador. A partir de ese momento queda bajo custodia.",
+      "false_positive_note": "Puede ser servicio legítimo de empresa. Evaluar contexto completo.",
+      "escalation_combos": [
+        "reclutamiento",
+        "formalidad_deceptiva"
+      ]
+    },
+    {
+      "id": "LF-004",
+      "term": "dónde vives",
+      "variants": [
+        "en qué colonia vives",
+        "dónde quedas",
+        "cerca de dónde estás",
+        "cuál es tu dirección",
+        "por dónde andas",
+        "de qué zona eres",
+        "en qué municipio"
+      ],
+      "category": "logistica_fisica",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Recolección de información de ubicación. Señal media sola, alta combinada con oferta de trabajo o transporte.",
+      "false_positive_note": "Normal entre amigos conocidos.",
+      "escalation_combos": [
+        "solicitud_informacion",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "LF-005",
+      "term": "ven solo",
+      "variants": [
+        "vente solo",
+        "ven sola",
+        "acude solo",
+        "que no nos vea nadie",
+        "vernos en privado",
+        "sin que nadie sepa",
+        "vente tú solo",
+        "sin acompañante"
+      ],
+      "category": "logistica_fisica",
+      "weight": 9,
+      "pilar": 1,
+      "context_note": "Instrucción documentada de 'acudir solo para verificar autonomía'. Red flag crítica que confirma que el encuentro no es legítimo.",
+      "false_positive_note": "Puede ser genuino entre amigos conocidos.",
+      "escalation_combos": [
+        "aislamiento",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "LF-006",
+      "term": "retén",
+      "variants": [
+        "hay retén",
+        "evitar el retén",
+        "libre de reten",
+        "sin retenes",
+        "jalapeños",
+        "la chota en el camino",
+        "los guachos están"
+      ],
+      "category": "logistica_fisica",
+      "weight": 8,
+      "pilar": 1,
+      "context_note": "Evasión de puntos de control policial. Señal de operación logística criminal. Código 10-87 en comunicación de radio narco. 'Guachos' = soldados.",
+      "false_positive_note": "Puede ser referencia a tráfico vehicular.",
+      "escalation_combos": [
+        "slang_operativo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "LF-007",
+      "term": "entrevista presencial",
+      "variants": [
+        "nos vemos en persona",
+        "ven a conocernos",
+        "la entrevista es presencial",
+        "pasa a las oficinas",
+        "ven a la entrevista",
+        "te esperamos en las instalaciones"
+      ],
+      "category": "logistica_fisica",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "En contexto de oferta laboral digital sin empresa verificable, solicitar encuentro físico es red flag documentada. Las 'oficinas' frecuentemente son viviendas particulares.",
+      "false_positive_note": "Completamente normal en procesos de contratación legítimos.",
+      "escalation_combos": [
+        "formalidad_deceptiva",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "LF-008",
+      "term": "hotel",
+      "variants": [
+        "nos vemos en el hotel",
+        "en el hotel te espero",
+        "pasa al hotel",
+        "tiempo compartido",
+        "en las instalaciones del hotel"
+      ],
+      "category": "logistica_fisica",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Documentado: hoteles como fachadas operativas para transacciones y retención de personas. Ejemplo: hotel Covid Gardens en Nayarit señalado como fachada del CJNG.",
+      "false_positive_note": "Puede ser referencia a hospedaje legítimo.",
+      "escalation_combos": [
+        "reclutamiento",
+        "formalidad_deceptiva"
+      ]
+    },
+    {
+      "id": "LF-009",
+      "term": "rancho",
+      "variants": [
+        "el rancho",
+        "el ranchito",
+        "un rancho",
+        "ven al rancho",
+        "te esperamos en el rancho"
+      ],
+      "category": "logistica_fisica",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Documentado: municipios como Teuchitlán y Tala en Jalisco. Ranchos (Rancho Izaguirre, Rancho La Vega) como centros de entrenamiento y exterminio.",
+      "false_positive_note": "Puede ser referencia a rancho familiar legítimo.",
+      "escalation_combos": [
+        "reclutamiento",
+        "formalidad_deceptiva"
+      ]
+    },
+    {
+      "id": "CC-001",
+      "term": "mejor en whatsapp",
+      "variants": [
+        "pásate al telegram",
+        "agéndame en discord",
+        "búscame en instagram",
+        "sigamos por privado",
+        "te busco por otro lado",
+        "continúa por privado",
+        "agrega este número",
+        "escríbeme al privado",
+        "dame tu número",
+        "tu número de whatsapp",
+        "dame tu número de whatsapp",
+        "agrega este número"
+      ],
+      "category": "cambio_canal",
+      "weight": 8,
+      "pilar": 2,
+      "context_note": "Migración a plataforma con menos supervisión o moderación. Documentado: contacto inicia en Facebook pero se exige pasar a WhatsApp con números de otros estados. Conciencia de monitoreo.",
+      "false_positive_note": "Puede ser preferencia genuina de plataforma entre conocidos.",
+      "escalation_combos": [
+        "aislamiento",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CC-002",
+      "term": "número nuevo",
+      "variants": [
+        "agrega este número nuevo",
+        "tengo número nuevo",
+        "escríbeme a este número",
+        "cambié de número",
+        "escribe aquí",
+        "este es mi número"
+      ],
+      "category": "cambio_canal",
+      "weight": 6,
+      "pilar": 2,
+      "context_note": "Cambio a número no registrado. Táctica para evadir rastreo. Señal media en aislamiento.",
+      "false_positive_note": "Muy común cuando alguien cambia de teléfono.",
+      "escalation_combos": [
+        "cambio_canal",
+        "aislamiento"
+      ]
+    },
+    {
+      "id": "CC-003",
+      "term": "nadie puede ver esto",
+      "variants": [
+        "borra esta conversación",
+        "borra los mensajes",
+        "elimina el chat",
+        "bórralo todo",
+        "borra el historial",
+        "que no quede registro"
+      ],
+      "category": "cambio_canal",
+      "weight": 9,
+      "pilar": 2,
+      "context_note": "Instrucción de eliminar evidencia. Señal crítica que indica actividad que no puede ser vista por terceros.",
+      "false_positive_note": "Prácticamente ningún contexto positivo.",
+      "escalation_combos": [
+        "aislamiento",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CC-004",
+      "term": "escríbeme en modo privado",
+      "variants": [
+        "modo privado",
+        "mensajes que desaparecen",
+        "chats efímeros",
+        "modo secreto",
+        "modo incógnito",
+        "mensajes temporales"
+      ],
+      "category": "cambio_canal",
+      "weight": 8,
+      "pilar": 2,
+      "context_note": "Uso de mensajería efímera para evitar dejar evidencia. Señal alta de actividad que no puede ser rastreada.",
+      "false_positive_note": "Puede ser preferencia de privacidad genuina.",
+      "escalation_combos": [
+        "cambio_canal",
+        "aislamiento"
+      ]
+    },
+    {
+      "id": "AI-001",
+      "term": "nadie tiene que saber",
+      "variants": [
+        "que no sepa nadie",
+        "no lo digas",
+        "no comentes",
+        "no menciones esto",
+        "guárdatelo",
+        "sin comentarle a nadie",
+        "entre nosotros"
+      ],
+      "category": "aislamiento",
+      "weight": 9,
+      "pilar": 4,
+      "context_note": "Instrucción de secretismo sobre la actividad. Señal crítica en contexto de oferta de trabajo o reclutamiento.",
+      "false_positive_note": "Puede ser sorpresas entre amigos, pero crítico de adulto desconocido a menor.",
+      "escalation_combos": [
+        "reclutamiento",
+        "cambio_canal"
+      ]
+    },
+    {
+      "id": "AI-002",
+      "term": "no le digas a tus papás",
+      "variants": [
+        "no le cuentes a nadie",
+        "no le digas a tu mamá",
+        "no le digas a tu papá",
+        "que no se enteren tus papás",
+        "sin decirle a tu familia",
+        "tus papás no entenderían"
+      ],
+      "category": "aislamiento",
+      "weight": 10,
+      "pilar": 4,
+      "context_note": "Instrucción directa de separar al menor de sus figuras de protección. Señal crítica. Peso máximo.",
+      "false_positive_note": "Prácticamente ningún contexto legítimo.",
+      "escalation_combos": [
+        "aislamiento",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "AI-003",
+      "term": "nadie te va a creer",
+      "variants": [
+        "a quién le vas a decir",
+        "si lo cuentas no te creen",
+        "nadie te va a escuchar",
+        "para qué lo dices si no te creen",
+        "nadie te va a hacer caso"
+      ],
+      "category": "aislamiento",
+      "weight": 10,
+      "pilar": 4,
+      "context_note": "Desincentivo para reportar. Señal crítica. Bloquea que el menor busque ayuda adulta.",
+      "false_positive_note": "Prácticamente ningún contexto positivo.",
+      "escalation_combos": [
+        "aislamiento",
+        "manipulacion_social"
+      ]
+    },
+    {
+      "id": "AI-004",
+      "term": "tus papás no te entienden",
+      "variants": [
+        "tu familia no te entiende",
+        "tus papás no te comprenden",
+        "yo sí te comprendo",
+        "tu familia te limita",
+        "ellos no te dejan crecer",
+        "tus papás no saben lo que es bueno para ti"
+      ],
+      "category": "aislamiento",
+      "weight": 8,
+      "pilar": 4,
+      "context_note": "Triangulación que debilita el vínculo familiar para que el reclutador sea la alternativa confiable.",
+      "false_positive_note": "Puede ser empatía genuina entre amigos.",
+      "escalation_combos": [
+        "aislamiento",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "AI-005",
+      "term": "te mereces algo mejor",
+      "variants": [
+        "mereces más",
+        "mereces mejor vida",
+        "tu familia no te merece",
+        "deberías estar mejor",
+        "tú vales más que eso",
+        "mereces más de lo que tienes"
+      ],
+      "category": "aislamiento",
+      "weight": 7,
+      "pilar": 4,
+      "context_note": "Crea insatisfacción con el entorno familiar para que el reclutador sea la alternativa atractiva.",
+      "false_positive_note": "Puede ser genuino en apoyo emocional.",
+      "escalation_combos": [
+        "aislamiento",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "AI-006",
+      "term": "esto queda entre nosotros",
+      "variants": [
+        "lo que hablamos queda aquí",
+        "nadie más tiene que saber",
+        "es privado",
+        "lo nuestro es nuestro",
+        "nuestro secreto",
+        "solo tú y yo"
+      ],
+      "category": "aislamiento",
+      "weight": 9,
+      "pilar": 4,
+      "context_note": "Secretismo sobre la naturaleza de la comunicación o actividad. Señal crítica en contexto de reclutamiento.",
+      "false_positive_note": "Puede existir en amistad íntima, sospechoso de desconocido a menor.",
+      "escalation_combos": [
+        "aislamiento",
+        "cambio_canal"
+      ]
+    },
+    {
+      "id": "MS-001",
+      "term": "si no vienes eres rajón",
+      "variants": [
+        "si no vas eres rajón",
+        "el que no va es rajón",
+        "no seas rajón y ven",
+        "no te rayes ven",
+        "el que falta es cobarde",
+        "no te rajes"
+      ],
+      "category": "manipulacion_social",
+      "weight": 8,
+      "pilar": 4,
+      "context_note": "Presión de exclusión social condicionada a cumplir. Explota necesidad de pertenencia y miedo al rechazo en NNA.",
+      "false_positive_note": "Puede ser broma inocente entre amigos.",
+      "escalation_combos": [
+        "presion_de_grupo",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "MS-002",
+      "term": "todos ya lo hicieron",
+      "variants": [
+        "ya lo hicieron todos",
+        "solo faltas tú",
+        "todos menos tú",
+        "el único que falta eres tú",
+        "ya todos lo tienen",
+        "todo el mundo ya fue"
+      ],
+      "category": "manipulacion_social",
+      "weight": 8,
+      "pilar": 4,
+      "context_note": "Presión de conformidad social. Señal alta cuando va seguida de conducta de riesgo. Explota necesidad de validación del grupo.",
+      "false_positive_note": "Puede ser referencia genuina a tendencia inofensiva.",
+      "escalation_combos": [
+        "presion_de_grupo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "MS-003",
+      "term": "si lo dices te saco del grupo",
+      "variants": [
+        "si le dices dejamos de ser amigos",
+        "si lo cuentas te saco del grupo",
+        "si hablas se acaba todo",
+        "si lo dices te traicionas",
+        "hablas y ya no eres de los nuestros"
+      ],
+      "category": "manipulacion_social",
+      "weight": 10,
+      "pilar": 4,
+      "context_note": "Amenaza de exclusión condicionada al silencio. Señal crítica de manipulación coercitiva. Combina presión de grupo con aislamiento.",
+      "false_positive_note": "Prácticamente ningún contexto positivo.",
+      "escalation_combos": [
+        "aislamiento",
+        "presion_de_grupo"
+      ]
+    },
+    {
+      "id": "MS-004",
+      "term": "no seas miedoso",
+      "variants": [
+        "no tengas miedo",
+        "los miedosos no avanzan",
+        "el miedo es de los pendejos",
+        "no le tengas miedo",
+        "el que tiene miedo no llega",
+        "los cobardes no prosperan"
+      ],
+      "category": "manipulacion_social",
+      "weight": 7,
+      "pilar": 4,
+      "context_note": "Presión para superar resistencia natural ante conducta de riesgo. Exploita orgullo y miedo al ridículo.",
+      "false_positive_note": "Puede ser aliento genuino en actividades inofensivas.",
+      "escalation_combos": [
+        "manipulacion_social",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "MS-005",
+      "term": "si no lo haces no eres del team",
+      "variants": [
+        "si no lo haces no eres del grupo",
+        "los del equipo lo hacen",
+        "si eres del team lo haces",
+        "el que no lo hace no es de aquí",
+        "no eres de los nuestros"
+      ],
+      "category": "manipulacion_social",
+      "weight": 10,
+      "pilar": 4,
+      "context_note": "Condicionamiento de pertenencia grupal a conducta de riesgo. Señal crítica. Explota necesidad de validación social documentada en los 4 pilares del hackathon.",
+      "false_positive_note": "Prácticamente ningún contexto positivo.",
+      "escalation_combos": [
+        "presion_de_grupo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "MS-006",
+      "term": "comprueba que eres de los nuestros",
+      "variants": [
+        "demuestra que eres de aquí",
+        "prueba que eres del grupo",
+        "tienes que demostrar",
+        "ganarte el lugar",
+        "prueba que puedes",
+        "gánate el respeto"
+      ],
+      "category": "manipulacion_social",
+      "weight": 9,
+      "pilar": 4,
+      "context_note": "Ritual de iniciación coercitivo. Señal alta de coerción que puede escalar a conductas peligrosas.",
+      "false_positive_note": "Puede ser reto de bienvenida inofensivo en algunos grupos.",
+      "escalation_combos": [
+        "presion_de_grupo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "MS-007",
+      "term": "traicionas al grupo",
+      "variants": [
+        "nos traicionas",
+        "eres un traidor",
+        "le fallas al grupo",
+        "nos defraudas",
+        "no eres leal",
+        "sapo",
+        "eres un sapo",
+        "eres un traicionero",
+        "eres un falso",
+        "no eres de los nuestros",
+        "no eres de la banda",
+        "no eres de mi confianza",
+        "no eres de confianza",
+        "no eres de fiar"
+      ],
+      "category": "manipulacion_social",
+      "weight": 9,
+      "pilar": 4,
+      "context_note": "Acusación de traición como coerción. 'Sapo' en contexto criminal implica sentencia de muerte. Señal crítica.",
+      "false_positive_note": "Puede usarse en contextos de lealtad grupal inofensiva.",
+      "escalation_combos": [
+        "aislamiento",
+        "presion_de_grupo"
+      ]
+    },
+    {
+      "id": "MS-008",
+      "term": "así se gana el respeto",
+      "variants": [
+        "así te respetan",
+        "el respeto se gana",
+        "para que te respeten hay que",
+        "los débiles no llegan a nada",
+        "hay que hacerse respetar",
+        "los chingones hacen eso"
+      ],
+      "category": "manipulacion_social",
+      "weight": 7,
+      "pilar": 4,
+      "context_note": "Normalización de violencia o actividad ilícita como vía para obtener respeto social. Explota necesidad de validación.",
+      "false_positive_note": "Puede ser parte de conversación sobre autoestima.",
+      "escalation_combos": [
+        "contenido_normalizado",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "MS-009",
+      "term": "lo que pasa en el grupo queda en el grupo",
+      "variants": [
+        "lo del grupo se queda aquí",
+        "entre nosotros",
+        "código del grupo",
+        "lo que pasa aquí nadie sabe",
+        "aquí no se filtra nada"
+      ],
+      "category": "manipulacion_social",
+      "weight": 8,
+      "pilar": 4,
+      "context_note": "Secretismo grupal que inhibe que el menor cuente a adultos lo que ocurre.",
+      "false_positive_note": "Puede ser genuino en grupos de amigos para eventos inofensivos.",
+      "escalation_combos": [
+        "aislamiento",
+        "presion_de_grupo"
+      ]
+    },
+    {
+      "id": "PG-001",
+      "term": "el equipo te espera",
+      "variants": [
+        "todos te esperan",
+        "el grupo te espera",
+        "la banda te espera",
+        "te estamos esperando",
+        "todos están aquí menos tú"
+      ],
+      "category": "presion_de_grupo",
+      "weight": 7,
+      "pilar": 4,
+      "context_note": "Presión de grupo mediante imagen de exclusión. Explota necesidad de pertenencia documentada como vulnerabilidad clave de NNA.",
+      "false_positive_note": "Común entre amigos para eventos inofensivos.",
+      "escalation_combos": [
+        "manipulacion_social",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "PG-002",
+      "term": "serás el más popular",
+      "variants": [
+        "todos te van a admirar",
+        "vas a ser el más chingón",
+        "te van a respetar todos",
+        "serás el líder",
+        "te van a ver diferente",
+        "así te ganas el respeto"
+      ],
+      "category": "presion_de_grupo",
+      "weight": 7,
+      "pilar": 4,
+      "context_note": "Promesa de estatus social. Explota necesidad de validación y reconocimiento en NNA. Táctica documentada de normalización de actividad de riesgo.",
+      "false_positive_note": "Puede ser aliento genuino.",
+      "escalation_combos": [
+        "manipulacion_social",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "PG-003",
+      "term": "nadie te ha invitado antes",
+      "variants": [
+        "por primera vez te estamos considerando",
+        "te elegimos a ti",
+        "no cualquiera entra aquí",
+        "somos selectivos",
+        "no invitamos a todos",
+        "no entra cualquier wey"
+      ],
+      "category": "presion_de_grupo",
+      "weight": 7,
+      "pilar": 4,
+      "context_note": "Exclusividad falsa. Crea sensación de privilegio para que el menor sienta que rechazar es una pérdida grande.",
+      "false_positive_note": "Puede ser genuino en clubes o grupos selectivos.",
+      "escalation_combos": [
+        "manipulacion_social",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "VJ-001",
+      "term": "te doy skins",
+      "variants": [
+        "te regalo skins",
+        "tengo skins para ti",
+        "quieres skins gratis",
+        "v-bucks gratis",
+        "robux gratis",
+        "free coins",
+        "items gratis",
+        "objetos del juego gratis",
+        "skins gratis",
+        "tengo skins",
+        "te regalo skins gratis",
+        "items gratis para ti",
+        "diamantes gratis",
+        "pavos gratis",
+        "gemas gratis",
+        "monedas gratis"
+      ],
+      "category": "videojuegos_vector",
+      "weight": 8,
+      "pilar": 1,
+      "context_note": "Oferta de objetos de videojuego como gancho inicial para NNA. Vector documentado de contacto en plataformas de juego. Señal alta en contexto de solicitud de información personal.",
+      "false_positive_note": "Puede ser regalo genuino entre amigos del juego.",
+      "escalation_combos": [
+        "solicitud_informacion",
+        "cambio_canal"
+      ]
+    },
+    {
+      "id": "VJ-002",
+      "term": "cuenta premium",
+      "variants": [
+        "cuenta verificada gratis",
+        "te regalo una cuenta",
+        "cuenta con todo desbloqueado",
+        "cuenta de alto nivel",
+        "te paso la cuenta",
+        "account gratis"
+      ],
+      "category": "videojuegos_vector",
+      "weight": 8,
+      "pilar": 1,
+      "context_note": "Oferta de cuenta de videojuego de alto valor. Vector de contacto que genera deuda emocional con el menor.",
+      "false_positive_note": "Puede ser regalo genuino entre amigos.",
+      "escalation_combos": [
+        "solicitud_informacion",
+        "cambio_canal"
+      ]
+    },
+    {
+      "id": "VJ-003",
+      "term": "clan de jugadores",
+      "variants": [
+        "únete al clan",
+        "somos un clan",
+        "el clan te necesita",
+        "nuestro equipo de juego",
+        "el guild te espera",
+        "somos la mejor escuadra",
+        "el server",
+        "te vi en el server",
+        "en el server",
+        "mismo server"
+      ],
+      "category": "videojuegos_vector",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Uso de identidad de clan como vector de reclutamiento. Explota necesidad de pertenencia en entornos de juego. Señal media sola.",
+      "false_positive_note": "Completamente normal en videojuegos en línea.",
+      "escalation_combos": [
+        "videojuegos_vector",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "VJ-004",
+      "term": "torneo con premio",
+      "variants": [
+        "torneo con dinero real",
+        "competencia con premio",
+        "torneos pagados",
+        "ganar dinero jugando",
+        "te pago por jugar",
+        "monetiza tu habilidad"
+      ],
+      "category": "videojuegos_vector",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Promesa de ingresos por jugar. Gancho que combina pasión por videojuegos con oferta económica. Señal alta en combinación.",
+      "false_positive_note": "Torneos de eSports legítimos existen. Evaluar si hay empresa verificable.",
+      "escalation_combos": [
+        "oferta_economica",
+        "solicitud_informacion"
+      ]
+    },
+    {
+      "id": "VJ-005",
+      "term": "te enseño trucos del juego",
+      "variants": [
+        "te enseño hacks",
+        "te paso cheats",
+        "trucos para el juego",
+        "hacks gratis",
+        "te doy aimbot",
+        "te paso el hack",
+        "trucos para ganar"
+      ],
+      "category": "videojuegos_vector",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Oferta de ventajas en el juego como gancho de contacto inicial. Vector de acceso a datos del menor o instalación de software malicioso.",
+      "false_positive_note": "Puede ser genuino entre jugadores experimentados.",
+      "escalation_combos": [
+        "videojuegos_vector",
+        "cambio_canal"
+      ]
+    },
+    {
+      "id": "RS-001",
+      "term": "te hago viral",
+      "variants": [
+        "te hago famoso",
+        "colaboración",
+        "te pongo famoso",
+        "ganarás seguidores",
+        "crezco tu cuenta",
+        "te hago influencer",
+        "trabajemos juntos"
+      ],
+      "category": "redes_sociales_vector",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Promesa de fama en redes como gancho para NNA. Explota aspiraciones de visibilidad digital. Vector documentado de contacto en plataformas sociales.",
+      "false_positive_note": "Puede ser colaboración legítima entre creadores.",
+      "escalation_combos": [
+        "solicitud_informacion",
+        "cambio_canal"
+      ]
+    },
+    {
+      "id": "RS-002",
+      "term": "te vi en tiktok",
+      "variants": [
+        "te encontré en instagram",
+        "vi tu perfil",
+        "me gustó tu contenido",
+        "tienes potencial",
+        "tu cuenta está buena",
+        "eres muy talentoso para las redes"
+      ],
+      "category": "redes_sociales_vector",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Contacto inicial por plataforma de contenido. Señal débil sola, relevante si va seguida de oferta o solicitud de información.",
+      "false_positive_note": "Interacción absolutamente normal en redes sociales.",
+      "escalation_combos": [
+        "redes_sociales_vector",
+        "solicitud_informacion"
+      ]
+    },
+    {
+      "id": "RS-003",
+      "term": "hashtag 4letras",
+      "variants": [
+        "#4letras",
+        "#mencho",
+        "#trabajoparalamaña",
+        "#lamaña",
+        "#cjng",
+        "#sinaloa",
+        "#trf",
+        "#cdg"
+      ],
+      "category": "señal_emoji",
+      "weight": 9,
+      "pilar": 3,
+      "context_note": "Hashtags documentados usados por células de reclutamiento para segmentar alcance en TikTok, Facebook e Instagram y evadir filtros de plataformas.",
+      "false_positive_note": "Pueden usarse de forma irónica o periodística.",
+      "escalation_combos": [
+        "señal_emoji",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "RS-004",
+      "term": "ninja encapuchado",
+      "variants": [
+        "ninja",
+        "encapuchado"
+      ],
+      "category": "señal_emoji",
+      "weight": 6,
+      "pilar": 3,
+      "context_note": "Referencia textual a lo táctico/sicariato y operadores encapuchados. El emoji se normaliza en Tier 0 para evitar doble conteo.",
+      "false_positive_note": "Uso neutral muy común en cultura pop y gaming.",
+      "escalation_combos": [
+        "señal_emoji",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "RS-005",
+      "term": "gallo mencho",
+      "variants": [
+        "el gallo",
+        "señor de los gallos"
+      ],
+      "category": "señal_emoji",
+      "weight": 8,
+      "pilar": 3,
+      "context_note": "Alusión textual a Nemesio Oseguera 'El Señor de los Gallos'. El emoji se normaliza en Tier 0 para evitar solapamiento con v3.",
+      "false_positive_note": "Puede ser referencia a deportes o cultura del gallo.",
+      "escalation_combos": [
+        "señal_emoji",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "RS-006",
+      "term": "chapiza chapitos",
+      "variants": [
+        "la chapiza",
+        "chapitos"
+      ],
+      "category": "señal_emoji",
+      "weight": 7,
+      "pilar": 3,
+      "context_note": "Referencia textual a La Chapiza/Chapitos. El emoji se resuelve en Tier 0 para evitar duplicidad de señales.",
+      "false_positive_note": "Uso neutral extremadamente común. Solo en contexto de otros términos de riesgo.",
+      "escalation_combos": [
+        "señal_emoji",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "SI-001",
+      "term": "cuántos años tienes",
+      "variants": [
+        "qué edad tienes",
+        "cuándo cumples años",
+        "eres mayor de edad",
+        "ya tienes 18",
+        "cuántos tienes"
+      ],
+      "category": "solicitud_informacion",
+      "weight": 3,
+      "pilar": 2,
+      "context_note": "Señal muy baja en aislamiento. Se vuelve relevante si va acompañada de oferta económica o solicitud de encuentro. Perfilamiento de la víctima.",
+      "false_positive_note": "Pregunta absolutamente normal en cualquier contexto.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "SI-002",
+      "term": "tienes familia",
+      "variants": [
+        "vives con tus papás",
+        "tienes hermanos",
+        "quién vive contigo",
+        "estás solo",
+        "vives solo",
+        "con quién vives",
+        "tienes familia en la ciudad"
+      ],
+      "category": "solicitud_informacion",
+      "weight": 5,
+      "pilar": 2,
+      "context_note": "Recolección de información sobre estructura familiar. Identifica si el menor tiene red de apoyo y supervisión.",
+      "false_positive_note": "Puede ser curiosidad genuina entre nuevos conocidos.",
+      "escalation_combos": [
+        "solicitud_informacion",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "SI-003",
+      "term": "a qué horas estás solo",
+      "variants": [
+        "cuándo estás sola",
+        "cuándo no están tus papás",
+        "cuándo estás en casa solo",
+        "a qué hora no están tus papás",
+        "a qué hora estás en casa solo",
+        "a qué hora se van tus papás",
+        "cuándo estás libre en casa"
+      ],
+      "category": "solicitud_informacion",
+      "weight": 10,
+      "pilar": 2,
+      "context_note": "Búsqueda de ventana de vulnerabilidad. Señal crítica de planificación de contacto sin supervisión. Peso máximo.",
+      "false_positive_note": "Prácticamente ningún contexto legítimo de desconocido a menor.",
+      "escalation_combos": [
+        "logistica_fisica",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "SI-004",
+      "term": "en qué escuela estás",
+      "variants": [
+        "en qué primaria estás",
+        "en qué secundaria estás",
+        "en qué prepa estás",
+        "en qué primaria vas",
+        "en qué secundaria vas",
+        "en qué prepa vas",
+        "nombre de tu escuela",
+        "dónde estudias",
+        "qué turno tienes"
+      ],
+      "category": "solicitud_informacion",
+      "weight": 6,
+      "pilar": 2,
+      "context_note": "Recolección de rutina y ubicación. Permite identificar patrones de movimiento del menor.",
+      "false_positive_note": "Normal entre nuevos conocidos.",
+      "escalation_combos": [
+        "logistica_fisica",
+        "solicitud_informacion"
+      ]
+    },
+    {
+      "id": "SI-005",
+      "term": "mándame foto",
+      "variants": [
+        "manda tu foto",
+        "quiero verte",
+        "pon una foto tuya",
+        "mándame fotos",
+        "manda fotito",
+        "mándame una selfie",
+        "foto tuya"
+      ],
+      "category": "solicitud_informacion",
+      "weight": 8,
+      "pilar": 2,
+      "context_note": "Solicitud de imagen personal. Riesgo alto de desconocido a menor. Puede ser primer paso de perfilamiento o inicio de extorsión.",
+      "false_positive_note": "Normal entre amigos conocidos. Contexto del emisor es clave.",
+      "escalation_combos": [
+        "solicitud_informacion",
+        "cambio_canal"
+      ]
+    },
+    {
+      "id": "CN-001",
+      "term": "la vida del patrón",
+      "variants": [
+        "vida de narco",
+        "vivir bien de patrón",
+        "así se vive de mero mero",
+        "vida buchona",
+        "vivir buchón",
+        "vida de capo",
+        "así viven los que mandan",
+        "vida buchona es la mejor"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 7,
+      "pilar": 3,
+      "context_note": "Glorificación del narco como modelo aspiracional. Documentado: TikTok y redes sociales usados para desplegar estética de poder que seduce a NNA en vulnerabilidad económica.",
+      "false_positive_note": "Puede aparecer en periodismo, crítica cultural o educación.",
+      "escalation_combos": [
+        "contenido_normalizado",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CN-002",
+      "term": "mota",
+      "variants": [
+        "fumar mota",
+        "la mota",
+        "grifo",
+        "yerba",
+        "weed",
+        "pasto",
+        "churro",
+        "toque",
+        "porro",
+        "gallito",
+        "alfalfa",
+        "leña",
+        "greñuda",
+        "bacha",
+        "zacatecas"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 5,
+      "pilar": 3,
+      "context_note": "Referencia a marihuana. Señal media. Riesgo aumenta si se promueve su consumo al menor o va con oferta.",
+      "false_positive_note": "Puede ser referencia informativa.",
+      "escalation_combos": [
+        "contenido_normalizado",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CN-003",
+      "term": "perico",
+      "variants": [
+        "la coca",
+        "cocaína",
+        "el polvo",
+        "nieve",
+        "cremita",
+        "talco",
+        "blanca nieves",
+        "maradona",
+        "gabacho",
+        "lavada",
+        "la blanca"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 8,
+      "pilar": 3,
+      "context_note": "Referencia a cocaína y variantes. 'Lavada' indica purificación que eleva precio. Señal alta si se promueve a menor.",
+      "false_positive_note": "Puede ser referencia periodística.",
+      "escalation_combos": [
+        "contenido_normalizado",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CN-004",
+      "term": "cristal",
+      "variants": [
+        "hielo",
+        "vidrio",
+        "foco",
+        "cri-cri",
+        "muchacha",
+        "metanfetamina",
+        "meth",
+        "tina",
+        "ice droga",
+        "hielo droga"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 8,
+      "pilar": 3,
+      "context_note": "Referencia a metanfetaminas. Apariencia física del cristal da origen al nombre. Señal alta.",
+      "false_positive_note": "Puede ser referencia literal al material.",
+      "escalation_combos": [
+        "contenido_normalizado",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CN-005",
+      "term": "fentanilo",
+      "variants": [
+        "birria",
+        "apache",
+        "china girl",
+        "freddy",
+        "he-man",
+        "blues",
+        "m&ms",
+        "pastas",
+        "fent",
+        "tnt",
+        "facebook"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 9,
+      "pilar": 3,
+      "context_note": "Nombres en clave documentados del fentanilo. 'Facebook' sugiere distribución por redes. 'Blues' y 'M&Ms' por pastillas azules. Señal crítica.",
+      "false_positive_note": "Evaluar contexto para Facebook, M&Ms y He-Man.",
+      "escalation_combos": [
+        "contenido_normalizado",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CN-006",
+      "term": "chiva",
+      "variants": [
+        "chocolate",
+        "basura",
+        "tecata",
+        "alquitrán",
+        "caballo",
+        "heroína"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 9,
+      "pilar": 3,
+      "context_note": "Referencia a heroína. Color y consistencia dan origen al nombre.",
+      "false_positive_note": "Puede ser referencia al animal.",
+      "escalation_combos": [
+        "contenido_normalizado"
+      ]
+    },
+    {
+      "id": "CN-007",
+      "term": "cuerno de chivo",
+      "variants": [
+        "cuerno",
+        "la r",
+        "r15",
+        "la ak",
+        "matapolicías",
+        "la 57",
+        "chaparrita",
+        "supergüera",
+        "lanzapapas",
+        "la cincuenta",
+        "pechera",
+        "piña",
+        "papaya"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 8,
+      "pilar": 3,
+      "context_note": "Nombres en clave de armamento documentados: AK-47, AR-15, FN FiveseveN, pistolas, lanzagranadas, chaleco táctico, granadas.",
+      "false_positive_note": "Puede ser referencia a deporte de tiro en adultos.",
+      "escalation_combos": [
+        "slang_operativo",
+        "contenido_normalizado"
+      ]
+    },
+    {
+      "id": "CN-008",
+      "term": "enfierrado",
+      "variants": [
+        "andamos enfierrados",
+        "empecherados",
+        "armados",
+        "con fierros",
+        "traemos fierros",
+        "bien armados"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 9,
+      "pilar": 3,
+      "context_note": "Portación de armamento. Estado de preparación para combate. Documentado en análisis de narcocultura.",
+      "false_positive_note": "Prácticamente ningún contexto neutral entre menores.",
+      "escalation_combos": [
+        "slang_operativo",
+        "contenido_normalizado"
+      ]
+    },
+    {
+      "id": "CN-009",
+      "term": "encobijado",
+      "variants": [
+        "encostalado",
+        "encajuelado",
+        "pozoleado",
+        "dar piso",
+        "quebrar",
+        "mochar",
+        "topón"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 9,
+      "pilar": 3,
+      "context_note": "Términos documentados para disposición de cuerpos como comunicación masiva. Uso en conversación normaliza extrema violencia.",
+      "false_positive_note": "Prácticamente ningún contexto positivo.",
+      "escalation_combos": [
+        "contenido_normalizado",
+        "slang_operativo"
+      ]
+    },
+    {
+      "id": "CN-010",
+      "term": "los de arriba",
+      "variants": [
+        "el cartel",
+        "la maña",
+        "la organización",
+        "los que mandan",
+        "la gente de arriba",
+        "los jefes",
+        "la federación"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 6,
+      "pilar": 3,
+      "context_note": "Referencias genéricas al crimen organizado presentadas con normalidad o respeto. Señal de normalización cultural.",
+      "false_positive_note": "Puede ser referencia política o empresarial.",
+      "escalation_combos": [
+        "contenido_normalizado",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "SD-001",
+      "term": "oye",
+      "variants": [
+        "oiga",
+        "escúchame",
+        "necesito decirte algo",
+        "tengo algo para ti"
+      ],
+      "category": "señal_debil",
+      "weight": 1,
+      "pilar": 2,
+      "context_note": "Señal extremadamente débil. Solo relevante como marcador de inicio de conversación sospechosa. Nunca escalar por este término.",
+      "false_positive_note": "Uso absolutamente neutro.",
+      "escalation_combos": []
+    },
+    {
+      "id": "SD-002",
+      "term": "te puedo ayudar",
+      "variants": [
+        "puedo ayudarte",
+        "quiero ayudarte",
+        "yo te ayudo",
+        "déjame ayudarte"
+      ],
+      "category": "señal_debil",
+      "weight": 2,
+      "pilar": 2,
+      "context_note": "Señal débil. Oferta de ayuda sin especificar. Peso sube si va con solicitud de información o cambio de canal.",
+      "false_positive_note": "Uso neutro absolutamente común.",
+      "escalation_combos": [
+        "oferta_economica",
+        "solicitud_informacion"
+      ]
+    },
+    {
+      "id": "SD-003",
+      "term": "te vi por aquí",
+      "variants": [
+        "cómo llegaste aquí",
+        "eres nuevo por aquí",
+        "no te había visto",
+        "de dónde eres"
+      ],
+      "category": "señal_debil",
+      "weight": 2,
+      "pilar": 2,
+      "context_note": "Inicio de contacto con desconocido. Señal débil sola. Primer paso de cualquier reclutamiento en entorno digital.",
+      "false_positive_note": "Interacción absolutamente normal.",
+      "escalation_combos": [
+        "solicitud_informacion",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "SD-004",
+      "term": "amigo",
+      "variants": [
+        "mi amigo",
+        "amigos",
+        "cuate",
+        "carnal",
+        "hermano",
+        "mano",
+        "compa",
+        "primo",
+        "bro"
+      ],
+      "category": "señal_debil",
+      "weight": 1,
+      "pilar": 2,
+      "context_note": "Señal extremadamente débil. Solo relevante como acelerador de falsa confianza en contexto de otros términos.",
+      "false_positive_note": "Uso absolutamente neutro y muy común.",
+      "escalation_combos": []
+    },
+    {
+      "id": "SD-005",
+      "term": "qué haces",
+      "variants": [
+        "en qué andas",
+        "cómo la llevas",
+        "qué onda",
+        "cómo estás",
+        "qué hay de nuevo"
+      ],
+      "category": "señal_debil",
+      "weight": 1,
+      "pilar": 2,
+      "context_note": "Señal extremadamente débil. Inicio de conversación estándar. Solo registrar como primer mensaje de sesión.",
+      "false_positive_note": "Uso absolutamente neutro.",
+      "escalation_combos": []
+    },
+    {
+      "id": "REC-031",
+      "term": "trabajo",
+      "variants": [
+        "trabajito",
+        "trabajillo",
+        "trabajote",
+        "trabajón",
+        "un trabajo",
+        "el trabajo",
+        "trabajito rápido",
+        "trabajillo fácil",
+        "trabajito sencillo",
+        "buen trabajo",
+        "hay trabajo",
+        "hay un trabajo",
+        "hay un trabajito",
+        "tengo trabajo",
+        "traigo trabajo",
+        "traje trabajo",
+        "trabajo bueno",
+        "trabajo de a madres",
+        "trabajote bueno",
+        "hay trabajito",
+        "hay trabajitos"
+      ],
+      "category": "reclutamiento",
+      "weight": 3,
+      "pilar": 1,
+      "context_note": "Término cotidiano de oferta laboral. Señal muy débil sola; crítica en combinación con oferta_economica, logistica_fisica o aislamiento. Los diminutivos (trabajito, trabajillo) son frecuentes para minimizar la percepción del encargo ilícito.",
+      "false_positive_note": "Uso absolutamente neutro en millones de contextos. NUNCA escalar solo.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica",
+        "aislamiento"
+      ]
+    },
+    {
+      "id": "REC-032",
+      "term": "ayuda",
+      "variants": [
+        "necesito tu ayuda",
+        "me ayudas",
+        "me echas la mano",
+        "me das una mano",
+        "me ayudas con algo",
+        "te necesito para algo",
+        "necesito que me apoyes",
+        "apóyame",
+        "ayúdame",
+        "ayúdame con algo",
+        "necesito que me hagas un favor",
+        "me haces un paro",
+        "me das un paro",
+        "me harías un paro",
+        "párame el paro",
+        "me echas aguas",
+        "me echas una mano",
+        "échame la mano"
+      ],
+      "category": "reclutamiento",
+      "weight": 2,
+      "pilar": 1,
+      "context_note": "Petición de ayuda vaga sin especificar actividad. Señal extremadamente débil sola. Relevante solo como primer contacto seguido de oferta económica o logística física entre desconocidos.",
+      "false_positive_note": "Petición normal entre amigos y conocidos. Solo registrar como posible apertura de secuencia.",
+      "escalation_combos": [
+        "oferta_economica",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "REC-033",
+      "term": "encargo",
+      "variants": [
+        "un encargo",
+        "el encargo",
+        "encárgate de algo",
+        "un encargo rápido",
+        "encárgate de esto",
+        "tengo un encargo",
+        "hay un encargo",
+        "hacerse cargo",
+        "hazte cargo",
+        "un encargo fácil",
+        "encargito",
+        "solo un encargo",
+        "encargo sencillo",
+        "encargo de nada",
+        "te encargo algo",
+        "te encargo esto",
+        "solo te encargo esto",
+        "nada más un encargito"
+      ],
+      "category": "reclutamiento",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Eufemismo frecuente para actividades ilícitas. Similar semánticamente a 'mandado'. Minimiza la naturaleza real del encargo presentándolo como tarea simple. Especialmente relevante entre desconocidos.",
+      "false_positive_note": "Uso cotidiano muy frecuente. Evaluar con contexto de sesión completo.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "REC-034",
+      "term": "favor",
+      "variants": [
+        "un favor",
+        "el favor",
+        "hazme un favor",
+        "solo un favor",
+        "favorcito",
+        "hazme este favor",
+        "un favorcito nada más",
+        "solo necesito que me hagas un favor",
+        "es un favor sencillo",
+        "favor rápido",
+        "te pido un favor",
+        "pedirte un favor",
+        "necesito pedirte un favor",
+        "nada más un favor",
+        "un favor y ya",
+        "favorón",
+        "me harías un favorón"
+      ],
+      "category": "reclutamiento",
+      "weight": 3,
+      "pilar": 1,
+      "context_note": "Petición de favor vaga entre desconocidos o contactos recientes. Señal débil sola. Relevante cuando es entre desconocidos y va acompañada de oferta económica.",
+      "false_positive_note": "Petición absolutamente cotidiana en cualquier relación.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "REC-035",
+      "term": "quieres ganar dinero",
+      "variants": [
+        "quieres ganar lana",
+        "quieres ganar varo",
+        "quieres ganar feria",
+        "quieres ganar billete",
+        "quieres hacer dinero",
+        "quieres hacer lana",
+        "quieres juntarte dinero",
+        "quieres juntar varo",
+        "quieres feria extra",
+        "te gustaría ganar",
+        "te interesa ganar",
+        "ganar dinero fácil",
+        "ganar lana fácil",
+        "hacer dinero rápido",
+        "hacer lana rápido"
+      ],
+      "category": "reclutamiento",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Pregunta directa sobre interés en ganar dinero sin especificar actividad. Primer paso documentado del enganche económico. Señal débil-media sola.",
+      "false_positive_note": "Contexto muy común entre jóvenes. Evaluar con siguientes mensajes de la sesión.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "REC-036",
+      "term": "actividad",
+      "variants": [
+        "una actividad",
+        "la actividad",
+        "actividad rápida",
+        "actividad sencilla",
+        "actividad fácil",
+        "es una actividad",
+        "hay una actividad",
+        "la activi",
+        "participa en esto",
+        "participa",
+        "participa con nosotros",
+        "te unes a la actividad",
+        "te subes a la actividad",
+        "una actividadcita"
+      ],
+      "category": "reclutamiento",
+      "weight": 3,
+      "pilar": 1,
+      "context_note": "Eufemismo vago para encargo ilícito. Cero especificidad intencional para evitar comprometer al hablante.",
+      "false_positive_note": "Completamente neutro en contextos escolares, deportivos o sociales.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "REC-037",
+      "term": "proyecto",
+      "variants": [
+        "un proyecto",
+        "el proyecto",
+        "proyectito",
+        "tengo un proyecto",
+        "hay un proyecto",
+        "es un proyecto",
+        "proyecto rápido",
+        "proyecto bueno",
+        "proyecto con buena lana",
+        "proyecto personal",
+        "mi proyecto",
+        "nuestro proyecto",
+        "proyecto interesante",
+        "te interesa el proyecto",
+        "proyecto redondo"
+      ],
+      "category": "reclutamiento",
+      "weight": 3,
+      "pilar": 1,
+      "context_note": "Término deliberadamente vago para disfrazar actividad ilícita como iniciativa empresarial o personal. Peso sube con oferta económica.",
+      "false_positive_note": "Uso legítimo muy frecuente en contextos académicos y laborales.",
+      "escalation_combos": [
+        "oferta_economica",
+        "formalidad_deceptiva"
+      ]
+    },
+    {
+      "id": "REC-038",
+      "term": "negocio",
+      "variants": [
+        "un negocio",
+        "el negocio",
+        "negocito",
+        "negociote",
+        "hay negocio",
+        "tengo negocio",
+        "buen negocio",
+        "negocio redondo",
+        "negocio fácil",
+        "negocio rápido",
+        "negocio seguro",
+        "te meto al negocio",
+        "entrar al negocio",
+        "meterte al negocio",
+        "el negocio va bien",
+        "el negocio está bueno",
+        "nuestro negocio",
+        "es un negociazo"
+      ],
+      "category": "reclutamiento",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Eufemismo documentado para operación criminal. Peso sube considerablemente combinado con oferta económica concreta o logística física.",
+      "false_positive_note": "Absolutamente legítimo en millones de contextos comerciales.",
+      "escalation_combos": [
+        "oferta_economica",
+        "slang_operativo"
+      ]
+    },
+    {
+      "id": "REC-039",
+      "term": "te invito",
+      "variants": [
+        "te invito a algo",
+        "te invito a esto",
+        "quieres que te invite",
+        "te quiero invitar",
+        "te queremos invitar",
+        "estás invitado",
+        "te invitamos",
+        "quieres venir",
+        "te puedo invitar a algo",
+        "tengo una invitación para ti",
+        "hay lugar para ti",
+        "quieres venir con nosotros"
+      ],
+      "category": "reclutamiento",
+      "weight": 2,
+      "pilar": 1,
+      "context_note": "Invitación vaga de desconocido. Señal mínima sola, relevante como apertura cuando va seguida de oferta económica o logística física.",
+      "false_positive_note": "Completamente neutro entre conocidos. Solo registrar en sesión.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "REC-040",
+      "term": "te presento a alguien",
+      "variants": [
+        "mis amigos quieren conocerte",
+        "te van a caer bien mis amigos",
+        "te presento a unos amigos",
+        "unos cuates te quieren conocer",
+        "hay gente que quiere conocerte",
+        "te quiero presentar",
+        "te presento a la gente",
+        "te presentamos con el equipo",
+        "te quiero presentar con unos cuates",
+        "mis cuates te buscan",
+        "hay unos weyes que te quieren conocer"
+      ],
+      "category": "reclutamiento",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Introducción a red de contactos desconocidos. Táctica documentada de incorporación gradual a estructura criminal. Señal media entre desconocidos.",
+      "false_positive_note": "Absolutamente normal entre amigos que quieren presentar a alguien.",
+      "escalation_combos": [
+        "reclutamiento",
+        "logistica_fisica",
+        "presion_de_grupo"
+      ]
+    },
+    {
+      "id": "OE-007",
+      "term": "te pago",
+      "variants": [
+        "te voy a pagar",
+        "te pagamos",
+        "hay pago",
+        "te doy algo",
+        "te doy una feria",
+        "te doy un billete",
+        "te doy lana",
+        "te doy varo",
+        "hay recompensa",
+        "hay lana",
+        "hay varo",
+        "hay feria",
+        "hay dinero",
+        "hay billete",
+        "te caen billetitos",
+        "caen billetes",
+        "cae buena lana",
+        "te cae bien la feria",
+        "te cae bien el varo",
+        "hay pagón"
+      ],
+      "category": "oferta_economica",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Oferta de pago sin especificar actividad ni empresa. Señal débil-media sola. Crítica combinada con reclutamiento o logística física.",
+      "false_positive_note": "Completamente normal para describir pago de cualquier servicio o favor legítimo.",
+      "escalation_combos": [
+        "reclutamiento",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "OE-008",
+      "term": "dinero extra",
+      "variants": [
+        "lana extra",
+        "varo extra",
+        "feria extra",
+        "billete extra",
+        "ingreso extra",
+        "ganancia extra",
+        "ingresito extra",
+        "lanita extra",
+        "varito extra",
+        "un extra",
+        "para un extra",
+        "pa un extra",
+        "pa completar el gasto",
+        "para completar",
+        "completar el gasto",
+        "para el gasto",
+        "para tus gastos",
+        "para tus vicios"
+      ],
+      "category": "oferta_economica",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Promesa de ingresos adicionales apelando a necesidad económica. Especialmente relevante en contextos de presión económica familiar documentada en perfiles de NNA vulnerables.",
+      "false_positive_note": "Búsqueda de ingresos extra absolutamente normal y común.",
+      "escalation_combos": [
+        "reclutamiento",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "OE-009",
+      "term": "no te va a faltar nada",
+      "variants": [
+        "no les faltará nada",
+        "no te faltará",
+        "te vas a llenar",
+        "te vas a hartar de lana",
+        "no te va a faltar el billete",
+        "vas a tener de sobra",
+        "no vas a batallar",
+        "no batallarás",
+        "con nosotros no batalles",
+        "estás fijo",
+        "te la vas a vivir bien",
+        "vida chida garantizada",
+        "te garantizo que no bateallas"
+      ],
+      "category": "oferta_economica",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Promesa de bienestar económico garantizado sin especificar actividad. Explota necesidades materiales del menor.",
+      "false_positive_note": "Puede ser expresión genuina de apoyo emocional entre familiares.",
+      "escalation_combos": [
+        "reclutamiento",
+        "manipulacion_social"
+      ]
+    },
+    {
+      "id": "OE-010",
+      "term": "comisión",
+      "variants": [
+        "te doy comisión",
+        "hay comisión",
+        "ganas comisión",
+        "comisiones altas",
+        "buena comisión",
+        "comisionista",
+        "a comisión",
+        "trabajar a comisión",
+        "ganamos comisión",
+        "comisión por entrega",
+        "comisión por pieza",
+        "por cada uno te doy",
+        "por cada viaje te doy",
+        "te pago por pieza",
+        "pago por viaje",
+        "pago por entrega",
+        "te va por entrega"
+      ],
+      "category": "oferta_economica",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Esquema de pago por pieza o por entrega sin empresa verificable. Documentado en transporte ilícito de drogas o mensajes entre células.",
+      "false_positive_note": "Legítimo en ventas y empleos formales con comisiones.",
+      "escalation_combos": [
+        "reclutamiento",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "OE-011",
+      "term": "te presto dinero",
+      "variants": [
+        "te presto lana",
+        "te presto varo",
+        "te hago el préstamo",
+        "préstamo sin intereses",
+        "te lo fío",
+        "quédate con el cambio",
+        "quédate con el vuelto",
+        "te regalo la diferencia",
+        "te la regalo",
+        "es tuya la feria",
+        "quédatela",
+        "te la dejo",
+        "te adelanto",
+        "te adelanto la paga",
+        "aquí tienes para empezar"
+      ],
+      "category": "oferta_economica",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Préstamo o regalo de dinero a menor desconocido. Táctica documentada para crear deuda emocional o económica antes de revelar la expectativa real del acuerdo.",
+      "false_positive_note": "Puede ser gesto genuino entre conocidos de confianza.",
+      "escalation_combos": [
+        "manipulacion_social",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "OE-012",
+      "term": "bien pagado",
+      "variants": [
+        "está bien pagado",
+        "es bien pagado",
+        "muy bien pagado",
+        "paga bien",
+        "paga muy bien",
+        "es lo más bien pagado",
+        "lo mejor pagado",
+        "el mejor pago",
+        "el pago es excelente",
+        "paga de huevos",
+        "paga chido",
+        "paga nais",
+        "paga a mares",
+        "paga un chingo",
+        "paga un resto",
+        "paga a todo dar",
+        "el pago es de a madres"
+      ],
+      "category": "oferta_economica",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Énfasis en remuneración sin detalles de actividad ni empresa. Señal media.",
+      "false_positive_note": "Común en recomendaciones de empleo legítimas.",
+      "escalation_combos": [
+        "reclutamiento",
+        "formalidad_deceptiva"
+      ]
+    },
+    {
+      "id": "OE-013",
+      "term": "sin mucho esfuerzo",
+      "variants": [
+        "con poco esfuerzo",
+        "casi sin hacer nada",
+        "sin hacer mucho",
+        "es muy fácil ganar",
+        "es facilísimo ganar",
+        "se gana sin chambar",
+        "sin tanto trabajo",
+        "sin sudar",
+        "sin romperte el lomo",
+        "sin fajarte",
+        "sin mucho rollo",
+        "es pan comido",
+        "nada de trabajo pesado",
+        "trabajo sencillo",
+        "no hay que esforzarse mucho",
+        "casi es gratis la lana"
+      ],
+      "category": "oferta_economica",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Promesa de ingresos altos con esfuerzo mínimo. Señal clásica de enganche que apela a fantasía de ganancia fácil. Peso mayor que términos similares por la combinación activa de ganancia + facilidad.",
+      "false_positive_note": "Puede describir genuinamente un trabajo sencillo y legítimo.",
+      "escalation_combos": [
+        "reclutamiento",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "OE-014",
+      "term": "pago en efectivo",
+      "variants": [
+        "en efectivo",
+        "pago en cash",
+        "pago en mano",
+        "te lo doy en mano",
+        "en billetes",
+        "cash en mano",
+        "billete en mano",
+        "te lo entrego en mano",
+        "pago diario",
+        "pago al día",
+        "pago al momento",
+        "pago de inmediato",
+        "pago neta",
+        "te cae de volada",
+        "te cae al tiro",
+        "ahí mismo te pago"
+      ],
+      "category": "oferta_economica",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Pago en efectivo sin comprobantes ni contrato. Señal documentada de actividad fuera de la economía formal. El inmediatismo del pago es característica operativa del crimen organizado.",
+      "false_positive_note": "Común en trabajo informal legítimo (jardinería, limpieza, etc.).",
+      "escalation_combos": [
+        "reclutamiento",
+        "formalidad_deceptiva"
+      ]
+    },
+    {
+      "id": "LF-010",
+      "term": "paquete",
+      "variants": [
+        "el paquete",
+        "un paquete",
+        "paquetito",
+        "paquetón",
+        "paquetes",
+        "el paquetito",
+        "los paquetes",
+        "hay un paquete",
+        "traer el paquete",
+        "llevar un paquete",
+        "recoger el paquete",
+        "entregar el paquete",
+        "el bulto",
+        "los bultos",
+        "un bulto",
+        "bulto pequeño",
+        "bulto sencillo",
+        "la encomienda",
+        "la encomendita",
+        "lo que ya sabes"
+      ],
+      "category": "logistica_fisica",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Referencia a paquete sin especificar contenido ni remitente legítimo. Eufemismo documentado para droga, dinero ilícito o material prohibido. Relevante en contexto de oferta económica.",
+      "false_positive_note": "Referencia absolutamente cotidiana a cualquier paquete postal o doméstico.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "LF-011",
+      "term": "envío",
+      "variants": [
+        "un envío",
+        "el envío",
+        "envíos",
+        "hacer un envío",
+        "hacer envíos",
+        "enviar algo",
+        "enviar esto",
+        "mandar algo",
+        "manda esto",
+        "llevar un envío",
+        "recoger un envío",
+        "hacer la entrega",
+        "la entrega",
+        "entregar algo",
+        "hacer las entregas",
+        "el enviadito",
+        "hacer el movimiento",
+        "mover el paquete",
+        "hacer la movida"
+      ],
+      "category": "logistica_fisica",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Referencia a envío o entrega sin especificar empresa de mensajería ni destinatario verificable. Señal débil-media que escala con oferta económica.",
+      "false_positive_note": "Absolutamente cotidiano en contexto de e-commerce y correos.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "LF-012",
+      "term": "llevar algo",
+      "variants": [
+        "llevar esto",
+        "llevar eso",
+        "llevarle algo a alguien",
+        "llevarle esto",
+        "lleva esto",
+        "lleva aquí",
+        "llévame esto",
+        "lleva esto a donde te digo",
+        "llevar de aquí hasta allá",
+        "de aquí a allá",
+        "solo llevas y regresas",
+        "solo llevas y ya",
+        "llevas esto y se acabó",
+        "nada más lo llevas",
+        "lo llevas y te pago",
+        "lo llevas y listo"
+      ],
+      "category": "logistica_fisica",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Instrucción de transporte de objeto no especificado. Patrón documentado del primer encargo a reclutas: transportar sin saber el contenido. Señal media entre desconocidos.",
+      "false_positive_note": "Petición completamente normal entre conocidos.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "LF-013",
+      "term": "traer algo",
+      "variants": [
+        "tráeme algo",
+        "tráeme esto",
+        "tráeme aquello",
+        "trae el paquete",
+        "trae el mandado",
+        "trae lo que te digo",
+        "trae eso",
+        "trae nada más esto",
+        "lo que traes",
+        "traes algo",
+        "¿traes algo?",
+        "tráelo",
+        "nada más traes esto y ya",
+        "es solo traer",
+        "solo traes y ya"
+      ],
+      "category": "logistica_fisica",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Instrucción de recolección de objeto no especificado. Señal débil sola, media en combo con oferta económica.",
+      "false_positive_note": "Petición normal en cualquier contexto familiar o de amistad.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "LF-014",
+      "term": "vuelta rápida",
+      "variants": [
+        "es una vuelta",
+        "solo das una vuelta",
+        "das una vuelta y ya",
+        "nada más das una vuelta",
+        "vuelta y ya",
+        "es una vueltita",
+        "solo un viaje",
+        "es un viaje nada más",
+        "viaje rápido",
+        "viajito rápido",
+        "ida y vuelta",
+        "nada más ida y vuelta",
+        "solo vas y vuelves",
+        "un ratito y ya",
+        "un momento y ya",
+        "nomás es un momento"
+      ],
+      "category": "logistica_fisica",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Minimización de un traslado para facilitar el primer encargo. Táctica documentada para que el menor no calibre la distancia ni el riesgo real del trayecto.",
+      "false_positive_note": "Expresión legítima para describir un recado corto.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "LF-015",
+      "term": "punto de encuentro",
+      "variants": [
+        "punto de entrega",
+        "punto de recogida",
+        "lugar de encuentro",
+        "nos encontramos",
+        "te espero en",
+        "espérame en",
+        "chécate el punto",
+        "el punto",
+        "el punto de encuentro",
+        "el punto de entrega",
+        "te marco el punto",
+        "te mando el punto",
+        "el spot",
+        "el spotcito",
+        "ahí en el spot",
+        "te digo el spot",
+        "en el punto",
+        "en el lugar"
+      ],
+      "category": "logistica_fisica",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Establecimiento de punto de encuentro físico sin precisar contexto legítimo. Señal media sola, alta combinada con oferta económica o reclutamiento.",
+      "false_positive_note": "Completamente normal para cualquier cita entre conocidos.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "LF-016",
+      "term": "cruzar",
+      "variants": [
+        "cruzar algo",
+        "cruzar el material",
+        "cruzar el paquete",
+        "cruzar la línea",
+        "cruzar la frontera",
+        "cruzar por el puente",
+        "cruzar con algo",
+        "pasar algo por aquí",
+        "pasar con el paquete",
+        "pasar el bulto",
+        "pasar la encomienda",
+        "pasarlo sin que se den cuenta",
+        "pasar sin problema",
+        "hacer el cruce",
+        "el cruce",
+        "un cruce rápido"
+      ],
+      "category": "logistica_fisica",
+      "weight": 7,
+      "pilar": 1,
+      "context_note": "Referencia a cruce o traslado de material sin especificar contenido. Alta relevancia en contextos fronterizos. Documentado en análisis de rutas de tráfico.",
+      "false_positive_note": "Puede referirse a cruzar una calle o frontera de forma legítima.",
+      "escalation_combos": [
+        "reclutamiento",
+        "slang_operativo"
+      ]
+    },
+    {
+      "id": "LF-017",
+      "term": "te recogemos",
+      "variants": [
+        "te paso el carro",
+        "te presto el carro",
+        "hay carro",
+        "hay troca",
+        "te van a recoger",
+        "manda carro por ti",
+        "te mandamos carro",
+        "hay transporte",
+        "te damos ride",
+        "te damos aventón",
+        "hay aventón",
+        "te llevamos",
+        "vamos por ti",
+        "mandamos por ti",
+        "te buscamos",
+        "hay quien te lleve",
+        "hay carrito"
+      ],
+      "category": "logistica_fisica",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Oferta de transporte por parte de desconocidos. Señal documentada de protocolo de recogida previo a reclutamiento forzado o levantón.",
+      "false_positive_note": "Oferta de transporte completamente normal entre amigos y familiares.",
+      "escalation_combos": [
+        "reclutamiento",
+        "aislamiento"
+      ]
+    },
+    {
+      "id": "LF-018",
+      "term": "dame tu dirección",
+      "variants": [
+        "dime tu dirección",
+        "me das tu domicilio",
+        "dónde vives exactamente",
+        "dónde quedas exactamente",
+        "a qué colonia vas",
+        "a qué colonia llegas",
+        "en qué parte vives exactamente",
+        "qué tan lejos estás",
+        "cuánto tardas en llegar",
+        "qué tan cerca estás de",
+        "a qué dirección te mandamos",
+        "a qué dirección llegamos"
+      ],
+      "category": "logistica_fisica",
+      "weight": 6,
+      "pilar": 1,
+      "context_note": "Solicitud de domicilio o ubicación exacta en contexto de oferta laboral o pago. Posible perfilamiento o protocolo de recogida. Combinado con oferta económica, señal alta.",
+      "false_positive_note": "Normal para acordar entrega de producto legítimo o cita verificable.",
+      "escalation_combos": [
+        "solicitud_informacion",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "SD-006",
+      "term": "hola",
+      "variants": [
+        "ey",
+        "ey tú",
+        "hey",
+        "hey tú",
+        "holaa",
+        "holaaa",
+        "holi",
+        "holis",
+        "qué onda",
+        "qué pedo",
+        "qué rollo",
+        "qué tranza",
+        "qué pasó",
+        "buenas",
+        "qué tal",
+        "cómo andas",
+        "cómo te va",
+        "qué hay",
+        "qué cuentas",
+        "qué onda wey",
+        "qué onda mano",
+        "qué onda carnal"
+      ],
+      "category": "señal_debil",
+      "weight": 1,
+      "pilar": 2,
+      "context_note": "Apertura de conversación entre desconocidos. Señal mínima que solo activa registro de inicio de sesión. Su relevancia es únicamente como primer paso de una cadena de mensajes que escala.",
+      "false_positive_note": "Es simplemente un saludo. NUNCA escalar por este término solo bajo ninguna circunstancia.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "SD-007",
+      "term": "te puedo ofrecer algo",
+      "variants": [
+        "te ofrezco algo",
+        "tengo algo para ofrecerte",
+        "te tengo algo",
+        "traigo algo para ti",
+        "te traigo algo",
+        "tengo algo que te conviene",
+        "te puede interesar",
+        "te interesa algo",
+        "te podría interesar algo",
+        "hay algo para ti",
+        "tengo algo bueno",
+        "te cuento algo bueno",
+        "te platico algo interesante",
+        "tengo algo interesante para ti"
+      ],
+      "category": "señal_debil",
+      "weight": 3,
+      "pilar": 2,
+      "context_note": "Apertura genérica de oferta sin especificar qué. Señal débil que marca inicio de posible enganche. Relevante si continúa con oferta_economica o reclutamiento.",
+      "false_positive_note": "Muy común en cualquier oferta comercial o social legítima.",
+      "escalation_combos": [
+        "oferta_economica",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "SD-008",
+      "term": "tienes tiempo ahorita",
+      "variants": [
+        "cuándo tienes tiempo",
+        "cuándo puedes",
+        "cuándo estás libre",
+        "cuándo estás disponible",
+        "tienes chance",
+        "cuándo tienes chance",
+        "a qué hora puedes",
+        "a qué hora estás",
+        "cuándo te desocupas",
+        "cuándo sales de la escuela",
+        "a qué hora sales",
+        "cuándo llegas a tu casa",
+        "a qué hora llegas",
+        "cuándo estás solo en casa"
+      ],
+      "category": "señal_debil",
+      "weight": 2,
+      "pilar": 2,
+      "context_note": "Exploración de disponibilidad del menor, especialmente horarios de ausencia de padres. Señal mínima sola, relevante si continúa con logística física.",
+      "false_positive_note": "Pregunta normal para acordar cualquier actividad legítima.",
+      "escalation_combos": [
+        "logistica_fisica",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "SD-009",
+      "term": "hay alguien contigo",
+      "variants": [
+        "estás solo",
+        "estás solito",
+        "andas solo",
+        "estás en tu casa",
+        "están tus papás ahí",
+        "están en casa tus papás",
+        "quién está contigo",
+        "estás acompañado",
+        "no hay nadie contigo",
+        "puedes hablar ahorita",
+        "te pueden oír",
+        "pueden escucharte",
+        "estás solos",
+        "no están tus papás",
+        "están tus jefes"
+      ],
+      "category": "señal_debil",
+      "weight": 4,
+      "pilar": 2,
+      "context_note": "Verificación de ausencia de adultos supervisores. Señal de alerta media. En contexto de desconocido es indicador de posible grooming o planeación de contacto sin supervisión.",
+      "false_positive_note": "Pregunta normal entre amigos muy cercanos para confirmar privacidad.",
+      "escalation_combos": [
+        "aislamiento",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "SD-010",
+      "term": "cómo te llamas",
+      "variants": [
+        "cuál es tu nombre",
+        "dime tu nombre",
+        "cómo te dicen",
+        "cuál es tu apodo",
+        "cómo te conocen",
+        "dime tu nombre completo",
+        "nombre completo",
+        "tu nombre y apellido",
+        "cómo te presentaron",
+        "a nombre de quién",
+        "con qué nombre te ponen",
+        "cómo te pusieron"
+      ],
+      "category": "señal_debil",
+      "weight": 2,
+      "pilar": 2,
+      "context_note": "Solicitud de nombre en contacto con desconocido. Señal mínima sola. Primer paso de perfilamiento de víctima. Combinado con otros términos de solicitud_informacion, escala.",
+      "false_positive_note": "Completamente normal en cualquier presentación.",
+      "escalation_combos": [
+        "solicitud_informacion",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "SI-006",
+      "term": "a qué escuela vas",
+      "variants": [
+        "en qué escuela estás",
+        "en qué prepa",
+        "en qué secundaria",
+        "en qué primaria",
+        "en qué facultad",
+        "en qué uni",
+        "en qué universidad",
+        "estudias o trabajas",
+        "qué grado cursas",
+        "en qué turno",
+        "mañana o tarde",
+        "en qué escuela andas",
+        "cuál es tu escuela",
+        "de qué escuela eres",
+        "qué escuela estudias"
+      ],
+      "category": "solicitud_informacion",
+      "weight": 4,
+      "pilar": 1,
+      "context_note": "Solicitud de datos escolares para ubicar al menor. Perfilamiento documentado de vulnerabilidad y acceso. Alta relevancia cuando proviene de desconocidos.",
+      "false_positive_note": "Pregunta normal entre conocidos para contextualizar.",
+      "escalation_combos": [
+        "logistica_fisica",
+        "solicitud_informacion"
+      ]
+    },
+    {
+      "id": "SI-007",
+      "term": "tu número de teléfono",
+      "variants": [
+        "dame tu número",
+        "me das tu número",
+        "cuál es tu número",
+        "tu WhatsApp",
+        "me das tu WhatsApp",
+        "cuál es tu WhatsApp",
+        "tu telegram",
+        "tu celular",
+        "me pasas tu cel",
+        "dame tu cel",
+        "cuál es tu cel",
+        "tu teléfono",
+        "te busco al cel",
+        "te llamo al número",
+        "me das tu contacto",
+        "por dónde te hablo",
+        "cómo te localizo"
+      ],
+      "category": "solicitud_informacion",
+      "weight": 3,
+      "pilar": 1,
+      "context_note": "Solicitud de número de contacto directo por desconocido. Paso previo a migración de canal o contacto fuera de plataforma original donde existe moderación.",
+      "false_positive_note": "Normal para establecer contacto entre cualquier persona.",
+      "escalation_combos": [
+        "cambio_canal",
+        "aislamiento"
+      ]
+    },
+    {
+      "id": "SI-008",
+      "term": "conoces a alguien más",
+      "variants": [
+        "tienes cuates que quieran",
+        "tus amigos estarían interesados",
+        "ellos también querrían",
+        "tus primos también",
+        "hay más gente como tú",
+        "puedes traer a alguien más",
+        "trae a alguien",
+        "invita a alguien",
+        "trae a un amigo",
+        "trae a un cuate",
+        "trae a tu hermano",
+        "tus cuates también pueden",
+        "puedes recomendarme a alguien"
+      ],
+      "category": "solicitud_informacion",
+      "weight": 5,
+      "pilar": 1,
+      "context_note": "Exploración de red social del menor para ampliar reclutamiento. Documentado como táctica de expansión de la red de captación usando al primer contacto como referidor involuntario.",
+      "false_positive_note": "Pregunta normal de recomendación entre conocidos.",
+      "escalation_combos": [
+        "reclutamiento",
+        "presion_de_grupo"
+      ]
+    },
+    {
+      "id": "MS-010",
+      "term": "no te arrepentirás",
+      "variants": [
+        "no vas a arrepentirte",
+        "no te vas a arrepentir",
+        "te lo juro que no te arrepientes",
+        "es la mejor decisión",
+        "vas a agradecer",
+        "me lo vas a agradecer",
+        "vas a quedar agradecido",
+        "lo mejor que te puede pasar",
+        "esto te cambia la vida",
+        "te cambia la vida",
+        "tu vida cambia con esto",
+        "cambia tu vida hoy",
+        "no lo vas a lamentar",
+        "no te va a pesar"
+      ],
+      "category": "manipulacion_social",
+      "weight": 5,
+      "pilar": 4,
+      "context_note": "Garantía de satisfacción para neutralizar dudas del menor ante oferta no especificada. Presión positiva documentada en tácticas de enganche.",
+      "false_positive_note": "Puede ser expresión genuina de recomendación de cualquier cosa.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "MS-011",
+      "term": "confía en mí",
+      "variants": [
+        "confíate",
+        "confíate de mí",
+        "te lo juro",
+        "palabra",
+        "lo juro",
+        "juro que es bueno",
+        "créeme",
+        "créeme que sí",
+        "ya te digo yo",
+        "yo te lo garantizo",
+        "te lo garantizo",
+        "yo respondo",
+        "yo te respondo",
+        "tengo mi palabra",
+        "bajo mi palabra",
+        "con mi palabra",
+        "palabra de honor"
+      ],
+      "category": "manipulacion_social",
+      "weight": 4,
+      "pilar": 4,
+      "context_note": "Construcción de confianza prematura con menor desconocido. Señal débil sola. Relevante en secuencia con oferta económica o reclutamiento.",
+      "false_positive_note": "Expresión normal entre amigos cercanos.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "MS-012",
+      "term": "no le digas a nadie",
+      "variants": [
+        "no le cuentes a nadie",
+        "esto es entre tú y yo",
+        "entre nosotros",
+        "no lo compartas",
+        "es información privada",
+        "es confidencial",
+        "que no se entere nadie",
+        "que no sepa nadie",
+        "no se lo cuentes a tus amigos",
+        "guárdatelo",
+        "guarda el secreto",
+        "esto se queda aquí",
+        "se queda entre nosotros",
+        "no vayas a contarle a alguien"
+      ],
+      "category": "manipulacion_social",
+      "weight": 8,
+      "pilar": 4,
+      "context_note": "Instrucción de secreto sobre la comunicación. Señal alta documentada como táctica de grooming y reclutamiento. Prácticamente ningún contexto legítimo justifica esto con un menor desconocido.",
+      "false_positive_note": "Puede ser secreto de sorpresa o confidencia genuina entre muy cercanos.",
+      "escalation_combos": [
+        "aislamiento",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "MS-013",
+      "term": "eres especial",
+      "variants": [
+        "eres diferente",
+        "no eres como los demás",
+        "eres más listo que los demás",
+        "eres más maduro",
+        "pareces mayor",
+        "eres más avanzado",
+        "eres inteligente",
+        "eres muy inteligente para tu edad",
+        "tienes capacidades",
+        "tienes talento",
+        "eres lo que necesitamos",
+        "eres el indicado para esto",
+        "eres perfecto para esto",
+        "eres único",
+        "no hay otro como tú"
+      ],
+      "category": "manipulacion_social",
+      "weight": 5,
+      "pilar": 4,
+      "context_note": "Halago específico para hacer sentir al menor especial e irremplazable. Documentado en tácticas de captación que explotan necesidad de validación adolescente.",
+      "false_positive_note": "Puede ser elogio genuino entre conocidos.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "MS-014",
+      "term": "no hay peligro",
+      "variants": [
+        "no hay peligro alguno",
+        "está limpio",
+        "está libre",
+        "no hay problema",
+        "no hay pedos",
+        "no hay broncas",
+        "sin broncas",
+        "sin pedos",
+        "sin drama",
+        "no hay drama",
+        "es libre de riesgo",
+        "libre de peligro",
+        "cero peligro",
+        "cero riesgo",
+        "riesgo cero",
+        "es lo más seguro del mundo",
+        "no te pasa nada",
+        "no les pasa nada"
+      ],
+      "category": "manipulacion_social",
+      "weight": 7,
+      "pilar": 4,
+      "context_note": "Minimización del riesgo real de actividad ilícita. Señal alta documentada: el crimen organizado necesita convencer al recluta de que no habrá consecuencias para superar su resistencia natural.",
+      "false_positive_note": "Puede ser tranquilización genuina ante actividad de bajo riesgo.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "AI-007",
+      "term": "que no lo sepa tu mamá",
+      "variants": [
+        "que no se enteren tus jefes",
+        "que no lo sepa tu papá",
+        "no le digas a tu familia",
+        "sin avisarle a nadie",
+        "sin que se enteren en tu casa",
+        "tu familia no entiende",
+        "ellos no van a entender",
+        "tus papás se van a oponer",
+        "tus papás son anticuados",
+        "ellos no lo van a apoyar",
+        "ellos te lo prohíben pero no saben",
+        "ellos no saben nada de esto"
+      ],
+      "category": "aislamiento",
+      "weight": 9,
+      "pilar": 4,
+      "context_note": "Instrucción explícita de ocultar información a padres o tutores. Señal crítica documentada. Prácticamente ningún contexto legítimo justifica que un adulto desconocido instruya esto a un menor.",
+      "false_positive_note": "Solo podría ser genuino en el contexto muy específico de una sorpresa planificada.",
+      "escalation_combos": [
+        "reclutamiento",
+        "manipulacion_social"
+      ]
+    },
+    {
+      "id": "AI-008",
+      "term": "es nuestro secreto",
+      "variants": [
+        "solo tú y yo sabemos",
+        "nadie más tiene que saber",
+        "es de nosotros",
+        "secreto entre nosotros",
+        "nadie afuera sabe",
+        "la gente afuera no entiende",
+        "los de afuera no lo saben",
+        "eso se queda en la familia",
+        "eso no sale de aquí",
+        "entre los del grupo nada más",
+        "solo el grupo sabe",
+        "esto queda entre los que estamos"
+      ],
+      "category": "aislamiento",
+      "weight": 8,
+      "pilar": 4,
+      "context_note": "Creación de círculo de secreto excluyente. Documentado en grooming y reclutamiento criminal como mecanismo de control, lealtad y separación de la red de apoyo del menor.",
+      "false_positive_note": "Puede ser confidencia genuina entre amigos muy cercanos.",
+      "escalation_combos": [
+        "manipulacion_social",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CN-011",
+      "term": "todos lo hacen",
+      "variants": [
+        "todo el mundo lo hace",
+        "lo hace todo el barrio",
+        "lo hace mis amigos",
+        "lo hacen en mi colonia",
+        "no es nada del otro mundo",
+        "es lo normal por aquí",
+        "es lo que se usa",
+        "es lo que hace la gente",
+        "es lo que se hace aquí",
+        "aquí es normal",
+        "en esta colonia es normal",
+        "es la costumbre aquí",
+        "es lo de hoy",
+        "está de moda",
+        "lo hacen hasta los morros"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 5,
+      "pilar": 3,
+      "context_note": "Normalización de actividad ilícita mediante comparación social. Reduce la resistencia moral del menor al presentar la actividad como conducta común en su entorno.",
+      "false_positive_note": "Puede referirse a cualquier actividad social neutral.",
+      "escalation_combos": [
+        "reclutamiento",
+        "presion_de_grupo"
+      ]
+    },
+    {
+      "id": "CN-012",
+      "term": "es muy fácil",
+      "variants": [
+        "facilísimo",
+        "no tiene ciencia",
+        "no tiene chiste",
+        "no tiene ningún chiste",
+        "no tiene dificultad",
+        "cualquiera lo puede hacer",
+        "hasta un niño lo hace",
+        "lo hace cualquiera",
+        "es de lo más fácil",
+        "no necesitas experiencia",
+        "no necesitas saber nada",
+        "no necesitas estudios",
+        "no hay que saber nada",
+        "se aprende rápido",
+        "en un ratito aprendes"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 4,
+      "pilar": 3,
+      "context_note": "Simplificación de actividad para reducir percepción de riesgo y competencia requerida. Documentado en reclutamiento de menores para roles operativos simples.",
+      "false_positive_note": "Puede describir genuinamente una tarea sencilla.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    },
+    {
+      "id": "CN-013",
+      "term": "no te comprometes",
+      "variants": [
+        "sin comprometerte",
+        "sin mancharte",
+        "no te manchas",
+        "no te involucras",
+        "solo lo haces y ya",
+        "haces tu parte y ya",
+        "no te complica nada",
+        "no te vas a meter en nada",
+        "tú no te metes en problemas",
+        "no vas a tener problemas",
+        "sin meterte en problemas",
+        "sin lío"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 6,
+      "pilar": 3,
+      "context_note": "Promesa de impunidad o disociación personal de la actividad ilícita. Táctica para que el menor sienta que no tiene responsabilidad sobre lo que hace.",
+      "false_positive_note": "Puede ser tranquilización genuina ante actividad de bajo riesgo.",
+      "escalation_combos": [
+        "reclutamiento",
+        "manipulacion_social"
+      ]
+    },
+    {
+      "id": "CN-014",
+      "term": "la policía no llega aquí",
+      "variants": [
+        "la policía no se entera",
+        "los policías no se dan cuenta",
+        "la ley no llega",
+        "no llega la ley",
+        "aquí no llega la ley",
+        "aquí no hay ley",
+        "tenemos arreglo con la ley",
+        "están arreglados",
+        "están comprados",
+        "están de nuestro lado",
+        "la tira está de nuestro lado",
+        "aquí mandamos nosotros",
+        "aquí no entra nadie"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 8,
+      "pilar": 3,
+      "context_note": "Normalización de corrupción policial o ausencia del Estado para eliminar el miedo a consecuencias legales. Señal alta documentada.",
+      "false_positive_note": "Raramente neutro fuera de contexto crítico sobre corrupción institucional.",
+      "escalation_combos": [
+        "slang_operativo",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CN-015",
+      "term": "no es para tanto",
+      "variants": [
+        "tampoco es tan grave",
+        "no es tan serio",
+        "no es tan importante",
+        "no es tan arriesgado",
+        "exageras",
+        "le estás moviendo",
+        "no dramatices",
+        "no es nada",
+        "es mínimo",
+        "es una pequeñez",
+        "no vale la pena preocuparse",
+        "te preocupas de más",
+        "muy dramático",
+        "tan miedoso",
+        "exagerado",
+        "no es para tanto drama"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 5,
+      "pilar": 3,
+      "context_note": "Minimización de preocupación legítima del menor. Táctica de invalidación emocional para vencer resistencia ante actividad de riesgo.",
+      "false_positive_note": "Puede ser tranquilización genuina ante preocupación exagerada en contexto inofensivo.",
+      "escalation_combos": [
+        "manipulacion_social",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "PG-004",
+      "term": "ya están todos menos tú",
+      "variants": [
+        "tus cuates ya entraron",
+        "ya entraron tus amigos",
+        "ya están todos",
+        "ya estamos todos menos tú",
+        "todos menos tú",
+        "ya se apuntaron todos",
+        "ya van todos",
+        "todos van",
+        "van todos tus cuates",
+        "los demás ya dijeron que sí",
+        "ya están de acuerdo todos",
+        "todos están de acuerdo",
+        "todos menos tú ya saben",
+        "eres el único que falta",
+        "nada más tú falta"
+      ],
+      "category": "presion_de_grupo",
+      "weight": 7,
+      "pilar": 4,
+      "context_note": "Presión de grupo por exclusión: el menor es el único que no ha aceptado. Documentado en tácticas de captación colectiva entre pares.",
+      "false_positive_note": "Puede ser presión social genuina para actividad neutral.",
+      "escalation_combos": [
+        "reclutamiento",
+        "manipulacion_social"
+      ]
+    },
+    {
+      "id": "PG-005",
+      "term": "no seas cobarde",
+      "variants": [
+        "no te rajes",
+        "no seas gallina",
+        "no la armes de tos",
+        "no la armes de drama",
+        "no seas miedoso",
+        "no seas mamón",
+        "no seas cagón",
+        "no seas payaso",
+        "no le tengas miedo",
+        "le tienes miedo",
+        "no seas buey",
+        "no seas chillón",
+        "pon los güevos",
+        "sé hombre",
+        "atrévete",
+        "no te me rayes",
+        "no me falles"
+      ],
+      "category": "presion_de_grupo",
+      "weight": 7,
+      "pilar": 4,
+      "context_note": "Desafío de valentía o masculinidad para vencer resistencia. Documentado en tácticas de presión entre pares para involucramiento en actividades de riesgo.",
+      "false_positive_note": "Puede ser broma entre amigos muy cercanos en contexto inocente.",
+      "escalation_combos": [
+        "reclutamiento",
+        "manipulacion_social"
+      ]
+    },
+    {
+      "id": "PG-006",
+      "term": "no te quedes fuera",
+      "variants": [
+        "no te excluyas",
+        "no te quedes atrás",
+        "no te pierdas de esto",
+        "no seas el que dijo que no",
+        "no vayas a quedar mal",
+        "no nos vayas a fallar",
+        "no nos falles",
+        "no me falles",
+        "quédate con nosotros",
+        "somos tu grupo",
+        "somos tus cuates",
+        "no te cierres",
+        "no te pongas difícil",
+        "no te rajes ahorita"
+      ],
+      "category": "presion_de_grupo",
+      "weight": 6,
+      "pilar": 4,
+      "context_note": "Amenaza de exclusión social para forzar la aceptación. Explota miedo a la soledad y al rechazo del grupo. Documentado en reclutamiento entre pares.",
+      "false_positive_note": "Puede ser expresión genuina de amistad para incluir a alguien.",
+      "escalation_combos": [
+        "reclutamiento",
+        "aislamiento"
+      ]
+    },
+    {
+      "id": "CC-005",
+      "term": "escríbeme por privado",
+      "variants": [
+        "búscame por el otro lado",
+        "me escribes por el otro chat",
+        "por el chat privado",
+        "me mandas mensaje por el privado",
+        "por inbox",
+        "por DM",
+        "mándame DM",
+        "por mensaje directo",
+        "te mando request",
+        "acepta mi request",
+        "te agrego",
+        "acéptame",
+        "acéptame el request",
+        "te busco por allá",
+        "te busco por el otro"
+      ],
+      "category": "cambio_canal",
+      "weight": 5,
+      "pilar": 2,
+      "context_note": "Migración a canal de comunicación privado fuera de la plataforma original. Señal media. El crimen organizado busca canales sin moderación ni trazabilidad.",
+      "false_positive_note": "Normal para continuar conversación en plataforma preferida.",
+      "escalation_combos": [
+        "aislamiento",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CC-006",
+      "term": "aquí no podemos hablar",
+      "variants": [
+        "no podemos hablar aquí",
+        "aquí nos pueden ver",
+        "nos están viendo",
+        "aquí hay mucha gente",
+        "aquí no es el lugar",
+        "busquemos otro lado",
+        "hablemos en otro lado",
+        "en privado",
+        "en otro lugar",
+        "fuera de aquí",
+        "vámonos a otro lado",
+        "en otro chat",
+        "cambiémonos de chat",
+        "este no es el lugar para hablar",
+        "aquí no es seguro"
+      ],
+      "category": "cambio_canal",
+      "weight": 7,
+      "pilar": 2,
+      "context_note": "Justificación de migración a canal privado por percepción de vigilancia. Señal alta documentada: el crimen organizado instruye el cambio de canal para evitar detección.",
+      "false_positive_note": "Puede ser pedido legítimo de privacidad en conversación sensible pero benigna.",
+      "escalation_combos": [
+        "aislamiento",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "RS-007",
+      "term": "te vi en redes",
+      "variants": [
+        "te encontré en instagram",
+        "te encontré en tiktok",
+        "te vi en tiktok",
+        "te vi en instagram",
+        "vi tu perfil",
+        "vi tus fotos",
+        "me llamó la atención tu perfil",
+        "encontré tu perfil",
+        "me saliste en el feed",
+        "me saliste en el explore",
+        "me saliste en sugeridos",
+        "me recomendó tu perfil",
+        "llegué a tu perfil por casualidad"
+      ],
+      "category": "redes_sociales_vector",
+      "weight": 4,
+      "pilar": 3,
+      "context_note": "Primer contacto iniciado por desconocido a través de redes sociales. Señal débil-media. El inicio de contacto digital con menor por parte de desconocido adulto requiere seguimiento de sesión.",
+      "false_positive_note": "Forma de conocer personas completamente normal en la era digital.",
+      "escalation_combos": [
+        "reclutamiento",
+        "solicitud_informacion"
+      ]
+    },
+    {
+      "id": "RS-008",
+      "term": "sígueme",
+      "variants": [
+        "sígueme en instagram",
+        "sígueme en tiktok",
+        "sígueme en mis redes",
+        "dale follow",
+        "dale follow back",
+        "follow back",
+        "te sigo si me sigues",
+        "siguémonos",
+        "añádeme",
+        "agrégame",
+        "mándame solicitud",
+        "manda solicitud de amistad",
+        "te busco para seguirte",
+        "búscame en insta",
+        "búscame en tiktok"
+      ],
+      "category": "redes_sociales_vector",
+      "weight": 3,
+      "pilar": 3,
+      "context_note": "Solicitud de seguimiento en redes. Señal débil sola. Primer paso para establecer canal de comunicación persistente con el menor fuera de plataformas con moderación.",
+      "false_positive_note": "Completamente normal entre cualquier usuario de redes sociales.",
+      "escalation_combos": [
+        "cambio_canal",
+        "solicitud_informacion"
+      ]
+    },
+    {
+      "id": "VJ-006",
+      "term": "jugamos juntos",
+      "variants": [
+        "jugamos una partida",
+        "partida conmigo",
+        "juegas conmigo",
+        "te reto",
+        "acepta el reto",
+        "acepta el duelo",
+        "juega en mi servidor",
+        "entra al server",
+        "entra al servidor",
+        "entra al squad",
+        "entra al clan",
+        "únete al clan",
+        "únete al equipo",
+        "mi equipo te necesita",
+        "te necesitamos en el equipo",
+        "falta alguien en el squad",
+        "falta un jugador"
+      ],
+      "category": "videojuegos_vector",
+      "weight": 3,
+      "pilar": 3,
+      "context_note": "Invitación de desconocido a jugar en contexto privado (servidor, clan). Señal débil sola. Primer paso del vector de captación en videojuegos documentado.",
+      "false_positive_note": "Completamente normal en comunidades de videojuegos.",
+      "escalation_combos": [
+        "oferta_economica",
+        "cambio_canal"
+      ]
+    },
+    {
+      "id": "VJ-007",
+      "term": "te enseño a ganar",
+      "variants": [
+        "te puedo enseñar",
+        "yo te entreno",
+        "te entreno gratis",
+        "te coaching",
+        "te doy coaching",
+        "te hago pro",
+        "te hago profesional",
+        "te saco del bronce",
+        "te subo de rango",
+        "te mejoro el rango",
+        "aprende conmigo",
+        "te llevo al top",
+        "llegamos al top juntos",
+        "con mi ayuda subes",
+        "bajo mi tutela llegas lejos",
+        "yo te guío"
+      ],
+      "category": "videojuegos_vector",
+      "weight": 4,
+      "pilar": 3,
+      "context_note": "Oferta de mentoría gratuita en videojuegos. Genera dependencia y gratitud del menor hacia adulto desconocido. Primer paso del ciclo de grooming digital documentado.",
+      "false_positive_note": "Completamente legítimo en comunidades de gaming.",
+      "escalation_combos": [
+        "oferta_economica",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CN-016",
+      "term": "percocet",
+      "variants": [
+        "perco",
+        "percs",
+        "perc 30",
+        "perc30",
+        "m30",
+        "oxicodona",
+        "oxycodona",
+        "oxy"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 8,
+      "pilar": 3,
+      "context_note": "Referencia a opioides en presentación de píldora usados en venta/reclutamiento digital. Riesgo alto en contexto de oferta o logística.",
+      "false_positive_note": "Puede aparecer en contexto médico o preventivo.",
+      "escalation_combos": [
+        "oferta_economica",
+        "logistica_fisica"
+      ]
+    },
+    {
+      "id": "CN-017",
+      "term": "xanax",
+      "variants": [
+        "xan",
+        "xans",
+        "xanny",
+        "bars",
+        "barritas",
+        "zannies"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 7,
+      "pilar": 3,
+      "context_note": "Referencia a benzodiacepinas en argot de venta digital. Riesgo alto si se combina con promesa económica, entrega o consumo en menores.",
+      "false_positive_note": "Puede aparecer en conversación clínica o educativa.",
+      "escalation_combos": [
+        "oferta_economica",
+        "reclutamiento"
+      ]
+    },
+    {
+      "id": "CN-018",
+      "term": "adderall",
+      "variants": [
+        "addy",
+        "addys",
+        "addie",
+        "anfetas",
+        "anfetamina",
+        "anfetaminas"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 7,
+      "pilar": 3,
+      "context_note": "Referencia a estimulantes de uso controlado comercializados en mercados ilícitos digitales.",
+      "false_positive_note": "Puede ser conversación médica legítima.",
+      "escalation_combos": [
+        "oferta_economica",
+        "solicitud_informacion"
+      ]
+    },
+    {
+      "id": "CN-019",
+      "term": "mdma",
+      "variants": [
+        "molly",
+        "extasis",
+        "éxtasis",
+        "tacha",
+        "rola"
+      ],
+      "category": "contenido_normalizado",
+      "weight": 8,
+      "pilar": 3,
+      "context_note": "Referencia a sustancias psicoactivas de fiesta usadas como vector de normalización de consumo en menores.",
+      "false_positive_note": "Puede aparecer en contenidos de prevención o noticias.",
+      "escalation_combos": [
+        "reclutamiento",
+        "oferta_economica"
+      ]
+    }
+  ]
+}

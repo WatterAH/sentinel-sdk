@@ -1,0 +1,1780 @@
+{
+  "metadata": {
+    "name": "SENTINEL MX Dataset — Normalizer Layer v2",
+    "version": "2.0.0",
+    "description": "Capa de normalización lingüística (Tier 0) con arquitectura lexicon+features+rules, compatible y paralela a v4. Resuelve el problema de escritura informal, analfabetismo funcional y variantes fonéticas del español mexicano. En lugar de buscar frases exactas, extrae señales léxicas normalizadas que alimentan los mismos features y combination rules de v4.",
+    "architecture": "lexicon-based normalization → feature extraction → combination rules (same pattern as v4)",
+    "pipeline_position": "Tier 0 — corre ANTES de v3/v4. Normaliza texto y además puede activar features propios que se suman al scoring de v4.",
+    "compatible_with": [
+      "sentinel_dataset_v3.json",
+      "sentinel_dataset_v4.json"
+    ],
+    "design_principle": "Componentes pequeños + independientes. Cualquier combinación nueva de componentes conocidos es detectada automáticamente. Sin frases hardcodeadas.",
+    "processing_order": [
+      "1. lowercase + strip puntuación excesiva",
+      "2. normalize_unicode",
+      "3. expand_emojis_symbols",
+      "4. expand_chat_abbreviations (word boundary)",
+      "5. apply_phonetic_rules (ordered)",
+      "6. apply_lexicon_matching → extract N0_features",
+      "7. apply_N0_combination_rules → bonus scores",
+      "8. pass normalized text + N0 features → Tier 1 (v3/v4)"
+    ],
+    "last_updated": "2026-04-25"
+  },
+  "normalization_rules": {
+    "description": "Reglas puras de transformación de texto. No producen señales. Solo preparan el texto para que los lexicons de v3/v4 y los lexicons N0 puedan matchear.",
+    "unicode_and_symbols": [
+      {
+        "raw": "📦",
+        "canonical": "paquete"
+      },
+      {
+        "raw": "💰",
+        "canonical": "dinero"
+      },
+      {
+        "raw": "💵",
+        "canonical": "dinero"
+      },
+      {
+        "raw": "💸",
+        "canonical": "dinero"
+      },
+      {
+        "raw": "🤫",
+        "canonical": "secreto"
+      },
+      {
+        "raw": "🔇",
+        "canonical": "silencio"
+      },
+      {
+        "raw": "🚗",
+        "canonical": "carro"
+      },
+      {
+        "raw": "🚕",
+        "canonical": "carro"
+      },
+      {
+        "raw": "🤝",
+        "canonical": "trato"
+      },
+      {
+        "raw": "✅",
+        "canonical": "de acuerdo"
+      },
+      {
+        "raw": "❄️",
+        "canonical": "material"
+      },
+      {
+        "raw": "🌿",
+        "canonical": "material"
+      },
+      {
+        "raw": "🍃",
+        "canonical": "material"
+      },
+      {
+        "raw": "💊",
+        "canonical": "material"
+      },
+      {
+        "raw": "🔵",
+        "canonical": "oxicodona"
+      },
+      {
+        "raw": "🅿️",
+        "canonical": "percocet"
+      },
+      {
+        "raw": "🍌",
+        "canonical": "oxicodona"
+      },
+      {
+        "raw": "🚌",
+        "canonical": "xanax"
+      },
+      {
+        "raw": "🚆",
+        "canonical": "adderall"
+      },
+      {
+        "raw": "🔌",
+        "canonical": "venta"
+      },
+      {
+        "raw": "🚀",
+        "canonical": "alta potencia"
+      },
+      {
+        "raw": "💣",
+        "canonical": "alta potencia"
+      },
+      {
+        "raw": "💥",
+        "canonical": "alta potencia"
+      },
+      {
+        "raw": "🍁",
+        "canonical": "marihuana"
+      },
+      {
+        "raw": "🍪",
+        "canonical": "lote grande"
+      },
+      {
+        "raw": "💎",
+        "canonical": "cristal"
+      },
+      {
+        "raw": "🎱",
+        "canonical": "cocaina"
+      },
+      {
+        "raw": "🗝️",
+        "canonical": "cocaina"
+      },
+      {
+        "raw": "💙",
+        "canonical": "metanfetamina"
+      },
+      {
+        "raw": "🤎",
+        "canonical": "heroina"
+      },
+      {
+        "raw": "🐍",
+        "canonical": "heroina"
+      },
+      {
+        "raw": "💉",
+        "canonical": "metanfetamina"
+      },
+      {
+        "raw": "⚡",
+        "canonical": "mdma"
+      },
+      {
+        "raw": "🍬",
+        "canonical": "molly"
+      },
+      {
+        "raw": "🍄",
+        "canonical": "hongos"
+      },
+      {
+        "raw": "🍇",
+        "canonical": "jarabe"
+      },
+      {
+        "raw": "💜",
+        "canonical": "jarabe"
+      },
+      {
+        "raw": "🍼",
+        "canonical": "jarabe"
+      },
+      {
+        "raw": "💨",
+        "canonical": "marihuana"
+      },
+      {
+        "raw": "🔥",
+        "canonical": "marihuana"
+      },
+      {
+        "raw": "🌲",
+        "canonical": "marihuana"
+      },
+      {
+        "raw": "☘️",
+        "canonical": "marihuana"
+      },
+      {
+        "raw": "🍯",
+        "canonical": "jarabe"
+      },
+      {
+        "raw": "🔫",
+        "canonical": "arma"
+      },
+      {
+        "raw": "🍕",
+        "canonical": "chapiza"
+      },
+      {
+        "raw": "🐓",
+        "canonical": "mencho"
+      },
+      {
+        "raw": "🥷",
+        "canonical": "sicarios"
+      },
+      {
+        "raw": "🪖",
+        "canonical": "belico"
+      },
+      {
+        "raw": "✨",
+        "canonical": "nueva generacion"
+      },
+      {
+        "raw": "🌴",
+        "canonical": "chapitos"
+      },
+      {
+        "raw": "🆖",
+        "canonical": "nueva generacion"
+      },
+      {
+        "raw": "$$",
+        "canonical": "mucho dinero"
+      },
+      {
+        "raw": "$",
+        "canonical": "dinero",
+        "context": "standalone_token"
+      }
+    ],
+    "chat_abbreviations": {
+      "apply_as": "whole_word_replacement",
+      "entries": [
+        {
+          "abbr": "q",
+          "canonical": "que"
+        },
+        {
+          "abbr": "k",
+          "canonical": "que"
+        },
+        {
+          "abbr": "x",
+          "canonical": "por"
+        },
+        {
+          "abbr": "xa",
+          "canonical": "para"
+        },
+        {
+          "abbr": "pa",
+          "canonical": "para"
+        },
+        {
+          "abbr": "pa'",
+          "canonical": "para"
+        },
+        {
+          "abbr": "pra",
+          "canonical": "para"
+        },
+        {
+          "abbr": "xq",
+          "canonical": "porque"
+        },
+        {
+          "abbr": "pk",
+          "canonical": "porque"
+        },
+        {
+          "abbr": "pq",
+          "canonical": "porque"
+        },
+        {
+          "abbr": "tb",
+          "canonical": "tambien"
+        },
+        {
+          "abbr": "tmb",
+          "canonical": "tambien"
+        },
+        {
+          "abbr": "bn",
+          "canonical": "bien"
+        },
+        {
+          "abbr": "nd",
+          "canonical": "nada"
+        },
+        {
+          "abbr": "nda",
+          "canonical": "nada"
+        },
+        {
+          "abbr": "toy",
+          "canonical": "estoy"
+        },
+        {
+          "abbr": "tas",
+          "canonical": "estas"
+        },
+        {
+          "abbr": "ta",
+          "canonical": "esta"
+        },
+        {
+          "abbr": "ai",
+          "canonical": "ahi"
+        },
+        {
+          "abbr": "ay",
+          "canonical": "ahi"
+        },
+        {
+          "abbr": "aki",
+          "canonical": "aqui"
+        },
+        {
+          "abbr": "ac",
+          "canonical": "aqui"
+        },
+        {
+          "abbr": "aya",
+          "canonical": "alla"
+        },
+        {
+          "abbr": "dsp",
+          "canonical": "despues"
+        },
+        {
+          "abbr": "dps",
+          "canonical": "despues"
+        },
+        {
+          "abbr": "msj",
+          "canonical": "mensaje"
+        },
+        {
+          "abbr": "wsp",
+          "canonical": "whatsapp"
+        },
+        {
+          "abbr": "zap",
+          "canonical": "whatsapp"
+        },
+        {
+          "abbr": "ig",
+          "canonical": "instagram"
+        },
+        {
+          "abbr": "insta",
+          "canonical": "instagram"
+        },
+        {
+          "abbr": "tt",
+          "canonical": "tiktok"
+        },
+        {
+          "abbr": "fb",
+          "canonical": "facebook"
+        },
+        {
+          "abbr": "face",
+          "canonical": "facebook"
+        },
+        {
+          "abbr": "xfa",
+          "canonical": "por favor"
+        },
+        {
+          "abbr": "porfa",
+          "canonical": "por favor"
+        },
+        {
+          "abbr": "pf",
+          "canonical": "por favor"
+        },
+        {
+          "abbr": "ntp",
+          "canonical": "no te preocupes"
+        },
+        {
+          "abbr": "np",
+          "canonical": "no pasa nada"
+        },
+        {
+          "abbr": "sip",
+          "canonical": "si"
+        },
+        {
+          "abbr": "simon",
+          "canonical": "si"
+        },
+        {
+          "abbr": "nel",
+          "canonical": "no"
+        },
+        {
+          "abbr": "nop",
+          "canonical": "no"
+        },
+        {
+          "abbr": "orita",
+          "canonical": "ahorita"
+        },
+        {
+          "abbr": "horita",
+          "canonical": "ahorita"
+        },
+        {
+          "abbr": "wey",
+          "canonical": "cuate"
+        },
+        {
+          "abbr": "wei",
+          "canonical": "cuate"
+        },
+        {
+          "abbr": "we",
+          "canonical": "cuate"
+        },
+        {
+          "abbr": "bro",
+          "canonical": "cuate"
+        },
+        {
+          "abbr": "mano",
+          "canonical": "cuate"
+        },
+        {
+          "abbr": "compa",
+          "canonical": "companero"
+        },
+        {
+          "abbr": "compi",
+          "canonical": "companero"
+        },
+        {
+          "abbr": "carnal",
+          "canonical": "hermano"
+        },
+        {
+          "abbr": "primo",
+          "canonical": "amigo"
+        },
+        {
+          "abbr": "parce",
+          "canonical": "amigo"
+        },
+        {
+          "abbr": "pana",
+          "canonical": "amigo"
+        },
+        {
+          "abbr": "fren",
+          "canonical": "amigo"
+        },
+        {
+          "abbr": "morro",
+          "canonical": "chico"
+        },
+        {
+          "abbr": "morrito",
+          "canonical": "chico"
+        },
+        {
+          "abbr": "morra",
+          "canonical": "chica"
+        },
+        {
+          "abbr": "chavo",
+          "canonical": "chico"
+        },
+        {
+          "abbr": "chava",
+          "canonical": "chica"
+        },
+        {
+          "abbr": "jefa",
+          "canonical": "mama"
+        },
+        {
+          "abbr": "jefita",
+          "canonical": "mama"
+        },
+        {
+          "abbr": "jefe",
+          "canonical": "papa"
+        },
+        {
+          "abbr": "jefito",
+          "canonical": "papa"
+        },
+        {
+          "abbr": "ama",
+          "canonical": "mama"
+        },
+        {
+          "abbr": "esq",
+          "canonical": "esquina"
+        },
+        {
+          "abbr": "col",
+          "canonical": "colonia"
+        },
+        {
+          "abbr": "bato",
+          "canonical": "tipo"
+        },
+        {
+          "abbr": "vato",
+          "canonical": "tipo"
+        }
+      ]
+    },
+    "phonetic_rules": {
+      "description": "Aplicar en orden. Cada regla transforma el texto para que palabras escritas fonéticamente sean reconocibles por los lexicons.",
+      "apply_order": "sequential",
+      "rules": [
+        {
+          "id": "PH-01",
+          "find": "ph",
+          "replace": "f",
+          "example": "phono→fono"
+        },
+        {
+          "id": "PH-02",
+          "find": "k",
+          "replace": "qu",
+          "example": "pakete→paquete, ke→que",
+          "scope": "before_e_i"
+        },
+        {
+          "id": "PH-03",
+          "find": "k",
+          "replace": "c",
+          "example": "kasa→casa, komer→comer",
+          "scope": "before_a_o_u"
+        },
+        {
+          "id": "PH-11",
+          "find": "([aeiou])\\1+",
+          "replace": "\\1",
+          "example": "noooo→no — vocales repetidas énfasis"
+        },
+        {
+          "id": "PH-12",
+          "find": "([^aeiou])\\1{2,}",
+          "replace": "\\1",
+          "example": "mandddar→mandar"
+        },
+        {
+          "id": "PH-13",
+          "find": "w",
+          "replace": "hu",
+          "example": "weno→hueno→bueno"
+        },
+        {
+          "id": "PH-14",
+          "find": "g([ei])",
+          "replace": "j\\1",
+          "example": "gente→jente — confusión g/j",
+          "direction": "bidirectional"
+        },
+        {
+          "id": "PH-15",
+          "find": "tanb",
+          "replace": "tamb",
+          "example": "tanbien→tambien"
+        },
+        {
+          "id": "PH-16",
+          "find": "conp",
+          "replace": "comp",
+          "example": "conpra→compra"
+        },
+        {
+          "id": "PH-17",
+          "find": "([a-z])iar\\b",
+          "replace": "\\1ear",
+          "example": "balaciar→balacear, plomiar→plomear"
+        },
+        {
+          "id": "PH-18",
+          "find": "ao\\b",
+          "replace": "ado",
+          "example": "mandao→mandado — recuperar -d- final"
+        }
+      ]
+    },
+    "fuzzy_config": {
+      "description": "Para términos de los lexicons N0 (abajo), aplicar matching difuso con estos umbrales.",
+      "thresholds": [
+        {
+          "term_length": "5-6",
+          "max_levenshtein": 1
+        },
+        {
+          "term_length": "7-8",
+          "max_levenshtein": 1
+        },
+        {
+          "term_length": "9+",
+          "max_levenshtein": 2
+        }
+      ],
+      "never_fuzzy_length_below": 5,
+      "false_positive_guard": [
+        {
+          "risky_term": "maleta",
+          "collides_with": "paleta",
+          "action": "exclude"
+        },
+        {
+          "risky_term": "bulto",
+          "collides_with": "culto",
+          "action": "exclude"
+        },
+        {
+          "risky_term": "lana",
+          "collides_with": "cana",
+          "action": "exclude"
+        },
+        {
+          "risky_term": "varo",
+          "collides_with": "caro",
+          "action": "exclude"
+        },
+        {
+          "risky_term": "cruzar",
+          "collides_with": "cursar",
+          "action": "exclude"
+        },
+        {
+          "risky_term": "jale",
+          "collides_with": "bale",
+          "action": "exclude"
+        }
+      ]
+    }
+  },
+  "lexicons": {
+    "description": "Lexicons paralelos a los de v4, diseñados para capturar escritura informal. Después de aplicar normalization_rules, estos términos deben matchear. También incluyen formas ya normalizadas para cobertura doble.",
+    "N0_objeto_transferencia": {
+      "description": "Objetos físicos que se piden mover, entregar o cruzar. Escritura informal + canónica.",
+      "maps_to_v4_lexicon": "objects_of_risk",
+      "entries": [
+        "paquete",
+        "pakete",
+        "paquetito",
+        "pakito",
+        "paqueton",
+        "paketon",
+        "bulto",
+        "bultito",
+        "el bulto",
+        "mercancia",
+        "mersancia",
+        "merca",
+        "merka",
+        "material",
+        "materyal",
+        "bolsa",
+        "bolsita",
+        "bolsota",
+        "maleta",
+        "maletita",
+        "cajita",
+        "la caja",
+        "cajilla",
+        "sobre",
+        "sobrecito",
+        "encargo",
+        "encarguito",
+        "encargito",
+        "cosita",
+        "cosota",
+        "cosilla",
+        "la cosa",
+        "esa cosa",
+        "mandado",
+        "mandadito",
+        "mandaito",
+        "regalito",
+        "el regalito",
+        "paquetin",
+        "paquetín",
+        "lo que te dije",
+        "lo que ya sabes",
+        "lo de siempre",
+        "eso",
+        "esto",
+        "aquello",
+        "la vaina",
+        "la onda",
+        "el rollo",
+        "el asunto",
+        "un asunto"
+      ]
+    },
+    "N0_verbo_transferencia": {
+      "description": "Verbos de movimiento/entrega en formas escritas informalmente. Incluye formas sin -r final (oral MX), con errores ortográficos y conjugaciones directas.",
+      "maps_to_v4_lexicon": "delivery_verbs",
+      "entries": [
+        "mandar",
+        "manda",
+        "mandalo",
+        "mandala",
+        "mandale",
+        "mandarselo",
+        "mandarsela",
+        "se lo mandas",
+        "se la mandas",
+        "mndalo",
+        "mnda",
+        "llevar",
+        "lleva",
+        "llevalo",
+        "llevala",
+        "llevale",
+        "yevar",
+        "yeva",
+        "yevalo",
+        "yevala",
+        "llebar",
+        "lleba",
+        "lo llevas",
+        "lo yevas",
+        "lo lleva",
+        "pasar",
+        "pasa",
+        "pasalo",
+        "pasala",
+        "pasale",
+        "pasarselo",
+        "pasaselo",
+        "lo pasas",
+        "cruzar",
+        "cruza",
+        "cruzalo",
+        "crusalo",
+        "crusar",
+        "crusa",
+        "lo cruzas",
+        "lo crusas",
+        "entregar",
+        "entrega",
+        "entregalo",
+        "dejar",
+        "deja",
+        "dejalo",
+        "dejala",
+        "mover",
+        "mueve",
+        "muevelo",
+        "recoger",
+        "recoge",
+        "recogelo",
+        "recojer",
+        "recoje",
+        "recojelo",
+        "llegarle",
+        "llegale",
+        "llega con",
+        "traer",
+        "trae",
+        "traelo",
+        "traela",
+        "ir por",
+        "jalar con",
+        "jalate con"
+      ]
+    },
+    "N0_destinatario_tercero": {
+      "description": "NUEVO lexicon. Indica que el objeto debe entregarse a una tercera persona, no al remitente. Señal que amplifica logistics_transfer.",
+      "maps_to_v4_feature": "logistics_transfer (amplifier)",
+      "entries": [
+        "a un cuate",
+        "a un compa",
+        "a un companero",
+        "a un bro",
+        "a un carnal",
+        "a un primo",
+        "a un morro",
+        "a un chico",
+        "a un tipo",
+        "a un bato",
+        "a un vato",
+        "con un cuate",
+        "con un compa",
+        "con un companero",
+        "con un carnal",
+        "con un bro",
+        "con un morro",
+        "con el cuate",
+        "con el compa",
+        "con el bato",
+        "con el de la esquina",
+        "con el de la esq",
+        "con el señor",
+        "con la persona",
+        "con alguien",
+        "a alguien",
+        "al de siempre",
+        "a quien ya sabe",
+        "al bato de ahi",
+        "al wey de alla",
+        "con quien ya sabes",
+        "con el que te dije",
+        "a donde te dije",
+        "al lugar de siempre",
+        "a quien corresponda"
+      ]
+    },
+    "N0_dinero_informal": {
+      "description": "Dinero en todas sus formas informales, dialectales y con errores. Mapea al lexicon money_words de v4.",
+      "maps_to_v4_lexicon": "money_words",
+      "entries": [
+        "lana",
+        "lanita",
+        "lanota",
+        "la lana",
+        "buena lana",
+        "varo",
+        "varito",
+        "varos",
+        "buen varo",
+        "baro",
+        "barito",
+        "baros",
+        "feria",
+        "ferias",
+        "ferita",
+        "buena feria",
+        "billete",
+        "billetes",
+        "billetito",
+        "buen billete",
+        "cash",
+        "cashe",
+        "kash",
+        "efectivo",
+        "efetivo",
+        "morlacos",
+        "morlakos",
+        "pesitos",
+        "pesotes",
+        "unos pesos",
+        "lucas",
+        "lukitas",
+        "paga",
+        "te pago",
+        "te pagamos",
+        "te cae",
+        "te kae",
+        "hay pago",
+        "buen pago",
+        "ganancia",
+        "ganas",
+        "cobras",
+        "comision",
+        "comisión",
+        "dolar",
+        "dolares",
+        "dolarcitos",
+        "dinero",
+        "dinerito",
+        "dineros",
+        "hay $",
+        "hay $$",
+        "buena $",
+        "lana facil",
+        "lana fasil",
+        "lana rapido",
+        "varo facil",
+        "baro fasil",
+        "buen varo",
+        "buena lana",
+        "buena feria"
+      ]
+    },
+    "N0_trabajo_vago": {
+      "description": "Referencias vagas a trabajo/actividad sin especificar qué. Mapea a opportunity_words y ambiguous_opportunity de v4.",
+      "maps_to_v4_lexicon": "opportunity_words",
+      "entries": [
+        "jale",
+        "jalecito",
+        "jalee",
+        "jalito",
+        "un jale",
+        "hay jale",
+        "chamba",
+        "chambita",
+        "chambilla",
+        "hay chamba",
+        "la chamba",
+        "negocio",
+        "negosio",
+        "negocito",
+        "negosito",
+        "mandado",
+        "mandadito",
+        "mandaito",
+        "solo un mandado",
+        "proyecto",
+        "proyekto",
+        "proyectito",
+        "vuelta",
+        "vueltita",
+        "una vuelta",
+        "dar una vuelta",
+        "trabajo",
+        "trabjo",
+        "trabajito",
+        "encargo",
+        "encarguito",
+        "movida",
+        "la movida",
+        "movimiento",
+        "el movimiento",
+        "actividad",
+        "actividd",
+        "favor",
+        "favorcito",
+        "un favor",
+        "algo",
+        "algo rapido",
+        "algo facil",
+        "un asunto",
+        "el asunto",
+        "un rollo",
+        "el rollo",
+        "algo que hacer",
+        "algo ke hacer",
+        "cosita que hacer",
+        "cosota que hacer",
+        "la onda",
+        "una onda"
+      ]
+    },
+    "N0_cta_informal": {
+      "description": "Call to action en variantes escritas informalmente. Mapea a cta de v4.",
+      "maps_to_v4_lexicon": "cta",
+      "entries": [
+        "jalas",
+        "jala",
+        "le entras",
+        "entrale",
+        "te animas",
+        "te animas o que",
+        "te animas o k",
+        "vienes",
+        "vas",
+        "te apuntas",
+        "entras",
+        "quieres",
+        "kieres",
+        "keres",
+        "te unes",
+        "te lanzas",
+        "te avientas",
+        "te rifas",
+        "llegas",
+        "caes",
+        "le caes",
+        "te prendes",
+        "te metes",
+        "o que",
+        "o k",
+        "o q",
+        "que dices",
+        "que dice",
+        "k dices",
+        "q dices",
+        "andale",
+        "dale",
+        "sale",
+        "va",
+        "te apuntas o no",
+        "le entras o no",
+        "si o no",
+        "si o no ke",
+        "entonces que",
+        "entonces k",
+        "entonces q",
+        "que onda entonces",
+        "que onda",
+        "le jalas o no",
+        "entras o no",
+        "te rифas o no",
+        "te rifas o k",
+        "puedes o no",
+        "puedes o k"
+      ]
+    },
+    "N0_secreto_informal": {
+      "description": "Instrucciones de silencio/secreto en todas sus formas informales. Mapea a secrecy_words de v4.",
+      "maps_to_v4_lexicon": "secrecy_words",
+      "entries": [
+        "no le digas",
+        "no le dijas",
+        "no le cuentes",
+        "no le kuentas",
+        "no dices nada",
+        "no digas nd",
+        "no digas nada",
+        "no menciones",
+        "no comentes",
+        "que no sepa",
+        "k no sepa",
+        "q no sepa",
+        "que no se entere",
+        "k no se entere",
+        "que no sepa tu mama",
+        "k no sepa tu jefa",
+        "que no sepa tu papa",
+        "k no sepa tu jefe",
+        "sin que sepa",
+        "sin k sepa",
+        "sin q sepa",
+        "entre nosotros",
+        "entre nos",
+        "solo tu y yo",
+        "solo tu y yo sabemos",
+        "nuestro secreto",
+        "nustro secreto",
+        "nuestro sekreto",
+        "secreto",
+        "sekreto",
+        "secretito",
+        "callate",
+        "callate eso",
+        "te cayas",
+        "te callas",
+        "te kias",
+        "guardatelo",
+        "guardatela",
+        "guardate eso",
+        "nadie sabe",
+        "nadie debe saber",
+        "nadie tiene que saber",
+        "nadie tiene k saber",
+        "se queda aqui",
+        "se keda aki",
+        "esto queda entre",
+        "queda entre nos",
+        "no lo compartas",
+        "no lo kompartas",
+        "privado",
+        "en privado",
+        "confidencial",
+        "no vayas a decir",
+        "no vayas a desir",
+        "no se lo digas a nadie",
+        "no se lo dijas a nadie"
+      ]
+    },
+    "N0_presion_informal": {
+      "description": "Presión social y desafío de valentía en escritura informal. Mapea a pressure_words de v4.",
+      "maps_to_v4_lexicon": "pressure_words",
+      "entries": [
+        "no seas rajon",
+        "no seas rajón",
+        "no seas rajona",
+        "no seas cagon",
+        "no seas cagón",
+        "no seas cagona",
+        "no seas gallina",
+        "no seas miedoso",
+        "no seas miedosa",
+        "no seas culero",
+        "no seas culera",
+        "no seas mamon",
+        "no seas mamón",
+        "le tienes miedo",
+        "le tienes miedo o ke",
+        "o k le tienes miedo",
+        "cobarde",
+        "cobardón",
+        "no me falles",
+        "no nos falles",
+        "no me failles",
+        "no vayas a rajar",
+        "no te me rajes",
+        "no te rajes",
+        "pon los huevos",
+        "pon los wevos",
+        "pon huevos",
+        "se hombre",
+        "se un hombre",
+        "ponte los pantalones",
+        "atrevete",
+        "atreverte",
+        "no le tengas miedo",
+        "no le tngas miedo",
+        "todos ya lo hicieron",
+        "todos le entraron",
+        "todos jalon",
+        "todos jalaron",
+        "solo tu falta",
+        "tu solo faltas",
+        "todos menos tu",
+        "menos tu nomas",
+        "no te me rayes",
+        "no te rayes",
+        "eres o no eres",
+        "eres o no",
+        "a poco no puedes",
+        "a poco no kieres",
+        "demuestrate",
+        "demuestra que si puedes"
+      ]
+    },
+    "N0_minimizacion_informal": {
+      "description": "Minimización del riesgo en escritura informal. Mapea a minimization_words de v4.",
+      "maps_to_v4_lexicon": "minimization_words",
+      "entries": [
+        "facil",
+        "fasil",
+        "fasilito",
+        "facilito",
+        "muy facil",
+        "muy fasil",
+        "facilisimo",
+        "fasilisimo",
+        "rapido",
+        "rapido no mas",
+        "rapidito",
+        "sencillo",
+        "sensillo",
+        "sencillito",
+        "nada mas",
+        "nomás",
+        "nomas",
+        "sin riesgo",
+        "sin riesgo alguno",
+        "sin problema",
+        "sin problemas",
+        "sin problemitas",
+        "no pasa nada",
+        "no pasa nd",
+        "sin pedo",
+        "sin bedo",
+        "sin bronca",
+        "sin broca",
+        "tranquilo",
+        "tranquila",
+        "tranqui",
+        "relax",
+        "relájate",
+        "relajate",
+        "seguro",
+        "100 seguro",
+        "100% seguro",
+        "te lo juro q es seguro",
+        "garantizado",
+        "garantisado",
+        "sin rollo",
+        "sin rollos",
+        "no tiene chiste",
+        "pan comido",
+        "no hay pierde",
+        "no hay lios",
+        "no ai lios",
+        "no te preocupes",
+        "no t preocupes",
+        "esta controlado",
+        "esta bajo control",
+        "no hay pedo",
+        "no ai pedo",
+        "no hay bronca",
+        "no ai bronca",
+        "cero riesgo",
+        "zero riesgo",
+        "es nomás un momento",
+        "es nomas un momento",
+        "es un momento nada mas"
+      ]
+    },
+    "N0_transporte_ofrecido": {
+      "description": "NUEVO. Oferta de transporte no solicitada. Señal de logística física activa. No existe en v4 como lexicon separado.",
+      "maps_to_v4_explicit_signal": "EX-001",
+      "entries": [
+        "te mandamos carro",
+        "te mandamos karro",
+        "te mando carro",
+        "te mando karro",
+        "mando carro por ti",
+        "mando karro por ti",
+        "pasa un carro",
+        "pasa un karro",
+        "pasa un carro por ti",
+        "biene carro",
+        "viene carro",
+        "viene por ti",
+        "biene por ti",
+        "viene alguien por ti",
+        "biene alguien por ti",
+        "te recogemos",
+        "te recojemos",
+        "te recoge",
+        "te recoje",
+        "te buscamos",
+        "te buscamos en tu casa",
+        "pasamos por ti",
+        "pasamos a recogerte",
+        "mandamos por ti",
+        "mandamos a alguien",
+        "te mandamos uber",
+        "te mandamos oober",
+        "te mandamos yuber",
+        "pide uber que yo pago",
+        "pide oober k yo pago",
+        "yo pago el taxi",
+        "yo pago el uber",
+        "te mando el uber",
+        "alguien pasa por ti",
+        "te llevan",
+        "te lleban"
+      ]
+    },
+    "N0_policia_ausente": {
+      "description": "Referencias a ausencia o corrupción de autoridades. Mapea a EX-005 de v4.",
+      "maps_to_v4_explicit_signal": "EX-005",
+      "entries": [
+        "la policia no llega",
+        "la poli no llega",
+        "aqui no llega la ley",
+        "aki no llega la ley",
+        "estan arreglados",
+        "estan comprados",
+        "la tira esta de nuestro lado",
+        "aqui mandamos nosotros",
+        "aki mandamos nosotros",
+        "la ley no se mete",
+        "la ley no biene",
+        "no hay policia",
+        "no ai policia",
+        "los azules estan comprados",
+        "la policia sabe y no dice nada",
+        "tenemos arreglo con la policia",
+        "la tira es de confianza",
+        "no hay problema con la policia",
+        "la policia ya sabe del asunto"
+      ]
+    },
+    "N0_reclutamiento_pertenencia": {
+      "description": "Construcción de pertenencia falsa. Captura variantes informales de REC-003 de v3.",
+      "maps_to_v3_term": "REC-003 (somos familia)",
+      "entries": [
+        "somos familia",
+        "semos familia",
+        "eres familia",
+        "eres de los nuestros",
+        "ya eres de los nuestros",
+        "eres uno de nosotros",
+        "aca te tratamos como familia",
+        "aki te tratamos como familia",
+        "aqui todos somos familia",
+        "eres parte de la familia",
+        "te vamos a tratar como familia",
+        "somos tu gente",
+        "somos tu banda",
+        "aqui te cuidamos",
+        "aki te cuidamos",
+        "no te va a faltar nada",
+        "aqui te apoyamos",
+        "eres de los buenos",
+        "de los de confianza",
+        "de los que si pueden",
+        "la empresa te necesita",
+        "la empresa cuida a los suyos"
+      ]
+    },
+    "N0_sustancias_droga": {
+      "description": "Sustancias y presentaciones detectadas en slang/emoji para mercado ilícito digital.",
+      "maps_to_v4_lexicon": "objects_of_risk",
+      "entries": [
+        "perco",
+        "percs",
+        "oxy",
+        "m30",
+        "xans",
+        "xan",
+        "barritas",
+        "bars",
+        "addy",
+        "addys",
+        "mdma",
+        "molly",
+        "shrooms",
+        "lean",
+        "mota"
+      ]
+    }
+  },
+  "N0_features": {
+    "description": "Features que el Tier 0 puede activar directamente, paralelos a los features de v4. Se suman al scoring antes de pasar a Tier 1.",
+    "features": [
+      {
+        "id": "N0-F001",
+        "name": "objeto_transferencia_presente",
+        "weight": 2,
+        "description": "Mensaje contiene referencia a un objeto físico que debe moverse (paquete, bulto, mercancía, bolsa, cosita, etc.)",
+        "derived_from_lexicon": "N0_objeto_transferencia",
+        "maps_to_v4_feature": "logistics_transfer (precursor)"
+      },
+      {
+        "id": "N0-F002",
+        "name": "verbo_transferencia_presente",
+        "weight": 2,
+        "description": "Mensaje contiene verbo de entrega/transporte (llevar, mandar, pasar, cruzar, dejar, recoger).",
+        "derived_from_lexicon": "N0_verbo_transferencia",
+        "maps_to_v4_feature": "logistics_transfer (precursor)"
+      },
+      {
+        "id": "N0-F003",
+        "name": "destinatario_tercero",
+        "weight": 2,
+        "description": "El objeto debe entregarse a una tercera persona, no al remitente del mensaje. Amplifica la señal de logistics_transfer.",
+        "derived_from_lexicon": "N0_destinatario_tercero",
+        "maps_to_v4_feature": "logistics_transfer (amplifier)"
+      },
+      {
+        "id": "N0-F004",
+        "name": "dinero_informal",
+        "weight": 2,
+        "description": "Mención de dinero en cualquiera de sus formas informales mexicanas.",
+        "derived_from_lexicon": "N0_dinero_informal",
+        "maps_to_v4_feature": "money_mention"
+      },
+      {
+        "id": "N0-F005",
+        "name": "trabajo_vago",
+        "weight": 1,
+        "description": "Referencia vaga a trabajo/actividad sin especificar qué.",
+        "derived_from_lexicon": "N0_trabajo_vago",
+        "maps_to_v4_feature": "ambiguous_opportunity"
+      },
+      {
+        "id": "N0-F006",
+        "name": "cta_informal",
+        "weight": 1,
+        "description": "Invitación directa a participar, en cualquier variante informal.",
+        "derived_from_lexicon": "N0_cta_informal",
+        "maps_to_v4_feature": "call_to_action"
+      },
+      {
+        "id": "N0-F007",
+        "name": "secreto_informal",
+        "weight": 3,
+        "description": "Instrucción de silencio o secreto en cualquier variante informal.",
+        "derived_from_lexicon": "N0_secreto_informal",
+        "maps_to_v4_feature": "secrecy_pressure"
+      },
+      {
+        "id": "N0-F008",
+        "name": "presion_informal",
+        "weight": 2,
+        "description": "Presión social o desafío de valentía en escritura informal.",
+        "derived_from_lexicon": "N0_presion_informal",
+        "maps_to_v4_feature": "social_pressure"
+      },
+      {
+        "id": "N0-F009",
+        "name": "minimizacion_informal",
+        "weight": 2,
+        "description": "Minimización del riesgo o esfuerzo en escritura informal.",
+        "derived_from_lexicon": "N0_minimizacion_informal",
+        "maps_to_v4_feature": "risk_minimization"
+      },
+      {
+        "id": "N0-F010",
+        "name": "transporte_ofrecido_informal",
+        "weight": 4,
+        "description": "Oferta de transporte no solicitada, en cualquier variante informal.",
+        "derived_from_lexicon": "N0_transporte_ofrecido",
+        "maps_to_v4_explicit": "EX-001"
+      },
+      {
+        "id": "N0-F011",
+        "name": "logistica_completa",
+        "weight": 5,
+        "description": "Activado cuando objeto_transferencia_presente + verbo_transferencia_presente coinciden en el mismo mensaje. Indica acción de transporte específica, no referencia vaga.",
+        "derived_from_features": [
+          "N0-F001",
+          "N0-F002"
+        ],
+        "logic": "AND — ambos deben estar presentes",
+        "maps_to_v4_feature": "logistics_transfer (direct)"
+      },
+      {
+        "id": "N0-F012",
+        "name": "logistica_con_destinatario",
+        "weight": 7,
+        "description": "Logística completa + destinatario tercero. El triángulo objeto+acción+receptor. Señal máxima de transporte ilícito.",
+        "derived_from_features": [
+          "N0-F001",
+          "N0-F002",
+          "N0-F003"
+        ],
+        "logic": "AND — los tres deben estar presentes",
+        "maps_to_v4_rule": "CR-008 (directo)"
+      },
+      {
+        "id": "N0-F013",
+        "name": "sustancia_droga_mencionada",
+        "weight": 3,
+        "description": "Mención directa de sustancia/presentación en slang digital (p. ej. percs, xanax, molly, lean).",
+        "derived_from_lexicon": "N0_sustancias_droga",
+        "maps_to_v4_lexicon": "objects_of_risk"
+      }
+    ]
+  },
+  "N0_combination_rules": {
+    "description": "Reglas de combinación paralelas a las de v4. Operan sobre features N0 y producen bonus scores que se suman al pipeline de v4.",
+    "rules": [
+      {
+        "id": "N0-CR-001",
+        "name": "Logística completa informal",
+        "features_required": [
+          "N0-F001",
+          "N0-F002"
+        ],
+        "bonus_score": 8,
+        "action": "ESCALATE",
+        "description": "Objeto físico + verbo de entrega en el mismo mensaje. El ejemplo central: 'pakete pa que lo mandes'. Cubre cualquier combinación de objeto+verbo sin importar cómo se escriban.",
+        "example": "pakete pa q se lo mandes → objeto_transferencia + verbo_transferencia → score 8"
+      },
+      {
+        "id": "N0-CR-002",
+        "name": "Logística + destinatario tercero",
+        "features_required": [
+          "N0-F001",
+          "N0-F002",
+          "N0-F003"
+        ],
+        "bonus_score": 12,
+        "action": "ESCALATE",
+        "description": "Objeto + acción + receptor. Triángulo completo de encomienda ilícita.",
+        "example": "lleva la bolsita con el bato de la esq"
+      },
+      {
+        "id": "N0-CR-003",
+        "name": "Dinero + CTA informal",
+        "features_required": [
+          "N0-F004",
+          "N0-F006"
+        ],
+        "bonus_score": 6,
+        "action": "ESCALATE",
+        "description": "Mención de pago + invitación directa. Reclutamiento económico en lenguaje informal.",
+        "example": "hay buena lana si le entras"
+      },
+      {
+        "id": "N0-CR-004",
+        "name": "Secreto + trabajo vago",
+        "features_required": [
+          "N0-F007",
+          "N0-F005"
+        ],
+        "bonus_score": 10,
+        "action": "ESCALATE",
+        "description": "Petición de silencio + actividad sin especificar. Señal alta en escritura informal.",
+        "example": "sin k sepa tu jefa hay un jale"
+      },
+      {
+        "id": "N0-CR-005",
+        "name": "Presión + CTA informal",
+        "features_required": [
+          "N0-F008",
+          "N0-F006"
+        ],
+        "bonus_score": 8,
+        "action": "ESCALATE",
+        "description": "Desafío de valentía + invitación.",
+        "example": "no seas rajon, le entras o no"
+      },
+      {
+        "id": "N0-CR-006",
+        "name": "Dinero + trabajo + minimización",
+        "features_required": [
+          "N0-F004",
+          "N0-F005",
+          "N0-F009"
+        ],
+        "bonus_score": 10,
+        "action": "ESCALATE",
+        "description": "Tríada de enganche completa en lenguaje informal: hay lana, es un trabajito, es facil.",
+        "example": "hay buen varo, es nomas un mandadito, sin pedo"
+      },
+      {
+        "id": "N0-CR-007",
+        "name": "Secreto + presión",
+        "features_required": [
+          "N0-F007",
+          "N0-F008"
+        ],
+        "bonus_score": 12,
+        "action": "ESCALATE",
+        "description": "Control psicológico completo: silencio impuesto + presión social.",
+        "example": "no digas nd y no seas rajon"
+      },
+      {
+        "id": "N0-CR-008",
+        "name": "Transporte ofrecido",
+        "features_required": [
+          "N0-F010"
+        ],
+        "bonus_score": 9,
+        "action": "ESCALATE",
+        "description": "Solo con detectar oferta de transporte no solicitada activa escalamiento.",
+        "example": "te mandamos el karro para q no te canses"
+      },
+      {
+        "id": "N0-CR-009",
+        "name": "Logística + minimización",
+        "features_required": [
+          "N0-F001",
+          "N0-F002",
+          "N0-F009"
+        ],
+        "bonus_score": 10,
+        "action": "ESCALATE",
+        "description": "Pedido de transporte + 'es fácil/sin pedo'. Minimización del riesgo sobre acción física.",
+        "example": "lleva el paquete, es nomas un momento sin bronca"
+      },
+      {
+        "id": "N0-CR-010",
+        "name": "Trabajo vago + CTA + sin especificar",
+        "features_required": [
+          "N0-F005",
+          "N0-F006"
+        ],
+        "bonus_score": 5,
+        "action": "MONITOR",
+        "description": "Oferta vaga + invitación sin ningún detalle adicional. Señal débil sola, fuerte en sesión.",
+        "example": "hay un jalecito, le entras o k"
+      },
+      {
+        "id": "N0-CR-011",
+        "name": "Sustancia + dinero",
+        "features_required": [
+          "N0-F013",
+          "N0-F004"
+        ],
+        "bonus_score": 8,
+        "action": "ESCALATE",
+        "description": "Mención de sustancia + referencia económica. Patrón típico de oferta de venta en canales digitales.",
+        "example": "xans y percs, hay buen precio"
+      },
+      {
+        "id": "N0-CR-012",
+        "name": "Sustancia + CTA",
+        "features_required": [
+          "N0-F013",
+          "N0-F006"
+        ],
+        "bonus_score": 7,
+        "action": "ESCALATE",
+        "description": "Mención de sustancia + invitación directa a participar/comprar.",
+        "example": "molly disponible, le entras o no"
+      }
+    ]
+  },
+  "negation_rules": {
+    "description": "Qué hacer cuando una frase está negada. Crítico para no generar falsos negativos ni falsos positivos.",
+    "rules": [
+      {
+        "pattern": "no hay (lana|varo|feria|dinero|chamba|jale)",
+        "signal_effect": "CANCEL — negación real del concepto",
+        "example": "no hay lana → no activa money_mention"
+      },
+      {
+        "pattern": "no le digas|no le cuentes|no digas nada",
+        "signal_effect": "KEEP — la negación ES la señal de secreto",
+        "example": "no le digas nada → activa N0-F007"
+      },
+      {
+        "pattern": "no seas (rajon|cagon|gallina|miedoso|culero)",
+        "signal_effect": "KEEP — la negación con cobardía ES presión social",
+        "example": "no seas rajon → activa N0-F008"
+      },
+      {
+        "pattern": "no pasa nada|no hay pedo|no hay bronca",
+        "signal_effect": "KEEP — negación del riesgo ES minimización",
+        "example": "no pasa nada → activa N0-F009"
+      },
+      {
+        "pattern": "no te preocupes|no te apures|no tengas miedo",
+        "signal_effect": "KEEP — tranquilización activa es minimización",
+        "example": "no te preocupes → activa N0-F009"
+      }
+    ]
+  },
+  "test_cases": {
+    "description": "Casos de prueba. Cada mensaje activa features específicos que combinados producen el score esperado. La prueba es de features, no de frases exactas.",
+    "cases": [
+      {
+        "id": "TC-001",
+        "raw": "tengo un pakete pa q se lo mandes a un compi",
+        "normalization_steps": [
+          "pakete → paquete (misspelling PH-02)",
+          "pa → para (abbr)",
+          "q → que (abbr)",
+          "compi → companero (abbr)"
+        ],
+        "normalized": "tengo un paquete para que se lo mandes a un companero",
+        "features_activated": [
+          "N0-F001 (paquete)",
+          "N0-F002 (mandes)",
+          "N0-F003 (companero)"
+        ],
+        "rules_triggered": [
+          "N0-CR-001",
+          "N0-CR-002"
+        ],
+        "expected_score_bonus": 12
+      },
+      {
+        "id": "TC-002",
+        "raw": "ai lana fasil si le entras wey",
+        "normalized": "ahi lana facil si le entras cuate",
+        "features_activated": [
+          "N0-F004 (lana)",
+          "N0-F009 (facil)",
+          "N0-F006 (le entras)"
+        ],
+        "rules_triggered": [
+          "N0-CR-003",
+          "N0-CR-006"
+        ],
+        "expected_score_bonus": 10
+      },
+      {
+        "id": "TC-003",
+        "raw": "k no sepa tu jefa esto es nuestro sekreto",
+        "normalized": "que no sepa tu mama esto es nuestro secreto",
+        "features_activated": [
+          "N0-F007 (no sepa / secreto)"
+        ],
+        "rules_triggered": [
+          "N0-CR-004 si hay trabajo vago en sesión"
+        ],
+        "expected_score_bonus": 3
+      },
+      {
+        "id": "TC-004",
+        "raw": "no seas rajon le entraron todos menos tu",
+        "normalized": "no seas rajon le entraron todos menos tu",
+        "features_activated": [
+          "N0-F008 (no seas rajon)",
+          "N0-F006 (le entraron)"
+        ],
+        "rules_triggered": [
+          "N0-CR-005"
+        ],
+        "expected_score_bonus": 8
+      },
+      {
+        "id": "TC-005",
+        "raw": "te mandamos el karro pa k no te canses",
+        "normalized": "te mandamos el carro para que no te canses",
+        "features_activated": [
+          "N0-F010 (te mandamos carro)"
+        ],
+        "rules_triggered": [
+          "N0-CR-008"
+        ],
+        "expected_score_bonus": 9
+      },
+      {
+        "id": "TC-006",
+        "raw": "yeva la bolsita con el bato de la esq y ya",
+        "normalization_steps": [
+          "yeva → lleva (PH-06 yeísmo inverso)",
+          "bolsita → bolsita (match directo)",
+          "bato → tipo (abbr)",
+          "esq → esquina (abbr)"
+        ],
+        "normalized": "lleva la bolsita con el tipo de la esquina y ya",
+        "features_activated": [
+          "N0-F001 (bolsita)",
+          "N0-F002 (lleva)",
+          "N0-F003 (tipo de la esquina)"
+        ],
+        "rules_triggered": [
+          "N0-CR-001",
+          "N0-CR-002"
+        ],
+        "expected_score_bonus": 12
+      },
+      {
+        "id": "TC-007",
+        "raw": "hay $$ si jalas y no dices nd a nadie",
+        "normalization_steps": [
+          "$$ → mucho dinero (symbol)",
+          "jalas → jalas (match directo cta)",
+          "nd → nada (abbr)"
+        ],
+        "normalized": "hay mucho dinero si jalas y no dices nada a nadie",
+        "features_activated": [
+          "N0-F004 (dinero)",
+          "N0-F006 (jalas)",
+          "N0-F007 (no dices nada a nadie)"
+        ],
+        "rules_triggered": [
+          "N0-CR-003",
+          "N0-CR-004"
+        ],
+        "expected_score_bonus": 10
+      },
+      {
+        "id": "TC-008",
+        "raw": "📦 pa q lo yebes con el bato aki rapidito sin pedo",
+        "normalization_steps": [
+          "📦 → paquete (emoji)",
+          "pa → para (abbr)",
+          "q → que (abbr)",
+          "yebes → llebes → llevas (PH-06)",
+          "bato → tipo (abbr)",
+          "aki → aqui (abbr)",
+          "rapidito → rapidito (match minimización)",
+          "sin pedo → sin pedo (match minimización)"
+        ],
+        "normalized": "paquete para que lo llevas con el tipo aqui rapidito sin pedo",
+        "features_activated": [
+          "N0-F001 (paquete)",
+          "N0-F002 (llevas)",
+          "N0-F003 (tipo)",
+          "N0-F009 (rapidito/sin pedo)"
+        ],
+        "rules_triggered": [
+          "N0-CR-001",
+          "N0-CR-002",
+          "N0-CR-009"
+        ],
+        "expected_score_bonus": 12
+      },
+      {
+        "id": "TC-009",
+        "raw": "aser un mandaito rapido pa ganar unos pesitos sin tanto pedo",
+        "normalized": "hacer un mandadito rapido para ganar unos pesitos sin tanto pedo",
+        "features_activated": [
+          "N0-F005 (mandadito)",
+          "N0-F004 (pesitos)",
+          "N0-F009 (rapido/sin pedo)"
+        ],
+        "rules_triggered": [
+          "N0-CR-006"
+        ],
+        "expected_score_bonus": 10
+      },
+      {
+        "id": "TC-010",
+        "raw": "crusa con el bulto k ya saben kien eres",
+        "normalized": "cruza con el bulto que ya saben quien eres",
+        "features_activated": [
+          "N0-F002 (cruza)",
+          "N0-F001 (bulto)"
+        ],
+        "rules_triggered": [
+          "N0-CR-001"
+        ],
+        "expected_score_bonus": 8
+      }
+    ]
+  }
+}

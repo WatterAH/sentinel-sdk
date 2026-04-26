@@ -1,0 +1,673 @@
+{
+  "metadata": {
+    "name": "SENTINEL MX Dataset v4 — Hybrid Feature Engine",
+    "version": "4.0.0",
+    "description": "Dataset híbrido para Tier 1. Complementa a v3 (regex legacy). Agrega lexicones base, features abstractas y reglas de combinación para detectar mensajes ambiguos que v3 no captura por depender de frases exactas.",
+    "compatible_with": "sentinel_dataset_v3.json",
+    "architecture": "lexicon-based feature extraction + combination rules",
+    "last_updated": "2026-04-25-collision-pass"
+  },
+  "explicit_signals": [
+    {
+      "id": "EX-001",
+      "label": "transporte_ofrecido",
+      "patterns": [
+        "te mandamos uber",
+        "te mandamos carro",
+        "mandamos transporte",
+        "te recogemos en",
+        "pasa un carro por ti"
+      ],
+      "weight": 9,
+      "category": "logistica_fisica",
+      "context_note": "Oferta de transporte no solicitado por desconocido. Señal documental alta."
+    },
+    {
+      "id": "EX-002",
+      "label": "secreto_parental",
+      "patterns": [
+        "que no sepa tu mama",
+        "que no sepa tu papa",
+        "no le digas a tus papas",
+        "no le digas a tus jefes",
+        "tus papas no tienen que saber",
+        "sin que sepan tus papas"
+      ],
+      "weight": 10,
+      "category": "aislamiento",
+      "context_note": "Instrucción explícita de ocultar información a padres. Señal crítica."
+    },
+    {
+      "id": "EX-003",
+      "label": "reclutamiento_directo",
+      "patterns": [
+        "quieres ganar dinero facil",
+        "quieres ganar lana facil",
+        "ganar dinero sin trabajar",
+        "lana sin esfuerzo"
+      ],
+      "weight": 8,
+      "category": "reclutamiento",
+      "context_note": "Oferta directa de dinero fácil sin actividad legítima especificada."
+    },
+    {
+      "id": "EX-004",
+      "label": "cruce_material",
+      "patterns": [
+        "cruzar el paquete",
+        "cruzar el material",
+        "pasar el bulto",
+        "cruzar la linea con",
+        "hacer el cruce"
+      ],
+      "weight": 9,
+      "category": "logistica_fisica",
+      "context_note": "Referencia a cruce de material ilícito. Señal documental de tráfico."
+    },
+    {
+      "id": "EX-005",
+      "label": "policia_corrupta",
+      "patterns": [
+        "la policia no llega",
+        "aqui no llega la ley",
+        "estan arreglados",
+        "estan comprados",
+        "la tira esta de nuestro lado",
+        "aqui mandamos nosotros"
+      ],
+      "weight": 9,
+      "category": "contenido_normalizado",
+      "context_note": "Normalización de corrupción policial. Señal alta documental."
+    }
+  ],
+  "lexicons": {
+    "generic_objects": [
+      "algo",
+      "cosa",
+      "eso",
+      "esto",
+      "aquello",
+      "asunto",
+      "rollo",
+      "pedo",
+      "lo otro",
+      "lo que te digo",
+      "lo que ya sabes",
+      "unas cosas",
+      "un asunto",
+      "un rollo",
+      "un pedo",
+      "onda",
+      "movida",
+      "vuelta",
+      "bronca",
+      "chisme"
+    ],
+    "opportunity_words": [
+      "actividad",
+      "movida",
+      "vuelta",
+      "vueltita",
+      "mision",
+      "operacion",
+      "movimiento",
+      "oportunidad",
+      "chance",
+      "oferta",
+      "propuesta",
+      "tarea",
+      "venta",
+      "disponible",
+      "catalogo",
+      "menu",
+      "pedido",
+      "lote",
+      "lote grande",
+      "plug"
+    ],
+    "cta": [
+      "jalas",
+      "jala",
+      "le entras",
+      "entrale",
+      "te animas",
+      "vienes",
+      "vas",
+      "te apuntas",
+      "entras",
+      "quieres",
+      "te unes",
+      "te lanzas",
+      "te avientas",
+      "te rifas",
+      "llegas",
+      "caes",
+      "le caes",
+      "te prendes",
+      "te metes",
+      "o que",
+      "que dices",
+      "que dice",
+      "andale",
+      "dale",
+      "sale",
+      "va",
+      "te apuntas o no",
+      "le entras o no",
+      "si o no",
+      "te animas o que",
+      "entonces que",
+      "que onda entonces"
+    ],
+    "money_words": [
+      "pago",
+      "lana",
+      "dinero",
+      "varo",
+      "feria",
+      "billete",
+      "cash",
+      "efectivo",
+      "plata",
+      "baro",
+      "morlacos",
+      "pesitos",
+      "lucas",
+      "paga",
+      "pagamos",
+      "cobras",
+      "ganas",
+      "ganancia",
+      "sueldo",
+      "salario",
+      "comision",
+      "billetito",
+      "varito",
+      "lanita",
+      "ferias",
+      "billetes",
+      "dolar",
+      "dolares"
+    ],
+    "concrete_places": [
+      "escuela",
+      "universidad",
+      "prepa",
+      "secundaria",
+      "primaria",
+      "casa",
+      "oficina",
+      "cine",
+      "parque",
+      "hospital",
+      "banco",
+      "tienda",
+      "super",
+      "supermercado",
+      "iglesia",
+      "biblioteca",
+      "gimnasio",
+      "gym",
+      "restaurante",
+      "plaza",
+      "museo",
+      "teatro",
+      "estadio",
+      "cancha",
+      "alberca",
+      "cafe",
+      "cafeteria",
+      "farmacia",
+      "mercado"
+    ],
+    "concrete_activities": [
+      "jugar futbol",
+      "jugar basquet",
+      "estudiar",
+      "hacer tarea",
+      "entrenar",
+      "leer",
+      "cocinar",
+      "cenar",
+      "comer",
+      "ir a clase",
+      "ir al gym",
+      "nadar",
+      "correr",
+      "practicar",
+      "ensayar",
+      "ir al cine",
+      "ir al parque",
+      "ir a la tienda",
+      "ir al super",
+      "ir a la escuela",
+      "ir a trabajar",
+      "hacer ejercicio",
+      "ver pelicula"
+    ],
+    "objects_of_risk": [
+      "paquete",
+      "pakete",
+      "paquetito",
+      "paqueton",
+      "bulto",
+      "mercancia",
+      "merca",
+      "material",
+      "bolsa",
+      "bolsita",
+      "encargo",
+      "maleta",
+      "cajita",
+      "caja",
+      "sobre",
+      "cosa pesada",
+      "paquetin",
+      "regalito",
+      "encarguito",
+      "jarabe",
+      "arma",
+      "fusil",
+      "pistola",
+      "cuerno",
+      "cuete"
+    ],
+    "cartel_words": [
+      "nueva generacion",
+      "la operativa",
+      "la empresa",
+      "la maña",
+      "maña",
+      "cartel",
+      "comando",
+      "estaca",
+      "estacas"
+    ],
+    "delivery_verbs": [
+      "mandes",
+      "mandar",
+      "lleves",
+      "llevar",
+      "entregues",
+      "entregar",
+      "muevas",
+      "mover",
+      "pases",
+      "pasar",
+      "cruces",
+      "cruzar",
+      "dejes",
+      "dejar",
+      "recojas",
+      "recoger",
+      "vayas por",
+      "traigas",
+      "traer"
+    ],
+    "secrecy_words": [
+      "secreto",
+      "no le digas",
+      "no le cuentes",
+      "entre nosotros",
+      "no menciones",
+      "no comentes",
+      "guardatelo",
+      "que no sepa",
+      "que no se entere",
+      "confidencial",
+      "callado",
+      "no vayas a decir",
+      "se queda aqui",
+      "nadie sabe",
+      "nadie tiene que saber",
+      "esto queda entre",
+      "no lo compartas",
+      "privado"
+    ],
+    "pressure_words": [
+      "no te rajes",
+      "cobarde",
+      "miedoso",
+      "gallina",
+      "cagon",
+      "mamon",
+      "rajon",
+      "atrevete",
+      "se hombre",
+      "no seas",
+      "no le tengas miedo",
+      "pon huevos",
+      "no me falles",
+      "no nos falles",
+      "rajarse",
+      "culero",
+      "no seas culero",
+      "no seas mamon",
+      "que te da miedo",
+      "le tienes miedo"
+    ],
+    "minimization_words": [
+      "facil",
+      "rapido",
+      "sencillo",
+      "nada mas",
+      "sin riesgo",
+      "sin problema",
+      "no pasa nada",
+      "sin pedo",
+      "sin bronca",
+      "tranquilo",
+      "relax",
+      "seguro",
+      "garantizado",
+      "sin rollo",
+      "no tiene chiste",
+      "pan comido",
+      "no hay pierde",
+      "sin lios",
+      "no te preocupes",
+      "esta controlado",
+      "no hay pedo",
+      "no hay bronca",
+      "cero riesgo"
+    ],
+    "harm_verbs": [
+      "chingar",
+      "chingarnos",
+      "chingarse",
+      "dar piso",
+      "darle piso",
+      "damos piso",
+      "tronar",
+      "quebrar",
+      "kbrar",
+      "calentada",
+      "madrear",
+      "romper la madre",
+      "partir la madre",
+      "levantar",
+      "levanton",
+      "levantamos",
+      "desaparecer",
+      "matar",
+      "asesinar",
+      "dar plomo",
+      "plomo",
+      "plomazos",
+      "plomear",
+      "plomearlo",
+      "mayugar",
+      "mayugarlo",
+      "plomeo",
+      "balear",
+      "baleamos",
+      "balacear",
+      "rafaguear",
+      "rafajea",
+      "rafajear",
+      "acribillar",
+      "ejecutar",
+      "ejecucion",
+      "silenciar",
+      "reventar",
+      "fusilar",
+      "descuartizar",
+      "pozolear",
+      "encajuelar",
+      "entambar",
+      "encobijar",
+      "mochar",
+      "degollar",
+      "torturar",
+      "tablear"
+    ],
+    "coercion_words": [
+      "si no",
+      "o te",
+      "por las malas",
+      "a huevo",
+      "te toca",
+      "es obligatorio",
+      "no tienes opcion"
+    ]
+  },
+  "features": [
+    {
+      "id": "F001",
+      "name": "ambiguous_opportunity",
+      "weight": 1,
+      "description": "Mensaje contiene referencia vaga a oportunidad/actividad sin especificar qué (generic_objects o opportunity_words detectados).",
+      "derived_from": [
+        "generic_objects",
+        "opportunity_words"
+      ]
+    },
+    {
+      "id": "F002",
+      "name": "call_to_action",
+      "weight": 1,
+      "description": "Mensaje contiene CTA mexicano (¿jalas?, ¿le entras?, ¿te animas?, ¿o qué?).",
+      "derived_from": [
+        "cta"
+      ]
+    },
+    {
+      "id": "F003",
+      "name": "low_specificity",
+      "weight": 1,
+      "description": "Mensaje NO menciona lugar/actividad concretos. Solo se activa si ya hay ambiguous_opportunity o call_to_action.",
+      "derived_from": [
+        "concrete_places",
+        "concrete_activities"
+      ],
+      "logic": "NEGATED — se activa cuando NO hay match"
+    },
+    {
+      "id": "F004",
+      "name": "money_mention",
+      "weight": 2,
+      "description": "Referencia a dinero/pago sin contexto laboral verificable.",
+      "derived_from": [
+        "money_words"
+      ]
+    },
+    {
+      "id": "F005",
+      "name": "secrecy_pressure",
+      "weight": 3,
+      "description": "Instrucción de secreto o aislamiento de adultos supervisores.",
+      "derived_from": [
+        "secrecy_words"
+      ]
+    },
+    {
+      "id": "F006",
+      "name": "social_pressure",
+      "weight": 2,
+      "description": "Presión de grupo, desafío de valentía o masculinidad.",
+      "derived_from": [
+        "pressure_words"
+      ]
+    },
+    {
+      "id": "F007",
+      "name": "risk_minimization",
+      "weight": 2,
+      "description": "Minimización activa del riesgo o esfuerzo requerido.",
+      "derived_from": [
+        "minimization_words"
+      ]
+    },
+    {
+      "id": "F008",
+      "name": "logistics_transfer",
+      "weight": 4,
+      "description": "Mensaje implica transporte o entrega de objetos físicos (paquete, bulto, mercancía).",
+      "derived_from": [
+        "objects_of_risk",
+        "delivery_verbs"
+      ]
+    },
+    {
+      "id": "F009",
+      "name": "cartel_mention",
+      "weight": 5,
+      "description": "Mención explícita de grupos armados, carteles o figuras delictivas conocidas.",
+      "derived_from": [
+        "cartel_words"
+      ]
+    },
+    {
+      "id": "F010",
+      "name": "violence_mention",
+      "weight": 20,
+      "description": "Mención de violencia física, daño o asesinato. El peso tan elevado desencadena alerta CRÍTICA automática sin necesidad de más contexto.",
+      "derived_from": [
+        "harm_verbs"
+      ]
+    },
+    {
+      "id": "F011",
+      "name": "coercion_threat",
+      "weight": 3,
+      "description": "Lenguaje coercitivo o amenaza condicional.",
+      "derived_from": [
+        "coercion_words"
+      ]
+    }
+  ],
+  "combination_rules": [
+    {
+      "id": "CR-001",
+      "name": "Oportunidad vaga + CTA",
+      "features_required": [
+        "ambiguous_opportunity",
+        "call_to_action"
+      ],
+      "bonus_score": 5,
+      "action": "ESCALATE",
+      "description": "Alguien ofrece algo vago y pide participación directa. Patrón: 'salió algo, ¿jalas?'"
+    },
+    {
+      "id": "CR-002",
+      "name": "Oportunidad vaga + CTA + baja especificidad",
+      "features_required": [
+        "ambiguous_opportunity",
+        "call_to_action",
+        "low_specificity"
+      ],
+      "bonus_score": 8,
+      "action": "ESCALATE",
+      "description": "Triple señal: oferta vaga + invitación + cero detalles concretos. El mensaje no tiene nada que reduzca la ambigüedad."
+    },
+    {
+      "id": "CR-003",
+      "name": "Dinero + CTA",
+      "features_required": [
+        "money_mention",
+        "call_to_action"
+      ],
+      "bonus_score": 6,
+      "action": "ESCALATE",
+      "description": "Mención de dinero + invitación directa sin contexto laboral. Patrón: 'hay lana ¿le entras?'"
+    },
+    {
+      "id": "CR-004",
+      "name": "Secreto + Oportunidad",
+      "features_required": [
+        "secrecy_pressure",
+        "ambiguous_opportunity"
+      ],
+      "bonus_score": 10,
+      "action": "ESCALATE",
+      "description": "Petición de secreto combinada con oferta vaga. Señal alta de operación encubierta."
+    },
+    {
+      "id": "CR-005",
+      "name": "Presión social + CTA",
+      "features_required": [
+        "social_pressure",
+        "call_to_action"
+      ],
+      "bonus_score": 8,
+      "action": "ESCALATE",
+      "description": "Presión de pares + invitación directa. Patrón de captación colectiva."
+    },
+    {
+      "id": "CR-006",
+      "name": "Dinero + Oportunidad + Minimización",
+      "features_required": [
+        "money_mention",
+        "ambiguous_opportunity",
+        "risk_minimization"
+      ],
+      "bonus_score": 10,
+      "action": "ESCALATE",
+      "description": "Tríada completa de enganche: oferta económica + actividad vaga + 'es fácil'. Patrón documental de reclutamiento."
+    },
+    {
+      "id": "CR-007",
+      "name": "Secreto + Presión social",
+      "features_required": [
+        "secrecy_pressure",
+        "social_pressure"
+      ],
+      "bonus_score": 12,
+      "action": "ESCALATE",
+      "description": "Presión de grupo + silencio impuesto. Señal crítica de control psicológico."
+    },
+    {
+      "id": "CR-008",
+      "name": "Logística de transporte activa",
+      "features_required": [
+        "logistics_transfer"
+      ],
+      "bonus_score": 10,
+      "action": "ESCALATE",
+      "description": "Mención explícita de mover paquetes o mercancía. Acción de riesgo inmediato."
+    },
+    {
+      "id": "CR-009",
+      "name": "Mención de Cartel + Oportunidad/CTA",
+      "features_required": [
+        "cartel_mention"
+      ],
+      "bonus_score": 15,
+      "action": "ESCALATE",
+      "description": "Se menciona un cartel o facción armada. Es una señal crítica que anula cualquier ambigüedad."
+    },
+    {
+      "id": "CR-010",
+      "name": "Violencia + CTA",
+      "features_required": [
+        "violence_mention",
+        "call_to_action"
+      ],
+      "bonus_score": 10,
+      "action": "ESCALATE",
+      "description": "Reclutamiento forzado o coacción para actuar. (e.g. 'al que no jala le damos su calentada')"
+    },
+    {
+      "id": "CR-011",
+      "name": "Violencia + Amenaza condicional",
+      "features_required": [
+        "violence_mention",
+        "coercion_threat"
+      ],
+      "bonus_score": 12,
+      "action": "ESCALATE",
+      "description": "Amenaza física directa (e.g. 'te vamos a tronar si no')."
+    },
+    {
+      "id": "CR-012",
+      "name": "Violencia + Cartel",
+      "features_required": [
+        "violence_mention",
+        "cartel_mention"
+      ],
+      "bonus_score": 15,
+      "action": "ESCALATE",
+      "description": "Glorificación o amenaza explícita del crimen organizado."
+    }
+  ]
+}
