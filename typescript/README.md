@@ -2,6 +2,12 @@
 
 **La infraestructura estándar para la seguridad digital de menores en México.**
 
+[Documentación](https://watterah.github.io/sentinel-docs/)
+
+---
+
+**La infraestructura estándar para la seguridad digital de menores en México.**
+
 Sentinel SDK es un paquete TypeScript que permite a cualquier plataforma de mensajería — redes sociales, apps de gaming, foros — detectar en tiempo real patrones de grooming y reclutamiento por crimen organizado dirigidos a menores. Está diseñado para ser adoptado por desarrolladores e integrado en productos existentes con el mínimo de fricción.
 
 ---
