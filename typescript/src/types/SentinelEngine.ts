@@ -4,7 +4,7 @@ export type RiskLevel = "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
 
 export interface Message {
   text: string;
-  timestamp: number; // Unix ms
+  timestamp?: number; // Unix ms
 }
 
 export interface ApiMessage {
@@ -19,22 +19,22 @@ export interface ApiMessage {
 
 export interface NormalizerLayerResult {
   score: number;
-  features: string[];        // ["N0-F001", "N0-F007"]
-  triggeredRules: string[];  // ["N0-CR-001"]
+  features: string[]; // ["N0-F001", "N0-F007"]
+  triggeredRules: string[]; // ["N0-CR-001"]
   transformations: string[]; // ["pakete→paquete", "k→que", "📦→paquete"]
 }
 
 export interface V3LayerResult {
   score: number;
-  terms: string[];           // ["REC-001", "REC-005"]
+  terms: string[]; // ["REC-001", "REC-005"]
   categories: string[];
-  triggeredRules: string[];  // ["MCR-001"]
+  triggeredRules: string[]; // ["MCR-001"]
 }
 
 export interface V4LayerResult {
   score: number;
-  features: string[];        // ["ambiguous_opportunity", "call_to_action"]
-  triggeredRules: string[];  // ["CR-002"]
+  features: string[]; // ["ambiguous_opportunity", "call_to_action"]
+  triggeredRules: string[]; // ["CR-002"]
   explicitSignals: string[]; // ["EX-002"]
 }
 
@@ -72,7 +72,7 @@ export interface Hit {
 }
 
 export interface NormalizerOutput {
-  messages: Message[];          // mensajes con texto ya normalizado
+  messages: Message[]; // mensajes con texto ya normalizado
   score: number;
   features: string[];
   triggeredRules: string[];

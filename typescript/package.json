@@ -1,6 +1,6 @@
 {
   "name": "@sentinel-sdk/typescript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "The Standard for Child Safety in Mexico - TS SDK",
   "main": "./dist/index.cjs",

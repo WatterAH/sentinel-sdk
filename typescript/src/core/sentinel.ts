@@ -6,7 +6,7 @@ import {
   SentinelAnalysisResponse,
 } from "../types/SentinelAnalysisResult.js";
 import { SentinelResult, ok, err } from "../types/SentinelResult.js";
-import { ApiMessage, EngineResult } from "../types/SentinelEngine.js";
+import { ApiMessage, EngineResult, Message } from "../types/SentinelEngine.js";
 import { SentinelError } from "../errors/SentinelError.js";
 
 export class Sentinel {
@@ -17,20 +17,22 @@ export class Sentinel {
   constructor(config: SentinelConfig) {
     this.apiKey = config.apiKey;
     // this.baseUrl = "https://sentinel-api-production-95e9.up.railway.app/api/v1";
-    this.baseUrl = "https://cool-beers-brush.loca.lt/api/v1";
+    this.baseUrl = "https://sentinel-api-production-95e9.up.railway.app/api/v1";
     this.engine = new Engine();
   }
 
   /**
-   * Analyzes the given text and returns the analysis result.
-   * @param text The text to analyze.
-   * @param sessionId The session ID.
-   * @param userId The user ID.
-   * @returns A SentinelResult — check `error` before using `data`.
+   * Synchronizes a new message to the session and performs a comprehensive risk analysis.
+   * It evaluates the conversation history locally and automatically escalates to the AI API if needed.
+   *
+   * @param text The content of the new message to analyze.
+   * @param sessionId The unique identifier for the conversation session.
+   * @param userId The unique identifier for the user sending the message.
+   * @returns A Promise resolving to a SentinelResult containing the API analysis response. Check `error` before using `data`.
    * @example
-   * const { data, error } = await sentinel.analyze(text, sessionId, userId);
-   * if (error) console.log(error.code, error.message);
-   * else console.log(data.risk, data.stage);
+   * const { data, error } = await sentinel.analyze("Hello", "session-123", "user-456");
+   * if (error) console.error("Analysis failed:", error.message);
+   * else console.log("Risk level:", data.risk);
    */
   async analyze(
     text: string,
@@ -102,13 +104,15 @@ export class Sentinel {
   }
 
   /**
-   * Analyzes a single message locally without session context or AI escalation.
-   * @param text The text to analyze.
-   * @returns A SentinelResult — check `error` before using `data`.
+   * Performs a fast, local-only risk analysis on an array of messages.
+   * This does not synchronize with the backend or use AI escalation, making it ideal for immediate client-side checks.
+   *
+   * @param messages An array of messages representing the conversation history to analyze.
+   * @returns A SentinelResult containing the local engine's analysis response. Check `error` before using `data`.
    */
-  analyzeMessage(text: string): SentinelResult<SentinelAnalysisResponse> {
+  localAnalyze(messages: Message[]): SentinelResult<SentinelAnalysisResponse> {
     try {
-      if (!text) {
+      if (!messages) {
         return err(
           new SentinelError(
             "Missing required text for analysis",
@@ -117,7 +121,12 @@ export class Sentinel {
         );
       }
 
-      const result = this.engine.analyze([{ text, timestamp: Date.now() }]);
+      const engineMessages: Message[] = messages.map((message) => ({
+        text: message.text,
+        timestamp: message.timestamp ?? Date.now(),
+      }));
+
+      const result = this.engine.analyze(engineMessages);
 
       return ok(result);
     } catch (e) {

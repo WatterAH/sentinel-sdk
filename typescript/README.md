@@ -120,14 +120,16 @@ if (error) {
 }
 ```
 
-### Análisis de un mensaje sin sesión
+### Análisis de mensajes sin sesión
 
 Análisis local instantáneo, sin llamadas a la red.
 
 ```typescript
-const { data, error } = sentinel.analyzeMessage(
-  "te mando lana si me ayudas con un jale"
-);
+const { data, error } = sentinel.localAnalyze([
+  { text: "te mando lana si me ayudas con un jale" },
+  { text: "trato de 300 pesos por noche" },
+  { text: "es solo un jale, nomas es entregar un pakete" },
+]);
 ```
 
 ---
