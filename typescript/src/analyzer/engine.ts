@@ -24,6 +24,11 @@ export class Engine {
     this.sessionThreshold = this.v3.sessionThreshold;
   }
 
+  /** Inyecta términos dinámicos en el V3Layer desde la API. */
+  injectHotTerms(terms: Array<{ id: string; term: string; category: string; weight: number; variants: string[] }>): void {
+    this.v3.injectHotTerms(terms);
+  }
+
   /** Analiza un array de mensajes a través de todas las capas del pipeline. */
   analyze(messages: Message[]): EngineResult {
     // ── Fase 1: Normalizar ──────────────────────────────────────────────────

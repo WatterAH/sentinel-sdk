@@ -22,6 +22,28 @@ export class Sentinel {
   }
 
   /**
+   * Fetches approved hot-terms from the API and injects them into the local engine.
+   * Optional — if not called, the SDK works with the static dataset only.
+   * Fails silently if the API is unreachable.
+   * @example
+   * const sentinel = new Sentinel({ apiKey: "..." });
+   * await sentinel.initialize(); // call once when your app starts
+   */
+  async initialize(): Promise<void> {
+    try {
+      const response = await fetch(`${this.baseUrl}/hot-terms`);
+      if (!response.ok) return;
+      const json = await response.json();
+      const terms = json?.data ?? [];
+      if (terms.length > 0) {
+        this.engine.injectHotTerms(terms);
+      }
+    } catch {
+      // API unavailable — continue with static dataset
+    }
+  }
+
+  /**
    * Synchronizes a new message to the session and performs a comprehensive risk analysis.
    * It evaluates the conversation history locally and automatically escalates to the AI API if needed.
    *

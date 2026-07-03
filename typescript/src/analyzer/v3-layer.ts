@@ -35,6 +35,27 @@ export class V3Layer {
     }
   }
 
+  /**
+   * Inyecta términos dinámicos desde la API (hot-terms).
+   * Se mezclan con el dataset estático sin reemplazarlo.
+   * Si un término ya existe, se ignora para no alterar el peso original.
+   */
+  injectHotTerms(terms: Array<{ id: string; term: string; category: string; weight: number; variants: string[] }>): void {
+    for (const entry of terms) {
+      const all = [entry.term, ...entry.variants];
+      for (const variant of all) {
+        const key = variant.toLowerCase().trim();
+        if (!this.index.has(key)) {
+          this.index.set(key, {
+            id: entry.id,
+            weight: entry.weight,
+            category: entry.category,
+          });
+        }
+      }
+    }
+  }
+
   /** Escanea mensajes buscando términos V3 y evalúa reglas MCR. */
   scan(messages: Message[]): V3Output {
     let score = 0;
