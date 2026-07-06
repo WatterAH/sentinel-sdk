@@ -21,8 +21,8 @@ async function throwApiError(res: Response): Promise<never> {
 }
 
 class Request {
-  async get<T>(url: string): Promise<T> {
-    const res = await fetch(url);
+  async get<T>(url: string, headers?: Record<string, string>): Promise<T> {
+    const res = await fetch(url, { headers });
 
     if (!res.ok) await throwApiError(res);
 
@@ -40,10 +40,10 @@ class Request {
     return data.data;
   }
 
-  async post<T>(url: string, body: any): Promise<T> {
+  async post<T>(url: string, body: any, headers?: Record<string, string>): Promise<T> {
     const res = await fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...headers },
       body: JSON.stringify(body),
     });
 

@@ -2,6 +2,14 @@ import type { RiskLevel } from "./SentinelEngine.js";
 
 export type { RiskLevel };
 
+/** Envelope estándar de todas las respuestas de la Sentinel API. */
+export interface ApiResponse<T> {
+  success: boolean;
+  status_code: number;
+  data: T;
+  details?: string;
+}
+
 export type Stage =
   | "NINGUNA"
   | "CAPTACION"

@@ -5,9 +5,10 @@
 
 import v3Dataset from "../constants/sentinel_dataset_v3.json" with { type: "json" };
 import type { Message, V3Output, Hit } from "../types/SentinelEngine.js";
+import { removeAccents } from "./text-utils.js";
 
 export class V3Layer {
-  private index: Map<string, { id: string; weight: number; category: string }>;
+  private index: Map<string, { id: string; weight: number; category: string; regex: RegExp }>;
   private mcrRules: Array<{
     id: string;
     categories_required?: string[];
@@ -26,13 +27,24 @@ export class V3Layer {
     for (const entry of data.terms) {
       const all = [entry.term, ...(entry.variants ?? [])];
       for (const variant of all) {
-        this.index.set(variant.toLowerCase().trim(), {
+        const key = removeAccents(variant.toLowerCase().trim());
+        this.index.set(key, {
           id: entry.id,
           weight: entry.weight,
           category: entry.category,
+          regex: this.buildRegex(key)
         });
       }
     }
+  }
+
+  private buildRegex(term: string): RegExp {
+    // Escapar caracteres especiales de RegExp
+    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // Reemplazar espacios por \s+ para tolerar espaciado flexible
+    const flexible = escaped.replace(/\s+/g, '\\s+');
+    // Usar fronteras de palabra compatibles con Unicode (letras y números)
+    return new RegExp(`(?<![\\p{L}\\p{N}])${flexible}(?![\\p{L}\\p{N}])`, 'ui');
   }
 
   /**
@@ -44,12 +56,13 @@ export class V3Layer {
     for (const entry of terms) {
       const all = [entry.term, ...entry.variants];
       for (const variant of all) {
-        const key = variant.toLowerCase().trim();
+        const key = removeAccents(variant.toLowerCase().trim());
         if (!this.index.has(key)) {
           this.index.set(key, {
             id: entry.id,
             weight: entry.weight,
             category: entry.category,
+            regex: this.buildRegex(key)
           });
         }
       }
@@ -64,9 +77,8 @@ export class V3Layer {
     const hits: Hit[] = [];
 
     for (const msg of messages) {
-      const lower = msg.text.toLowerCase();
       for (const [variant, entry] of this.index) {
-        if (lower.includes(variant)) {
+        if (entry.regex.test(msg.text)) {
           if (!termsFound.has(entry.id)) {
             // Solo suma el peso una vez por término único
             score += entry.weight;
@@ -77,7 +89,7 @@ export class V3Layer {
             id: entry.id,
             score: entry.weight,
             category: entry.category,
-            timestamp: msg.timestamp,
+            timestamp: msg.timestamp ?? Date.now(),
           });
         }
       }

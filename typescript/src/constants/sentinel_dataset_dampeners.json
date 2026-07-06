@@ -1,0 +1,39 @@
+{
+  "dampeners": [
+    {
+      "id": "DAMP-001",
+      "term": "amazon",
+      "variants": ["amazon prime"],
+      "dampen_categories": ["logistica_fisica", "reclutamiento"],
+      "factor": 0.3
+    },
+    {
+      "id": "DAMP-002",
+      "term": "mercado libre",
+      "variants": ["mercadolibre", "mercado-libre"],
+      "dampen_categories": ["logistica_fisica", "reclutamiento"],
+      "factor": 0.3
+    },
+    {
+      "id": "DAMP-003",
+      "term": "la maestra",
+      "variants": ["el maestro", "la profa", "el profe", "profesor", "profesora"],
+      "dampen_categories": ["solicitud_informacion", "reclutamiento", "formalidad_deceptiva", "oferta_economica", "manipulacion_social"],
+      "factor": 0.4
+    },
+    {
+      "id": "DAMP-004",
+      "term": "la escuela",
+      "variants": ["salón", "salon", "tarea", "recreo", "escuela"],
+      "dampen_categories": ["solicitud_informacion", "reclutamiento", "formalidad_deceptiva", "oferta_economica", "manipulacion_social"],
+      "factor": 0.4
+    },
+    {
+      "id": "DAMP-005",
+      "term": "mi mamá",
+      "variants": ["mi mama", "mi papá", "mi papa", "mi tía", "mi tia", "mi abuela", "mi abuelo", "mi hermano", "mi hermana", "mis papás", "mis papas", "mi prima", "mi primo", "mi tío", "mi tio", "mi sobrino", "mi sobrina"],
+      "dampen_categories": ["solicitud_informacion", "reclutamiento", "formalidad_deceptiva", "oferta_economica", "manipulacion_social"],
+      "factor": 0.4
+    }
+  ]
+}

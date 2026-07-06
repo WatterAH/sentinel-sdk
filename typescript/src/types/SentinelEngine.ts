@@ -26,6 +26,8 @@ export interface NormalizerLayerResult {
 
 export interface V3LayerResult {
   score: number;
+  originalScore?: number;
+  dampenersApplied?: string[];
   terms: string[]; // ["REC-001", "REC-005"]
   categories: string[];
   triggeredRules: string[]; // ["MCR-001"]

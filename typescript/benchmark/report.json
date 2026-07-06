@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-03T23:56:47.859Z",
+  "timestamp": "2026-07-06T19:37:03.956Z",
   "totalCases": 52,
   "detection": {
-    "truePositives": 23,
-    "falsePositives": 7,
-    "trueNegatives": 21,
-    "falseNegatives": 1,
-    "precision": 0.7667,
-    "recall": 0.9583,
-    "f1": 0.8519,
-    "falsePositiveRate": 0.25,
-    "accuracy": 0.8462
+    "truePositives": 24,
+    "falsePositives": 0,
+    "trueNegatives": 28,
+    "falseNegatives": 0,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "falsePositiveRate": 0,
+    "accuracy": 1
   },
   "escalation": {
-    "benignEscalationRate": 0.25,
-    "riskCoverage": 0.9583
+    "benignEscalationRate": 0,
+    "riskCoverage": 1
   },
   "latency": {
-    "p50Ms": 0.152,
-    "p95Ms": 0.272,
-    "maxMs": 0.563,
-    "meanMs": 0.159
+    "p50Ms": 0.354,
+    "p95Ms": 0.63,
+    "maxMs": 2.79,
+    "meanMs": 0.377
   },
   "byGroup": [
     {
@@ -38,8 +38,8 @@
     {
       "group": "tp_grooming_progresivo",
       "total": 5,
-      "correct": 4,
-      "accuracy": 0.8
+      "correct": 5,
+      "accuracy": 1
     },
     {
       "group": "tp_vector_gaming",
@@ -56,109 +56,17 @@
     {
       "group": "benign_cotidiano",
       "total": 12,
-      "correct": 10,
-      "accuracy": 0.8333
+      "correct": 12,
+      "accuracy": 1
     },
     {
       "group": "benign_trampa",
       "total": 16,
-      "correct": 11,
-      "accuracy": 0.6875
+      "correct": 16,
+      "accuracy": 1
     }
   ],
-  "failures": [
-    {
-      "id": "TP-013",
-      "group": "tp_grooming_progresivo",
-      "expected": "RISK",
-      "got": "LOW",
-      "score": 1,
-      "description": "Solicitud de información personal progresiva",
-      "termsMatched": []
-    },
-    {
-      "id": "BN-009",
-      "group": "benign_cotidiano",
-      "expected": "BENIGN",
-      "got": "HIGH",
-      "score": 23,
-      "description": "Examen y estudio",
-      "termsMatched": [
-        "CN-007"
-      ]
-    },
-    {
-      "id": "BN-011",
-      "group": "benign_cotidiano",
-      "expected": "BENIGN",
-      "got": "CRITICAL",
-      "score": 19,
-      "description": "Roblox normal entre amigos de la escuela",
-      "termsMatched": []
-    },
-    {
-      "id": "BT-002",
-      "group": "benign_trampa",
-      "expected": "BENIGN",
-      "got": "HIGH",
-      "score": 21,
-      "description": "TRAMPA: oferta de trabajo real de medio tiempo (chamba + pagan bien + nómina)",
-      "termsMatched": [
-        "REC-002",
-        "REC-005",
-        "OE-001",
-        "REC-031"
-      ]
-    },
-    {
-      "id": "BT-003",
-      "group": "benign_trampa",
-      "expected": "BENIGN",
-      "got": "HIGH",
-      "score": 20,
-      "description": "TRAMPA: 'paquete' de Amazon",
-      "termsMatched": [
-        "LF-010"
-      ]
-    },
-    {
-      "id": "BT-008",
-      "group": "benign_trampa",
-      "expected": "BENIGN",
-      "got": "HIGH",
-      "score": 24,
-      "description": "TRAMPA: 'te presto dinero' entre amigos para el recreo",
-      "termsMatched": [
-        "OE-011"
-      ]
-    },
-    {
-      "id": "BT-014",
-      "group": "benign_trampa",
-      "expected": "BENIGN",
-      "got": "HIGH",
-      "score": 23,
-      "description": "TRAMPA: 'confía en mí' entre amigas sobre un secreto escolar inocente",
-      "termsMatched": [
-        "MS-012"
-      ]
-    },
-    {
-      "id": "BT-016",
-      "group": "benign_trampa",
-      "expected": "BENIGN",
-      "got": "MEDIUM",
-      "score": 19,
-      "description": "TRAMPA: densidad alta de términos legítimos en mensaje corto (peor caso realista)",
-      "termsMatched": [
-        "REC-002",
-        "REC-005",
-        "OE-001",
-        "SD-001",
-        "SD-004"
-      ]
-    }
-  ],
+  "failures": [],
   "cases": [
     {
       "id": "TP-001",
@@ -166,18 +74,23 @@
       "label": "RISK",
       "description": "Pitch clásico: jale + oferta económica + logística",
       "risk": "CRITICAL",
-      "score": 34,
+      "score": 47,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.347,
+      "latencyMs": 0.397,
       "termsMatched": [
         "REC-001",
+        "SD-006",
         "REC-004",
+        "OE-001",
+        "LF-002",
         "LF-003"
       ],
       "triggeredRules": [
         "MCR-001",
+        "MCR-002",
+        "MCR-007",
         "CR-006"
       ]
     },
@@ -191,7 +104,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.162,
+      "latencyMs": 0.221,
       "termsMatched": [
         "REC-007",
         "OE-001"
@@ -211,7 +124,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.203,
+      "latencyMs": 0.343,
       "termsMatched": [
         "REC-003",
         "REC-008",
@@ -227,19 +140,21 @@
       "label": "RISK",
       "description": "Halconeo con pago quincenal",
       "risk": "CRITICAL",
-      "score": 34,
+      "score": 43,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.193,
+      "latencyMs": 0.39,
       "termsMatched": [
         "REC-005",
+        "REC-022",
         "OE-003",
         "OE-004",
         "REC-009"
       ],
       "triggeredRules": [
         "MCR-002",
+        "MCR-007",
         "CR-003"
       ]
     },
@@ -249,25 +164,23 @@
       "label": "RISK",
       "description": "Mula / cruce de material",
       "risk": "CRITICAL",
-      "score": 74,
+      "score": 60,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.256,
+      "latencyMs": 0.358,
       "termsMatched": [
         "REC-009",
         "REC-031",
         "LF-016",
         "OE-001",
-        "REC-014"
+        "REC-014",
+        "LF-006"
       ],
       "triggeredRules": [
         "MCR-001",
         "MCR-002",
         "MCR-007",
-        "CR-001",
-        "CR-002",
-        "CR-003",
         "CR-008"
       ]
     },
@@ -277,11 +190,11 @@
       "label": "RISK",
       "description": "Mover paquete con presión de única vez",
       "risk": "CRITICAL",
-      "score": 66,
+      "score": 58,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.113,
+      "latencyMs": 0.237,
       "termsMatched": [
         "REC-004",
         "REC-012",
@@ -294,7 +207,6 @@
       "triggeredRules": [
         "MCR-001",
         "MCR-002",
-        "CR-003",
         "CR-008"
       ]
     },
@@ -303,18 +215,18 @@
       "group": "tp_ofuscado",
       "label": "RISK",
       "description": "Ofuscación l33t del pitch original",
-      "risk": "CRITICAL",
-      "score": 31,
+      "risk": "HIGH",
+      "score": 22,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.078,
+      "latencyMs": 0.38,
       "termsMatched": [
-        "LF-010"
+        "LF-010",
+        "OE-001"
       ],
       "triggeredRules": [
-        "CR-003",
-        "CR-008"
+        "CR-003"
       ]
     },
     {
@@ -322,15 +234,16 @@
       "group": "tp_ofuscado",
       "label": "RISK",
       "description": "Sustitución de números y símbolos en jerga operativa",
-      "risk": "MEDIUM",
-      "score": 15,
+      "risk": "HIGH",
+      "score": 21,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.131,
+      "latencyMs": 0.337,
       "termsMatched": [
         "OE-004",
-        "OE-014"
+        "OE-014",
+        "LF-002"
       ],
       "triggeredRules": []
     },
@@ -339,14 +252,14 @@
       "group": "tp_ofuscado",
       "label": "RISK",
       "description": "Espaciado entre letras y emojis de señal",
-      "risk": "HIGH",
-      "score": 21,
+      "risk": "MEDIUM",
+      "score": 18,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.111,
+      "latencyMs": 0.341,
       "termsMatched": [
-        "REC-027",
+        "OE-001",
         "SD-004"
       ],
       "triggeredRules": [
@@ -359,11 +272,11 @@
       "label": "RISK",
       "description": "Faltas ortográficas deliberadas",
       "risk": "CRITICAL",
-      "score": 31,
+      "score": 30,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.068,
+      "latencyMs": 0.214,
       "termsMatched": [
         "REC-002",
         "REC-012",
@@ -380,23 +293,23 @@
       "label": "RISK",
       "description": "Secuencia completa: contacto → confianza → aislamiento → logística",
       "risk": "CRITICAL",
-      "score": 61,
+      "score": 59,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.291,
+      "latencyMs": 0.571,
       "termsMatched": [
         "SD-001",
         "REC-010",
         "MS-012",
-        "AI-006"
+        "AI-006",
+        "AI-002",
+        "SD-009",
+        "SI-003"
       ],
       "triggeredRules": [
         "MCR-007",
-        "MCR-008",
-        "CR-001",
-        "CR-002",
-        "CR-004"
+        "MCR-008"
       ]
     },
     {
@@ -409,13 +322,15 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.153,
+      "latencyMs": 0.342,
       "termsMatched": [
+        "CC-006",
         "AI-001",
+        "AI-004",
         "AI-005"
       ],
       "triggeredRules": [
-        "CR-004"
+        "MCR-004"
       ]
     },
     {
@@ -423,14 +338,22 @@
       "group": "tp_grooming_progresivo",
       "label": "RISK",
       "description": "Solicitud de información personal progresiva",
-      "risk": "LOW",
-      "score": 1,
-      "escalate": false,
-      "flagged": false,
-      "correct": false,
-      "latencyMs": 0.22,
-      "termsMatched": [],
-      "triggeredRules": []
+      "risk": "CRITICAL",
+      "score": 29,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.461,
+      "termsMatched": [
+        "SI-001",
+        "SI-006",
+        "SD-009",
+        "SI-003",
+        "SI-005"
+      ],
+      "triggeredRules": [
+        "CR-013"
+      ]
     },
     {
       "id": "TP-014",
@@ -438,14 +361,16 @@
       "label": "RISK",
       "description": "Manipulación social y presión de grupo",
       "risk": "CRITICAL",
-      "score": 30,
+      "score": 45,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.14,
+      "latencyMs": 0.447,
       "termsMatched": [
         "MS-002",
-        "PG-005"
+        "PG-005",
+        "MS-001",
+        "MS-008"
       ],
       "triggeredRules": [
         "CR-005"
@@ -457,11 +382,11 @@
       "label": "RISK",
       "description": "Enganche con skins que escala a encuentro físico",
       "risk": "CRITICAL",
-      "score": 28,
+      "score": 31,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.159,
+      "latencyMs": 0.33,
       "termsMatched": [
         "REC-032",
         "OE-005",
@@ -481,20 +406,22 @@
       "label": "RISK",
       "description": "Clan falso que pide datos y ofrece dinero",
       "risk": "CRITICAL",
-      "score": 34,
+      "score": 29,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.195,
+      "latencyMs": 0.415,
       "termsMatched": [
         "VJ-003",
         "VJ-004",
         "OE-007",
-        "OE-008"
+        "OE-008",
+        "SI-007"
       ],
       "triggeredRules": [
         "MCR-005",
-        "CR-003"
+        "MCR-007",
+        "MCR-010"
       ]
     },
     {
@@ -503,20 +430,20 @@
       "label": "RISK",
       "description": "Oferta de fama + cambio de canal",
       "risk": "CRITICAL",
-      "score": 50,
+      "score": 34,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.153,
+      "latencyMs": 0.342,
       "termsMatched": [
         "OE-006",
-        "RS-001"
+        "RS-001",
+        "CC-002",
+        "CC-005",
+        "OE-001"
       ],
       "triggeredRules": [
-        "CR-001",
-        "CR-002",
-        "CR-003",
-        "CR-004"
+        "MCR-007"
       ]
     },
     {
@@ -525,22 +452,24 @@
       "label": "RISK",
       "description": "Vacante falsa con retención de documentos",
       "risk": "CRITICAL",
-      "score": 46,
+      "score": 62,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.223,
+      "latencyMs": 0.406,
       "termsMatched": [
+        "FD-001",
         "FD-002",
         "FD-005",
+        "FD-004",
+        "SI-005",
         "LF-003",
         "LF-007",
         "LF-008"
       ],
       "triggeredRules": [
         "MCR-003",
-        "CR-001",
-        "CR-002"
+        "MCR-007"
       ]
     },
     {
@@ -549,11 +478,11 @@
       "label": "RISK",
       "description": "Capacitación pagada + traslado a rancho",
       "risk": "CRITICAL",
-      "score": 28,
+      "score": 25,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.228,
+      "latencyMs": 1.264,
       "termsMatched": [
         "FD-003",
         "LF-009",
@@ -570,19 +499,22 @@
       "label": "RISK",
       "description": "Grupo de WhatsApp de 'trabajo' con urgencia",
       "risk": "CRITICAL",
-      "score": 22,
+      "score": 30,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.185,
+      "latencyMs": 0.461,
       "termsMatched": [
         "REC-031",
         "CC-005",
         "OE-004",
-        "FD-007"
+        "FD-007",
+        "LF-004"
       ],
       "triggeredRules": [
+        "MCR-001",
         "MCR-002",
+        "MCR-003",
         "MCR-007"
       ]
     },
@@ -591,18 +523,20 @@
       "group": "tp_reclutamiento_directo",
       "label": "RISK",
       "description": "Narcolenguaje normalizado + invitación",
-      "risk": "MEDIUM",
-      "score": 17,
+      "risk": "CRITICAL",
+      "score": 22,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.126,
+      "latencyMs": 0.384,
       "termsMatched": [
-        "REC-006",
-        "OE-009"
+        "CN-001",
+        "OE-009",
+        "REC-003"
       ],
       "triggeredRules": [
-        "MCR-002"
+        "MCR-002",
+        "MCR-007"
       ]
     },
     {
@@ -611,26 +545,23 @@
       "label": "RISK",
       "description": "Préstamo como enganche de deuda",
       "risk": "CRITICAL",
-      "score": 67,
+      "score": 39,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.169,
+      "latencyMs": 0.426,
       "termsMatched": [
         "OE-011",
         "REC-009",
         "REC-034",
         "MS-012",
-        "AI-006"
+        "AI-006",
+        "MS-011"
       ],
       "triggeredRules": [
         "MCR-002",
         "MCR-007",
-        "MCR-008",
-        "CR-001",
-        "CR-002",
-        "CR-003",
-        "CR-004"
+        "MCR-008"
       ]
     },
     {
@@ -639,23 +570,23 @@
       "label": "RISK",
       "description": "Emoji como sustituto de sustantivo clave",
       "risk": "CRITICAL",
-      "score": 51,
+      "score": 50,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.128,
+      "latencyMs": 0.509,
       "termsMatched": [
         "LF-010",
         "REC-013",
         "OE-001",
         "OE-003",
-        "OE-007"
+        "OE-007",
+        "LF-002"
       ],
       "triggeredRules": [
         "MCR-001",
         "MCR-002",
         "MCR-007",
-        "CR-003",
         "CR-008"
       ]
     },
@@ -665,15 +596,17 @@
       "label": "RISK",
       "description": "Un solo mensaje de altísima densidad (single-message threshold)",
       "risk": "CRITICAL",
-      "score": 34,
+      "score": 45,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.084,
+      "latencyMs": 0.147,
       "termsMatched": [
         "REC-001",
         "REC-006",
         "REC-007",
+        "OE-001",
+        "LF-002",
         "LF-003"
       ],
       "triggeredRules": []
@@ -684,11 +617,11 @@
       "label": "BENIGN",
       "description": "Tarea escolar",
       "risk": "LOW",
-      "score": 2,
+      "score": 0,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.163,
+      "latencyMs": 0.363,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -702,7 +635,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.17,
+      "latencyMs": 0.354,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -716,7 +649,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.137,
+      "latencyMs": 0.37,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -726,14 +659,12 @@
       "label": "BENIGN",
       "description": "Conversación sobre fútbol",
       "risk": "LOW",
-      "score": 11,
+      "score": 2,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.159,
-      "termsMatched": [
-        "CN-006"
-      ],
+      "latencyMs": 0.348,
+      "termsMatched": [],
       "triggeredRules": []
     },
     {
@@ -746,7 +677,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.153,
+      "latencyMs": 0.366,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -756,11 +687,11 @@
       "label": "BENIGN",
       "description": "Mascota nueva",
       "risk": "LOW",
-      "score": 4,
+      "score": 0,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.095,
+      "latencyMs": 0.227,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -770,11 +701,11 @@
       "label": "BENIGN",
       "description": "Clase de música",
       "risk": "LOW",
-      "score": 2,
+      "score": 0,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.15,
+      "latencyMs": 0.365,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -784,11 +715,11 @@
       "label": "BENIGN",
       "description": "Serie de moda",
       "risk": "LOW",
-      "score": 2,
+      "score": 0,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.141,
+      "latencyMs": 0.321,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -797,18 +728,14 @@
       "group": "benign_cotidiano",
       "label": "BENIGN",
       "description": "Examen y estudio",
-      "risk": "HIGH",
-      "score": 23,
-      "escalate": true,
-      "flagged": true,
-      "correct": false,
-      "latencyMs": 0.189,
-      "termsMatched": [
-        "CN-007"
-      ],
-      "triggeredRules": [
-        "CR-008"
-      ]
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.36,
+      "termsMatched": [],
+      "triggeredRules": []
     },
     {
       "id": "BN-010",
@@ -816,14 +743,12 @@
       "label": "BENIGN",
       "description": "Comida y antojos",
       "risk": "LOW",
-      "score": 7,
+      "score": 0,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.163,
-      "termsMatched": [
-        "CN-002"
-      ],
+      "latencyMs": 0.363,
+      "termsMatched": [],
       "triggeredRules": []
     },
     {
@@ -831,17 +756,14 @@
       "group": "benign_cotidiano",
       "label": "BENIGN",
       "description": "Roblox normal entre amigos de la escuela",
-      "risk": "CRITICAL",
-      "score": 19,
-      "escalate": true,
-      "flagged": true,
-      "correct": false,
-      "latencyMs": 0.147,
+      "risk": "LOW",
+      "score": 2,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.371,
       "termsMatched": [],
-      "triggeredRules": [
-        "CR-001",
-        "CR-002"
-      ]
+      "triggeredRules": []
     },
     {
       "id": "BN-012",
@@ -849,11 +771,11 @@
       "label": "BENIGN",
       "description": "Clima y ropa",
       "risk": "LOW",
-      "score": 1,
+      "score": 0,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.081,
+      "latencyMs": 0.22,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -863,11 +785,11 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'chamba' en contexto laboral legítimo de adulto",
       "risk": "LOW",
-      "score": 5,
+      "score": 2,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.179,
+      "latencyMs": 0.387,
       "termsMatched": [
         "REC-002",
         "SD-004"
@@ -879,20 +801,22 @@
       "group": "benign_trampa",
       "label": "BENIGN",
       "description": "TRAMPA: oferta de trabajo real de medio tiempo (chamba + pagan bien + nómina)",
-      "risk": "HIGH",
-      "score": 21,
-      "escalate": true,
-      "flagged": true,
-      "correct": false,
-      "latencyMs": 0.189,
+      "risk": "LOW",
+      "score": 9,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.376,
       "termsMatched": [
         "REC-002",
         "REC-005",
         "OE-001",
+        "FD-001",
         "REC-031"
       ],
       "triggeredRules": [
-        "MCR-002"
+        "MCR-002",
+        "MCR-007"
       ]
     },
     {
@@ -900,18 +824,16 @@
       "group": "benign_trampa",
       "label": "BENIGN",
       "description": "TRAMPA: 'paquete' de Amazon",
-      "risk": "HIGH",
-      "score": 20,
-      "escalate": true,
-      "flagged": true,
-      "correct": false,
-      "latencyMs": 0.14,
+      "risk": "LOW",
+      "score": 2,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.337,
       "termsMatched": [
         "LF-010"
       ],
-      "triggeredRules": [
-        "CR-008"
-      ]
+      "triggeredRules": []
     },
     {
       "id": "BT-004",
@@ -919,11 +841,11 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'central de autobuses' en viaje familiar",
       "risk": "LOW",
-      "score": 9,
+      "score": 7,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.144,
+      "latencyMs": 0.36,
       "termsMatched": [
         "LF-001"
       ],
@@ -935,11 +857,11 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'el jefe' como jefe de trabajo real de papá",
       "risk": "LOW",
-      "score": 2,
+      "score": 0,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.096,
+      "latencyMs": 0.211,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -949,11 +871,11 @@
       "label": "BENIGN",
       "description": "TRAMPA: skins y robux entre amigos reales de la escuela",
       "risk": "LOW",
-      "score": 1,
+      "score": 0,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.165,
+      "latencyMs": 0.356,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -963,11 +885,11 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'mandado' doméstico clásico",
       "risk": "LOW",
-      "score": 6,
+      "score": 2,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.094,
+      "latencyMs": 0.192,
       "termsMatched": [
         "REC-004"
       ],
@@ -978,18 +900,16 @@
       "group": "benign_trampa",
       "label": "BENIGN",
       "description": "TRAMPA: 'te presto dinero' entre amigos para el recreo",
-      "risk": "HIGH",
-      "score": 24,
-      "escalate": true,
-      "flagged": true,
-      "correct": false,
-      "latencyMs": 0.14,
+      "risk": "LOW",
+      "score": 6,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.335,
       "termsMatched": [
         "OE-011"
       ],
-      "triggeredRules": [
-        "CR-006"
-      ]
+      "triggeredRules": []
     },
     {
       "id": "BT-009",
@@ -997,13 +917,14 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'cuántos años tienes' en contexto de conocerse en clase nueva",
       "risk": "LOW",
-      "score": 5,
+      "score": 2,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.138,
+      "latencyMs": 0.322,
       "termsMatched": [
-        "SD-006"
+        "SD-006",
+        "SI-001"
       ],
       "triggeredRules": []
     },
@@ -1013,11 +934,11 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'hotel' y 'uber' en viaje familiar",
       "risk": "LOW",
-      "score": 9,
+      "score": 7,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.136,
+      "latencyMs": 0.366,
       "termsMatched": [
         "LF-008"
       ],
@@ -1029,11 +950,11 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'la zona' y 'el área' en geografía escolar",
       "risk": "LOW",
-      "score": 9,
+      "score": 3,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.113,
+      "latencyMs": 0.233,
       "termsMatched": [
         "REC-005"
       ],
@@ -1045,14 +966,15 @@
       "label": "BENIGN",
       "description": "TRAMPA: mamá con trabajo nuevo (nómina + prestaciones + capacitación reales)",
       "risk": "LOW",
-      "score": 11,
+      "score": 6,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.189,
+      "latencyMs": 0.381,
       "termsMatched": [
         "REC-031",
-        "FD-002"
+        "FD-002",
+        "FD-003"
       ],
       "triggeredRules": []
     },
@@ -1062,12 +984,14 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'sígueme' y redes en contexto de amigos reales",
       "risk": "LOW",
-      "score": 2,
+      "score": 5,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.091,
-      "termsMatched": [],
+      "latencyMs": 0.215,
+      "termsMatched": [
+        "RS-008"
+      ],
       "triggeredRules": []
     },
     {
@@ -1075,18 +999,17 @@
       "group": "benign_trampa",
       "label": "BENIGN",
       "description": "TRAMPA: 'confía en mí' entre amigas sobre un secreto escolar inocente",
-      "risk": "HIGH",
-      "score": 23,
-      "escalate": true,
-      "flagged": true,
-      "correct": false,
-      "latencyMs": 0.145,
+      "risk": "LOW",
+      "score": 8,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.364,
       "termsMatched": [
-        "MS-012"
+        "MS-012",
+        "MS-011"
       ],
-      "triggeredRules": [
-        "CR-004"
-      ]
+      "triggeredRules": []
     },
     {
       "id": "BT-015",
@@ -1094,12 +1017,14 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'está caliente' sobre el clima",
       "risk": "LOW",
-      "score": 2,
+      "score": 8,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.103,
-      "termsMatched": [],
+      "latencyMs": 0.236,
+      "termsMatched": [
+        "REC-025"
+      ],
       "triggeredRules": []
     },
     {
@@ -1107,16 +1032,17 @@
       "group": "benign_trampa",
       "label": "BENIGN",
       "description": "TRAMPA: densidad alta de términos legítimos en mensaje corto (peor caso realista)",
-      "risk": "MEDIUM",
-      "score": 19,
-      "escalate": true,
-      "flagged": true,
-      "correct": false,
-      "latencyMs": 0.059,
+      "risk": "LOW",
+      "score": 10,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.127,
       "termsMatched": [
         "REC-002",
         "REC-005",
         "OE-001",
+        "FD-001",
         "SD-001",
         "SD-004"
       ],

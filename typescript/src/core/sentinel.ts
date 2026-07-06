@@ -12,11 +12,13 @@ import { SentinelError } from "../errors/SentinelError.js";
 export class Sentinel {
   private readonly apiKey: string;
   private readonly baseUrl: string;
+  private readonly serverSideSessions: boolean;
   private engine: Engine;
+  private sessionStore = new Map<string, ApiMessage[]>();
 
   constructor(config: SentinelConfig) {
     this.apiKey = config.apiKey;
-    // this.baseUrl = "https://sentinel-api-production-95e9.up.railway.app/api/v1";
+    this.serverSideSessions = config.serverSideSessions ?? false;
     this.baseUrl = "https://sentinel-api-production-95e9.up.railway.app/api/v1";
     this.engine = new Engine();
   }
@@ -29,9 +31,16 @@ export class Sentinel {
    * const sentinel = new Sentinel({ apiKey: "..." });
    * await sentinel.initialize(); // call once when your app starts
    */
+  /** Headers de autenticación que la API exige en todos los endpoints. */
+  private authHeaders(): Record<string, string> {
+    return { "X-API-Key": this.apiKey };
+  }
+
   async initialize(): Promise<void> {
     try {
-      const response = await fetch(`${this.baseUrl}/hot-terms`);
+      const response = await fetch(`${this.baseUrl}/hot-terms`, {
+        headers: this.authHeaders(),
+      });
       if (!response.ok) return;
       const json = await response.json();
       const terms = json?.data ?? [];
@@ -71,7 +80,30 @@ export class Sentinel {
         );
       }
 
-      const messages = await this.syncSession(text, sessionId, userId);
+      // 1. STORE MESSAGE LOCALLY
+      let messages = this.sessionStore.get(sessionId);
+      if (!messages) {
+        messages = [];
+        this.sessionStore.set(sessionId, messages);
+      }
+
+      const newMessage: ApiMessage = {
+        id: globalThis.crypto?.randomUUID?.() || Date.now().toString(),
+        session_id: sessionId,
+        user_id: userId,
+        content: text,
+        timestamp: new Date().getTime(),
+      };
+      
+      messages.push(newMessage);
+      
+      if (this.serverSideSessions) {
+        try {
+          await this.syncSession(text, sessionId, userId);
+        } catch (e) {
+          console.warn("Failed to sync message to server:", e);
+        }
+      }
 
       // 2. ANALYZE SESSION LOCALLY
       const engineMessages = messages.map((m) => ({
@@ -162,6 +194,34 @@ export class Sentinel {
     }
   }
 
+  /**
+   * Reporta el feedback de una decisión del motor para ayudar a mejorar la precisión.
+   * @param sessionId El ID de la sesión que se está reportando.
+   * @param originalVerdict El resultado original devuelto por el método analyze().
+   * @param type El tipo de feedback: 'false_positive' (se marcó como riesgo pero era seguro), 'false_negative' (se marcó como seguro pero era riesgo) o 'confirmed' (correctamente identificado).
+   * @param comment Un comentario opcional con contexto adicional.
+   */
+  async reportFeedback(
+    sessionId: string,
+    originalVerdict: SentinelAnalysisResponse | ApiAnalysisResponse,
+    type: 'false_positive' | 'false_negative' | 'confirmed',
+    comment?: string
+  ): Promise<boolean> {
+    try {
+      await request.post(`${this.baseUrl}/feedback`, {
+        session_id: sessionId,
+        verdict_original: originalVerdict,
+        feedback: type,
+        comment: comment || null,
+        reported_by: "sdk_client"
+      }, this.authHeaders());
+      return true;
+    } catch (e) {
+      console.warn("Failed to submit feedback:", e);
+      return false;
+    }
+  }
+
   private async escalate(
     analysis: EngineResult,
     messages: ApiMessage[],
@@ -169,7 +229,7 @@ export class Sentinel {
     return await request.post(`${this.baseUrl}/analyze`, {
       ...analysis,
       messages,
-    });
+    }, this.authHeaders());
   }
 
   private async syncSession(
@@ -184,6 +244,6 @@ export class Sentinel {
         content: text,
         timestamp: new Date().getTime(),
       },
-    });
+    }, this.authHeaders());
   }
 }

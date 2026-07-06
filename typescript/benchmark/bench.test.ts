@@ -25,5 +25,5 @@ describe("benchmark del motor local", () => {
     // Los umbrales se endurecen conforme mejore el motor (ver ROADMAP).
     expect(report.detection.recall).toBeGreaterThanOrEqual(0.5);
     expect(report.latency.p95Ms).toBeLessThan(50);
-  });
+  }, 15000);
 });

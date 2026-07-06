@@ -80,13 +80,54 @@
       "context_note": "Normalización de corrupción policial. Señal alta documental."
     }
   ],
+  "intent_signals": [
+    {
+      "id": "INT-001",
+      "name": "pregunta_edad",
+      "patterns": [
+        "\\bcuantos\\s+anos\\b",
+        "\\bque\\s+edad\\b"
+      ]
+    },
+    {
+      "id": "INT-002",
+      "name": "pregunta_ubicacion",
+      "patterns": [
+        "\\bdonde\\s+(vives|estudias)\\b",
+        "\\ben\\s+que\\s+(escuela|prepa|secundaria)\\b",
+        "\\bde\\s+donde\\s+eres\\b"
+      ]
+    },
+    {
+      "id": "INT-003",
+      "name": "pregunta_soledad",
+      "patterns": [
+        "\\bestas\\s+sol[oa]\\b",
+        "\\bcon\\s+quien\\s+estas\\b",
+        "\\ba\\s+que\\s+horas?\\s+(estas\\s+sol[oa]|llegan?|sales)\\b",
+        "\\bnadie\\s+en\\s+(tu\\s+)?casa\\b"
+      ]
+    },
+    {
+      "id": "INT-004",
+      "name": "solicitud_foto",
+      "patterns": [
+        "\\b(manda|mandame|pasa|pasame)\\s+(una\\s+)?(foto|fotito|pic)\\b",
+        "\\bpara\\s+conocerte\\b"
+      ]
+    },
+    {
+      "id": "INT-005",
+      "name": "solicitud_contacto",
+      "patterns": [
+        "\\b(pasa|pasame|da|dame)\\s+(tu\\s+)?(numero|whats(app)?|wa|cel(ular)?)\\b",
+        "\\btienes\\s+(whats(app)?|wa|telegram)\\b",
+        "\\bcual\\s+es\\s+tu\\s+(numero|whats(app)?|wa|cel(ular)?)\\b"
+      ]
+    }
+  ],
   "lexicons": {
     "generic_objects": [
-      "algo",
-      "cosa",
-      "eso",
-      "esto",
-      "aquello",
       "asunto",
       "rollo",
       "pedo",
@@ -100,8 +141,7 @@
       "onda",
       "movida",
       "vuelta",
-      "bronca",
-      "chisme"
+      "bronca"
     ],
     "opportunity_words": [
       "actividad",
@@ -115,7 +155,6 @@
       "chance",
       "oferta",
       "propuesta",
-      "tarea",
       "venta",
       "disponible",
       "catalogo",
@@ -191,6 +230,10 @@
     ],
     "concrete_places": [
       "escuela",
+      "salon",
+      "salon de clase",
+      "salón",
+      "salón de clase",
       "universidad",
       "prepa",
       "secundaria",
@@ -668,6 +711,14 @@
       "bonus_score": 15,
       "action": "ESCALATE",
       "description": "Glorificación o amenaza explícita del crimen organizado."
+    },
+    {
+      "id": "CR-013",
+      "name": "Grooming Progresivo (Intenciones)",
+      "features_required": [],
+      "bonus_score": 15,
+      "action": "ESCALATE",
+      "description": "Acumulación de al menos 3 señales de intención distintas (edad, ubicación, soledad, foto, contacto)."
     }
   ]
 }
