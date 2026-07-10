@@ -10,7 +10,14 @@ import { VelocityDetector } from "./velocity-detector.js";
 import { DampenerLayer } from "./dampener-layer.js";
 import { TemporalLayer } from "./temporal-layer.js";
 import { ActorLayer } from "./actor-layer.js";
+import { ageCategoryMultiplier, type AgeBand } from "./age-policy.js";
 import type { Message, EngineResult, RiskLevel } from "../types/SentinelEngine.js";
+
+/** Contexto opcional que la plataforma puede pasar para afinar el análisis. */
+export interface AnalyzeOptions {
+  /** Banda de edad del usuario protegido; ajusta pesos por categoría (7.4). */
+  ageBand?: AgeBand;
+}
 
 export class Engine {
   private normalizer: NormalizerLayer;
@@ -42,7 +49,24 @@ export class Engine {
   }
 
   /** Analiza un array de mensajes a través de todas las capas del pipeline. */
-  analyze(messages: Message[]): EngineResult {
+  analyze(messages: Message[], options: AnalyzeOptions = {}): EngineResult {
+    const ageBand = options.ageBand;
+
+    // Cotas defensivas: el motor corre on-device y no debe ser vulnerable a una
+    // entrada enorme (un mensaje kilométrico o miles de mensajes). Se acota el
+    // número de mensajes (se conservan los primeros —contexto/etapas iniciales—
+    // y los últimos) y el largo de cada texto.
+    const MAX_MESSAGES = 2000;
+    const MAX_TEXT_LEN = 4000;
+    let capped = messages;
+    if (messages.length > MAX_MESSAGES) {
+      const head = Math.floor(MAX_MESSAGES / 4);
+      capped = [...messages.slice(0, head), ...messages.slice(messages.length - (MAX_MESSAGES - head))];
+    }
+    capped = capped.map((m) =>
+      m.text.length > MAX_TEXT_LEN ? { ...m, text: m.text.slice(0, MAX_TEXT_LEN) } : m,
+    );
+    messages = capped;
     // ── Fase 1: Normalizar ──────────────────────────────────────────────────
     const n0 = this.normalizer.process(messages);
 
@@ -68,43 +92,47 @@ export class Engine {
       v4.triggeredRules.length > 0 ||
       n0.triggeredRules.length > 0;
 
-    // ── Fase 5: Amortiguadores de contexto (Dampeners) ──────────────────────
+    // ── Fase 5: Amortiguadores de contexto (Dampeners) + banda de edad ──────
+    // Se itera término por término aplicando (a) el multiplicador por edad y
+    // (b) el factor de dampener cuando corresponde. Sin dampeners ni edad, el
+    // resultado es idéntico al score V3 original.
     const dampeners = this.dampener.scan(n0.messages);
     const canDampen = v4.explicitSignals.length === 0;
     const dampenersApplied: string[] = [];
     let dampenedV3Score = 0;
 
-    if (canDampen && dampeners.length > 0) {
-      const termCategories = new Map<string, string>();
-      const termWeights = new Map<string, number>();
-      for (const hit of v3.hits) {
-        if (hit.category) {
-          termCategories.set(hit.id, hit.category);
-          termWeights.set(hit.id, hit.score);
-        }
+    const termCategories = new Map<string, string>();
+    const termWeights = new Map<string, number>();
+    for (const hit of v3.hits) {
+      if (hit.category) {
+        termCategories.set(hit.id, hit.category);
+        termWeights.set(hit.id, hit.score);
       }
+    }
 
-      for (const termId of v3.terms) {
-        const category = termCategories.get(termId);
-        const originalWeight = termWeights.get(termId) ?? 0;
-        let weight = originalWeight;
+    for (const termId of v3.terms) {
+      const category = termCategories.get(termId);
+      const originalWeight = termWeights.get(termId) ?? 0;
+      let weight = originalWeight;
 
-        if (category && category !== "aislamiento") {
-          const matchingDampeners = dampeners.filter((d) =>
-            d.dampen_categories.includes(category)
-          );
-          if (matchingDampeners.length > 0) {
-            const minFactor = Math.min(...matchingDampeners.map((d) => d.factor));
-            weight = Math.round(originalWeight * minFactor);
-            for (const d of matchingDampeners) {
-              dampenersApplied.push(`${d.id} (${d.term})`);
-            }
+      // (a) Ajuste por banda de edad (1 si no hay banda o categoría no listada).
+      const ageFactor = ageCategoryMultiplier(ageBand, category);
+      if (ageFactor !== 1) weight = weight * ageFactor;
+
+      // (b) Dampeners de contexto benigno (nunca sobre aislamiento).
+      if (canDampen && dampeners.length > 0 && category && category !== "aislamiento") {
+        const matchingDampeners = dampeners.filter((d) =>
+          d.dampen_categories.includes(category)
+        );
+        if (matchingDampeners.length > 0) {
+          const minFactor = Math.min(...matchingDampeners.map((d) => d.factor));
+          weight = weight * minFactor;
+          for (const d of matchingDampeners) {
+            dampenersApplied.push(`${d.id} (${d.term})`);
           }
         }
-        dampenedV3Score += weight;
       }
-    } else {
-      dampenedV3Score = v3.score;
+      dampenedV3Score += Math.round(weight);
     }
     const uniqueDampenersApplied = [...new Set(dampenersApplied)];
 
@@ -259,6 +287,7 @@ export class Engine {
       velocityWindow: windowSeconds,
       messagesAnalyzed: messages.length,
       uniqueCategories,
+      ageBand,
     };
   }
 

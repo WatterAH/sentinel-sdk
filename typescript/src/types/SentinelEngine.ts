@@ -97,6 +97,8 @@ export interface EngineResult {
   // Metadata
   messagesAnalyzed: number;
   uniqueCategories: string[];
+  /** Banda de edad usada para ajustar el análisis (7.4), si la plataforma la pasó. */
+  ageBand?: "under13" | "13-15" | "16-17" | "adult";
 }
 
 // ─── Tipos internos compartidos entre capas ──────────────────────────────────

@@ -99,6 +99,12 @@ export class V4Layer {
     const hits: Hit[] = [];
     let score = 0;
 
+    // Timestamp de referencia para hits AGREGADOS (features/CR-013), que no
+    // pertenecen a un mensaje único: se usa el del último mensaje, no Date.now()
+    // (que contaminaría las capas temporal y de velocidad con la hora actual).
+    const timestamps = messages.map((m) => m.timestamp).filter((t): t is number => t != null);
+    const aggregateTs = timestamps.length ? Math.max(...timestamps) : Date.now();
+
     for (const msg of messages) {
       // Normalizar texto del mensaje quitando acentos
       const normalized = removeAccents(msg.text.toLowerCase());
@@ -135,7 +141,7 @@ export class V4Layer {
       const def = this.features.find((f) => f.name === featureName);
       if (def) {
         score += def.weight;
-        hits.push({ id: def.id, score: def.weight, timestamp: Date.now() });
+        hits.push({ id: def.id, score: def.weight, timestamp: aggregateTs });
       }
     }
 
@@ -158,7 +164,7 @@ export class V4Layer {
         id: "CR-013",
         score: 15,
         category: "manipulacion_social",
-        timestamp: Date.now()
+        timestamp: aggregateTs
       });
     }
 

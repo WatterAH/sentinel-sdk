@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-10T00:39:13.573Z",
+  "timestamp": "2026-07-10T04:34:13.704Z",
   "baselineDetectionRate": 0.825,
   "byTransform": [
     {
@@ -26,12 +26,11 @@
     {
       "transform": "leet_aggressive",
       "riskCases": 47,
-      "stillDetected": 44,
-      "survivalRate": 0.936,
+      "stillDetected": 45,
+      "survivalRate": 0.957,
       "broken": [
-        "TP-021",
-        "RP-007",
-        "RP-008"
+        "TP-009",
+        "RP-007"
       ]
     },
     {

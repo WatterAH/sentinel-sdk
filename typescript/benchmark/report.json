@@ -1,34 +1,34 @@
 {
-  "timestamp": "2026-07-10T00:39:01.758Z",
+  "timestamp": "2026-07-10T04:34:06.181Z",
   "totalCases": 135,
   "detection": {
     "truePositives": 47,
-    "falsePositives": 3,
-    "trueNegatives": 75,
+    "falsePositives": 4,
+    "trueNegatives": 74,
     "falseNegatives": 10,
-    "precision": 0.94,
+    "precision": 0.9216,
     "recall": 0.8246,
-    "f1": 0.8785,
-    "falsePositiveRate": 0.0385,
-    "accuracy": 0.9037
+    "f1": 0.8704,
+    "falsePositiveRate": 0.0513,
+    "accuracy": 0.8963
   },
   "escalation": {
-    "benignEscalationRate": 0.2564,
+    "benignEscalationRate": 0.2692,
     "riskCoverage": 0.8246
   },
   "action": {
     "falseBlocks": 0,
     "falseBlockRate": 0,
-    "benignReviewRate": 0.0385,
+    "benignReviewRate": 0.0513,
     "missedRisks": 10,
     "missRate": 0.1754,
     "riskReachRate": 0.8246
   },
   "latency": {
-    "p50Ms": 0.436,
-    "p95Ms": 0.786,
-    "maxMs": 1.488,
-    "meanMs": 0.445
+    "p50Ms": 0.492,
+    "p95Ms": 1.064,
+    "maxMs": 7.307,
+    "meanMs": 0.542
   },
   "byGroup": [
     {
@@ -64,8 +64,8 @@
     {
       "group": "benign_cotidiano",
       "total": 20,
-      "correct": 20,
-      "accuracy": 1
+      "correct": 19,
+      "accuracy": 0.95
     },
     {
       "group": "benign_trampa",
@@ -154,6 +154,17 @@
       ]
     },
     {
+      "id": "BN-017",
+      "group": "benign_cotidiano",
+      "expected": "BENIGN",
+      "got": "MEDIUM",
+      "score": 13,
+      "description": "Compras con mamá",
+      "termsMatched": [
+        "OE-007"
+      ]
+    },
+    {
       "id": "ED-005",
       "group": "tp_extorsion_deuda",
       "expected": "RISK",
@@ -267,7 +278,7 @@
       "group": "benign_reciproco",
       "expected": "BENIGN",
       "got": "MEDIUM",
-      "score": 12,
+      "score": 14,
       "description": "Amigos: AMBOS mencionan 'te presto/buena lana' recíprocamente por el recreo",
       "termsMatched": [
         "OE-001"
@@ -281,11 +292,11 @@
       "label": "RISK",
       "description": "Pitch clásico: jale + oferta económica + logística",
       "risk": "CRITICAL",
-      "score": 47,
+      "score": 56,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.488,
+      "latencyMs": 1.753,
       "termsMatched": [
         "REC-001",
         "SD-006",
@@ -307,11 +318,11 @@
       "label": "RISK",
       "description": "Frase del pitch original de Sentinel",
       "risk": "CRITICAL",
-      "score": 40,
+      "score": 48,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.222,
+      "latencyMs": 0.279,
       "termsMatched": [
         "CN-005",
         "REC-045",
@@ -333,7 +344,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.424,
+      "latencyMs": 0.546,
       "termsMatched": [
         "REC-003",
         "REC-008",
@@ -349,11 +360,11 @@
       "label": "RISK",
       "description": "Halconeo con pago quincenal",
       "risk": "CRITICAL",
-      "score": 49,
+      "score": 59,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.451,
+      "latencyMs": 0.678,
       "termsMatched": [
         "REC-005",
         "REC-017",
@@ -374,11 +385,11 @@
       "label": "RISK",
       "description": "Mula / cruce de material",
       "risk": "CRITICAL",
-      "score": 60,
+      "score": 72,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.37,
+      "latencyMs": 0.455,
       "termsMatched": [
         "REC-009",
         "REC-031",
@@ -400,11 +411,11 @@
       "label": "RISK",
       "description": "Mover paquete con presión de única vez",
       "risk": "CRITICAL",
-      "score": 58,
+      "score": 70,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.252,
+      "latencyMs": 0.275,
       "termsMatched": [
         "REC-004",
         "REC-012",
@@ -430,7 +441,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.242,
+      "latencyMs": 0.26,
       "termsMatched": [
         "CN-005",
         "LF-010",
@@ -455,7 +466,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.298,
+      "latencyMs": 0.358,
       "termsMatched": [
         "REC-001",
         "REC-005",
@@ -481,7 +492,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.321,
+      "latencyMs": 0.359,
       "termsMatched": [
         "CN-005",
         "REC-045",
@@ -501,11 +512,11 @@
       "label": "RISK",
       "description": "Faltas ortográficas deliberadas",
       "risk": "CRITICAL",
-      "score": 30,
+      "score": 36,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.208,
+      "latencyMs": 0.236,
       "termsMatched": [
         "REC-002",
         "REC-012",
@@ -526,7 +537,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.678,
+      "latencyMs": 0.816,
       "termsMatched": [
         "RS-007",
         "SD-001",
@@ -549,11 +560,11 @@
       "label": "RISK",
       "description": "Aislamiento + cambio de canal",
       "risk": "CRITICAL",
-      "score": 42,
+      "score": 50,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.373,
+      "latencyMs": 0.482,
       "termsMatched": [
         "CC-001",
         "CC-006",
@@ -571,11 +582,11 @@
       "label": "RISK",
       "description": "Solicitud de información personal progresiva",
       "risk": "CRITICAL",
-      "score": 29,
+      "score": 35,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.467,
+      "latencyMs": 0.51,
       "termsMatched": [
         "SI-001",
         "SI-006",
@@ -593,11 +604,11 @@
       "label": "RISK",
       "description": "Manipulación social y presión de grupo",
       "risk": "CRITICAL",
-      "score": 45,
+      "score": 54,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.311,
+      "latencyMs": 0.386,
       "termsMatched": [
         "MS-002",
         "PG-005",
@@ -618,7 +629,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.346,
+      "latencyMs": 0.427,
       "termsMatched": [
         "VJ-001",
         "REC-032",
@@ -639,11 +650,11 @@
       "label": "RISK",
       "description": "Clan falso que pide datos y ofrece dinero",
       "risk": "CRITICAL",
-      "score": 29,
+      "score": 35,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.398,
+      "latencyMs": 0.428,
       "termsMatched": [
         "VJ-003",
         "VJ-004",
@@ -663,11 +674,11 @@
       "label": "RISK",
       "description": "Oferta de fama + cambio de canal",
       "risk": "CRITICAL",
-      "score": 34,
+      "score": 41,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.335,
+      "latencyMs": 0.392,
       "termsMatched": [
         "OE-006",
         "RS-001",
@@ -689,7 +700,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.376,
+      "latencyMs": 0.498,
       "termsMatched": [
         "FD-001",
         "FD-002",
@@ -712,11 +723,11 @@
       "label": "RISK",
       "description": "Capacitación pagada + traslado a rancho",
       "risk": "CRITICAL",
-      "score": 34,
+      "score": 41,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.983,
+      "latencyMs": 1.641,
       "termsMatched": [
         "FD-003",
         "LF-009",
@@ -738,7 +749,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.532,
+      "latencyMs": 0.636,
       "termsMatched": [
         "REC-017",
         "FD-009",
@@ -761,11 +772,11 @@
       "label": "RISK",
       "description": "Narcolenguaje normalizado + invitación",
       "risk": "CRITICAL",
-      "score": 22,
+      "score": 26,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.476,
+      "latencyMs": 0.532,
       "termsMatched": [
         "CN-001",
         "OE-009",
@@ -782,11 +793,11 @@
       "label": "RISK",
       "description": "Préstamo como enganche de deuda",
       "risk": "CRITICAL",
-      "score": 46,
+      "score": 55,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.448,
+      "latencyMs": 0.508,
       "termsMatched": [
         "OE-011",
         "REC-009",
@@ -808,11 +819,11 @@
       "label": "RISK",
       "description": "Emoji como sustituto de sustantivo clave",
       "risk": "CRITICAL",
-      "score": 50,
+      "score": 60,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.477,
+      "latencyMs": 0.56,
       "termsMatched": [
         "LF-010",
         "REC-013",
@@ -838,7 +849,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.186,
+      "latencyMs": 0.2,
       "termsMatched": [
         "REC-001",
         "REC-006",
@@ -859,7 +870,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.434,
+      "latencyMs": 0.467,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -873,7 +884,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.339,
+      "latencyMs": 0.374,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -887,7 +898,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.392,
+      "latencyMs": 0.429,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -901,7 +912,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.411,
+      "latencyMs": 0.436,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -915,7 +926,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.419,
+      "latencyMs": 0.466,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -929,7 +940,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.253,
+      "latencyMs": 0.255,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -945,7 +956,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.397,
+      "latencyMs": 0.435,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -959,7 +970,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.402,
+      "latencyMs": 0.481,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -975,7 +986,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.4,
+      "latencyMs": 0.464,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -989,7 +1000,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.397,
+      "latencyMs": 0.429,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -999,11 +1010,11 @@
       "label": "BENIGN",
       "description": "Roblox normal entre amigos de la escuela",
       "risk": "LOW",
-      "score": 5,
+      "score": 4,
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.352,
+      "latencyMs": 0.38,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1019,7 +1030,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.262,
+      "latencyMs": 0.3,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1033,7 +1044,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.419,
+      "latencyMs": 0.484,
       "termsMatched": [
         "REC-002",
         "SD-004"
@@ -1050,7 +1061,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.462,
+      "latencyMs": 0.521,
       "termsMatched": [
         "REC-002",
         "REC-005",
@@ -1073,7 +1084,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.413,
+      "latencyMs": 0.44,
       "termsMatched": [
         "LF-010"
       ],
@@ -1089,7 +1100,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.411,
+      "latencyMs": 0.435,
       "termsMatched": [
         "LF-001"
       ],
@@ -1105,7 +1116,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.291,
+      "latencyMs": 0.297,
       "termsMatched": [
         "REC-006"
       ],
@@ -1121,7 +1132,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.444,
+      "latencyMs": 0.534,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1135,7 +1146,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.242,
+      "latencyMs": 0.266,
       "termsMatched": [
         "REC-004"
       ],
@@ -1151,7 +1162,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.443,
+      "latencyMs": 0.522,
       "termsMatched": [
         "OE-011"
       ],
@@ -1169,7 +1180,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.409,
+      "latencyMs": 0.437,
       "termsMatched": [
         "SI-001"
       ],
@@ -1187,7 +1198,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.402,
+      "latencyMs": 0.442,
       "termsMatched": [
         "LF-008"
       ],
@@ -1205,7 +1216,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.356,
+      "latencyMs": 0.353,
       "termsMatched": [
         "REC-005"
       ],
@@ -1221,7 +1232,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.461,
+      "latencyMs": 0.464,
       "termsMatched": [
         "REC-031",
         "FD-002",
@@ -1235,11 +1246,11 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'sígueme' y redes en contexto de amigos reales",
       "risk": "LOW",
-      "score": 5,
+      "score": 4,
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.24,
+      "latencyMs": 0.253,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1255,7 +1266,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.436,
+      "latencyMs": 0.513,
       "termsMatched": [
         "MS-012",
         "MS-011"
@@ -1274,7 +1285,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.281,
+      "latencyMs": 0.378,
       "termsMatched": [
         "REC-025"
       ],
@@ -1290,7 +1301,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.16,
+      "latencyMs": 0.207,
       "termsMatched": [
         "REC-002",
         "REC-005",
@@ -1311,7 +1322,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.365,
+      "latencyMs": 0.39,
       "termsMatched": [
         "SD-005",
         "SD-006",
@@ -1333,7 +1344,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.459,
+      "latencyMs": 0.609,
       "termsMatched": [
         "SD-001",
         "SD-005",
@@ -1357,7 +1368,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.346,
+      "latencyMs": 0.459,
       "termsMatched": [
         "SD-004",
         "SD-006",
@@ -1379,7 +1390,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.4,
+      "latencyMs": 0.42,
       "termsMatched": [
         "SI-001"
       ],
@@ -1397,7 +1408,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.462,
+      "latencyMs": 0.533,
       "termsMatched": [
         "REC-002",
         "SD-004",
@@ -1420,7 +1431,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.515,
+      "latencyMs": 0.614,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1436,7 +1447,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.545,
+      "latencyMs": 0.653,
       "termsMatched": [
         "REC-005"
       ],
@@ -1452,7 +1463,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.527,
+      "latencyMs": 0.545,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1466,7 +1477,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.534,
+      "latencyMs": 0.584,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1480,7 +1491,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.479,
+      "latencyMs": 0.493,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1496,7 +1507,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.522,
+      "latencyMs": 0.529,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1510,7 +1521,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.306,
+      "latencyMs": 0.295,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1524,7 +1535,7 @@
       "escalate": true,
       "flagged": true,
       "correct": false,
-      "latencyMs": 0.499,
+      "latencyMs": 0.552,
       "termsMatched": [
         "REC-029",
         "REC-027"
@@ -1543,7 +1554,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.649,
+      "latencyMs": 0.775,
       "termsMatched": [
         "REC-005",
         "REC-022"
@@ -1560,7 +1571,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.32,
+      "latencyMs": 0.381,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1574,7 +1585,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.435,
+      "latencyMs": 0.522,
       "termsMatched": [
         "REC-030",
         "SD-001"
@@ -1591,7 +1602,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.455,
+      "latencyMs": 0.56,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1605,7 +1616,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.4,
+      "latencyMs": 0.493,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1621,7 +1632,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.246,
+      "latencyMs": 0.278,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1635,7 +1646,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.45,
+      "latencyMs": 0.499,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1649,7 +1660,7 @@
       "escalate": true,
       "flagged": true,
       "correct": false,
-      "latencyMs": 0.292,
+      "latencyMs": 0.326,
       "termsMatched": [
         "REC-006",
         "REC-026"
@@ -1666,7 +1677,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.451,
+      "latencyMs": 0.52,
       "termsMatched": [
         "SD-006"
       ],
@@ -1684,7 +1695,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.293,
+      "latencyMs": 0.337,
       "termsMatched": [
         "SD-006"
       ],
@@ -1700,7 +1711,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.443,
+      "latencyMs": 0.519,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1716,7 +1727,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.293,
+      "latencyMs": 0.332,
       "termsMatched": [
         "REC-026"
       ],
@@ -1732,7 +1743,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.307,
+      "latencyMs": 0.325,
       "termsMatched": [
         "REC-002",
         "SD-004"
@@ -1751,7 +1762,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.339,
+      "latencyMs": 0.354,
       "termsMatched": [
         "REC-018",
         "SD-004"
@@ -1768,7 +1779,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.282,
+      "latencyMs": 0.326,
       "termsMatched": [
         "REC-016"
       ],
@@ -1784,7 +1795,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.306,
+      "latencyMs": 0.33,
       "termsMatched": [
         "LF-015"
       ],
@@ -1800,7 +1811,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.309,
+      "latencyMs": 0.344,
       "termsMatched": [
         "LF-017"
       ],
@@ -1818,7 +1829,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.793,
+      "latencyMs": 1.054,
       "termsMatched": [
         "FD-003",
         "REC-031"
@@ -1835,7 +1846,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.344,
+      "latencyMs": 0.338,
       "termsMatched": [
         "LF-004",
         "REC-032"
@@ -1854,7 +1865,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.515,
+      "latencyMs": 0.601,
       "termsMatched": [
         "LF-011"
       ],
@@ -1870,7 +1881,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.322,
+      "latencyMs": 0.345,
       "termsMatched": [
         "CC-002"
       ],
@@ -1888,7 +1899,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.426,
+      "latencyMs": 0.483,
       "termsMatched": [
         "OE-002",
         "SD-006"
@@ -1905,7 +1916,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.316,
+      "latencyMs": 0.363,
       "termsMatched": [
         "SI-005"
       ],
@@ -1921,7 +1932,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.321,
+      "latencyMs": 0.356,
       "termsMatched": [
         "VJ-004"
       ],
@@ -1939,7 +1950,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.281,
+      "latencyMs": 0.324,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1953,7 +1964,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.249,
+      "latencyMs": 0.275,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1967,7 +1978,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.446,
+      "latencyMs": 0.511,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1983,7 +1994,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.411,
+      "latencyMs": 0.467,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1992,12 +2003,12 @@
       "group": "benign_cotidiano",
       "label": "BENIGN",
       "description": "Compras con mamá",
-      "risk": "LOW",
-      "score": 11,
-      "escalate": false,
-      "flagged": false,
-      "correct": true,
-      "latencyMs": 0.338,
+      "risk": "MEDIUM",
+      "score": 13,
+      "escalate": true,
+      "flagged": true,
+      "correct": false,
+      "latencyMs": 0.349,
       "termsMatched": [
         "OE-007"
       ],
@@ -2015,7 +2026,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.254,
+      "latencyMs": 0.277,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -2027,11 +2038,11 @@
       "label": "BENIGN",
       "description": "Cumpleaños de la abuela",
       "risk": "LOW",
-      "score": 5,
+      "score": 4,
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.275,
+      "latencyMs": 0.306,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -2047,7 +2058,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.251,
+      "latencyMs": 0.275,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -2061,7 +2072,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.52,
+      "latencyMs": 0.589,
       "termsMatched": [
         "REC-005",
         "SD-001",
@@ -2085,7 +2096,7 @@
       "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.47,
+      "latencyMs": 0.467,
       "termsMatched": [
         "LF-001"
       ],
@@ -2103,7 +2114,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.478,
+      "latencyMs": 0.503,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -2117,7 +2128,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.413,
+      "latencyMs": 0.479,
       "termsMatched": [
         "REC-004"
       ],
@@ -2131,11 +2142,11 @@
       "label": "RISK",
       "description": "Préstamo con cobro en 'favores'",
       "risk": "CRITICAL",
-      "score": 29,
+      "score": 35,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.5,
+      "latencyMs": 0.595,
       "termsMatched": [
         "REC-034",
         "REC-009",
@@ -2156,7 +2167,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.497,
+      "latencyMs": 0.504,
       "termsMatched": [
         "OE-021",
         "REC-004",
@@ -2177,7 +2188,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.448,
+      "latencyMs": 0.496,
       "termsMatched": [
         "OE-021",
         "SD-004",
@@ -2198,7 +2209,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.497,
+      "latencyMs": 0.581,
       "termsMatched": [
         "REC-006",
         "MS-012"
@@ -2217,7 +2228,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.469,
+      "latencyMs": 0.501,
       "termsMatched": [
         "SD-002"
       ],
@@ -2233,7 +2244,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.486,
+      "latencyMs": 0.598,
       "termsMatched": [
         "OE-021",
         "REC-032",
@@ -2249,11 +2260,11 @@
       "label": "RISK",
       "description": "Préstamo con intereses de favor creciente",
       "risk": "CRITICAL",
-      "score": 23,
+      "score": 28,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.466,
+      "latencyMs": 0.539,
       "termsMatched": [
         "LF-002"
       ],
@@ -2267,12 +2278,12 @@
       "group": "tp_extorsion_deuda",
       "label": "RISK",
       "description": "Cobro con presión de grupo",
-      "risk": "HIGH",
-      "score": 24,
+      "risk": "CRITICAL",
+      "score": 29,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.497,
+      "latencyMs": 0.528,
       "termsMatched": [
         "REC-006",
         "REC-031",
@@ -2288,11 +2299,11 @@
       "label": "RISK",
       "description": "De fan de corridos a oferta real",
       "risk": "MEDIUM",
-      "score": 13,
+      "score": 16,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.588,
+      "latencyMs": 0.631,
       "termsMatched": [
         "REC-001",
         "OE-002",
@@ -2314,7 +2325,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.478,
+      "latencyMs": 0.507,
       "termsMatched": [
         "SD-001",
         "REC-006",
@@ -2337,7 +2348,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.485,
+      "latencyMs": 0.57,
       "termsMatched": [
         "REC-022",
         "OE-004"
@@ -2350,11 +2361,11 @@
       "label": "RISK",
       "description": "Idolatría dirigida a reclutamiento",
       "risk": "HIGH",
-      "score": 20,
+      "score": 24,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.447,
+      "latencyMs": 0.511,
       "termsMatched": [
         "REC-031",
         "MS-012",
@@ -2371,11 +2382,11 @@
       "label": "RISK",
       "description": "Concierto como punto de contacto",
       "risk": "CRITICAL",
-      "score": 39,
+      "score": 47,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.481,
+      "latencyMs": 0.572,
       "termsMatched": [
         "SD-004",
         "REC-040",
@@ -2398,7 +2409,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.847,
+      "latencyMs": 1.227,
       "termsMatched": [
         "SI-020",
         "LF-010",
@@ -2418,7 +2429,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.482,
+      "latencyMs": 0.558,
       "termsMatched": [
         "REC-042"
       ],
@@ -2434,7 +2445,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.453,
+      "latencyMs": 0.464,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -2448,7 +2459,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.479,
+      "latencyMs": 0.543,
       "termsMatched": [
         "REC-042"
       ],
@@ -2464,7 +2475,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.464,
+      "latencyMs": 0.526,
       "termsMatched": [
         "MS-011"
       ],
@@ -2480,7 +2491,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.488,
+      "latencyMs": 0.517,
       "termsMatched": [
         "REC-031"
       ],
@@ -2496,7 +2507,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.54,
+      "latencyMs": 0.522,
       "termsMatched": [
         "REC-044",
         "REC-009"
@@ -2513,7 +2524,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.416,
+      "latencyMs": 0.496,
       "termsMatched": [
         "REC-007",
         "REC-043"
@@ -2530,7 +2541,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.505,
+      "latencyMs": 0.489,
       "termsMatched": [
         "REC-031",
         "REC-032",
@@ -2551,7 +2562,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.551,
+      "latencyMs": 0.547,
       "termsMatched": [
         "SD-004",
         "REC-006"
@@ -2568,7 +2579,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.417,
+      "latencyMs": 0.505,
       "termsMatched": [
         "REC-038"
       ],
@@ -2586,7 +2597,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.503,
+      "latencyMs": 0.554,
       "termsMatched": [
         "MS-006",
         "REC-003"
@@ -2605,7 +2616,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.514,
+      "latencyMs": 0.568,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -2615,11 +2626,11 @@
       "label": "RISK",
       "description": "Adulto concentra: oferta+aislamiento+logística; menor solo responde",
       "risk": "CRITICAL",
-      "score": 74,
+      "score": 89,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.955,
+      "latencyMs": 1.208,
       "termsMatched": [
         "SD-003",
         "SD-006",
@@ -2644,11 +2655,11 @@
       "label": "RISK",
       "description": "Reclutador concentra en gaming: skins + secreto + encuentro",
       "risk": "CRITICAL",
-      "score": 31,
+      "score": 37,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 1.078,
+      "latencyMs": 1.27,
       "termsMatched": [
         "VJ-001",
         "SD-001",
@@ -2664,12 +2675,12 @@
       "group": "tp_actor_asimetrico",
       "label": "RISK",
       "description": "Un actor pide datos personales progresivamente; el otro contesta normal",
-      "risk": "HIGH",
-      "score": 23,
+      "risk": "CRITICAL",
+      "score": 28,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.846,
+      "latencyMs": 0.968,
       "termsMatched": [
         "SI-001",
         "SI-006",
@@ -2690,7 +2701,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.655,
+      "latencyMs": 0.736,
       "termsMatched": [
         "SD-007",
         "REC-007",
@@ -2713,7 +2724,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.621,
+      "latencyMs": 0.613,
       "termsMatched": [
         "LF-002",
         "SD-001"
@@ -2730,7 +2741,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.792,
+      "latencyMs": 0.873,
       "termsMatched": [
         "SI-001",
         "SD-001"
@@ -2743,11 +2754,11 @@
       "label": "BENIGN",
       "description": "Amigos: AMBOS mencionan 'te presto/buena lana' recíprocamente por el recreo",
       "risk": "MEDIUM",
-      "score": 12,
+      "score": 14,
       "escalate": true,
       "flagged": true,
       "correct": false,
-      "latencyMs": 0.7,
+      "latencyMs": 0.714,
       "termsMatched": [
         "OE-001"
       ],
@@ -2765,7 +2776,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.613,
+      "latencyMs": 0.634,
       "termsMatched": [
         "REC-004"
       ],

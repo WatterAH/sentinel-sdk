@@ -9,6 +9,13 @@ import { SentinelResult, ok, err } from "../types/SentinelResult.js";
 import { ApiMessage, EngineResult, Message } from "../types/SentinelEngine.js";
 import { SentinelError } from "../errors/SentinelError.js";
 import { buildLocalIntervention } from "./intervention.js";
+import type { AgeBand } from "../analyzer/age-policy.js";
+
+/** Contexto opcional que la plataforma conoce del usuario protegido. */
+export interface AnalyzeContext {
+  /** Banda de edad del usuario; ajusta la sensibilidad del motor (7.4). */
+  ageBand?: AgeBand;
+}
 
 export class Sentinel {
   private readonly apiKey: string;
@@ -125,6 +132,7 @@ export class Sentinel {
     text: string,
     sessionId: string,
     userId: string,
+    context?: AnalyzeContext,
   ): Promise<SentinelResult<ApiAnalysisResponse>> {
     try {
       if (!text || !sessionId || !userId) {
@@ -180,7 +188,7 @@ export class Sentinel {
         timestamp: m.timestamp,
         sender: m.user_id,
       }));
-      const result = this.engine.analyze(engineMessages);
+      const result = this.engine.analyze(engineMessages, { ageBand: context?.ageBand });
 
       // 3. DETERMINE ACTION BASED ON SCORE
       if (result.risk === "LOW") {
@@ -241,7 +249,10 @@ export class Sentinel {
    * @param messages An array of messages representing the conversation history to analyze.
    * @returns A SentinelResult containing the local engine's analysis response. Check `error` before using `data`.
    */
-  localAnalyze(messages: Message[]): SentinelResult<SentinelAnalysisResponse> {
+  localAnalyze(
+    messages: Message[],
+    context?: AnalyzeContext,
+  ): SentinelResult<SentinelAnalysisResponse> {
     try {
       if (!messages) {
         return err(
@@ -255,9 +266,10 @@ export class Sentinel {
       const engineMessages: Message[] = messages.map((message) => ({
         text: message.text,
         timestamp: message.timestamp ?? Date.now(),
+        sender: message.sender,
       }));
 
-      const result = this.engine.analyze(engineMessages);
+      const result = this.engine.analyze(engineMessages, { ageBand: context?.ageBand });
 
       return ok(result);
     } catch (e) {
