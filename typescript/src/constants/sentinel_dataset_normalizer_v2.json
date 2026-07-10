@@ -551,13 +551,13 @@
         {
           "id": "PH-11",
           "find": "([aeiou])\\1+",
-          "replace": "\\1",
+          "replace": "$1",
           "example": "noooo→no — vocales repetidas énfasis"
         },
         {
           "id": "PH-12",
           "find": "([^aeiou])\\1{2,}",
-          "replace": "\\1",
+          "replace": "$1",
           "example": "mandddar→mandar"
         },
         {
@@ -569,7 +569,7 @@
         {
           "id": "PH-14",
           "find": "g([ei])",
-          "replace": "j\\1",
+          "replace": "j$1",
           "example": "gente→jente — confusión g/j",
           "direction": "bidirectional"
         },
@@ -588,7 +588,7 @@
         {
           "id": "PH-17",
           "find": "([a-z])iar\\b",
-          "replace": "\\1ear",
+          "replace": "$1ear",
           "example": "balaciar→balacear, plomiar→plomear"
         },
         {

@@ -21,9 +21,13 @@ describe("benchmark del motor local", () => {
     writeFileSync(join(__dir, "report.json"), `${JSON.stringify(report, null, 2)}\n`);
     console.log(formatReport(report));
 
-    // Guardrails mínimos: si esto falla, el motor se degradó gravemente.
-    // Los umbrales se endurecen conforme mejore el motor (ver ROADMAP).
-    expect(report.detection.recall).toBeGreaterThanOrEqual(0.5);
+    // Guardrails alineados con el modelo de acción de 2 capas. El gate DURO es
+    // falseBlocks === 0: bloquear automáticamente una conversación inocente es el
+    // peor error de producto. Un benigno que escala a MEDIUM lo resuelve el LLM
+    // (barato), por eso el FPR binario se vigila con holgura, no como gate duro.
+    expect(report.action.falseBlocks).toBe(0); // CERO bloqueos falsos, innegociable
+    expect(report.detection.recall).toBeGreaterThanOrEqual(0.75);
+    expect(report.action.benignReviewRate).toBeLessThanOrEqual(0.12); // escalaciones benignas acotadas
     expect(report.latency.p95Ms).toBeLessThan(50);
   }, 15000);
 });

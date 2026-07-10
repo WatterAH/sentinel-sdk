@@ -48,12 +48,38 @@ export interface SentinelAnalysisResponse {
       triggeredRules: string[];
       explicitSignals: string[];
     };
+    temporal?: {
+      stagesPresent: string[];
+      orderedProgression: boolean;
+      spanDays: number;
+      triggeredRules: string[];
+      timeline: Array<{ stage: string; firstSeenAt: number }>;
+    };
+    actor?: {
+      analyzed: boolean;
+      aggressorSender: string | null;
+      concentration: number;
+      triggeredRules: string[];
+    };
   };
 
   velocityFlag: boolean;
   velocityWindow: number;
   messagesAnalyzed: number;
   uniqueCategories: string[];
+}
+
+export type RecruiterAction = "ALLOW" | "SILENT_OBSERVE" | "SOFT_WARN" | "HARD_BLOCK";
+
+/**
+ * Plan de intervención graduada: decopla lo que ve el reclutador de las acciones
+ * que protegen a la víctima. La plataforma lo aplica o ajusta según su política.
+ */
+export interface InterventionPlan {
+  recruiter_action: RecruiterAction;
+  protective_actions: string[]; // SHADOW_FLAG, WARN_MINOR, NOTIFY_GUARDIAN, RESTRICT_CONTACT, PRESERVE_EVIDENCE, REPORT_AUTHORITY
+  minor_message: string | null;
+  rationale: string;
 }
 
 export interface ApiAnalysisResponse {
@@ -65,4 +91,5 @@ export interface ApiAnalysisResponse {
   false_positive: boolean;
   messages_analyzed: number;
   current_message: string;
+  intervention?: InterventionPlan;
 }

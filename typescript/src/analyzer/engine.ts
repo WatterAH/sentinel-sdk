@@ -8,6 +8,8 @@ import { V3Layer } from "./v3-layer.js";
 import { V4Layer } from "./v4-layer.js";
 import { VelocityDetector } from "./velocity-detector.js";
 import { DampenerLayer } from "./dampener-layer.js";
+import { TemporalLayer } from "./temporal-layer.js";
+import { ActorLayer } from "./actor-layer.js";
 import type { Message, EngineResult, RiskLevel } from "../types/SentinelEngine.js";
 
 export class Engine {
@@ -16,14 +18,21 @@ export class Engine {
   private v4: V4Layer;
   private velocity: VelocityDetector;
   private dampener: DampenerLayer;
+  private temporal: TemporalLayer;
+  private actor: ActorLayer;
   private sessionThreshold: number;
 
   constructor() {
     this.normalizer = new NormalizerLayer();
-    this.v3 = new V3Layer();
-    this.v4 = new V4Layer();
+    // El índice V3 se normaliza con el mismo pipeline que el texto de entrada,
+    // para que términos como "facebook" (que las fonéticas vuelven "faceboqu")
+    // coincidan en ambos lados.
+    this.v3 = new V3Layer((raw) => this.normalizer.normalizeText(raw));
+    this.v4 = new V4Layer((raw) => this.normalizer.normalizeText(raw));
     this.velocity = new VelocityDetector();
     this.dampener = new DampenerLayer();
+    this.temporal = new TemporalLayer();
+    this.actor = new ActorLayer();
     this.sessionThreshold = this.v3.sessionThreshold;
   }
 
@@ -46,6 +55,12 @@ export class Engine {
     // ── Fase 4: Velocidad sobre todos los hits combinados ───────────────────
     const allHits = [...n0.hits, ...v3.hits, ...v4.hits];
     const { flag: velocityFlag, windowSeconds } = this.velocity.check(allHits);
+
+    // ── Fase 4b: Progresión temporal (captación lenta multi-día) ────────────
+    const temporal = this.temporal.scan(allHits);
+
+    // ── Fase 4c: Asimetría de actor (¿un solo emisor concentra las tácticas?) ─
+    const actor = this.actor.analyze(n0.messages, this.v3);
 
     // Bonus 20% si hay velocidad + al menos una regla activa en cualquier capa
     const hasActiveRule =
@@ -117,7 +132,7 @@ export class Engine {
 
     // ── Risk y escalate ─────────────────────────────────────────────────────
     const hasDampeners = uniqueDampenersApplied.length > 0;
-    const risk = this.resolveRisk(
+    let risk = this.resolveRisk(
       totalScore,
       v3.triggeredRules,
       v4.triggeredRules,
@@ -125,10 +140,92 @@ export class Engine {
       hasCorroboration,
       hasDampeners
     );
+
+    // Piso de riesgo por progresión temporal: una cadena de captación lenta es
+    // señal aunque cada sesión individual haya quedado bajo el umbral de score.
+    // TCR-001 con las 4 etapas completas → piso HIGH (el guion completo se
+    // ejecutó; la corroboración multi-categoría está implícita en ≥3 etapas).
+    // Cualquier TCR → piso MEDIUM, que fuerza la revisión de la capa cognitiva
+    // con el contexto completo. Los dampeners no anulan el piso: el contexto
+    // benigno explica un término suelto, no una progresión ordenada de semanas.
+    const hasTemporalChain = temporal.triggeredRules.length > 0;
+    if (hasTemporalChain) {
+      const fullScript =
+        temporal.triggeredRules.includes("TCR-001") &&
+        temporal.stagesPresent.length >= 4;
+      const floor: RiskLevel = fullScript ? "HIGH" : "MEDIUM";
+      const order: RiskLevel[] = ["LOW", "MEDIUM", "HIGH", "CRITICAL"];
+      if (order.indexOf(risk) < order.indexOf(floor)) {
+        risk = floor;
+      }
+    }
+
+    // Techo por contexto fuerte de entretenimiento: hablar de series/corridos/
+    // música con léxico narco DESCRIPTIVO, sin ninguna señal de acción dirigida
+    // al menor (oferta, logística, solicitud de datos, cambio de canal,
+    // aislamiento), no puede producir un BLOQUEO automático — a lo mucho escala
+    // al LLM para que confirme. Un fan viendo Netflix nunca debe ser HARD_BLOCK.
+    // La progresión temporal ignora este techo (una cadena de semanas es señal
+    // real aunque se disfrace de plática de corridos).
+    const ACTION_CATEGORIES = new Set([
+      "oferta_economica",
+      "logistica_fisica",
+      "solicitud_informacion",
+      "cambio_canal",
+      "aislamiento",
+      "formalidad_deceptiva",
+    ]);
+    const hasHardContext = dampeners.some((d) => d.hardContext);
+    const hasDirectedAction = uniqueCategories.some((c) => ACTION_CATEGORIES.has(c));
+    if (hasHardContext && !hasDirectedAction && !hasTemporalChain) {
+      if (risk === "HIGH" || risk === "CRITICAL") {
+        risk = "MEDIUM";
+      }
+    }
+
+    // Piso por asimetría de actor: si un solo emisor concentra las tácticas de
+    // acción dirigida (ofrece + aísla + pide datos...), es la firma del agresor
+    // aunque el score total sea moderado. Nunca dejamos que un patrón así quede
+    // por debajo de MEDIUM (= lo ve la capa cognitiva). El contexto de
+    // entretenimiento NO lo excusa: un reclutador que además cita corridos sigue
+    // siendo un actor concentrando tácticas.
+    if (actor.aggressorSender) {
+      const order: RiskLevel[] = ["LOW", "MEDIUM", "HIGH", "CRITICAL"];
+      if (order.indexOf(risk) < order.indexOf("MEDIUM")) {
+        risk = "MEDIUM";
+      }
+    }
+
+    // Reciprocidad: el complemento de la asimetría. Si hay ≥2 emisores, NINGUNO
+    // concentra las tácticas (señal repartida), y no hay ninguna señal fuerte
+    // independiente del emisor (regla MCR/CR, señal explícita V4, cadena
+    // temporal), entonces es interacción entre pares — dos amigos planeando una
+    // fiesta ("manda tu ubicación" mutuo) o prestándose dinero recíprocamente.
+    // Un reclutador real dispara reglas o concentra; esto no lo deja escapar.
+    // Categorías coercivas que NUNCA son benignas-recíprocas entre menores:
+    // pedir secreto o mudar de canal para ocultarse no tiene versión "mutua".
+    const COERCIVE_CATEGORIES = new Set(["aislamiento", "cambio_canal", "manipulacion_social"]);
+    const hasCoercive = uniqueCategories.some((c) => COERCIVE_CATEGORIES.has(c));
+    const reciprocal =
+      actor.analyzed &&
+      !actor.aggressorSender &&
+      actor.concentration <= 0.6 && // señal de acción dirigida genuinamente repartida
+      !hasActiveRule && // sin regla MCR/CR fuerte (independiente del emisor)
+      !hasCoercive && // sin tácticas de secreto/aislamiento
+      !hasTemporalChain;
+    let reciprocalCapped = false;
+    if (reciprocal && risk === "MEDIUM") {
+      risk = "LOW";
+      reciprocalCapped = true;
+    }
+
     const escalate =
-      totalScore >= this.sessionThreshold ||
-      (hasActiveRule && !hasDampeners) ||
-      risk === "CRITICAL";
+      !reciprocalCapped &&
+      (totalScore >= this.sessionThreshold ||
+        (hasActiveRule && !hasDampeners) ||
+        hasTemporalChain ||
+        actor.aggressorSender !== null ||
+        risk === "CRITICAL");
 
     return {
       score: totalScore,
@@ -155,6 +252,8 @@ export class Engine {
           triggeredRules: v4.triggeredRules,
           explicitSignals: v4.explicitSignals,
         },
+        temporal,
+        actor,
       },
       velocityFlag,
       velocityWindow: windowSeconds,

@@ -17,7 +17,7 @@ export interface CorpusCase {
   group: string;
   label: "RISK" | "BENIGN";
   description: string;
-  messages: Array<{ text: string; offset_s: number }>;
+  messages: Array<{ text: string; offset_s: number; sender?: string }>;
 }
 
 export interface Corpus {
@@ -67,6 +67,29 @@ export interface BenchmarkReport {
     /** % de casos RISK que escalarían o se marcarían localmente */
     riskCoverage: number;
   };
+  /**
+   * Modelo de acción de 2 capas — más fiel a cómo funciona el producto que la
+   * métrica binaria flagged/no-flagged. En la arquitectura SDK+LLM:
+   *  - HIGH/CRITICAL = bloqueo local automático, sin pasar por el LLM.
+   *  - MEDIUM = escala a la capa cognitiva para que el LLM decida.
+   *  - LOW = pasa sin acción.
+   * Por eso los errores no son simétricos: un BENIGN en HIGH/CRITICAL es un
+   * bloqueo falso (grave); un BENIGN en MEDIUM solo gasta una escalación que el
+   * LLM resuelve (barato). Un RISK en LOW es un miss real (no lo ve nadie); un
+   * RISK en MEDIUM sí llega al LLM (cubierto).
+   */
+  action: {
+    /** BENIGN que llega a HIGH/CRITICAL: bloqueo falso. Debe ser 0. */
+    falseBlocks: number;
+    falseBlockRate: number;
+    /** BENIGN que llega a MEDIUM: escala al LLM. Tolerable en casos ambiguos. */
+    benignReviewRate: number;
+    /** RISK que NO llega ni a MEDIUM: invisible para todo el sistema. El error caro. */
+    missedRisks: number;
+    missRate: number;
+    /** RISK que llega al menos a MEDIUM: lo ve el LLM o se bloquea. */
+    riskReachRate: number;
+  };
   latency: {
     p50Ms: number;
     p95Ms: number;
@@ -94,6 +117,7 @@ function toMessages(c: CorpusCase): Message[] {
   return c.messages.map((m) => ({
     text: m.text,
     timestamp: BASE_EPOCH_MS + m.offset_s * 1000,
+    sender: m.sender,
   }));
 }
 
@@ -151,6 +175,7 @@ export function runBenchmark(corpus: Corpus): BenchmarkReport {
         ...result.layers.normalizer.triggeredRules,
         ...result.layers.v3.triggeredRules,
         ...result.layers.v4.triggeredRules,
+        ...result.layers.temporal.triggeredRules,
       ],
     });
   }
@@ -169,6 +194,14 @@ export function runBenchmark(corpus: Corpus): BenchmarkReport {
   const riskCases = results.filter((r) => r.label === "RISK");
   const benignEscalations = benignCases.filter((r) => r.escalate).length;
   const riskCovered = riskCases.filter((r) => r.flagged || r.escalate).length;
+
+  // Modelo de acción de 2 capas
+  const isBlock = (risk: RiskLevel) => risk === "HIGH" || risk === "CRITICAL";
+  const isReach = (risk: RiskLevel) => risk !== "LOW";
+  const falseBlocks = benignCases.filter((r) => isBlock(r.risk)).length;
+  const benignReviews = benignCases.filter((r) => r.risk === "MEDIUM").length;
+  const missedRisks = riskCases.filter((r) => !isReach(r.risk)).length;
+  const riskReached = riskCases.filter((r) => isReach(r.risk)).length;
 
   const groups = [...new Set(results.map((r) => r.group))];
   const byGroup: GroupStats[] = groups.map((g) => {
@@ -201,6 +234,14 @@ export function runBenchmark(corpus: Corpus): BenchmarkReport {
     escalation: {
       benignEscalationRate: round(benignCases.length ? benignEscalations / benignCases.length : 0),
       riskCoverage: round(riskCases.length ? riskCovered / riskCases.length : 0),
+    },
+    action: {
+      falseBlocks,
+      falseBlockRate: round(benignCases.length ? falseBlocks / benignCases.length : 0),
+      benignReviewRate: round(benignCases.length ? benignReviews / benignCases.length : 0),
+      missedRisks,
+      missRate: round(riskCases.length ? missedRisks / riskCases.length : 0),
+      riskReachRate: round(riskCases.length ? riskReached / riskCases.length : 0),
     },
     latency: {
       p50Ms: round(percentile(allLatencies, 50), 3),
@@ -241,6 +282,13 @@ export function formatReport(report: BenchmarkReport): string {
   lines.push(`  F1:                   ${pct(d.f1)}`);
   lines.push(`  Falsos positivos:     ${pct(d.falsePositiveRate)}   (${d.falsePositives}/${d.falsePositives + d.trueNegatives} benignos marcados)`);
   lines.push(`  Accuracy:             ${pct(d.accuracy)}`);
+  lines.push("");
+  lines.push("── Modelo de acción de 2 capas (lo que importa en producción) ──");
+  const a = report.action;
+  lines.push(`  Bloqueos falsos:      ${pct(a.falseBlockRate)}   (${a.falseBlocks} benignos → HIGH/CRITICAL · DEBE ser 0)`);
+  lines.push(`  Benignos a revisión:  ${pct(a.benignReviewRate)}   (→ MEDIUM · escalan al LLM, tolerable)`);
+  lines.push(`  Riesgos no vistos:    ${pct(a.missRate)}   (${a.missedRisks} riesgos → LOW · el error caro)`);
+  lines.push(`  Riesgos que el sistema alcanza a ver: ${pct(a.riskReachRate)}`);
   lines.push("");
   lines.push("── Escalación (costo de API) ──");
   lines.push(`  Benignos que escalan: ${pct(report.escalation.benignEscalationRate)}`);

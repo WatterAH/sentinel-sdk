@@ -1,6 +1,7 @@
 {
   "name": "@sentinel-sdk/typescript",
   "version": "1.0.3",
+  "private": true,
   "type": "module",
   "description": "The Standard for Child Safety in Mexico - TS SDK",
   "main": "./dist/index.cjs",
@@ -25,7 +26,8 @@
     "bench": "vitest run benchmark/bench.test.ts",
     "test:watch": "vitest",
     "lint": "biome check src/",
-    "format": "biome format --write src/"
+    "format": "biome format --write src/",
+    "bench:adversarial": "vitest run benchmark/adversarial.test.ts"
   },
   "publishConfig": {
     "access": "public"

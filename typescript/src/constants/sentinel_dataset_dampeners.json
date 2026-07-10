@@ -34,6 +34,29 @@
       "variants": ["mi mama", "mi papá", "mi papa", "mi tía", "mi tia", "mi abuela", "mi abuelo", "mi hermano", "mi hermana", "mis papás", "mis papas", "mi prima", "mi primo", "mi tío", "mi tio", "mi sobrino", "mi sobrina"],
       "dampen_categories": ["solicitud_informacion", "reclutamiento", "formalidad_deceptiva", "oferta_economica", "manipulacion_social"],
       "factor": 0.4
+    },
+    {
+      "id": "DAMP-006",
+      "term": "corrido",
+      "variants": ["corridos", "corridos tumbados", "corridos bélicos", "corrido bélico", "narcocorrido", "narcocorridos", "rola", "rolita", "rolas", "canción", "cancion", "canciones", "cantante", "la letra", "letra de la canción", "álbum", "album", "disco", "playlist", "concierto", "conciertos", "peso pluma", "natanael cano", "fuerza regida", "junior h", "luis r conriquez", "los tigres del norte", "los alegres", "karaoke", "requinto", "estribillo"],
+      "dampen_categories": ["contenido_normalizado", "slang_operativo", "reclutamiento"],
+      "factor": 0.1,
+      "hard_context": true
+    },
+    {
+      "id": "DAMP-007",
+      "term": "netflix",
+      "variants": ["serie", "series", "temporada", "capítulo", "capitulo", "episodio", "película", "pelicula", "documental", "el video", "video de youtube", "youtube", "meme", "memes", "actuación", "actuacion", "de utilería", "de utileria"],
+      "dampen_categories": ["contenido_normalizado", "slang_operativo", "reclutamiento"],
+      "factor": 0.1,
+      "hard_context": true
+    },
+    {
+      "id": "DAMP-008",
+      "term": "taco",
+      "variants": ["tacos", "birria", "quesadilla", "quesadillas", "torta", "tortas", "antojo", "antojito", "de comer", "restaurante", "la esquina", "puesto", "fonda"],
+      "dampen_categories": ["contenido_normalizado"],
+      "factor": 0.2
     }
   ]
 }

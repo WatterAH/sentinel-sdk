@@ -2251,14 +2251,8 @@
       "id": "CN-005",
       "term": "fentanilo",
       "variants": [
-        "birria",
         "apache",
         "china girl",
-        "freddy",
-        "he-man",
-        "blues",
-        "m&ms",
-        "pastas",
         "fent",
         "tnt",
         "facebook"
@@ -2271,7 +2265,8 @@
       "escalation_combos": [
         "contenido_normalizado",
         "reclutamiento"
-      ]
+      ],
+      "requires_corroboration": true
     },
     {
       "id": "CN-006",
@@ -2298,18 +2293,11 @@
       "term": "cuerno de chivo",
       "variants": [
         "cuerno",
-        "la r",
         "r15",
         "la ak",
         "matapolicías",
         "la 57",
-        "chaparrita",
-        "supergüera",
-        "lanzapapas",
-        "la cincuenta",
-        "pechera",
-        "piña",
-        "papaya"
+        "pechera"
       ],
       "category": "contenido_normalizado",
       "weight": 8,
@@ -2319,7 +2307,8 @@
       "escalation_combos": [
         "slang_operativo",
         "contenido_normalizado"
-      ]
+      ],
+      "requires_corroboration": true
     },
     {
       "id": "CN-008",
@@ -4261,11 +4250,9 @@
       "id": "CN-019",
       "term": "mdma",
       "variants": [
-        "molly",
         "extasis",
         "éxtasis",
-        "tacha",
-        "rola"
+        "tacha"
       ],
       "category": "contenido_normalizado",
       "weight": 8,
@@ -4275,6 +4262,138 @@
       "escalation_combos": [
         "reclutamiento",
         "oferta_economica"
+      ],
+      "requires_corroboration": true
+    },
+    {
+      "id": "REC-041",
+      "term": "busca chavos",
+      "category": "reclutamiento",
+      "weight": 6,
+      "variants": [
+        "buscamos chavos",
+        "busca gente joven",
+        "buscamos morros",
+        "necesitamos chavos",
+        "ocupamos chavos",
+        "busca morros",
+        "buscamos jóvenes",
+        "gente joven para el trabajo",
+        "chavos que quieran ganar"
+      ]
+    },
+    {
+      "id": "REC-042",
+      "term": "un chavo como tú",
+      "category": "reclutamiento",
+      "weight": 6,
+      "variants": [
+        "un morro como tú",
+        "alguien como tú",
+        "chavos como tú",
+        "gente como tú",
+        "te elegí a ti",
+        "te busco a ti",
+        "por eso te busco a ti",
+        "tú eres el indicado para esto"
+      ]
+    },
+    {
+      "id": "REC-043",
+      "term": "no preguntes qué llevas",
+      "category": "reclutamiento",
+      "weight": 8,
+      "variants": [
+        "no preguntes qué es",
+        "no preguntes qué llevas",
+        "mejor no sepas qué es",
+        "no abras el paquete",
+        "no lo abras",
+        "no revises lo que llevas",
+        "tú solo entrégalo",
+        "nomás lo entregas y ya",
+        "no tienes que saber qué es"
+      ]
+    },
+    {
+      "id": "SI-020",
+      "term": "foto de tu credencial",
+      "category": "solicitud_informacion",
+      "weight": 8,
+      "variants": [
+        "foto de tu ine",
+        "manda tu credencial",
+        "foto de tu identificación",
+        "tu identificación oficial",
+        "credencial de la escuela",
+        "foto de tu acta",
+        "acta de nacimiento",
+        "comprobante de tu edad",
+        "manda tu ine",
+        "necesito tu credencial"
+      ]
+    },
+    {
+      "id": "OE-020",
+      "term": "me lo pagas con un favor",
+      "category": "oferta_economica",
+      "weight": 7,
+      "variants": [
+        "me lo pagas con un favorcito",
+        "quedas a mano con un mandado",
+        "trabajo a cambio de la deuda",
+        "con unos mandados queda saldado",
+        "me ayudas y quedamos a mano",
+        "luego me haces un favor",
+        "con un favor me pagas",
+        "lo pagas trabajando",
+        "quedas limpio con una vuelta"
+      ]
+    },
+    {
+      "id": "OE-021",
+      "term": "ya me toca cobrar",
+      "category": "oferta_economica",
+      "weight": 6,
+      "variants": [
+        "ya me toca cobrarte",
+        "me debes",
+        "todo lo que te di no fue gratis",
+        "ya es hora de que pagues",
+        "no ha sido gratis",
+        "es hora de cobrar",
+        "ahora me toca a mí",
+        "te tengo que cobrar el favor"
+      ]
+    },
+    {
+      "id": "REC-044",
+      "term": "nadie se mete contigo",
+      "category": "reclutamiento",
+      "weight": 6,
+      "variants": [
+        "nadie te va a molestar",
+        "los que te molestan van a parar",
+        "con nosotros nadie te toca",
+        "te protegemos de los que te hacen menos",
+        "dejan de molestarte",
+        "nosotros te respaldamos en la escuela"
+      ]
+    },
+    {
+      "id": "REC-045",
+      "term": "el bisne",
+      "category": "reclutamiento",
+      "weight": 7,
+      "variants": [
+        "al bisne",
+        "jalas al bisne",
+        "le entras al bisne",
+        "al negocio",
+        "el bisnes",
+        "hacer bisne",
+        "andar en el bisne",
+        "el jale del bisne"
       ]
     }
   ]

@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import normalizerDataset from "../constants/sentinel_dataset_normalizer_v2.json" with { type: "json" };
-import { removeAccents, collapseRepeated } from "./text-utils.js";
+import { removeAccents, collapseRepeated, sanitizeUnicode, collapseIntraWordSpacing, deLeet } from "./text-utils.js";
 import type { Message, NormalizerOutput, Hit } from "../types/SentinelEngine.js";
 
 export class NormalizerLayer {
@@ -38,11 +38,15 @@ export class NormalizerLayer {
       ])
     );
 
-    // Reglas fonéticas ordenadas
+    // Reglas fonéticas ordenadas.
+    // El dataset escribe las backreferences estilo PCRE/Python ("\1"), pero
+    // JavaScript String.replace usa "$1"; sin esta conversión el reemplazo
+    // inserta "\1" literal y corrompe la palabra (ej. "facebook" → "faceb\1qu",
+    // rompiendo el término insignia del pitch). Bug detectado por el red-team.
     const pRules = data.normalization_rules?.phonetic_rules?.rules ?? [];
     this.phoneticRules = pRules.map((r: any) => ({
       pattern: new RegExp(r.find, "gi"),
-      replacement: r.replace,
+      replacement: String(r.replace).replace(/\\(\d)/g, "$$$1"),
     }));
 
     // Errores de tipeo comunes (fallback if missing in v2)
@@ -82,10 +86,41 @@ export class NormalizerLayer {
     }));
   }
 
+  /**
+   * Normaliza un término del dataset con el MISMO pipeline que el texto de
+   * entrada, para que ambos lados coincidan. Sin esto, un término como
+   * "facebook" (que las reglas fonéticas convierten a "faceboqu") nunca
+   * matchearía el texto entrante, que sufre la misma transformación.
+   */
+  normalizeText(raw: string): string {
+    return this.normalize(raw).text;
+  }
+
   /** Normaliza un string aplicando todas las transformaciones. */
   normalize(raw: string): { text: string; transformations: string[] } {
     const transformations: string[] = [];
-    let text = raw.toLowerCase().trim();
+
+    // 0. Blindaje anti-evasión ANTES de todo: fullwidth/homóglifos/invisibles.
+    //    Sin esto, "ｆａｃｅｂｏｏｋ", texto cirílico o zero-width spaces evaden el
+    //    filtro por completo (medido en el red-team: 0-5% de supervivencia).
+    const sanitized = sanitizeUnicode(raw);
+    if (sanitized !== raw) transformations.push("unicode-sanitize");
+
+    let text = sanitized.toLowerCase().trim();
+
+    // 0b. Colapsar espaciado intra-palabra ("f a c e b o o k" → "facebook").
+    const despaced = collapseIntraWordSpacing(text);
+    if (despaced !== text) {
+      transformations.push("collapse-spacing");
+      text = despaced;
+    }
+
+    // 0c. De-leet condicional en tokens mixtos letra+dígito ("h4lc0n"→"halcon").
+    const deleeted = deLeet(text);
+    if (deleeted !== text) {
+      transformations.push("de-leet");
+      text = deleeted;
+    }
 
     // 1. Expandir emojis y símbolos
     for (const [emoji, canonical] of this.unicodeMap) {
@@ -186,7 +221,7 @@ export class NormalizerLayer {
 
     for (const msg of messages) {
       const { text, transformations } = this.normalize(msg.text);
-      normalizedMessages.push({ text, timestamp: msg.timestamp });
+      normalizedMessages.push({ text, timestamp: msg.timestamp, sender: msg.sender });
       allTransformations.push(...transformations);
 
       const features = this.detectFeatures(text);
@@ -206,9 +241,25 @@ export class NormalizerLayer {
     // Bonus de combinaciones
     const { triggered, bonusScore } = this.checkCombinationRules(allActiveFeatures);
 
+    // Señal de evasión deliberada: homóglifos, fullwidth, invisibles, de-leet o
+    // espaciado intra-palabra no ocurren por accidente en un chat normal. Su
+    // presencia es intención de ocultar → suma score y marca una regla. Ofuscar
+    // el mensaje es, en sí mismo, comportamiento sospechoso (principio del
+    // red-team: la evasión detectada nunca debe DEJAR pasar; debe ELEVAR).
+    const EVASION_MARKERS = new Set(["unicode-sanitize", "de-leet", "collapse-spacing"]);
+    const evasionTransforms = [...new Set(allTransformations)].filter((t) => EVASION_MARKERS.has(t));
+    let evasionScore = 0;
+    if (evasionTransforms.length > 0) {
+      // +2 por la primera técnica de evasión, +2 por cada técnica adicional
+      // (apilar técnicas es más deliberado). Tope razonable para no dominar.
+      evasionScore = Math.min(6, 2 * evasionTransforms.length);
+      triggered.push("N0-EVASION");
+      hits.push({ id: "N0-EVASION", score: evasionScore, timestamp: Date.now() });
+    }
+
     return {
       messages: normalizedMessages,
-      score: baseScore + bonusScore,
+      score: baseScore + bonusScore + evasionScore,
       features: [...allActiveFeatures],
       triggeredRules: triggered,
       transformations: [...new Set(allTransformations)], // deduplicar

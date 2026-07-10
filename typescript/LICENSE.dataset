@@ -1,0 +1,44 @@
+SENTINEL DATASET LICENSE — Versión 1.0 (propuesta)
+
+[REVISAR CON ABOGADO antes de usar en contratos. Este texto define la intención
+comercial de los fundadores; un abogado debe convertirlo en lenguaje ejecutable
+bajo derecho mexicano (y evaluar protección como base de datos / secreto
+industrial según la LFPDPPP y la Ley Federal del Derecho de Autor, art. 108).]
+
+Cubre: los archivos de datos de detección de Sentinel, incluyendo pero no
+limitado a src/constants/sentinel_dataset_v3.json, sentinel_dataset_v4.json,
+sentinel_dataset_normalizer_v2.json, sentinel_dataset_dampeners.json, los
+"hot-terms" servidos por la API de Sentinel, y cualquier "region pack" futuro
+(en conjunto, el "Dataset").
+
+Titular: Sentinel MX — Luis Mérida, Samuel Tlahuel, David Peña, Said Ferreira.
+Copyright (c) 2026. Todos los derechos reservados.
+
+1. LICENCIA LIMITADA. Se otorga al integrador una licencia no exclusiva, no
+   transferible y revocable para usar el Dataset ÚNICAMENTE como parte del
+   funcionamiento del SDK de Sentinel dentro de sus propias aplicaciones, con
+   el fin de detectar riesgo en conversaciones de sus propios usuarios.
+
+2. PROHIBICIONES. Queda prohibido, sin autorización escrita del titular:
+   a) extraer, copiar o redistribuir el Dataset o cualquier parte sustancial
+      de él fuera de la aplicación que integra el SDK;
+   b) crear léxicos, diccionarios o datasets derivados o competidores a partir
+      del Dataset;
+   c) usar el Dataset para entrenar, afinar o evaluar modelos de aprendizaje
+      automático de terceros;
+   d) publicar la lista de términos, pesos o reglas en cualquier medio;
+   e) retirar, alterar o filtrar los términos de verificación ("canarios")
+      que el titular inserte para detectar redistribución no autorizada.
+
+3. CANARIOS. El integrador reconoce que el Dataset entregado a cada cliente
+   puede contener términos de verificación únicos que permiten identificar la
+   fuente de una redistribución no autorizada, y acepta su presencia.
+
+4. TERMINACIÓN. El incumplimiento de la sección 2 termina esta licencia de
+   inmediato y obliga a eliminar toda copia del Dataset. Las secciones 2 y 3
+   sobreviven a la terminación.
+
+5. NOTA DE TRANSPARENCIA. Las versiones del Dataset publicadas históricamente
+   bajo licencia MIT permanecen bajo MIT (los otorgamientos no se revocan).
+   Esta licencia aplica a toda versión del Dataset publicada a partir de su
+   entrada en vigor y a todo contenido servido por la API de Sentinel.

@@ -35,15 +35,25 @@ export class V4Layer {
     patterns: RegExp[];
   }>;
 
-  constructor() {
-    const data = v4Dataset as any;
+  private normalizeKey: (raw: string) => string;
 
-    // Compilar lexicones a expresiones regulares normalizadas sin acentos
+  /**
+   * @param normalizeFn opcional: mismo normalizador que el texto de entrada, para
+   *   que los lexicones/señales (que son literales vía buildRegex) coincidan con
+   *   el texto ya normalizado por las reglas fonéticas. Sin esto se repite el bug
+   *   de "facebook"→"faceboqu" que ya se corrigió en V3. Las señales de intención
+   *   NO se normalizan porque son regex crudos.
+   */
+  constructor(normalizeFn?: (raw: string) => string) {
+    const data = v4Dataset as any;
+    this.normalizeKey = normalizeFn ?? ((raw: string) => removeAccents(raw.toLowerCase().trim()));
+
+    // Compilar lexicones a expresiones regulares normalizadas
     this.lexicons = new Map();
     if (data.lexicons) {
       for (const [key, terms] of Object.entries(data.lexicons)) {
         const regexes = (terms as string[]).map((term) =>
-          buildRegex(removeAccents(term.toLowerCase().trim()))
+          buildRegex(this.normalizeKey(term))
         );
         this.lexicons.set(key, regexes);
       }
@@ -60,12 +70,12 @@ export class V4Layer {
 
     this.combinationRules = data.combination_rules ?? [];
 
-    // Compilar señales explícitas a expresiones regulares normalizadas sin acentos
+    // Compilar señales explícitas (literales vía buildRegex, se normalizan igual)
     this.explicitSignals = (data.explicit_signals ?? []).map((signal: any) => ({
       id: signal.id,
       label: signal.label,
       patterns: (signal.patterns ?? []).map((pat: string) =>
-        buildRegex(removeAccents(pat.toLowerCase().trim()))
+        buildRegex(this.normalizeKey(pat))
       ),
       weight: signal.weight,
       category: signal.category,

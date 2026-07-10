@@ -1,26 +1,34 @@
 {
-  "timestamp": "2026-07-06T19:37:03.956Z",
-  "totalCases": 52,
+  "timestamp": "2026-07-10T00:39:01.758Z",
+  "totalCases": 135,
   "detection": {
-    "truePositives": 24,
-    "falsePositives": 0,
-    "trueNegatives": 28,
-    "falseNegatives": 0,
-    "precision": 1,
-    "recall": 1,
-    "f1": 1,
-    "falsePositiveRate": 0,
-    "accuracy": 1
+    "truePositives": 47,
+    "falsePositives": 3,
+    "trueNegatives": 75,
+    "falseNegatives": 10,
+    "precision": 0.94,
+    "recall": 0.8246,
+    "f1": 0.8785,
+    "falsePositiveRate": 0.0385,
+    "accuracy": 0.9037
   },
   "escalation": {
-    "benignEscalationRate": 0,
-    "riskCoverage": 1
+    "benignEscalationRate": 0.2564,
+    "riskCoverage": 0.8246
+  },
+  "action": {
+    "falseBlocks": 0,
+    "falseBlockRate": 0,
+    "benignReviewRate": 0.0385,
+    "missedRisks": 10,
+    "missRate": 0.1754,
+    "riskReachRate": 0.8246
   },
   "latency": {
-    "p50Ms": 0.354,
-    "p95Ms": 0.63,
-    "maxMs": 2.79,
-    "meanMs": 0.377
+    "p50Ms": 0.436,
+    "p95Ms": 0.786,
+    "maxMs": 1.488,
+    "meanMs": 0.445
   },
   "byGroup": [
     {
@@ -55,18 +63,217 @@
     },
     {
       "group": "benign_cotidiano",
-      "total": 12,
-      "correct": 12,
+      "total": 20,
+      "correct": 20,
       "accuracy": 1
     },
     {
       "group": "benign_trampa",
-      "total": 16,
-      "correct": 16,
+      "total": 26,
+      "correct": 26,
       "accuracy": 1
+    },
+    {
+      "group": "tp_grooming_lento",
+      "total": 3,
+      "correct": 3,
+      "accuracy": 1
+    },
+    {
+      "group": "benign_amistad_larga",
+      "total": 6,
+      "correct": 6,
+      "accuracy": 1
+    },
+    {
+      "group": "benign_narcocultura",
+      "total": 12,
+      "correct": 11,
+      "accuracy": 0.9167
+    },
+    {
+      "group": "benign_jerga_juvenil",
+      "total": 10,
+      "correct": 9,
+      "accuracy": 0.9
+    },
+    {
+      "group": "tp_extorsion_deuda",
+      "total": 8,
+      "correct": 7,
+      "accuracy": 0.875
+    },
+    {
+      "group": "tp_narcocultura_puente",
+      "total": 6,
+      "correct": 5,
+      "accuracy": 0.8333
+    },
+    {
+      "group": "tp_reclutamiento_parafraseado",
+      "total": 12,
+      "correct": 4,
+      "accuracy": 0.3333
+    },
+    {
+      "group": "tp_actor_asimetrico",
+      "total": 4,
+      "correct": 4,
+      "accuracy": 1
+    },
+    {
+      "group": "benign_reciproco",
+      "total": 4,
+      "correct": 3,
+      "accuracy": 0.75
     }
   ],
-  "failures": [],
+  "failures": [
+    {
+      "id": "NC-008",
+      "group": "benign_narcocultura",
+      "expected": "BENIGN",
+      "got": "MEDIUM",
+      "score": 24,
+      "description": "Serie de narcos en streaming",
+      "termsMatched": [
+        "REC-029",
+        "REC-027"
+      ]
+    },
+    {
+      "id": "JJ-004",
+      "group": "benign_jerga_juvenil",
+      "expected": "BENIGN",
+      "got": "MEDIUM",
+      "score": 13,
+      "description": "Slang de comida",
+      "termsMatched": [
+        "REC-006",
+        "REC-026"
+      ]
+    },
+    {
+      "id": "ED-005",
+      "group": "tp_extorsion_deuda",
+      "expected": "RISK",
+      "got": "LOW",
+      "score": 4,
+      "description": "Deuda familiar como palanca",
+      "termsMatched": [
+        "SD-002"
+      ]
+    },
+    {
+      "id": "NP-003",
+      "group": "tp_narcocultura_puente",
+      "expected": "RISK",
+      "got": "LOW",
+      "score": 11,
+      "description": "Del significado de la letra a la invitación",
+      "termsMatched": [
+        "REC-022",
+        "OE-004"
+      ]
+    },
+    {
+      "id": "RP-001",
+      "group": "tp_reclutamiento_parafraseado",
+      "expected": "RISK",
+      "got": "LOW",
+      "score": 10,
+      "description": "Oferta laboral vaga sin términos del dataset",
+      "termsMatched": [
+        "REC-042"
+      ]
+    },
+    {
+      "id": "RP-002",
+      "group": "tp_reclutamiento_parafraseado",
+      "expected": "RISK",
+      "got": "LOW",
+      "score": 0,
+      "description": "Vigilancia parafraseada",
+      "termsMatched": []
+    },
+    {
+      "id": "RP-003",
+      "group": "tp_reclutamiento_parafraseado",
+      "expected": "RISK",
+      "got": "LOW",
+      "score": 8,
+      "description": "Entrega parafraseada",
+      "termsMatched": [
+        "REC-042"
+      ]
+    },
+    {
+      "id": "RP-004",
+      "group": "tp_reclutamiento_parafraseado",
+      "expected": "RISK",
+      "got": "LOW",
+      "score": 5,
+      "description": "Pertenencia parafraseada",
+      "termsMatched": [
+        "MS-011"
+      ]
+    },
+    {
+      "id": "RP-005",
+      "group": "tp_reclutamiento_parafraseado",
+      "expected": "RISK",
+      "got": "LOW",
+      "score": 3,
+      "description": "Reclutador que evita palabras clave",
+      "termsMatched": [
+        "REC-031"
+      ]
+    },
+    {
+      "id": "RP-006",
+      "group": "tp_reclutamiento_parafraseado",
+      "expected": "RISK",
+      "got": "LOW",
+      "score": 6,
+      "description": "Oferta de 'seguridad' parafraseada",
+      "termsMatched": [
+        "REC-044",
+        "REC-009"
+      ]
+    },
+    {
+      "id": "RP-009",
+      "group": "tp_reclutamiento_parafraseado",
+      "expected": "RISK",
+      "got": "LOW",
+      "score": 11,
+      "description": "Reclutamiento de hermano mayor ausente",
+      "termsMatched": [
+        "SD-004",
+        "REC-006"
+      ]
+    },
+    {
+      "id": "RP-012",
+      "group": "tp_reclutamiento_parafraseado",
+      "expected": "RISK",
+      "got": "LOW",
+      "score": 2,
+      "description": "Oferta a niña parafraseada",
+      "termsMatched": []
+    },
+    {
+      "id": "BR-003",
+      "group": "benign_reciproco",
+      "expected": "BENIGN",
+      "got": "MEDIUM",
+      "score": 12,
+      "description": "Amigos: AMBOS mencionan 'te presto/buena lana' recíprocamente por el recreo",
+      "termsMatched": [
+        "OE-001"
+      ]
+    }
+  ],
   "cases": [
     {
       "id": "TP-001",
@@ -78,7 +285,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.397,
+      "latencyMs": 0.488,
       "termsMatched": [
         "REC-001",
         "SD-006",
@@ -100,12 +307,14 @@
       "label": "RISK",
       "description": "Frase del pitch original de Sentinel",
       "risk": "CRITICAL",
-      "score": 24,
+      "score": 40,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.221,
+      "latencyMs": 0.222,
       "termsMatched": [
+        "CN-005",
+        "REC-045",
         "REC-007",
         "OE-001"
       ],
@@ -124,7 +333,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.343,
+      "latencyMs": 0.424,
       "termsMatched": [
         "REC-003",
         "REC-008",
@@ -140,13 +349,14 @@
       "label": "RISK",
       "description": "Halconeo con pago quincenal",
       "risk": "CRITICAL",
-      "score": 43,
+      "score": 49,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.39,
+      "latencyMs": 0.451,
       "termsMatched": [
         "REC-005",
+        "REC-017",
         "REC-022",
         "OE-003",
         "OE-004",
@@ -168,7 +378,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.358,
+      "latencyMs": 0.37,
       "termsMatched": [
         "REC-009",
         "REC-031",
@@ -194,7 +404,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.237,
+      "latencyMs": 0.252,
       "termsMatched": [
         "REC-004",
         "REC-012",
@@ -215,17 +425,23 @@
       "group": "tp_ofuscado",
       "label": "RISK",
       "description": "Ofuscación l33t del pitch original",
-      "risk": "HIGH",
-      "score": 22,
+      "risk": "CRITICAL",
+      "score": 49,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.38,
+      "latencyMs": 0.242,
       "termsMatched": [
+        "CN-005",
         "LF-010",
+        "REC-045",
+        "REC-007",
         "OE-001"
       ],
       "triggeredRules": [
+        "N0-EVASION",
+        "MCR-001",
+        "MCR-002",
         "CR-003"
       ]
     },
@@ -234,35 +450,48 @@
       "group": "tp_ofuscado",
       "label": "RISK",
       "description": "Sustitución de números y símbolos en jerga operativa",
-      "risk": "HIGH",
-      "score": 21,
+      "risk": "CRITICAL",
+      "score": 43,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.337,
+      "latencyMs": 0.298,
       "termsMatched": [
+        "REC-001",
+        "REC-005",
+        "REC-022",
         "OE-004",
         "OE-014",
         "LF-002"
       ],
-      "triggeredRules": []
+      "triggeredRules": [
+        "N0-EVASION",
+        "MCR-001",
+        "MCR-002",
+        "MCR-007"
+      ]
     },
     {
       "id": "TP-009",
       "group": "tp_ofuscado",
       "label": "RISK",
       "description": "Espaciado entre letras y emojis de señal",
-      "risk": "MEDIUM",
-      "score": 18,
+      "risk": "CRITICAL",
+      "score": 36,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.341,
+      "latencyMs": 0.321,
       "termsMatched": [
+        "CN-005",
+        "REC-045",
         "OE-001",
         "SD-004"
       ],
       "triggeredRules": [
+        "N0-EVASION",
+        "MCR-002",
+        "MCR-007",
         "CR-003"
       ]
     },
@@ -276,7 +505,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.214,
+      "latencyMs": 0.208,
       "termsMatched": [
         "REC-002",
         "REC-012",
@@ -293,12 +522,13 @@
       "label": "RISK",
       "description": "Secuencia completa: contacto → confianza → aislamiento → logística",
       "risk": "CRITICAL",
-      "score": 59,
+      "score": 63,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.571,
+      "latencyMs": 0.678,
       "termsMatched": [
+        "RS-007",
         "SD-001",
         "REC-010",
         "MS-012",
@@ -308,6 +538,7 @@
         "SI-003"
       ],
       "triggeredRules": [
+        "MCR-006",
         "MCR-007",
         "MCR-008"
       ]
@@ -318,12 +549,13 @@
       "label": "RISK",
       "description": "Aislamiento + cambio de canal",
       "risk": "CRITICAL",
-      "score": 34,
+      "score": 42,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.342,
+      "latencyMs": 0.373,
       "termsMatched": [
+        "CC-001",
         "CC-006",
         "AI-001",
         "AI-004",
@@ -343,7 +575,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.461,
+      "latencyMs": 0.467,
       "termsMatched": [
         "SI-001",
         "SI-006",
@@ -365,7 +597,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.447,
+      "latencyMs": 0.311,
       "termsMatched": [
         "MS-002",
         "PG-005",
@@ -382,12 +614,13 @@
       "label": "RISK",
       "description": "Enganche con skins que escala a encuentro físico",
       "risk": "CRITICAL",
-      "score": 31,
+      "score": 41,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.33,
+      "latencyMs": 0.346,
       "termsMatched": [
+        "VJ-001",
         "REC-032",
         "OE-005",
         "VJ-002",
@@ -410,7 +643,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.415,
+      "latencyMs": 0.398,
       "termsMatched": [
         "VJ-003",
         "VJ-004",
@@ -434,7 +667,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.342,
+      "latencyMs": 0.335,
       "termsMatched": [
         "OE-006",
         "RS-001",
@@ -452,17 +685,18 @@
       "label": "RISK",
       "description": "Vacante falsa con retención de documentos",
       "risk": "CRITICAL",
-      "score": 62,
+      "score": 72,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.406,
+      "latencyMs": 0.376,
       "termsMatched": [
         "FD-001",
         "FD-002",
         "FD-005",
         "FD-004",
         "SI-005",
+        "SI-020",
         "LF-003",
         "LF-007",
         "LF-008"
@@ -478,14 +712,15 @@
       "label": "RISK",
       "description": "Capacitación pagada + traslado a rancho",
       "risk": "CRITICAL",
-      "score": 25,
+      "score": 34,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 1.264,
+      "latencyMs": 0.983,
       "termsMatched": [
         "FD-003",
         "LF-009",
+        "FD-004",
         "MS-012"
       ],
       "triggeredRules": [
@@ -499,12 +734,14 @@
       "label": "RISK",
       "description": "Grupo de WhatsApp de 'trabajo' con urgencia",
       "risk": "CRITICAL",
-      "score": 30,
+      "score": 44,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.461,
+      "latencyMs": 0.532,
       "termsMatched": [
+        "REC-017",
+        "FD-009",
         "REC-031",
         "CC-005",
         "OE-004",
@@ -528,7 +765,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.384,
+      "latencyMs": 0.476,
       "termsMatched": [
         "CN-001",
         "OE-009",
@@ -545,15 +782,16 @@
       "label": "RISK",
       "description": "Préstamo como enganche de deuda",
       "risk": "CRITICAL",
-      "score": 39,
+      "score": 46,
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.426,
+      "latencyMs": 0.448,
       "termsMatched": [
         "OE-011",
         "REC-009",
         "REC-034",
+        "OE-020",
         "MS-012",
         "AI-006",
         "MS-011"
@@ -574,7 +812,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.509,
+      "latencyMs": 0.477,
       "termsMatched": [
         "LF-010",
         "REC-013",
@@ -600,7 +838,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.147,
+      "latencyMs": 0.186,
       "termsMatched": [
         "REC-001",
         "REC-006",
@@ -621,7 +859,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.363,
+      "latencyMs": 0.434,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -635,7 +873,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.354,
+      "latencyMs": 0.339,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -649,7 +887,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.37,
+      "latencyMs": 0.392,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -663,7 +901,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.348,
+      "latencyMs": 0.411,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -677,7 +915,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.366,
+      "latencyMs": 0.419,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -687,13 +925,15 @@
       "label": "BENIGN",
       "description": "Mascota nueva",
       "risk": "LOW",
-      "score": 0,
-      "escalate": false,
+      "score": 2,
+      "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.227,
+      "latencyMs": 0.253,
       "termsMatched": [],
-      "triggeredRules": []
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
     },
     {
       "id": "BN-007",
@@ -705,7 +945,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.365,
+      "latencyMs": 0.397,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -715,13 +955,15 @@
       "label": "BENIGN",
       "description": "Serie de moda",
       "risk": "LOW",
-      "score": 0,
-      "escalate": false,
+      "score": 2,
+      "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.321,
+      "latencyMs": 0.402,
       "termsMatched": [],
-      "triggeredRules": []
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
     },
     {
       "id": "BN-009",
@@ -733,7 +975,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.36,
+      "latencyMs": 0.4,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -747,7 +989,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.363,
+      "latencyMs": 0.397,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -757,13 +999,15 @@
       "label": "BENIGN",
       "description": "Roblox normal entre amigos de la escuela",
       "risk": "LOW",
-      "score": 2,
-      "escalate": false,
+      "score": 5,
+      "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.371,
+      "latencyMs": 0.352,
       "termsMatched": [],
-      "triggeredRules": []
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
     },
     {
       "id": "BN-012",
@@ -775,7 +1019,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.22,
+      "latencyMs": 0.262,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -789,7 +1033,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.387,
+      "latencyMs": 0.419,
       "termsMatched": [
         "REC-002",
         "SD-004"
@@ -806,7 +1050,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.376,
+      "latencyMs": 0.462,
       "termsMatched": [
         "REC-002",
         "REC-005",
@@ -829,7 +1073,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.337,
+      "latencyMs": 0.413,
       "termsMatched": [
         "LF-010"
       ],
@@ -845,7 +1089,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.36,
+      "latencyMs": 0.411,
       "termsMatched": [
         "LF-001"
       ],
@@ -857,12 +1101,14 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'el jefe' como jefe de trabajo real de papá",
       "risk": "LOW",
-      "score": 0,
+      "score": 3,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.211,
-      "termsMatched": [],
+      "latencyMs": 0.291,
+      "termsMatched": [
+        "REC-006"
+      ],
       "triggeredRules": []
     },
     {
@@ -875,7 +1121,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.356,
+      "latencyMs": 0.444,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -889,7 +1135,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.192,
+      "latencyMs": 0.242,
       "termsMatched": [
         "REC-004"
       ],
@@ -901,15 +1147,17 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'te presto dinero' entre amigos para el recreo",
       "risk": "LOW",
-      "score": 6,
+      "score": 8,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.335,
+      "latencyMs": 0.443,
       "termsMatched": [
         "OE-011"
       ],
-      "triggeredRules": []
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
     },
     {
       "id": "BT-009",
@@ -917,16 +1165,17 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'cuántos años tienes' en contexto de conocerse en clase nueva",
       "risk": "LOW",
-      "score": 2,
+      "score": 3,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.322,
+      "latencyMs": 0.409,
       "termsMatched": [
-        "SD-006",
         "SI-001"
       ],
-      "triggeredRules": []
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
     },
     {
       "id": "BT-010",
@@ -934,15 +1183,17 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'hotel' y 'uber' en viaje familiar",
       "risk": "LOW",
-      "score": 7,
-      "escalate": false,
+      "score": 9,
+      "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.366,
+      "latencyMs": 0.402,
       "termsMatched": [
         "LF-008"
       ],
-      "triggeredRules": []
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
     },
     {
       "id": "BT-011",
@@ -954,7 +1205,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.233,
+      "latencyMs": 0.356,
       "termsMatched": [
         "REC-005"
       ],
@@ -970,7 +1221,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.381,
+      "latencyMs": 0.461,
       "termsMatched": [
         "REC-031",
         "FD-002",
@@ -985,14 +1236,14 @@
       "description": "TRAMPA: 'sígueme' y redes en contexto de amigos reales",
       "risk": "LOW",
       "score": 5,
-      "escalate": false,
+      "escalate": true,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.215,
-      "termsMatched": [
-        "RS-008"
-      ],
-      "triggeredRules": []
+      "latencyMs": 0.24,
+      "termsMatched": [],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
     },
     {
       "id": "BT-014",
@@ -1000,16 +1251,18 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'confía en mí' entre amigas sobre un secreto escolar inocente",
       "risk": "LOW",
-      "score": 8,
+      "score": 10,
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.364,
+      "latencyMs": 0.436,
       "termsMatched": [
         "MS-012",
         "MS-011"
       ],
-      "triggeredRules": []
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
     },
     {
       "id": "BT-015",
@@ -1021,7 +1274,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.236,
+      "latencyMs": 0.281,
       "termsMatched": [
         "REC-025"
       ],
@@ -1037,7 +1290,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.127,
+      "latencyMs": 0.16,
       "termsMatched": [
         "REC-002",
         "REC-005",
@@ -1045,6 +1298,1476 @@
         "FD-001",
         "SD-001",
         "SD-004"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "TL-001",
+      "group": "tp_grooming_lento",
+      "label": "RISK",
+      "description": "Captación lenta de 6 días: contacto → oferta suave → extracción de información. Cada mensaje es débil; el orden y el span son la señal (TCR-001)",
+      "risk": "MEDIUM",
+      "score": 8,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.365,
+      "termsMatched": [
+        "SD-005",
+        "SD-006",
+        "REC-002",
+        "SI-001"
+      ],
+      "triggeredRules": [
+        "MCR-007",
+        "TCR-001"
+      ]
+    },
+    {
+      "id": "TL-002",
+      "group": "tp_grooming_lento",
+      "label": "RISK",
+      "description": "Guion completo en 14 días: las 4 etapas en orden, todas con términos de peso bajo (TCR-001 con script completo → piso HIGH)",
+      "risk": "CRITICAL",
+      "score": 14,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.459,
+      "termsMatched": [
+        "SD-001",
+        "SD-005",
+        "REC-002",
+        "SI-001",
+        "LF-011"
+      ],
+      "triggeredRules": [
+        "MCR-001",
+        "MCR-007",
+        "TCR-001"
+      ]
+    },
+    {
+      "id": "TL-003",
+      "group": "tp_grooming_lento",
+      "label": "RISK",
+      "description": "Aislamiento sostenido: el mismo secreto cultivado en días distintos a lo largo de 11 días (TCR-002). El término repetido no suma score extra",
+      "risk": "HIGH",
+      "score": 24,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.346,
+      "termsMatched": [
+        "SD-004",
+        "SD-006",
+        "MS-012",
+        "AI-006"
+      ],
+      "triggeredRules": [
+        "MCR-007",
+        "TCR-001"
+      ]
+    },
+    {
+      "id": "BL-001",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Amistad real de 3 semanas: pregunta la edad el día uno (etapa 3 ANTES que la 2 — sin progresión ordenada), luego juegos y favores normales",
+      "risk": "LOW",
+      "score": 3,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.4,
+      "termsMatched": [
+        "SI-001"
+      ],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "BL-002",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Compañeros de escuela durante 2 semanas: términos de 3 etapas presentes pero en desorden y con contexto escolar/familiar (dampeners)",
+      "risk": "LOW",
+      "score": 7,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.462,
+      "termsMatched": [
+        "REC-002",
+        "SD-004",
+        "SD-006",
+        "SD-005",
+        "SI-006",
+        "SD-001"
+      ],
+      "triggeredRules": [
+        "MCR-007"
+      ]
+    },
+    {
+      "id": "NC-001",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Fan comparte su rola favorita",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.515,
+      "termsMatched": [],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "NC-002",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Cantando letra de corrido en el chat",
+      "risk": "LOW",
+      "score": 1,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.545,
+      "termsMatched": [
+        "REC-005"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "NC-003",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Playlist para la fiesta",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.527,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "NC-004",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Debate de fans sobre artistas",
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.534,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "NC-005",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Concierto de corridos",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.479,
+      "termsMatched": [],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "NC-006",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Aprendiendo guitarra con corridos",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.522,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "NC-007",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Meme de narcocultura",
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.306,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "NC-008",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Serie de narcos en streaming",
+      "risk": "MEDIUM",
+      "score": 24,
+      "escalate": true,
+      "flagged": true,
+      "correct": false,
+      "latencyMs": 0.499,
+      "termsMatched": [
+        "REC-029",
+        "REC-027"
+      ],
+      "triggeredRules": [
+        "CR-009"
+      ]
+    },
+    {
+      "id": "NC-009",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Letra citada con jerga operativa",
+      "risk": "LOW",
+      "score": 4,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.649,
+      "termsMatched": [
+        "REC-005",
+        "REC-022"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "NC-010",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Disfraz para fiesta temática",
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.32,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "NC-011",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Fan pregunta significado de letra",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.435,
+      "termsMatched": [
+        "REC-030",
+        "SD-001"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "NC-012",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Video de youtube de corridos",
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.455,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "JJ-001",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "'Jalas' coloquial para el cine",
+      "risk": "LOW",
+      "score": 3,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.4,
+      "termsMatched": [],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "JJ-002",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "'Jalar' de acompañar a la tienda",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.246,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "JJ-003",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Trash talk de videojuego",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.45,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "JJ-004",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Slang de comida",
+      "risk": "MEDIUM",
+      "score": 13,
+      "escalate": true,
+      "flagged": true,
+      "correct": false,
+      "latencyMs": 0.292,
+      "termsMatched": [
+        "REC-006",
+        "REC-026"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "JJ-005",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Plan con la banda de amigos",
+      "risk": "LOW",
+      "score": 8,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.451,
+      "termsMatched": [
+        "SD-006"
+      ],
+      "triggeredRules": [
+        "CR-001"
+      ]
+    },
+    {
+      "id": "JJ-006",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Chisme escolar inocente",
+      "risk": "LOW",
+      "score": 3,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.293,
+      "termsMatched": [
+        "SD-006"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "JJ-007",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Presumiendo logro de juego",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.443,
+      "termsMatched": [],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "JJ-008",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Quedada para estudiar",
+      "risk": "LOW",
+      "score": 6,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.293,
+      "termsMatched": [
+        "REC-026"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "JJ-009",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Hablando de la chamba del hermano mayor",
+      "risk": "LOW",
+      "score": 6,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.307,
+      "termsMatched": [
+        "REC-002",
+        "SD-004"
+      ],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "JJ-010",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Slang mixto intenso",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.339,
+      "termsMatched": [
+        "REC-018",
+        "SD-004"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "BT-017",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'la línea' de camiones",
+      "risk": "LOW",
+      "score": 7,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.282,
+      "termsMatched": [
+        "REC-016"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "BT-018",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'punto de encuentro' escolar para excursión",
+      "risk": "LOW",
+      "score": 8,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.306,
+      "termsMatched": [
+        "LF-015"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "BT-019",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'te recogemos' de papás",
+      "risk": "LOW",
+      "score": 8,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.309,
+      "termsMatched": [
+        "LF-017"
+      ],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "BT-020",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'capacitación pagada' real de tienda departamental",
+      "risk": "LOW",
+      "score": 6,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.793,
+      "termsMatched": [
+        "FD-003",
+        "REC-031"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "BT-021",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'dónde vives' entre compañeros para proyecto",
+      "risk": "LOW",
+      "score": 6,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.344,
+      "termsMatched": [
+        "LF-004",
+        "REC-032"
+      ],
+      "triggeredRules": [
+        "MCR-001"
+      ]
+    },
+    {
+      "id": "BT-022",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'envío' de paquetería normal",
+      "risk": "LOW",
+      "score": 4,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.515,
+      "termsMatched": [
+        "LF-011"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "BT-023",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'número nuevo' legítimo",
+      "risk": "LOW",
+      "score": 8,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.322,
+      "termsMatched": [
+        "CC-002"
+      ],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "BT-024",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'ganar bien' de profesión aspiracional",
+      "risk": "LOW",
+      "score": 3,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.426,
+      "termsMatched": [
+        "OE-002",
+        "SD-006"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "BT-025",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'mándame foto' de la tarea",
+      "risk": "LOW",
+      "score": 5,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.316,
+      "termsMatched": [
+        "SI-005"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "BT-026",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'torneo con premio' escolar real",
+      "risk": "LOW",
+      "score": 11,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.321,
+      "termsMatched": [
+        "VJ-004"
+      ],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "BN-013",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Recomendación de libro",
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.281,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "BN-014",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Plan de natación",
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.249,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "BN-015",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Nervios por presentación escolar",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.446,
+      "termsMatched": [],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "BN-016",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Mascota enferma",
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.411,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "BN-017",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Compras con mamá",
+      "risk": "LOW",
+      "score": 11,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.338,
+      "termsMatched": [
+        "OE-007"
+      ],
+      "triggeredRules": [
+        "CR-003"
+      ]
+    },
+    {
+      "id": "BN-018",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Clima de lluvia y partido pospuesto",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.254,
+      "termsMatched": [],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "BN-019",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Cumpleaños de la abuela",
+      "risk": "LOW",
+      "score": 5,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.275,
+      "termsMatched": [],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "BN-020",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Duda de horario escolar",
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.251,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "BL-003",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Amistad de un mes: categorías dispersas sin orden ni etapa profunda sostenida",
+      "risk": "LOW",
+      "score": 11,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.52,
+      "termsMatched": [
+        "REC-005",
+        "SD-001",
+        "SD-005",
+        "OE-007",
+        "REC-002",
+        "SD-004"
+      ],
+      "triggeredRules": [
+        "MCR-002",
+        "MCR-007"
+      ]
+    },
+    {
+      "id": "BL-004",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Primos que se escriben cada semana",
+      "risk": "LOW",
+      "score": 11,
+      "escalate": true,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.47,
+      "termsMatched": [
+        "LF-001"
+      ],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "BL-005",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Compañeros de clan de juego durante semanas (sin escalada)",
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.478,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "BL-006",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Vecinos que se ayudan con mandados normales",
+      "risk": "LOW",
+      "score": 5,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.413,
+      "termsMatched": [
+        "REC-004"
+      ],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "ED-001",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Préstamo con cobro en 'favores'",
+      "risk": "CRITICAL",
+      "score": 29,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.5,
+      "termsMatched": [
+        "REC-034",
+        "REC-009",
+        "LF-012"
+      ],
+      "triggeredRules": [
+        "MCR-001",
+        "CR-006"
+      ]
+    },
+    {
+      "id": "ED-002",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Deuda de juego que escala",
+      "risk": "CRITICAL",
+      "score": 16,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.497,
+      "termsMatched": [
+        "OE-021",
+        "REC-004",
+        "SD-004"
+      ],
+      "triggeredRules": [
+        "MCR-002",
+        "MCR-007"
+      ]
+    },
+    {
+      "id": "ED-003",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Regalos que se cobran",
+      "risk": "CRITICAL",
+      "score": 28,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.448,
+      "termsMatched": [
+        "OE-021",
+        "SD-004",
+        "LF-010"
+      ],
+      "triggeredRules": [
+        "MCR-007",
+        "CR-008"
+      ]
+    },
+    {
+      "id": "ED-004",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Amenaza velada por deuda",
+      "risk": "HIGH",
+      "score": 23,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.497,
+      "termsMatched": [
+        "REC-006",
+        "MS-012"
+      ],
+      "triggeredRules": [
+        "MCR-008"
+      ]
+    },
+    {
+      "id": "ED-005",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Deuda familiar como palanca",
+      "risk": "LOW",
+      "score": 4,
+      "escalate": false,
+      "flagged": false,
+      "correct": false,
+      "latencyMs": 0.469,
+      "termsMatched": [
+        "SD-002"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "ED-006",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Recarga de celular como enganche",
+      "risk": "MEDIUM",
+      "score": 12,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.486,
+      "termsMatched": [
+        "OE-021",
+        "REC-032",
+        "REC-010"
+      ],
+      "triggeredRules": [
+        "MCR-002"
+      ]
+    },
+    {
+      "id": "ED-007",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Préstamo con intereses de favor creciente",
+      "risk": "CRITICAL",
+      "score": 23,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.466,
+      "termsMatched": [
+        "LF-002"
+      ],
+      "triggeredRules": [
+        "CR-001",
+        "CR-002"
+      ]
+    },
+    {
+      "id": "ED-008",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Cobro con presión de grupo",
+      "risk": "HIGH",
+      "score": 24,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.497,
+      "termsMatched": [
+        "REC-006",
+        "REC-031",
+        "LF-014"
+      ],
+      "triggeredRules": [
+        "MCR-001"
+      ]
+    },
+    {
+      "id": "NP-001",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "De fan de corridos a oferta real",
+      "risk": "MEDIUM",
+      "score": 13,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.588,
+      "termsMatched": [
+        "REC-001",
+        "OE-002",
+        "LF-002"
+      ],
+      "triggeredRules": [
+        "MCR-001",
+        "MCR-002",
+        "MCR-007"
+      ]
+    },
+    {
+      "id": "NP-002",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "Grupo de fans infiltrado",
+      "risk": "MEDIUM",
+      "score": 13,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.478,
+      "termsMatched": [
+        "SD-001",
+        "REC-006",
+        "LF-009",
+        "REC-041",
+        "REC-042"
+      ],
+      "triggeredRules": [
+        "MCR-001",
+        "MCR-007"
+      ]
+    },
+    {
+      "id": "NP-003",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "Del significado de la letra a la invitación",
+      "risk": "LOW",
+      "score": 11,
+      "escalate": false,
+      "flagged": false,
+      "correct": false,
+      "latencyMs": 0.485,
+      "termsMatched": [
+        "REC-022",
+        "OE-004"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "NP-004",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "Idolatría dirigida a reclutamiento",
+      "risk": "HIGH",
+      "score": 20,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.447,
+      "termsMatched": [
+        "REC-031",
+        "MS-012",
+        "AI-006"
+      ],
+      "triggeredRules": [
+        "MCR-007",
+        "MCR-008"
+      ]
+    },
+    {
+      "id": "NP-005",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "Concierto como punto de contacto",
+      "risk": "CRITICAL",
+      "score": 39,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.481,
+      "termsMatched": [
+        "SD-004",
+        "REC-040",
+        "LF-005",
+        "LF-017"
+      ],
+      "triggeredRules": [
+        "MCR-001",
+        "MCR-007",
+        "CR-009"
+      ]
+    },
+    {
+      "id": "NP-006",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "Sorteo falso de boletos",
+      "risk": "MEDIUM",
+      "score": 16,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.847,
+      "termsMatched": [
+        "SI-020",
+        "LF-010",
+        "LF-018"
+      ],
+      "triggeredRules": [
+        "N0-EVASION"
+      ]
+    },
+    {
+      "id": "RP-001",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Oferta laboral vaga sin términos del dataset",
+      "risk": "LOW",
+      "score": 10,
+      "escalate": false,
+      "flagged": false,
+      "correct": false,
+      "latencyMs": 0.482,
+      "termsMatched": [
+        "REC-042"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "RP-002",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Vigilancia parafraseada",
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": false,
+      "latencyMs": 0.453,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "RP-003",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Entrega parafraseada",
+      "risk": "LOW",
+      "score": 8,
+      "escalate": false,
+      "flagged": false,
+      "correct": false,
+      "latencyMs": 0.479,
+      "termsMatched": [
+        "REC-042"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "RP-004",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Pertenencia parafraseada",
+      "risk": "LOW",
+      "score": 5,
+      "escalate": false,
+      "flagged": false,
+      "correct": false,
+      "latencyMs": 0.464,
+      "termsMatched": [
+        "MS-011"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "RP-005",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Reclutador que evita palabras clave",
+      "risk": "LOW",
+      "score": 3,
+      "escalate": false,
+      "flagged": false,
+      "correct": false,
+      "latencyMs": 0.488,
+      "termsMatched": [
+        "REC-031"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "RP-006",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Oferta de 'seguridad' parafraseada",
+      "risk": "LOW",
+      "score": 6,
+      "escalate": false,
+      "flagged": false,
+      "correct": false,
+      "latencyMs": 0.54,
+      "termsMatched": [
+        "REC-044",
+        "REC-009"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "RP-007",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Chofer adolescente parafraseado",
+      "risk": "MEDIUM",
+      "score": 17,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.416,
+      "termsMatched": [
+        "REC-007",
+        "REC-043"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "RP-008",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Fotógrafo de puntos parafraseado",
+      "risk": "CRITICAL",
+      "score": 20,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.505,
+      "termsMatched": [
+        "REC-031",
+        "REC-032",
+        "OE-001"
+      ],
+      "triggeredRules": [
+        "MCR-002",
+        "CR-003"
+      ]
+    },
+    {
+      "id": "RP-009",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Reclutamiento de hermano mayor ausente",
+      "risk": "LOW",
+      "score": 11,
+      "escalate": false,
+      "flagged": false,
+      "correct": false,
+      "latencyMs": 0.551,
+      "termsMatched": [
+        "SD-004",
+        "REC-006"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "RP-010",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Invitación a 'negocio familiar' parafraseada",
+      "risk": "MEDIUM",
+      "score": 12,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.417,
+      "termsMatched": [
+        "REC-038"
+      ],
+      "triggeredRules": [
+        "CR-003"
+      ]
+    },
+    {
+      "id": "RP-011",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Prueba de lealtad parafraseada",
+      "risk": "MEDIUM",
+      "score": 19,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.503,
+      "termsMatched": [
+        "MS-006",
+        "REC-003"
+      ],
+      "triggeredRules": [
+        "MCR-008"
+      ]
+    },
+    {
+      "id": "RP-012",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Oferta a niña parafraseada",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": false,
+      "flagged": false,
+      "correct": false,
+      "latencyMs": 0.514,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "AC-001",
+      "group": "tp_actor_asimetrico",
+      "label": "RISK",
+      "description": "Adulto concentra: oferta+aislamiento+logística; menor solo responde",
+      "risk": "CRITICAL",
+      "score": 74,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.955,
+      "termsMatched": [
+        "SD-003",
+        "SD-006",
+        "OE-001",
+        "REC-032",
+        "LF-002",
+        "MS-012",
+        "AI-002"
+      ],
+      "triggeredRules": [
+        "MCR-001",
+        "MCR-002",
+        "MCR-007",
+        "MCR-008",
+        "CR-004",
+        "CR-006"
+      ]
+    },
+    {
+      "id": "AC-002",
+      "group": "tp_actor_asimetrico",
+      "label": "RISK",
+      "description": "Reclutador concentra en gaming: skins + secreto + encuentro",
+      "risk": "CRITICAL",
+      "score": 31,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 1.078,
+      "termsMatched": [
+        "VJ-001",
+        "SD-001",
+        "LF-005",
+        "VJ-002"
+      ],
+      "triggeredRules": [
+        "MCR-007"
+      ]
+    },
+    {
+      "id": "AC-003",
+      "group": "tp_actor_asimetrico",
+      "label": "RISK",
+      "description": "Un actor pide datos personales progresivamente; el otro contesta normal",
+      "risk": "HIGH",
+      "score": 23,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.846,
+      "termsMatched": [
+        "SI-001",
+        "SI-006",
+        "SD-008",
+        "SI-005"
+      ],
+      "triggeredRules": [
+        "CR-013"
+      ]
+    },
+    {
+      "id": "AC-004",
+      "group": "tp_actor_asimetrico",
+      "label": "RISK",
+      "description": "Score moderado — sin asimetría quedaría bajo umbral, el actor lo eleva",
+      "risk": "CRITICAL",
+      "score": 32,
+      "escalate": true,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.655,
+      "termsMatched": [
+        "SD-007",
+        "REC-007",
+        "OE-002",
+        "REC-031",
+        "REC-043"
+      ],
+      "triggeredRules": [
+        "MCR-002",
+        "MCR-007"
+      ]
+    },
+    {
+      "id": "BR-001",
+      "group": "benign_reciproco",
+      "label": "BENIGN",
+      "description": "Dos amigos: AMBOS usan 'manda tu ubicación' (reciprocidad léxica) para la fiesta",
+      "risk": "LOW",
+      "score": 10,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.621,
+      "termsMatched": [
+        "LF-002",
+        "SD-001"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "BR-002",
+      "group": "benign_reciproco",
+      "label": "BENIGN",
+      "description": "Compañeros se preguntan edad/escuela mutuamente (se conocen)",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.792,
+      "termsMatched": [
+        "SI-001",
+        "SD-001"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "BR-003",
+      "group": "benign_reciproco",
+      "label": "BENIGN",
+      "description": "Amigos: AMBOS mencionan 'te presto/buena lana' recíprocamente por el recreo",
+      "risk": "MEDIUM",
+      "score": 12,
+      "escalate": true,
+      "flagged": true,
+      "correct": false,
+      "latencyMs": 0.7,
+      "termsMatched": [
+        "OE-001"
+      ],
+      "triggeredRules": [
+        "CR-003"
+      ]
+    },
+    {
+      "id": "BR-004",
+      "group": "benign_reciproco",
+      "label": "BENIGN",
+      "description": "Hermanos coordinan mandado familiar",
+      "risk": "LOW",
+      "score": 4,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.613,
+      "termsMatched": [
+        "REC-004"
       ],
       "triggeredRules": []
     }

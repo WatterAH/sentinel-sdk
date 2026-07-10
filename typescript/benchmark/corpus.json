@@ -3,7 +3,10 @@
     "name": "sentinel-eval-corpus",
     "version": "0.1.0",
     "description": "Corpus de evaluación etiquetado para el motor local de Sentinel. Cada caso es una conversación (1-6 mensajes) con etiqueta esperada. RISK = el motor debería marcar la conversación (risk MEDIUM o superior). BENIGN = el motor debería dejarla pasar (risk LOW).",
-    "labels": ["RISK", "BENIGN"],
+    "labels": [
+      "RISK",
+      "BENIGN"
+    ],
     "groups": {
       "tp_reclutamiento_directo": "Reclutamiento criminal explícito con jerga documentada",
       "tp_ofuscado": "Reclutamiento con ofuscación tipográfica (l33t, símbolos, emojis)",
@@ -11,7 +14,16 @@
       "tp_vector_gaming": "Enganche vía videojuegos y recompensas digitales",
       "tp_formalidad_deceptiva": "Oferta laboral falsa con apariencia formal",
       "benign_cotidiano": "Conversación normal sin ningún término de riesgo",
-      "benign_trampa": "Conversación inocente que usa términos del dataset en contexto legítimo (mide falsos positivos)"
+      "benign_trampa": "Conversación inocente que usa términos del dataset en contexto legítimo (mide falsos positivos)",
+      "tp_grooming_lento": "Captación paciente multi-día: cada mensaje individual queda bajo el umbral, la progresión ordenada por etapas (contacto→enganche→aislamiento→logística) es la señal (TemporalLayer)",
+      "benign_amistad_larga": "Amistad real de semanas con términos del dataset dispersos pero SIN progresión ordenada — no debe disparar la capa temporal",
+      "benign_narcocultura": "Fans de corridos tumbados citando letras y hablando de narcocultura pop — la mayor fuente de FP del mundo real, NO debe marcar",
+      "benign_jerga_juvenil": "Slang juvenil mexicano intenso pero 100% inocente (incluye usos coloquiales de 'jalar')",
+      "tp_extorsion_deuda": "Enganche por préstamo que se convierte en deuda cobrable con 'favores'",
+      "tp_narcocultura_puente": "Empieza como plática de fan de corridos y PIVOTEA a reclutamiento real — debe marcar",
+      "tp_reclutamiento_parafraseado": "Reclutamiento real redactado SIN los términos literales del dataset (estresa recall/generalización)",
+      "tp_actor_asimetrico": "Reclutador que CONCENTRA tácticas de acción dirigida hacia el menor (ActorLayer ACR-001); el menor solo responde",
+      "benign_reciproco": "Conversación entre pares con términos del dataset REPARTIDOS/recíprocos — ningún actor concentra, NO debe marcar por asimetría"
     },
     "notes": "Los timestamps son offsets en segundos desde el inicio de la conversación. El runner los convierte a epoch ms. Casos benign_trampa espaciados >5min entre hits para no activar velocity de forma artificial."
   },
@@ -22,9 +34,18 @@
       "label": "RISK",
       "description": "Pitch clásico: jale + oferta económica + logística",
       "messages": [
-        { "text": "que onda, hay jale por si te interesa", "offset_s": 0 },
-        { "text": "lana fácil, nomás es un mandadito", "offset_s": 45 },
-        { "text": "manda tu ubicación y te mandamos el uber", "offset_s": 120 }
+        {
+          "text": "que onda, hay jale por si te interesa",
+          "offset_s": 0
+        },
+        {
+          "text": "lana fácil, nomás es un mandadito",
+          "offset_s": 45
+        },
+        {
+          "text": "manda tu ubicación y te mandamos el uber",
+          "offset_s": 120
+        }
       ]
     },
     {
@@ -33,8 +54,14 @@
       "label": "RISK",
       "description": "Frase del pitch original de Sentinel",
       "messages": [
-        { "text": "tengo facebook, jalas al bisne?", "offset_s": 0 },
-        { "text": "pagamos bien, sin preguntas", "offset_s": 60 }
+        {
+          "text": "tengo facebook, jalas al bisne?",
+          "offset_s": 0
+        },
+        {
+          "text": "pagamos bien, sin preguntas",
+          "offset_s": 60
+        }
       ]
     },
     {
@@ -43,9 +70,18 @@
       "label": "RISK",
       "description": "Protección + pertenencia + plaza",
       "messages": [
-        { "text": "aquí todos somos familia, nadie te va a tocar", "offset_s": 0 },
-        { "text": "la plaza es nuestra y el patrón quiere gente joven", "offset_s": 90 },
-        { "text": "tú nomás ponte al tiro", "offset_s": 150 }
+        {
+          "text": "aquí todos somos familia, nadie te va a tocar",
+          "offset_s": 0
+        },
+        {
+          "text": "la plaza es nuestra y el patrón quiere gente joven",
+          "offset_s": 90
+        },
+        {
+          "text": "tú nomás ponte al tiro",
+          "offset_s": 150
+        }
       ]
     },
     {
@@ -54,9 +90,18 @@
       "label": "RISK",
       "description": "Halconeo con pago quincenal",
       "messages": [
-        { "text": "necesitamos gente para estar de halcón en la zona", "offset_s": 0 },
-        { "text": "5 mil quincenales, pago al contado", "offset_s": 50 },
-        { "text": "solo tienes que avisar quién entra y quién sale", "offset_s": 110 }
+        {
+          "text": "necesitamos gente para estar de halcón en la zona",
+          "offset_s": 0
+        },
+        {
+          "text": "5 mil quincenales, pago al contado",
+          "offset_s": 50
+        },
+        {
+          "text": "solo tienes que avisar quién entra y quién sale",
+          "offset_s": 110
+        }
       ]
     },
     {
@@ -65,9 +110,18 @@
       "label": "RISK",
       "description": "Mula / cruce de material",
       "messages": [
-        { "text": "hay un trabajito para ti, es cosa de nada", "offset_s": 0 },
-        { "text": "cruzar el material una vez a la semana, buen varo", "offset_s": 70 },
-        { "text": "no hay riesgo, nosotros arreglamos el retén", "offset_s": 140 }
+        {
+          "text": "hay un trabajito para ti, es cosa de nada",
+          "offset_s": 0
+        },
+        {
+          "text": "cruzar el material una vez a la semana, buen varo",
+          "offset_s": 70
+        },
+        {
+          "text": "no hay riesgo, nosotros arreglamos el retén",
+          "offset_s": 140
+        }
       ]
     },
     {
@@ -76,8 +130,14 @@
       "label": "RISK",
       "description": "Mover paquete con presión de única vez",
       "messages": [
-        { "text": "solo es un mandado, llevar el paquete a la central de autobuses", "offset_s": 0 },
-        { "text": "es una sola vez y te pago al instante", "offset_s": 60 }
+        {
+          "text": "solo es un mandado, llevar el paquete a la central de autobuses",
+          "offset_s": 0
+        },
+        {
+          "text": "es una sola vez y te pago al instante",
+          "offset_s": 60
+        }
       ]
     },
     {
@@ -86,8 +146,14 @@
       "label": "RISK",
       "description": "Ofuscación l33t del pitch original",
       "messages": [
-        { "text": "trayg0 Faceb00k, jalas al bi$ne? 📦", "offset_s": 0 },
-        { "text": "lana facil, sin pregunt4s", "offset_s": 55 }
+        {
+          "text": "trayg0 Faceb00k, jalas al bi$ne? 📦",
+          "offset_s": 0
+        },
+        {
+          "text": "lana facil, sin pregunt4s",
+          "offset_s": 55
+        }
       ]
     },
     {
@@ -96,9 +162,18 @@
       "label": "RISK",
       "description": "Sustitución de números y símbolos en jerga operativa",
       "messages": [
-        { "text": "hay j4le de h4lcon en la z0na", "offset_s": 0 },
-        { "text": "5 mil kincenales, p4go en efectivo", "offset_s": 65 },
-        { "text": "manda tu ubicacion", "offset_s": 130 }
+        {
+          "text": "hay j4le de h4lcon en la z0na",
+          "offset_s": 0
+        },
+        {
+          "text": "5 mil kincenales, p4go en efectivo",
+          "offset_s": 65
+        },
+        {
+          "text": "manda tu ubicacion",
+          "offset_s": 130
+        }
       ]
     },
     {
@@ -107,9 +182,18 @@
       "label": "RISK",
       "description": "Espaciado entre letras y emojis de señal",
       "messages": [
-        { "text": "traigo f a c e b o o k del bueno", "offset_s": 0 },
-        { "text": "jalas al bisne? 🥷", "offset_s": 40 },
-        { "text": "varo facil hermano 💸", "offset_s": 100 }
+        {
+          "text": "traigo f a c e b o o k del bueno",
+          "offset_s": 0
+        },
+        {
+          "text": "jalas al bisne? 🥷",
+          "offset_s": 40
+        },
+        {
+          "text": "varo facil hermano 💸",
+          "offset_s": 100
+        }
       ]
     },
     {
@@ -118,8 +202,14 @@
       "label": "RISK",
       "description": "Faltas ortográficas deliberadas",
       "messages": [
-        { "text": "ai chamba, se gana vien", "offset_s": 0 },
-        { "text": "nomas es pasar el pakete, sin vronca", "offset_s": 75 }
+        {
+          "text": "ai chamba, se gana vien",
+          "offset_s": 0
+        },
+        {
+          "text": "nomas es pasar el pakete, sin vronca",
+          "offset_s": 75
+        }
       ]
     },
     {
@@ -128,11 +218,26 @@
       "label": "RISK",
       "description": "Secuencia completa: contacto → confianza → aislamiento → logística",
       "messages": [
-        { "text": "oye, te vi en tiktok, está chido tu contenido", "offset_s": 0 },
-        { "text": "eres de confianza, se nota", "offset_s": 300 },
-        { "text": "tengo algo para ti pero esto queda entre nosotros", "offset_s": 600 },
-        { "text": "no le digas a tus papás, no lo entenderían", "offset_s": 900 },
-        { "text": "¿a qué horas estás solo? te mando la dirección", "offset_s": 1200 }
+        {
+          "text": "oye, te vi en tiktok, está chido tu contenido",
+          "offset_s": 0
+        },
+        {
+          "text": "eres de confianza, se nota",
+          "offset_s": 300
+        },
+        {
+          "text": "tengo algo para ti pero esto queda entre nosotros",
+          "offset_s": 600
+        },
+        {
+          "text": "no le digas a tus papás, no lo entenderían",
+          "offset_s": 900
+        },
+        {
+          "text": "¿a qué horas estás solo? te mando la dirección",
+          "offset_s": 1200
+        }
       ]
     },
     {
@@ -141,9 +246,18 @@
       "label": "RISK",
       "description": "Aislamiento + cambio de canal",
       "messages": [
-        { "text": "mejor en whatsapp, aquí no podemos hablar", "offset_s": 0 },
-        { "text": "nadie tiene que saber de esto", "offset_s": 120 },
-        { "text": "tus papás no te entienden, te mereces algo mejor", "offset_s": 240 }
+        {
+          "text": "mejor en whatsapp, aquí no podemos hablar",
+          "offset_s": 0
+        },
+        {
+          "text": "nadie tiene que saber de esto",
+          "offset_s": 120
+        },
+        {
+          "text": "tus papás no te entienden, te mereces algo mejor",
+          "offset_s": 240
+        }
       ]
     },
     {
@@ -152,10 +266,22 @@
       "label": "RISK",
       "description": "Solicitud de información personal progresiva",
       "messages": [
-        { "text": "cuántos años tienes?", "offset_s": 0 },
-        { "text": "en qué escuela estás? yo conozco por ahí", "offset_s": 90 },
-        { "text": "a qué horas estás solo en tu casa?", "offset_s": 180 },
-        { "text": "mándame foto para conocerte mejor", "offset_s": 270 }
+        {
+          "text": "cuántos años tienes?",
+          "offset_s": 0
+        },
+        {
+          "text": "en qué escuela estás? yo conozco por ahí",
+          "offset_s": 90
+        },
+        {
+          "text": "a qué horas estás solo en tu casa?",
+          "offset_s": 180
+        },
+        {
+          "text": "mándame foto para conocerte mejor",
+          "offset_s": 270
+        }
       ]
     },
     {
@@ -164,9 +290,18 @@
       "label": "RISK",
       "description": "Manipulación social y presión de grupo",
       "messages": [
-        { "text": "todos ya lo hicieron, no seas miedoso", "offset_s": 0 },
-        { "text": "si no vienes eres rajón y te saco del grupo", "offset_s": 80 },
-        { "text": "así se gana el respeto aquí", "offset_s": 160 }
+        {
+          "text": "todos ya lo hicieron, no seas miedoso",
+          "offset_s": 0
+        },
+        {
+          "text": "si no vienes eres rajón y te saco del grupo",
+          "offset_s": 80
+        },
+        {
+          "text": "así se gana el respeto aquí",
+          "offset_s": 160
+        }
       ]
     },
     {
@@ -175,9 +310,18 @@
       "label": "RISK",
       "description": "Enganche con skins que escala a encuentro físico",
       "messages": [
-        { "text": "te doy skins si me ayudas con algo", "offset_s": 0 },
-        { "text": "también te regalo robux, tengo cuenta premium", "offset_s": 70 },
-        { "text": "pero tienes que venir por ellos, ven solo", "offset_s": 140 }
+        {
+          "text": "te doy skins si me ayudas con algo",
+          "offset_s": 0
+        },
+        {
+          "text": "también te regalo robux, tengo cuenta premium",
+          "offset_s": 70
+        },
+        {
+          "text": "pero tienes que venir por ellos, ven solo",
+          "offset_s": 140
+        }
       ]
     },
     {
@@ -186,9 +330,18 @@
       "label": "RISK",
       "description": "Clan falso que pide datos y ofrece dinero",
       "messages": [
-        { "text": "nuestro clan de jugadores busca gente, torneo con premio", "offset_s": 0 },
-        { "text": "hay dinero extra de verdad, no solo coins", "offset_s": 100 },
-        { "text": "pásame tu número de teléfono y te explico por privado", "offset_s": 200 }
+        {
+          "text": "nuestro clan de jugadores busca gente, torneo con premio",
+          "offset_s": 0
+        },
+        {
+          "text": "hay dinero extra de verdad, no solo coins",
+          "offset_s": 100
+        },
+        {
+          "text": "pásame tu número de teléfono y te explico por privado",
+          "offset_s": 200
+        }
       ]
     },
     {
@@ -197,9 +350,18 @@
       "label": "RISK",
       "description": "Oferta de fama + cambio de canal",
       "messages": [
-        { "text": "te hago viral, te doy seguidores", "offset_s": 0 },
-        { "text": "escríbeme por privado, número nuevo", "offset_s": 60 },
-        { "text": "esto es colaboración seria, lana rápida", "offset_s": 130 }
+        {
+          "text": "te hago viral, te doy seguidores",
+          "offset_s": 0
+        },
+        {
+          "text": "escríbeme por privado, número nuevo",
+          "offset_s": 60
+        },
+        {
+          "text": "esto es colaboración seria, lana rápida",
+          "offset_s": 130
+        }
       ]
     },
     {
@@ -208,9 +370,18 @@
       "label": "RISK",
       "description": "Vacante falsa con retención de documentos",
       "messages": [
-        { "text": "vacantes disponibles hoy, nómina quincenal y prestaciones completas", "offset_s": 0 },
-        { "text": "mándame foto de tu ine para el registro", "offset_s": 90 },
-        { "text": "la entrevista presencial es en un hotel, te mandamos el uber", "offset_s": 180 }
+        {
+          "text": "vacantes disponibles hoy, nómina quincenal y prestaciones completas",
+          "offset_s": 0
+        },
+        {
+          "text": "mándame foto de tu ine para el registro",
+          "offset_s": 90
+        },
+        {
+          "text": "la entrevista presencial es en un hotel, te mandamos el uber",
+          "offset_s": 180
+        }
       ]
     },
     {
@@ -219,9 +390,18 @@
       "label": "RISK",
       "description": "Capacitación pagada + traslado a rancho",
       "messages": [
-        { "text": "te capacitamos, entrenamiento pagado desde el día uno", "offset_s": 0 },
-        { "text": "la capacitación es en un rancho, transporte incluido", "offset_s": 100 },
-        { "text": "trae identificación original y no le digas a nadie todavía, es confidencial", "offset_s": 200 }
+        {
+          "text": "te capacitamos, entrenamiento pagado desde el día uno",
+          "offset_s": 0
+        },
+        {
+          "text": "la capacitación es en un rancho, transporte incluido",
+          "offset_s": 100
+        },
+        {
+          "text": "trae identificación original y no le digas a nadie todavía, es confidencial",
+          "offset_s": 200
+        }
       ]
     },
     {
@@ -230,9 +410,18 @@
       "label": "RISK",
       "description": "Grupo de WhatsApp de 'trabajo' con urgencia",
       "messages": [
-        { "text": "te agrego al grupo de whatsapp de trabajo, estamos contratando gente", "offset_s": 0 },
-        { "text": "60 mil al mes, crecimiento a corto plazo", "offset_s": 80 },
-        { "text": "pero decide ya, las vacantes vuelan, ¿dónde vives?", "offset_s": 160 }
+        {
+          "text": "te agrego al grupo de whatsapp de trabajo, estamos contratando gente",
+          "offset_s": 0
+        },
+        {
+          "text": "60 mil al mes, crecimiento a corto plazo",
+          "offset_s": 80
+        },
+        {
+          "text": "pero decide ya, las vacantes vuelan, ¿dónde vives?",
+          "offset_s": 160
+        }
       ]
     },
     {
@@ -241,9 +430,18 @@
       "label": "RISK",
       "description": "Narcolenguaje normalizado + invitación",
       "messages": [
-        { "text": "la vida del patrón es la buena, no te va a faltar nada", "offset_s": 0 },
-        { "text": "acá te tratamos como familia", "offset_s": 90 },
-        { "text": "jalas o no jalas?", "offset_s": 180 }
+        {
+          "text": "la vida del patrón es la buena, no te va a faltar nada",
+          "offset_s": 0
+        },
+        {
+          "text": "acá te tratamos como familia",
+          "offset_s": 90
+        },
+        {
+          "text": "jalas o no jalas?",
+          "offset_s": 180
+        }
       ]
     },
     {
@@ -252,9 +450,18 @@
       "label": "RISK",
       "description": "Préstamo como enganche de deuda",
       "messages": [
-        { "text": "te presto dinero, sé que andas apurado", "offset_s": 0 },
-        { "text": "luego me lo pagas con un favorcito, es cosa de nada", "offset_s": 120 },
-        { "text": "confía en mí, esto queda entre nosotros", "offset_s": 240 }
+        {
+          "text": "te presto dinero, sé que andas apurado",
+          "offset_s": 0
+        },
+        {
+          "text": "luego me lo pagas con un favorcito, es cosa de nada",
+          "offset_s": 120
+        },
+        {
+          "text": "confía en mí, esto queda entre nosotros",
+          "offset_s": 240
+        }
       ]
     },
     {
@@ -263,9 +470,18 @@
       "label": "RISK",
       "description": "Emoji como sustituto de sustantivo clave",
       "messages": [
-        { "text": "necesito que muevas un 📦 aquí cerca", "offset_s": 0 },
-        { "text": "te pago bien 💰 y es una sola vez", "offset_s": 60 },
-        { "text": "manda tu ubicación 📍", "offset_s": 120 }
+        {
+          "text": "necesito que muevas un 📦 aquí cerca",
+          "offset_s": 0
+        },
+        {
+          "text": "te pago bien 💰 y es una sola vez",
+          "offset_s": 60
+        },
+        {
+          "text": "manda tu ubicación 📍",
+          "offset_s": 120
+        }
       ]
     },
     {
@@ -274,7 +490,10 @@
       "label": "RISK",
       "description": "Un solo mensaje de altísima densidad (single-message threshold)",
       "messages": [
-        { "text": "hay jale con el patrón, lana fácil, sin preguntas, manda tu ubicación y te mandamos el uber", "offset_s": 0 }
+        {
+          "text": "hay jale con el patrón, lana fácil, sin preguntas, manda tu ubicación y te mandamos el uber",
+          "offset_s": 0
+        }
       ]
     },
     {
@@ -283,9 +502,18 @@
       "label": "BENIGN",
       "description": "Tarea escolar",
       "messages": [
-        { "text": "ya hiciste la tarea de mate?", "offset_s": 0 },
-        { "text": "no, está bien difícil el tema de fracciones", "offset_s": 400 },
-        { "text": "te paso mis apuntes mañana en el receso", "offset_s": 800 }
+        {
+          "text": "ya hiciste la tarea de mate?",
+          "offset_s": 0
+        },
+        {
+          "text": "no, está bien difícil el tema de fracciones",
+          "offset_s": 400
+        },
+        {
+          "text": "te paso mis apuntes mañana en el receso",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -294,9 +522,18 @@
       "label": "BENIGN",
       "description": "Plan de fin de semana con familia",
       "messages": [
-        { "text": "vamos al cine el sábado?", "offset_s": 0 },
-        { "text": "deja le pregunto a mi mamá primero", "offset_s": 500 },
-        { "text": "va, me avisas para comprar los boletos", "offset_s": 1000 }
+        {
+          "text": "vamos al cine el sábado?",
+          "offset_s": 0
+        },
+        {
+          "text": "deja le pregunto a mi mamá primero",
+          "offset_s": 500
+        },
+        {
+          "text": "va, me avisas para comprar los boletos",
+          "offset_s": 1000
+        }
       ]
     },
     {
@@ -305,9 +542,18 @@
       "label": "BENIGN",
       "description": "Gaming normal entre amigos",
       "messages": [
-        { "text": "una partida de fortnite al rato?", "offset_s": 0 },
-        { "text": "sí, pero hasta que acabe de comer", "offset_s": 450 },
-        { "text": "va, te mando invitación a las 6", "offset_s": 900 }
+        {
+          "text": "una partida de fortnite al rato?",
+          "offset_s": 0
+        },
+        {
+          "text": "sí, pero hasta que acabe de comer",
+          "offset_s": 450
+        },
+        {
+          "text": "va, te mando invitación a las 6",
+          "offset_s": 900
+        }
       ]
     },
     {
@@ -316,9 +562,18 @@
       "label": "BENIGN",
       "description": "Conversación sobre fútbol",
       "messages": [
-        { "text": "viste el partido del américa?", "offset_s": 0 },
-        { "text": "sí, qué golazo el del segundo tiempo", "offset_s": 350 },
-        { "text": "el domingo juegan contra chivas, va a estar bueno", "offset_s": 700 }
+        {
+          "text": "viste el partido del américa?",
+          "offset_s": 0
+        },
+        {
+          "text": "sí, qué golazo el del segundo tiempo",
+          "offset_s": 350
+        },
+        {
+          "text": "el domingo juegan contra chivas, va a estar bueno",
+          "offset_s": 700
+        }
       ]
     },
     {
@@ -327,9 +582,18 @@
       "label": "BENIGN",
       "description": "Cumpleaños",
       "messages": [
-        { "text": "el viernes es mi cumple, va a haber pastel en mi casa", "offset_s": 0 },
-        { "text": "mi mamá va a hacer tacos de canasta", "offset_s": 400 },
-        { "text": "llega como a las 5 con los demás del salón", "offset_s": 800 }
+        {
+          "text": "el viernes es mi cumple, va a haber pastel en mi casa",
+          "offset_s": 0
+        },
+        {
+          "text": "mi mamá va a hacer tacos de canasta",
+          "offset_s": 400
+        },
+        {
+          "text": "llega como a las 5 con los demás del salón",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -338,8 +602,14 @@
       "label": "BENIGN",
       "description": "Mascota nueva",
       "messages": [
-        { "text": "adoptamos un perrito ayer!!", "offset_s": 0 },
-        { "text": "se llama firulais jaja, luego te mando fotos", "offset_s": 380 }
+        {
+          "text": "adoptamos un perrito ayer!!",
+          "offset_s": 0
+        },
+        {
+          "text": "se llama firulais jaja, luego te mando fotos",
+          "offset_s": 380
+        }
       ]
     },
     {
@@ -348,9 +618,18 @@
       "label": "BENIGN",
       "description": "Clase de música",
       "messages": [
-        { "text": "ya me aprendí la canción en guitarra", "offset_s": 0 },
-        { "text": "el maestro dice que ya puedo tocar en el festival", "offset_s": 420 },
-        { "text": "practico todos los días media hora", "offset_s": 840 }
+        {
+          "text": "ya me aprendí la canción en guitarra",
+          "offset_s": 0
+        },
+        {
+          "text": "el maestro dice que ya puedo tocar en el festival",
+          "offset_s": 420
+        },
+        {
+          "text": "practico todos los días media hora",
+          "offset_s": 840
+        }
       ]
     },
     {
@@ -359,9 +638,18 @@
       "label": "BENIGN",
       "description": "Serie de moda",
       "messages": [
-        { "text": "ya viste la nueva temporada?", "offset_s": 0 },
-        { "text": "no me spoilees!! voy en el capítulo 3", "offset_s": 300 },
-        { "text": "jajaja ok ok pero apúrate porque está buenísima", "offset_s": 600 }
+        {
+          "text": "ya viste la nueva temporada?",
+          "offset_s": 0
+        },
+        {
+          "text": "no me spoilees!! voy en el capítulo 3",
+          "offset_s": 300
+        },
+        {
+          "text": "jajaja ok ok pero apúrate porque está buenísima",
+          "offset_s": 600
+        }
       ]
     },
     {
@@ -370,9 +658,18 @@
       "label": "BENIGN",
       "description": "Examen y estudio",
       "messages": [
-        { "text": "mañana es el examen de historia", "offset_s": 0 },
-        { "text": "estudia los temas de la revolución", "offset_s": 350 },
-        { "text": "hacemos videollamada al rato para repasar juntos?", "offset_s": 700 }
+        {
+          "text": "mañana es el examen de historia",
+          "offset_s": 0
+        },
+        {
+          "text": "estudia los temas de la revolución",
+          "offset_s": 350
+        },
+        {
+          "text": "hacemos videollamada al rato para repasar juntos?",
+          "offset_s": 700
+        }
       ]
     },
     {
@@ -381,9 +678,18 @@
       "label": "BENIGN",
       "description": "Comida y antojos",
       "messages": [
-        { "text": "tengo antojo de unos tacos al pastor", "offset_s": 0 },
-        { "text": "los de la esquina de mi casa son los mejores", "offset_s": 300 },
-        { "text": "el sábado vamos, yo invito los refrescos", "offset_s": 600 }
+        {
+          "text": "tengo antojo de unos tacos al pastor",
+          "offset_s": 0
+        },
+        {
+          "text": "los de la esquina de mi casa son los mejores",
+          "offset_s": 300
+        },
+        {
+          "text": "el sábado vamos, yo invito los refrescos",
+          "offset_s": 600
+        }
       ]
     },
     {
@@ -392,9 +698,18 @@
       "label": "BENIGN",
       "description": "Roblox normal entre amigos de la escuela",
       "messages": [
-        { "text": "juegas roblox al rato? saqué un item nuevo", "offset_s": 0 },
-        { "text": "sí!! me lo enseñas en la partida", "offset_s": 400 },
-        { "text": "va, conéctate a las 7 después de la tarea", "offset_s": 800 }
+        {
+          "text": "juegas roblox al rato? saqué un item nuevo",
+          "offset_s": 0
+        },
+        {
+          "text": "sí!! me lo enseñas en la partida",
+          "offset_s": 400
+        },
+        {
+          "text": "va, conéctate a las 7 después de la tarea",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -403,8 +718,14 @@
       "label": "BENIGN",
       "description": "Clima y ropa",
       "messages": [
-        { "text": "está lloviendo bien fuerte por mi casa", "offset_s": 0 },
-        { "text": "aquí igual, mañana lleva paraguas a la escuela", "offset_s": 350 }
+        {
+          "text": "está lloviendo bien fuerte por mi casa",
+          "offset_s": 0
+        },
+        {
+          "text": "aquí igual, mañana lleva paraguas a la escuela",
+          "offset_s": 350
+        }
       ]
     },
     {
@@ -413,9 +734,18 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'chamba' en contexto laboral legítimo de adulto",
       "messages": [
-        { "text": "mi hermano ya encontró chamba en el súper", "offset_s": 0 },
-        { "text": "qué bien, estaba batallando desde diciembre", "offset_s": 400 },
-        { "text": "sí, está contento porque le queda cerca de la casa", "offset_s": 800 }
+        {
+          "text": "mi hermano ya encontró chamba en el súper",
+          "offset_s": 0
+        },
+        {
+          "text": "qué bien, estaba batallando desde diciembre",
+          "offset_s": 400
+        },
+        {
+          "text": "sí, está contento porque le queda cerca de la casa",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -424,9 +754,18 @@
       "label": "BENIGN",
       "description": "TRAMPA: oferta de trabajo real de medio tiempo (chamba + pagan bien + nómina)",
       "messages": [
-        { "text": "en el oxxo de la plaza comercial hay chamba de medio tiempo", "offset_s": 0 },
-        { "text": "pagan bien para ser medio tiempo y te dan nómina", "offset_s": 400 },
-        { "text": "mi prima trabajó ahí el verano pasado y le gustó", "offset_s": 800 }
+        {
+          "text": "en el oxxo de la plaza comercial hay chamba de medio tiempo",
+          "offset_s": 0
+        },
+        {
+          "text": "pagan bien para ser medio tiempo y te dan nómina",
+          "offset_s": 400
+        },
+        {
+          "text": "mi prima trabajó ahí el verano pasado y le gustó",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -435,9 +774,18 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'paquete' de Amazon",
       "messages": [
-        { "text": "ya llegó el paquete de amazon con tu regalo", "offset_s": 0 },
-        { "text": "el repartidor lo dejó con la vecina", "offset_s": 400 },
-        { "text": "pasa por él cuando salgas de la escuela", "offset_s": 800 }
+        {
+          "text": "ya llegó el paquete de amazon con tu regalo",
+          "offset_s": 0
+        },
+        {
+          "text": "el repartidor lo dejó con la vecina",
+          "offset_s": 400
+        },
+        {
+          "text": "pasa por él cuando salgas de la escuela",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -446,9 +794,18 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'central de autobuses' en viaje familiar",
       "messages": [
-        { "text": "el viernes salimos a guadalajara con mis papás", "offset_s": 0 },
-        { "text": "nos vamos desde la central de autobuses a las 8", "offset_s": 400 },
-        { "text": "mi mamá ya compró los boletos", "offset_s": 800 }
+        {
+          "text": "el viernes salimos a guadalajara con mis papás",
+          "offset_s": 0
+        },
+        {
+          "text": "nos vamos desde la central de autobuses a las 8",
+          "offset_s": 400
+        },
+        {
+          "text": "mi mamá ya compró los boletos",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -457,8 +814,14 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'el jefe' como jefe de trabajo real de papá",
       "messages": [
-        { "text": "mi papá llegó tarde porque el jefe le pidió quedarse", "offset_s": 0 },
-        { "text": "siempre le toca cerrar la tienda los viernes", "offset_s": 400 }
+        {
+          "text": "mi papá llegó tarde porque el jefe le pidió quedarse",
+          "offset_s": 0
+        },
+        {
+          "text": "siempre le toca cerrar la tienda los viernes",
+          "offset_s": 400
+        }
       ]
     },
     {
@@ -467,9 +830,18 @@
       "label": "BENIGN",
       "description": "TRAMPA: skins y robux entre amigos reales de la escuela",
       "messages": [
-        { "text": "mi tía me regaló robux por mi cumple", "offset_s": 0 },
-        { "text": "qué suerte, yo ahorré para el pase de batalla", "offset_s": 400 },
-        { "text": "en el torneo de la escuela el premio es una tarjeta de regalo", "offset_s": 800 }
+        {
+          "text": "mi tía me regaló robux por mi cumple",
+          "offset_s": 0
+        },
+        {
+          "text": "qué suerte, yo ahorré para el pase de batalla",
+          "offset_s": 400
+        },
+        {
+          "text": "en el torneo de la escuela el premio es una tarjeta de regalo",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -478,8 +850,14 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'mandado' doméstico clásico",
       "messages": [
-        { "text": "mi mamá me mandó al mandado por tortillas", "offset_s": 0 },
-        { "text": "jaja a mí me toca hacer el mandado los sábados", "offset_s": 400 }
+        {
+          "text": "mi mamá me mandó al mandado por tortillas",
+          "offset_s": 0
+        },
+        {
+          "text": "jaja a mí me toca hacer el mandado los sábados",
+          "offset_s": 400
+        }
       ]
     },
     {
@@ -488,9 +866,18 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'te presto dinero' entre amigos para el recreo",
       "messages": [
-        { "text": "olvidé mi dinero del recreo en mi casa", "offset_s": 0 },
-        { "text": "no te preocupes, te presto dinero y me pagas mañana", "offset_s": 400 },
-        { "text": "gracias!! mañana te lo devuelvo sin falta", "offset_s": 800 }
+        {
+          "text": "olvidé mi dinero del recreo en mi casa",
+          "offset_s": 0
+        },
+        {
+          "text": "no te preocupes, te presto dinero y me pagas mañana",
+          "offset_s": 400
+        },
+        {
+          "text": "gracias!! mañana te lo devuelvo sin falta",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -499,9 +886,18 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'cuántos años tienes' en contexto de conocerse en clase nueva",
       "messages": [
-        { "text": "hola! eres nuevo en el salón verdad?", "offset_s": 0 },
-        { "text": "sí, me cambié de escuela esta semana", "offset_s": 400 },
-        { "text": "yo tengo 13, cuántos años tienes tú?", "offset_s": 800 }
+        {
+          "text": "hola! eres nuevo en el salón verdad?",
+          "offset_s": 0
+        },
+        {
+          "text": "sí, me cambié de escuela esta semana",
+          "offset_s": 400
+        },
+        {
+          "text": "yo tengo 13, cuántos años tienes tú?",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -510,9 +906,18 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'hotel' y 'uber' en viaje familiar",
       "messages": [
-        { "text": "ya reservamos el hotel para las vacaciones", "offset_s": 0 },
-        { "text": "del aeropuerto al hotel nos vamos en uber", "offset_s": 400 },
-        { "text": "mi papá dice que tiene alberca!!", "offset_s": 800 }
+        {
+          "text": "ya reservamos el hotel para las vacaciones",
+          "offset_s": 0
+        },
+        {
+          "text": "del aeropuerto al hotel nos vamos en uber",
+          "offset_s": 400
+        },
+        {
+          "text": "mi papá dice que tiene alberca!!",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -521,8 +926,14 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'la zona' y 'el área' en geografía escolar",
       "messages": [
-        { "text": "la maestra dijo que estudiemos la zona centro del país", "offset_s": 0 },
-        { "text": "el examen viene con mapa, hay que marcar el área de cada estado", "offset_s": 400 }
+        {
+          "text": "la maestra dijo que estudiemos la zona centro del país",
+          "offset_s": 0
+        },
+        {
+          "text": "el examen viene con mapa, hay que marcar el área de cada estado",
+          "offset_s": 400
+        }
       ]
     },
     {
@@ -531,9 +942,18 @@
       "label": "BENIGN",
       "description": "TRAMPA: mamá con trabajo nuevo (nómina + prestaciones + capacitación reales)",
       "messages": [
-        { "text": "mi mamá consiguió trabajo nuevo en el banco", "offset_s": 0 },
-        { "text": "dice que le dan prestaciones completas y capacitación pagada", "offset_s": 400 },
-        { "text": "está feliz porque le pagan más que en el anterior", "offset_s": 800 }
+        {
+          "text": "mi mamá consiguió trabajo nuevo en el banco",
+          "offset_s": 0
+        },
+        {
+          "text": "dice que le dan prestaciones completas y capacitación pagada",
+          "offset_s": 400
+        },
+        {
+          "text": "está feliz porque le pagan más que en el anterior",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -542,8 +962,14 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'sígueme' y redes en contexto de amigos reales",
       "messages": [
-        { "text": "abrí mi cuenta de tiktok, sígueme!", "offset_s": 0 },
-        { "text": "jaja va, súbete un video bailando", "offset_s": 400 }
+        {
+          "text": "abrí mi cuenta de tiktok, sígueme!",
+          "offset_s": 0
+        },
+        {
+          "text": "jaja va, súbete un video bailando",
+          "offset_s": 400
+        }
       ]
     },
     {
@@ -552,9 +978,18 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'confía en mí' entre amigas sobre un secreto escolar inocente",
       "messages": [
-        { "text": "te cuento algo pero no le digas a nadie del salón", "offset_s": 0 },
-        { "text": "me gusta el niño nuevo jaja", "offset_s": 400 },
-        { "text": "jajaja lo sabía!! tu secreto está a salvo, confía en mí", "offset_s": 800 }
+        {
+          "text": "te cuento algo pero no le digas a nadie del salón",
+          "offset_s": 0
+        },
+        {
+          "text": "me gusta el niño nuevo jaja",
+          "offset_s": 400
+        },
+        {
+          "text": "jajaja lo sabía!! tu secreto está a salvo, confía en mí",
+          "offset_s": 800
+        }
       ]
     },
     {
@@ -563,8 +998,14 @@
       "label": "BENIGN",
       "description": "TRAMPA: 'está caliente' sobre el clima",
       "messages": [
-        { "text": "no salgas al patio ahorita, está caliente el sol", "offset_s": 0 },
-        { "text": "sí, mejor nos quedamos en el salón en el receso", "offset_s": 400 }
+        {
+          "text": "no salgas al patio ahorita, está caliente el sol",
+          "offset_s": 0
+        },
+        {
+          "text": "sí, mejor nos quedamos en el salón en el receso",
+          "offset_s": 400
+        }
       ]
     },
     {
@@ -573,7 +1014,1645 @@
       "label": "BENIGN",
       "description": "TRAMPA: densidad alta de términos legítimos en mensaje corto (peor caso realista)",
       "messages": [
-        { "text": "oye, hay chamba en la plaza comercial, pagan bien y dan nómina, mi hermano trabaja ahí", "offset_s": 0 }
+        {
+          "text": "oye, hay chamba en la plaza comercial, pagan bien y dan nómina, mi hermano trabaja ahí",
+          "offset_s": 0
+        }
+      ]
+    },
+    {
+      "id": "TL-001",
+      "group": "tp_grooming_lento",
+      "label": "RISK",
+      "description": "Captación lenta de 6 días: contacto → oferta suave → extracción de información. Cada mensaje es débil; el orden y el span son la señal (TCR-001)",
+      "messages": [
+        {
+          "text": "hola, qué haces",
+          "offset_s": 0
+        },
+        {
+          "text": "hay una chambita por si te interesa",
+          "offset_s": 259200
+        },
+        {
+          "text": "primero dime, cuántos años tienes?",
+          "offset_s": 518400
+        }
+      ]
+    },
+    {
+      "id": "TL-002",
+      "group": "tp_grooming_lento",
+      "label": "RISK",
+      "description": "Guion completo en 14 días: las 4 etapas en orden, todas con términos de peso bajo (TCR-001 con script completo → piso HIGH)",
+      "messages": [
+        {
+          "text": "oye, cómo estás",
+          "offset_s": 0
+        },
+        {
+          "text": "hay chambita si quieres",
+          "offset_s": 345600
+        },
+        {
+          "text": "y qué edad tienes?",
+          "offset_s": 777600
+        },
+        {
+          "text": "te va a llegar un envío, tú nomás lo recibes",
+          "offset_s": 1209600
+        }
+      ]
+    },
+    {
+      "id": "TL-003",
+      "group": "tp_grooming_lento",
+      "label": "RISK",
+      "description": "Aislamiento sostenido: el mismo secreto cultivado en días distintos a lo largo de 11 días (TCR-002). El término repetido no suma score extra",
+      "messages": [
+        {
+          "text": "hola amigo",
+          "offset_s": 0
+        },
+        {
+          "text": "esto queda entre nosotros va?",
+          "offset_s": 345600
+        },
+        {
+          "text": "recuerda, lo nuestro es nuestro",
+          "offset_s": 950400
+        }
+      ]
+    },
+    {
+      "id": "BL-001",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Amistad real de 3 semanas: pregunta la edad el día uno (etapa 3 ANTES que la 2 — sin progresión ordenada), luego juegos y favores normales",
+      "messages": [
+        {
+          "text": "yo tengo 13, cuántos años tienes tú?",
+          "offset_s": 0
+        },
+        {
+          "text": "hola! una partida al rato?",
+          "offset_s": 172800
+        },
+        {
+          "text": "gracias por prestarme tu cargador ayer en el salón",
+          "offset_s": 1728000
+        }
+      ]
+    },
+    {
+      "id": "BL-002",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Compañeros de escuela durante 2 semanas: términos de 3 etapas presentes pero en desorden y con contexto escolar/familiar (dampeners)",
+      "messages": [
+        {
+          "text": "mi mamá dice que hay chamba en el oxxo para mi hermano",
+          "offset_s": 0
+        },
+        {
+          "text": "hola, qué haces? yo terminando la tarea",
+          "offset_s": 432000
+        },
+        {
+          "text": "oye en qué escuela estás? es para lo del torneo de la escuela",
+          "offset_s": 1296000
+        }
+      ]
+    },
+    {
+      "id": "NC-001",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Fan comparte su rola favorita",
+      "messages": [
+        {
+          "text": "ya escuchaste la nueva de peso pluma? está bien buena",
+          "offset_s": 0
+        },
+        {
+          "text": "sí!! el corrido ese lo traigo en repeat toda la semana",
+          "offset_s": 400
+        },
+        {
+          "text": "la parte donde dice lo del cuerno de chivo suena brutal",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "NC-002",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Cantando letra de corrido en el chat",
+      "messages": [
+        {
+          "text": "🎵 y sigo al patrón porque soy de la plaza 🎵 jajaja me encanta esa rola",
+          "offset_s": 0
+        },
+        {
+          "text": "jajaja cántala completa, esa canción es la mejor del disco",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "NC-003",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Playlist para la fiesta",
+      "messages": [
+        {
+          "text": "pásame tu playlist de corridos tumbados para la fiesta del sábado",
+          "offset_s": 0
+        },
+        {
+          "text": "va, le pongo las de fuerza regida y unas de junior h",
+          "offset_s": 400
+        },
+        {
+          "text": "ponle también la del jefe de jefes aunque es de los tigres jaja",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "NC-004",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Debate de fans sobre artistas",
+      "messages": [
+        {
+          "text": "luis r conriquez es mejor que natanael cano y no acepto discusión",
+          "offset_s": 0
+        },
+        {
+          "text": "estás loco, los corridos de natanael cambiaron todo el género",
+          "offset_s": 400
+        },
+        {
+          "text": "los dos cantan puro corrido bélico pero natanael tiene más flow",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "NC-005",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Concierto de corridos",
+      "messages": [
+        {
+          "text": "mis papás me van a llevar al concierto de peso pluma!!",
+          "offset_s": 0
+        },
+        {
+          "text": "no manches qué envidia, esa gira trae todas las canciones nuevas",
+          "offset_s": 400
+        },
+        {
+          "text": "voy a gritar la letra completa de cada rola jajaja",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "NC-006",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Aprendiendo guitarra con corridos",
+      "messages": [
+        {
+          "text": "estoy aprendiendo a tocar el corrido de la troca en guitarra",
+          "offset_s": 0
+        },
+        {
+          "text": "los requintos de esa canción están bien difíciles",
+          "offset_s": 400
+        },
+        {
+          "text": "mi maestro de música dice que mejor empiece con una más fácil jaja",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "NC-007",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Meme de narcocultura",
+      "messages": [
+        {
+          "text": "jajaja mira este meme del mencho bailando",
+          "offset_s": 0
+        },
+        {
+          "text": "jajajaja esos memes nunca fallan, mándame más",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "NC-008",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Serie de narcos en streaming",
+      "messages": [
+        {
+          "text": "ya viste la serie nueva del cartel en netflix?",
+          "offset_s": 0
+        },
+        {
+          "text": "voy en el capítulo donde sale el laboratorio clandestino, está fuerte",
+          "offset_s": 400
+        },
+        {
+          "text": "la actuación del que hace de sicario está increíble",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "NC-009",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Letra citada con jerga operativa",
+      "messages": [
+        {
+          "text": "🎵 de halcón empecé y ahora la plaza es mía 🎵",
+          "offset_s": 0
+        },
+        {
+          "text": "esa rola de los alegres está dura, la cantamos en el karaoke?",
+          "offset_s": 400
+        },
+        {
+          "text": "jajaja va, pero tú le haces la segunda voz",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "NC-010",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Disfraz para fiesta temática",
+      "messages": [
+        {
+          "text": "para la fiesta de disfraces voy de buchón jajaja",
+          "offset_s": 0
+        },
+        {
+          "text": "jajaja ponte las botas y el sombrero, quedas igualito al de la canción",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "NC-011",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Fan pregunta significado de letra",
+      "messages": [
+        {
+          "text": "oye tú que sabes de corridos, qué significa la maleta en esa canción?",
+          "offset_s": 0
+        },
+        {
+          "text": "creo que es del cobro de piso, así le dicen en la letra",
+          "offset_s": 400
+        },
+        {
+          "text": "ahh ya, es que las letras traen mucha clave, por eso me gustan",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "NC-012",
+      "group": "benign_narcocultura",
+      "label": "BENIGN",
+      "description": "Video de youtube de corridos",
+      "messages": [
+        {
+          "text": "el video nuevo trae al cantante con un cuerno de chivo de utilería",
+          "offset_s": 0
+        },
+        {
+          "text": "jaja se ve bien actuado, puro show para el video",
+          "offset_s": 400
+        },
+        {
+          "text": "los comentarios del video están llenos de fans de la rola",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "JJ-001",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "'Jalas' coloquial para el cine",
+      "messages": [
+        {
+          "text": "vamos al cine el viernes, jalas o no jalas?",
+          "offset_s": 0
+        },
+        {
+          "text": "jalo!! qué película vamos a ver?",
+          "offset_s": 400
+        },
+        {
+          "text": "la nueva de terror, dicen que está buenísima",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "JJ-002",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "'Jalar' de acompañar a la tienda",
+      "messages": [
+        {
+          "text": "voy a la tiendita por unas papas, jalas?",
+          "offset_s": 0
+        },
+        {
+          "text": "va, de paso compro un refresco para la tarea",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "JJ-003",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Trash talk de videojuego",
+      "messages": [
+        {
+          "text": "te voy a destruir en la partida, prepárate",
+          "offset_s": 0
+        },
+        {
+          "text": "jajaja eso dijiste ayer y te gané tres veces seguidas",
+          "offset_s": 400
+        },
+        {
+          "text": "hoy sí traigo mi mejor equipo, vas a ver",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "JJ-004",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Slang de comida",
+      "messages": [
+        {
+          "text": "está bien perro ese taco de birria, neta",
+          "offset_s": 0
+        },
+        {
+          "text": "jajaja al tiro que sí, el de la esquina es el mero bueno",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "JJ-005",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Plan con la banda de amigos",
+      "messages": [
+        {
+          "text": "qué onda banda, hoy hay partido en la cancha de la escuela",
+          "offset_s": 0
+        },
+        {
+          "text": "va, le digo a los demás del salón",
+          "offset_s": 400
+        },
+        {
+          "text": "lleven agua porque está haciendo un calorón",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "JJ-006",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Chisme escolar inocente",
+      "messages": [
+        {
+          "text": "no seas rajón, cuéntame qué pasó en el ensayo",
+          "offset_s": 0
+        },
+        {
+          "text": "jajaja nada grave, el profe se equivocó de canción y todos nos reímos",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "JJ-007",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Presumiendo logro de juego",
+      "messages": [
+        {
+          "text": "saqué el skin legendario en la primera caja!!",
+          "offset_s": 0
+        },
+        {
+          "text": "nooo qué suerte, yo llevo veinte cajas y nada",
+          "offset_s": 400
+        },
+        {
+          "text": "jajaja te presto mi cuenta un rato para que lo veas",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "JJ-008",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Quedada para estudiar",
+      "messages": [
+        {
+          "text": "ponte al tiro con el examen de mañana eh, está difícil",
+          "offset_s": 0
+        },
+        {
+          "text": "sí jaja ya estoy estudiando con los apuntes que me pasaste",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "JJ-009",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Hablando de la chamba del hermano mayor",
+      "messages": [
+        {
+          "text": "mi hermano ya salió de la chamba, nos va a llevar por pizza",
+          "offset_s": 0
+        },
+        {
+          "text": "qué bien! tu hermano siempre nos invita cosas jaja",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "JJ-010",
+      "group": "benign_jerga_juvenil",
+      "label": "BENIGN",
+      "description": "Slang mixto intenso",
+      "messages": [
+        {
+          "text": "wey la neta esa rola está bien perrona, la banda completa la canta",
+          "offset_s": 0
+        },
+        {
+          "text": "jajaja sí, el sábado la ponemos en la fiesta de tu prima",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BT-017",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'la línea' de camiones",
+      "messages": [
+        {
+          "text": "qué línea de camión tomas para llegar a tu casa?",
+          "offset_s": 0
+        },
+        {
+          "text": "la que pasa por el centro, la línea 4",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BT-018",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'punto de encuentro' escolar para excursión",
+      "messages": [
+        {
+          "text": "la maestra dijo que el punto de encuentro es la entrada de la escuela",
+          "offset_s": 0
+        },
+        {
+          "text": "va, ahí nos vemos a las 7 para la excursión",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BT-019",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'te recogemos' de papás",
+      "messages": [
+        {
+          "text": "mi mamá dice que te recogemos a las 4 para ir al partido",
+          "offset_s": 0
+        },
+        {
+          "text": "gracias!! le aviso a mi papá que llegan por mí",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BT-020",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'capacitación pagada' real de tienda departamental",
+      "messages": [
+        {
+          "text": "mi hermana entró a la tienda departamental, le dan capacitación pagada",
+          "offset_s": 0
+        },
+        {
+          "text": "qué bien, mi prima trabajó ahí en diciembre y le gustó",
+          "offset_s": 400
+        },
+        {
+          "text": "sí, dice que el ambiente está tranquilo",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "BT-021",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'dónde vives' entre compañeros para proyecto",
+      "messages": [
+        {
+          "text": "dónde vives? es para ver en casa de quién hacemos la maqueta",
+          "offset_s": 0
+        },
+        {
+          "text": "por la escuela, a dos cuadras, en mi casa hay espacio y mi mamá nos ayuda",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BT-022",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'envío' de paquetería normal",
+      "messages": [
+        {
+          "text": "ya salió el envío de tu figura coleccionable?",
+          "offset_s": 0
+        },
+        {
+          "text": "sí, la paquetería dice que llega el jueves a mi casa",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BT-023",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'número nuevo' legítimo",
+      "messages": [
+        {
+          "text": "hola! tengo número nuevo, se me perdió el celular en la escuela",
+          "offset_s": 0
+        },
+        {
+          "text": "jajaja otra vez? guardo tu contacto, le digo a los del salón",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BT-024",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'ganar bien' de profesión aspiracional",
+      "messages": [
+        {
+          "text": "mi tía es doctora y dice que se gana bien pero se estudia mucho",
+          "offset_s": 0
+        },
+        {
+          "text": "yo quiero ser ingeniero como mi papá",
+          "offset_s": 400
+        },
+        {
+          "text": "la maestra dice que ambas carreras están buenas",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "BT-025",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'mándame foto' de la tarea",
+      "messages": [
+        {
+          "text": "mándame foto de la página del libro, olvidé el mío en el salón",
+          "offset_s": 0
+        },
+        {
+          "text": "va, ahorita te la paso, es la tarea de la maestra de historia",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BT-026",
+      "group": "benign_trampa",
+      "label": "BENIGN",
+      "description": "TRAMPA: 'torneo con premio' escolar real",
+      "messages": [
+        {
+          "text": "la escuela organizó un torneo con premio para la feria de ciencias",
+          "offset_s": 0
+        },
+        {
+          "text": "el premio es una tablet! hay que inscribirnos con la maestra",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BN-013",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Recomendación de libro",
+      "messages": [
+        {
+          "text": "ya terminaste el libro que nos dejaron leer?",
+          "offset_s": 0
+        },
+        {
+          "text": "sí, el final está increíble, no te lo esperas",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BN-014",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Plan de natación",
+      "messages": [
+        {
+          "text": "mañana tengo natación a las 6, mi papá me lleva",
+          "offset_s": 0
+        },
+        {
+          "text": "yo voy los sábados, deberíamos ir juntos un día",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BN-015",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Nervios por presentación escolar",
+      "messages": [
+        {
+          "text": "me toca exponer mañana y estoy bien nervioso",
+          "offset_s": 0
+        },
+        {
+          "text": "tú puedes! practica frente al espejo, a mí me funciona",
+          "offset_s": 400
+        },
+        {
+          "text": "gracias jaja te cuento cómo me fue saliendo del salón",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "BN-016",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Mascota enferma",
+      "messages": [
+        {
+          "text": "mi perrito está malito, lo llevamos al veterinario",
+          "offset_s": 0
+        },
+        {
+          "text": "nooo pobrecito, qué le pasó?",
+          "offset_s": 400
+        },
+        {
+          "text": "comió algo en el parque, pero ya está mejor",
+          "offset_s": 800
+        }
+      ]
+    },
+    {
+      "id": "BN-017",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Compras con mamá",
+      "messages": [
+        {
+          "text": "estoy en el súper con mi mamá, quieres algo de la dulcería?",
+          "offset_s": 0
+        },
+        {
+          "text": "jajaja tráeme unas paletas, mañana te pago en el recreo",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BN-018",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Clima de lluvia y partido pospuesto",
+      "messages": [
+        {
+          "text": "se canceló el partido por la lluvia",
+          "offset_s": 0
+        },
+        {
+          "text": "otra vez!! bueno, mejor jugamos en línea al rato",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BN-019",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Cumpleaños de la abuela",
+      "messages": [
+        {
+          "text": "hoy es el cumple de mi abuela, va a venir toda la familia",
+          "offset_s": 0
+        },
+        {
+          "text": "qué bonito! salúdala de mi parte",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BN-020",
+      "group": "benign_cotidiano",
+      "label": "BENIGN",
+      "description": "Duda de horario escolar",
+      "messages": [
+        {
+          "text": "mañana entramos a las 7 o a las 8?",
+          "offset_s": 0
+        },
+        {
+          "text": "a las 8, hay junta de maestros temprano",
+          "offset_s": 400
+        }
+      ]
+    },
+    {
+      "id": "BL-003",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Amistad de un mes: categorías dispersas sin orden ni etapa profunda sostenida",
+      "messages": [
+        {
+          "text": "te presto mi cuaderno para que te pongas al corriente",
+          "offset_s": 0
+        },
+        {
+          "text": "oye qué haces el sábado? hay feria en la plaza del pueblo",
+          "offset_s": 604800
+        },
+        {
+          "text": "mi hermano consiguió chamba en la feria jaja, nos deja subirnos gratis",
+          "offset_s": 1814400
+        }
+      ]
+    },
+    {
+      "id": "BL-004",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Primos que se escriben cada semana",
+      "messages": [
+        {
+          "text": "primo! cuándo vienes de visita?",
+          "offset_s": 0
+        },
+        {
+          "text": "en vacaciones, mi papá ya compró los boletos de la central",
+          "offset_s": 1209600
+        },
+        {
+          "text": "acá te espero, mi mamá va a hacer tamales",
+          "offset_s": 2419200
+        }
+      ]
+    },
+    {
+      "id": "BL-005",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Compañeros de clan de juego durante semanas (sin escalada)",
+      "messages": [
+        {
+          "text": "buena partida hoy, el clan quedó en primer lugar",
+          "offset_s": 0
+        },
+        {
+          "text": "el torneo del mes que viene trae premio de coins",
+          "offset_s": 1209600
+        },
+        {
+          "text": "hay que practicar los fines de semana para ganarlo",
+          "offset_s": 2592000
+        }
+      ]
+    },
+    {
+      "id": "BL-006",
+      "group": "benign_amistad_larga",
+      "label": "BENIGN",
+      "description": "Vecinos que se ayudan con mandados normales",
+      "messages": [
+        {
+          "text": "mi mamá pregunta si le ayudas con el mandado del sábado",
+          "offset_s": 0
+        },
+        {
+          "text": "claro! el sábado paso temprano",
+          "offset_s": 518400
+        },
+        {
+          "text": "gracias, te va a invitar a comer como siempre jaja",
+          "offset_s": 1123200
+        }
+      ]
+    },
+    {
+      "id": "ED-001",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Préstamo con cobro en 'favores'",
+      "messages": [
+        {
+          "text": "sé que necesitas lana, yo te presto sin bronca",
+          "offset_s": 0
+        },
+        {
+          "text": "no me lo pagues con dinero, luego me haces un favorcito y ya",
+          "offset_s": 300
+        },
+        {
+          "text": "es cosa de nada, solo llevar algo aquí cerca",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "ED-002",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Deuda de juego que escala",
+      "messages": [
+        {
+          "text": "me debes lo de las skins que te compré, ya son 800",
+          "offset_s": 0
+        },
+        {
+          "text": "tranquilo, hay una forma fácil de pagarme",
+          "offset_s": 300
+        },
+        {
+          "text": "un amigo necesita quien le haga un mandado, te paga y me pagas",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "ED-003",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Regalos que se cobran",
+      "messages": [
+        {
+          "text": "todo lo que te he regalado no ha sido gratis eh",
+          "offset_s": 0
+        },
+        {
+          "text": "nadie te va a ayudar como yo, pero ya me toca cobrar",
+          "offset_s": 300
+        },
+        {
+          "text": "mañana pasas a recoger un paquete y quedamos a mano",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "ED-004",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Amenaza velada por deuda",
+      "messages": [
+        {
+          "text": "el señor que te prestó ya quiere su dinero",
+          "offset_s": 0
+        },
+        {
+          "text": "si no lo tienes hay otra forma, tú sabes trabajar",
+          "offset_s": 300
+        },
+        {
+          "text": "no le digas a nadie de esto, es entre nosotros y él",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "ED-005",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Deuda familiar como palanca",
+      "messages": [
+        {
+          "text": "supe que tu papá debe dinero, yo puedo ayudarte a pagarlo",
+          "offset_s": 0
+        },
+        {
+          "text": "con dos o tres mandados queda saldado todo",
+          "offset_s": 300
+        },
+        {
+          "text": "piénsalo, tu familia ni se entera y les resuelves el problema",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "ED-006",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Recarga de celular como enganche",
+      "messages": [
+        {
+          "text": "te deposité para tus recargas, no me debes nada... por ahora jaja",
+          "offset_s": 0
+        },
+        {
+          "text": "ya en serio, cuando necesite algo te aviso y me ayudas",
+          "offset_s": 300
+        },
+        {
+          "text": "eres de confianza, por eso te elegí",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "ED-007",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Préstamo con intereses de favor creciente",
+      "messages": [
+        {
+          "text": "lo del préstamo va subiendo, pero hay chance de bajarlo",
+          "offset_s": 0
+        },
+        {
+          "text": "cada vuelta que des te descuento la mitad",
+          "offset_s": 300
+        },
+        {
+          "text": "empiezas hoy? manda tu ubicación y paso por ti",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "ED-008",
+      "group": "tp_extorsion_deuda",
+      "label": "RISK",
+      "description": "Cobro con presión de grupo",
+      "messages": [
+        {
+          "text": "todos en el grupo ya pagaron su parte menos tú",
+          "offset_s": 0
+        },
+        {
+          "text": "si no tienes el dinero, el jefe acepta trabajo a cambio",
+          "offset_s": 300
+        },
+        {
+          "text": "no seas rajón, es una vuelta rápida y quedas limpio",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "NP-001",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "De fan de corridos a oferta real",
+      "messages": [
+        {
+          "text": "también te gustan los corridos de peso pluma? qué chido",
+          "offset_s": 0
+        },
+        {
+          "text": "esa vida de la que cantan es real eh, yo la vivo",
+          "offset_s": 300
+        },
+        {
+          "text": "si quieres conocerla hay jale para ti, se gana bien",
+          "offset_s": 600
+        },
+        {
+          "text": "manda tu ubicación y te explico en persona",
+          "offset_s": 900
+        }
+      ]
+    },
+    {
+      "id": "NP-002",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "Grupo de fans infiltrado",
+      "messages": [
+        {
+          "text": "bienvenido al grupo de corridos bélicos, aquí pura rola buena",
+          "offset_s": 0
+        },
+        {
+          "text": "oye, tú te ves listo, no como los demás del grupo",
+          "offset_s": 300
+        },
+        {
+          "text": "el patrón de mi rancho busca chavos como tú, te interesa?",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "NP-003",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "Del significado de la letra a la invitación",
+      "messages": [
+        {
+          "text": "sabes qué significa halconear? sale en la canción que compartiste",
+          "offset_s": 0
+        },
+        {
+          "text": "es más fácil de lo que suena, nomás avisas quién entra y sale",
+          "offset_s": 300
+        },
+        {
+          "text": "puedes ganar 5 mil quincenales haciéndolo, jalas?",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "NP-004",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "Idolatría dirigida a reclutamiento",
+      "messages": [
+        {
+          "text": "veo que admiras al mero mero de las canciones",
+          "offset_s": 0
+        },
+        {
+          "text": "yo trabajo para gente así, es como en las rolas pero de verdad",
+          "offset_s": 300
+        },
+        {
+          "text": "te puedo presentar, pero esto queda entre nosotros",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "NP-005",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "Concierto como punto de contacto",
+      "messages": [
+        {
+          "text": "vas al concierto del sábado? yo también voy",
+          "offset_s": 0
+        },
+        {
+          "text": "te veo ahí y te presento a unos amigos de la empresa",
+          "offset_s": 300
+        },
+        {
+          "text": "ven solo, luego te llevamos de regreso, hay carro",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "NP-006",
+      "group": "tp_narcocultura_puente",
+      "label": "RISK",
+      "description": "Sorteo falso de boletos",
+      "messages": [
+        {
+          "text": "ganaste los boletos del sorteo del concierto!!",
+          "offset_s": 0
+        },
+        {
+          "text": "para entregártelos necesito foto de tu ine o tu credencial de la escuela",
+          "offset_s": 300
+        },
+        {
+          "text": "y dame tu dirección para mandarte el paquete con los boletos",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-001",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Oferta laboral vaga sin términos del dataset",
+      "messages": [
+        {
+          "text": "hay una manera de que un chavo como tú tenga billete rápido",
+          "offset_s": 0
+        },
+        {
+          "text": "no ocupas experiencia ni papeles, solo ganas de progresar",
+          "offset_s": 300
+        },
+        {
+          "text": "mis compas pasan por ti donde digas y te explican todo",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-002",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Vigilancia parafraseada",
+      "messages": [
+        {
+          "text": "ocupamos un chavo que se pare en la esquina y nos avise quién pasa",
+          "offset_s": 0
+        },
+        {
+          "text": "nada ilegal, nomás miras y mandas mensajito",
+          "offset_s": 300
+        },
+        {
+          "text": "son 4 mil a la semana por estar sentado, tú dime",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-003",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Entrega parafraseada",
+      "messages": [
+        {
+          "text": "necesito que recojas una cosa y la dejes en otro lado",
+          "offset_s": 0
+        },
+        {
+          "text": "son 20 minutos de tu tiempo y te ganas mil pesos",
+          "offset_s": 300
+        },
+        {
+          "text": "nadie revisa a los menores, por eso te busco a ti",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-004",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Pertenencia parafraseada",
+      "messages": [
+        {
+          "text": "aquí nadie te va a hacer menos como en tu casa",
+          "offset_s": 0
+        },
+        {
+          "text": "los muchachos ya preguntaron por ti, les caíste bien",
+          "offset_s": 300
+        },
+        {
+          "text": "vente a la reunión del viernes, yo respondo por ti",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-005",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Reclutador que evita palabras clave",
+      "messages": [
+        {
+          "text": "tú sabes de qué trabajo hablo, no lo voy a escribir aquí",
+          "offset_s": 0
+        },
+        {
+          "text": "borra este chat cuando termines de leer",
+          "offset_s": 300
+        },
+        {
+          "text": "mañana a las 3 en el oxxo de la esquina, ahí te digo todo",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-006",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Oferta de 'seguridad' parafraseada",
+      "messages": [
+        {
+          "text": "con nosotros nadie se mete contigo en la escuela",
+          "offset_s": 0
+        },
+        {
+          "text": "los que te molestan van a dejar de hacerlo, te lo prometo",
+          "offset_s": 300
+        },
+        {
+          "text": "solo tienes que hacer equipo con nosotros, entras o no?",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-007",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Chofer adolescente parafraseado",
+      "messages": [
+        {
+          "text": "sabes manejar? aunque no tengas licencia no importa",
+          "offset_s": 0
+        },
+        {
+          "text": "ocupamos quien mueva una camioneta dos veces por semana",
+          "offset_s": 300
+        },
+        {
+          "text": "pagan 3 mil por viaje, nomás no preguntes qué llevas",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-008",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Fotógrafo de puntos parafraseado",
+      "messages": [
+        {
+          "text": "me ayudas con unas fotos? es para un trabajo",
+          "offset_s": 0
+        },
+        {
+          "text": "nomás toma fotos de la comandancia y los patrulleros cuando pasen",
+          "offset_s": 300
+        },
+        {
+          "text": "te va tu buena lana por cada foto que sirva",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-009",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Reclutamiento de hermano mayor ausente",
+      "messages": [
+        {
+          "text": "tu carnal trabajaba con nosotros antes de irse al otro lado",
+          "offset_s": 0
+        },
+        {
+          "text": "dejó un lugar vacío que te toca a ti por sangre",
+          "offset_s": 300
+        },
+        {
+          "text": "el señor quiere conocerte, te mando la dirección",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-010",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Invitación a 'negocio familiar' parafraseada",
+      "messages": [
+        {
+          "text": "mi tío tiene un negocio donde ocupan chavos listos",
+          "offset_s": 0
+        },
+        {
+          "text": "empiezas repartiendo cositas y vas subiendo",
+          "offset_s": 300
+        },
+        {
+          "text": "el primer pago te lo doy yo mismo hoy si dices que sí",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-011",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Prueba de lealtad parafraseada",
+      "messages": [
+        {
+          "text": "antes de entrar tienes que demostrar que no eres soplón",
+          "offset_s": 0
+        },
+        {
+          "text": "guarda esta mochila en tu casa una semana, no la abras",
+          "offset_s": 300
+        },
+        {
+          "text": "si todo sale bien ya eres de los nuestros",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "RP-012",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": "RISK",
+      "description": "Oferta a niña parafraseada",
+      "messages": [
+        {
+          "text": "una niña como tú puede ganar dinero solo por acompañar a señores a cenar",
+          "offset_s": 0
+        },
+        {
+          "text": "nada raro, pura compañía, y te compras lo que quieras",
+          "offset_s": 300
+        },
+        {
+          "text": "mis amigas de tu edad ya le hacen y están felices, pregúntales",
+          "offset_s": 600
+        }
+      ]
+    },
+    {
+      "id": "AC-001",
+      "group": "tp_actor_asimetrico",
+      "label": "RISK",
+      "description": "Adulto concentra: oferta+aislamiento+logística; menor solo responde",
+      "messages": [
+        {
+          "text": "hola, te vi por aqui, te ves buena onda",
+          "offset_s": 0,
+          "sender": "adulto"
+        },
+        {
+          "text": "hola",
+          "offset_s": 30,
+          "sender": "menor"
+        },
+        {
+          "text": "mira, te doy dinero facil si me ayudas con algo",
+          "offset_s": 60,
+          "sender": "adulto"
+        },
+        {
+          "text": "ah sí? con qué",
+          "offset_s": 90,
+          "sender": "menor"
+        },
+        {
+          "text": "no le digas a tus papas, es entre nosotros, manda tu ubicacion",
+          "offset_s": 120,
+          "sender": "adulto"
+        }
+      ]
+    },
+    {
+      "id": "AC-002",
+      "group": "tp_actor_asimetrico",
+      "label": "RISK",
+      "description": "Reclutador concentra en gaming: skins + secreto + encuentro",
+      "messages": [
+        {
+          "text": "oye buen juego, te regalo skins si quieres",
+          "offset_s": 0,
+          "sender": "gamer_x"
+        },
+        {
+          "text": "va gracias",
+          "offset_s": 40,
+          "sender": "menor"
+        },
+        {
+          "text": "tengo cuenta premium tambien, pero ven por ella, ven solo",
+          "offset_s": 80,
+          "sender": "gamer_x"
+        },
+        {
+          "text": "no sé, dónde?",
+          "offset_s": 120,
+          "sender": "menor"
+        },
+        {
+          "text": "te paso la direccion por privado, borra este chat",
+          "offset_s": 160,
+          "sender": "gamer_x"
+        }
+      ]
+    },
+    {
+      "id": "AC-003",
+      "group": "tp_actor_asimetrico",
+      "label": "RISK",
+      "description": "Un actor pide datos personales progresivamente; el otro contesta normal",
+      "messages": [
+        {
+          "text": "cuantos años tienes?",
+          "offset_s": 0,
+          "sender": "desconocido"
+        },
+        {
+          "text": "13",
+          "offset_s": 30,
+          "sender": "menor"
+        },
+        {
+          "text": "en que escuela estas? a que hora sales?",
+          "offset_s": 60,
+          "sender": "desconocido"
+        },
+        {
+          "text": "en la secu 4",
+          "offset_s": 90,
+          "sender": "menor"
+        },
+        {
+          "text": "mandame una foto tuya y tu numero",
+          "offset_s": 120,
+          "sender": "desconocido"
+        }
+      ]
+    },
+    {
+      "id": "AC-004",
+      "group": "tp_actor_asimetrico",
+      "label": "RISK",
+      "description": "Score moderado — sin asimetría quedaría bajo umbral, el actor lo eleva",
+      "messages": [
+        {
+          "text": "te puedo ofrecer algo bueno",
+          "offset_s": 0,
+          "sender": "extraño"
+        },
+        {
+          "text": "qué?",
+          "offset_s": 30,
+          "sender": "menor"
+        },
+        {
+          "text": "un trabajito, no preguntes que es, se gana bien",
+          "offset_s": 60,
+          "sender": "extraño"
+        }
+      ]
+    },
+    {
+      "id": "BR-001",
+      "group": "benign_reciproco",
+      "label": "BENIGN",
+      "description": "Dos amigos: AMBOS usan 'manda tu ubicación' (reciprocidad léxica) para la fiesta",
+      "messages": [
+        {
+          "text": "oye manda tu ubicacion y paso por ti a la fiesta",
+          "offset_s": 0,
+          "sender": "amigo1"
+        },
+        {
+          "text": "va, y tu manda tu ubicacion tambien para vernos alla",
+          "offset_s": 60,
+          "sender": "amigo2"
+        },
+        {
+          "text": "sale nos vemos",
+          "offset_s": 120,
+          "sender": "amigo1"
+        }
+      ]
+    },
+    {
+      "id": "BR-002",
+      "group": "benign_reciproco",
+      "label": "BENIGN",
+      "description": "Compañeros se preguntan edad/escuela mutuamente (se conocen)",
+      "messages": [
+        {
+          "text": "oye cuantos años tienes? yo 12",
+          "offset_s": 0,
+          "sender": "nuevo"
+        },
+        {
+          "text": "13, en que escuela estabas antes?",
+          "offset_s": 60,
+          "sender": "companiero"
+        },
+        {
+          "text": "en la primaria juarez, y tu?",
+          "offset_s": 120,
+          "sender": "nuevo"
+        },
+        {
+          "text": "yo en la morelos jaja",
+          "offset_s": 180,
+          "sender": "companiero"
+        }
+      ]
+    },
+    {
+      "id": "BR-003",
+      "group": "benign_reciproco",
+      "label": "BENIGN",
+      "description": "Amigos: AMBOS mencionan 'te presto/buena lana' recíprocamente por el recreo",
+      "messages": [
+        {
+          "text": "me prestas para el recreo? buena lana la que traes",
+          "offset_s": 0,
+          "sender": "a"
+        },
+        {
+          "text": "va te presto, y tu me prestaste buena lana la vez pasada",
+          "offset_s": 60,
+          "sender": "b"
+        },
+        {
+          "text": "jaja gracias",
+          "offset_s": 120,
+          "sender": "a"
+        }
+      ]
+    },
+    {
+      "id": "BR-004",
+      "group": "benign_reciproco",
+      "label": "BENIGN",
+      "description": "Hermanos coordinan mandado familiar",
+      "messages": [
+        {
+          "text": "mi mama dice que hagas el mandado hoy",
+          "offset_s": 0,
+          "sender": "hermano1"
+        },
+        {
+          "text": "no manches, ayer me toco a mi, hoy vas tu",
+          "offset_s": 60,
+          "sender": "hermano2"
+        },
+        {
+          "text": "bueno va, pero tu lavas los platos",
+          "offset_s": 120,
+          "sender": "hermano1"
+        }
       ]
     }
   ]

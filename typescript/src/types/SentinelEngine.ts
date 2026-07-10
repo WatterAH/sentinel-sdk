@@ -5,6 +5,7 @@ export type RiskLevel = "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
 export interface Message {
   text: string;
   timestamp?: number; // Unix ms
+  sender?: string; // id del emisor — habilita el análisis de asimetría de actor
 }
 
 export interface ApiMessage {
@@ -40,6 +41,38 @@ export interface V4LayerResult {
   explicitSignals: string[]; // ["EX-002"]
 }
 
+export interface ActorProfile {
+  sender: string;
+  /** Categorías de riesgo que ESTE emisor produce. */
+  categories: string[];
+  /** Cuántas de esas son de acción dirigida al otro (oferta, logística, etc.). */
+  directedActionCount: number;
+  score: number;
+}
+
+export interface ActorLayerResult {
+  /** true si hubo ≥2 emisores distinguibles (si no, el análisis no aplica). */
+  analyzed: boolean;
+  profiles: ActorProfile[];
+  /** El emisor que más concentra tácticas de acción dirigida, si alguno destaca. */
+  aggressorSender: string | null;
+  /** Fracción del total de señal de acción dirigida que concentra ese emisor (0–1). */
+  concentration: number;
+  triggeredRules: string[]; // ["ACR-001"]
+}
+
+export interface TemporalLayerResult {
+  /** Etapas del guion de captación detectadas, en orden de primera aparición. */
+  stagesPresent: string[]; // ["CONTACTO", "ENGANCHE", "AISLAMIENTO"]
+  /** true si las primeras apariciones respetan el orden del guion (contacto→enganche→aislamiento→logística). */
+  orderedProgression: boolean;
+  /** Días entre el primer y el último hit con categoría mapeable. */
+  spanDays: number;
+  triggeredRules: string[]; // ["TCR-001"]
+  /** Primera aparición de cada etapa, para auditoría y para el prompt del LLM. */
+  timeline: Array<{ stage: string; firstSeenAt: number }>;
+}
+
 // ─── Resultado principal del Engine ──────────────────────────────────────────
 
 export interface EngineResult {
@@ -53,6 +86,8 @@ export interface EngineResult {
     normalizer: NormalizerLayerResult;
     v3: V3LayerResult;
     v4: V4LayerResult;
+    temporal: TemporalLayerResult;
+    actor: ActorLayerResult;
   };
 
   // Contexto temporal

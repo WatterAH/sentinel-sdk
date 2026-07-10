@@ -1,0 +1,75 @@
+{
+  "timestamp": "2026-07-10T00:39:13.573Z",
+  "baselineDetectionRate": 0.825,
+  "byTransform": [
+    {
+      "transform": "homoglyphs",
+      "riskCases": 47,
+      "stillDetected": 47,
+      "survivalRate": 1,
+      "broken": []
+    },
+    {
+      "transform": "invisibles",
+      "riskCases": 47,
+      "stillDetected": 47,
+      "survivalRate": 1,
+      "broken": []
+    },
+    {
+      "transform": "fullwidth",
+      "riskCases": 47,
+      "stillDetected": 47,
+      "survivalRate": 1,
+      "broken": []
+    },
+    {
+      "transform": "leet_aggressive",
+      "riskCases": 47,
+      "stillDetected": 44,
+      "survivalRate": 0.936,
+      "broken": [
+        "TP-021",
+        "RP-007",
+        "RP-008"
+      ]
+    },
+    {
+      "transform": "intra_word_spaces",
+      "riskCases": 47,
+      "stillDetected": 34,
+      "survivalRate": 0.723,
+      "broken": [
+        "TP-013",
+        "TP-021",
+        "TL-001",
+        "ED-003",
+        "ED-006",
+        "ED-008",
+        "NP-001",
+        "NP-002",
+        "NP-004",
+        "RP-008",
+        "RP-010",
+        "RP-011",
+        "AC-003"
+      ]
+    },
+    {
+      "transform": "message_splitting",
+      "riskCases": 47,
+      "stillDetected": 39,
+      "survivalRate": 0.83,
+      "broken": [
+        "TP-010",
+        "TP-013",
+        "TL-001",
+        "TL-002",
+        "TL-003",
+        "ED-008",
+        "RP-011",
+        "AC-004"
+      ]
+    }
+  ]
+}
