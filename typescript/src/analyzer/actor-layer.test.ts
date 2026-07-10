@@ -59,16 +59,21 @@ describe("ActorLayer — asimetría de emisor", () => {
     expect(r.layers.actor.aggressorSender).toBeNull();
   });
 
-  it("eleva a MEDIUM (escala) un caso de score moderado con agresor claro", () => {
-    // Sin asimetría este caso podría quedar bajo el umbral; la concentración
-    // en un actor lo empuja a revisión de la capa cognitiva.
+  it("un agresor claro es prueba dura → se resuelve local (sin gastar LLM)", () => {
+    // La concentración en un actor + aislamiento es señal determinista: el motor
+    // NO necesita el LLM para actuar. Se marca riesgo y se resuelve localmente.
     const engine = new Engine();
     const r = engine.analyze([
       m("te doy skins si me ayudas", "extraño", 0),
       m("no sé", "menor", 30),
       m("es fácil, no le digas a tus papás", "extraño", 60),
     ]);
-    expect(r.escalate).toBe(true);
     expect(["MEDIUM", "HIGH", "CRITICAL"]).toContain(r.risk);
+    expect(r.layers.actor.aggressorSender).toBe("extraño");
+    // Riesgo alto con prueba dura → veredicto local confiable, sin escalar.
+    if (r.risk === "HIGH" || r.risk === "CRITICAL") {
+      expect(r.escalate).toBe(false);
+      expect(r.escalationReason).toBe("confident_local_proof");
+    }
   });
 });

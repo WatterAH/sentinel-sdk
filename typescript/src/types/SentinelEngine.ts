@@ -99,6 +99,13 @@ export interface EngineResult {
   uniqueCategories: string[];
   /** Banda de edad usada para ajustar el análisis (7.4), si la plataforma la pasó. */
   ageBand?: "under13" | "13-15" | "16-17" | "adult";
+  /**
+   * Por qué (no) se escala al LLM. `escalate` es true solo en `uncertain_needs_llm`.
+   * - none_low_risk: sin riesgo, acción local.
+   * - confident_local_proof: riesgo con prueba determinista → veredicto local, sin API.
+   * - uncertain_needs_llm: zona gris → el LLM aporta valor.
+   */
+  escalationReason?: "none_low_risk" | "confident_local_proof" | "uncertain_needs_llm";
 }
 
 // ─── Tipos internos compartidos entre capas ──────────────────────────────────

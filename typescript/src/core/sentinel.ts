@@ -6,7 +6,7 @@ import {
   SentinelAnalysisResponse,
 } from "../types/SentinelAnalysisResult.js";
 import { SentinelResult, ok, err } from "../types/SentinelResult.js";
-import { ApiMessage, EngineResult, Message } from "../types/SentinelEngine.js";
+import { ApiMessage, EngineResult, Message, RiskLevel } from "../types/SentinelEngine.js";
 import { SentinelError } from "../errors/SentinelError.js";
 import { buildLocalIntervention } from "./intervention.js";
 import type { AgeBand } from "../analyzer/age-policy.js";
@@ -23,6 +23,11 @@ export class Sentinel {
   private readonly serverSideSessions: boolean;
   private engine: Engine;
   private sessionStore = new Map<string, ApiMessage[]>();
+  // Deduplicación de escalaciones: cachea el último veredicto del LLM por sesión
+  // y el nivel de riesgo con que se obtuvo. Evita re-escalar (y re-pagar) en cada
+  // mensaje de una conversación que ya fue evaluada, salvo que el riesgo suba.
+  private escalationCache = new Map<string, { risk: RiskLevel; response: ApiAnalysisResponse }>();
+  private readonly RISK_ORDER: RiskLevel[] = ["LOW", "MEDIUM", "HIGH", "CRITICAL"];
 
   constructor(config: SentinelConfig) {
     this.apiKey = config.apiKey;
@@ -190,47 +195,36 @@ export class Sentinel {
       }));
       const result = this.engine.analyze(engineMessages, { ageBand: context?.ageBand });
 
-      // 3. DETERMINE ACTION BASED ON SCORE
+      // 3. DECIDIR ACCIÓN — `result.escalate` es la ÚNICA fuente de verdad:
+      //    true solo cuando el motor local está INSEGURO (zona gris). Esto
+      //    minimiza el costo de API: lo determinista se resuelve local.
+
+      // 3a. Riesgo LOW → veredicto local, sin API.
       if (result.risk === "LOW") {
-        return ok({
-          messages_analyzed: messages.length,
-          current_message: text,
-          confidence: 1,
-          risk: result.risk,
-          summary:
-            "El análisis local determina que la conversación no presenta indicios de riesgo. El lenguaje utilizado y los patrones detectados corresponden a una interacción normal, sin señales de manipulación o captación.",
-          stage: "NINGUNA",
-          false_positive: false,
-          ux_recommendation: "NONE",
-          intervention: buildLocalIntervention(result),
-        });
-      } else if (result.risk === "MEDIUM") {
-        // 4. ESCALATE IF NEEDED
-        const escalated = await this.escalate(result, messages);
-        return ok({
-          ...escalated,
-          messages_analyzed: messages.length,
-          current_message: text,
-        });
-      } else {
-        const intervention = buildLocalIntervention(result);
-        return ok({
-          messages_analyzed: messages.length,
-          current_message: text,
-          confidence: 1,
-          risk: result.risk,
-          summary:
-            "ALERTA: El análisis local ha detectado patrones críticos de alta severidad. Las señales extraídas coinciden de manera explícita con tácticas coercitivas, de captación o grooming. Se requiere bloqueo o intervención inmediata.",
-          stage: "CAPTACION",
-          false_positive: false,
-          // La recomendación UX ahora refleja el plan graduado: un HIGH no
-          // inminente no bloquea de forma visible (evita el oráculo), escala a
-          // fricción/vigilancia. Solo el peligro inminente da HARD_BLOCK.
-          ux_recommendation:
-            intervention.recruiter_action === "HARD_BLOCK" ? "HARD_BLOCK" : "WARNING_OVERLAY",
-          intervention,
-        });
+        return ok(this.localVerdict(result, messages.length, text));
       }
+
+      // 3b. Escalación necesaria (incierto). Se deduplica por sesión: si esta
+      //     sesión ya tiene veredicto del LLM al mismo nivel de riesgo o mayor,
+      //     se reutiliza en vez de re-pagar la llamada.
+      if (result.escalate) {
+        const cached = this.escalationCache.get(sessionId);
+        if (cached && this.RISK_ORDER.indexOf(cached.risk) >= this.RISK_ORDER.indexOf(result.risk)) {
+          return ok({ ...cached.response, messages_analyzed: messages.length, current_message: text });
+        }
+        const escalated = await this.escalate(result, messages);
+        this.escalationCache.set(sessionId, { risk: result.risk, response: escalated });
+        return ok({ ...escalated, messages_analyzed: messages.length, current_message: text });
+      }
+
+      // 3c. Riesgo alto CON prueba determinista → veredicto local confiable, sin
+      //     gastar el LLM. Si hay agresor identificado, se reporta a la señal de
+      //     red (barato, sin LLM) para preservar la detección de reclutamiento
+      //     organizado cross-sesión.
+      if (result.layers.actor?.aggressorSender) {
+        void this.reportNetwork(result, messages).catch(() => {});
+      }
+      return ok(this.localVerdict(result, messages.length, text));
     } catch (e) {
       if (e instanceof SentinelError) return err(e);
       return err(
@@ -318,6 +312,69 @@ export class Sentinel {
     return await request.post(`${this.baseUrl}/analyze`, {
       ...analysis,
       messages,
+    }, this.authHeaders());
+  }
+
+  /**
+   * Construye el veredicto LOCAL (sin LLM) a partir del resultado del motor,
+   * usando el plan de intervención graduada. Se usa cuando el motor está seguro
+   * (LOW, o riesgo alto con prueba determinista) — así se evita el costo de API.
+   */
+  private localVerdict(
+    result: EngineResult,
+    messagesAnalyzed: number,
+    text: string,
+  ): ApiAnalysisResponse {
+    const intervention = buildLocalIntervention(result);
+    if (result.risk === "LOW") {
+      return {
+        messages_analyzed: messagesAnalyzed,
+        current_message: text,
+        confidence: 1,
+        risk: result.risk,
+        summary:
+          "El análisis local determina que la conversación no presenta indicios de riesgo. El lenguaje utilizado y los patrones detectados corresponden a una interacción normal, sin señales de manipulación o captación.",
+        stage: "NINGUNA",
+        false_positive: false,
+        ux_recommendation: "NONE",
+        intervention,
+      };
+    }
+    return {
+      messages_analyzed: messagesAnalyzed,
+      current_message: text,
+      confidence: 1,
+      risk: result.risk,
+      summary:
+        "ALERTA: El análisis local ha detectado patrones deterministas de alta severidad (reglas de reclutamiento, señales explícitas o concentración de tácticas en un actor). Se recomienda intervención según el plan.",
+      stage: "CAPTACION",
+      false_positive: false,
+      // La recomendación UX refleja el plan graduado: solo el peligro inminente
+      // bloquea de forma visible; el resto vigila sin delatar el filtro.
+      ux_recommendation:
+        intervention.recruiter_action === "HARD_BLOCK" ? "HARD_BLOCK" : "WARNING_OVERLAY",
+      intervention,
+    };
+  }
+
+  /**
+   * Reporta un avistamiento de actor al servidor SIN invocar el LLM (barato).
+   * Preserva la detección de reclutamiento organizado cross-sesión incluso
+   * cuando el veredicto se resolvió localmente. Fire-and-forget.
+   */
+  private async reportNetwork(
+    analysis: EngineResult,
+    messages: ApiMessage[],
+  ): Promise<void> {
+    const aggressor = analysis.layers.actor?.aggressorSender;
+    if (!aggressor) return;
+    const aggressorTexts = messages.filter((m) => m.user_id === aggressor).map((m) => m.content);
+    await request.post(`${this.baseUrl}/network/report`, {
+      aggressor_user_id: aggressor,
+      session_id: messages[0]?.session_id ?? "",
+      aggressor_texts: aggressorTexts,
+      risk: analysis.risk,
+      categories: analysis.uniqueCategories,
     }, this.authHeaders());
   }
 

@@ -27,7 +27,8 @@
     "test:watch": "vitest",
     "lint": "biome check src/",
     "format": "biome format --write src/",
-    "bench:adversarial": "vitest run benchmark/adversarial.test.ts"
+    "bench:adversarial": "vitest run benchmark/adversarial.test.ts",
+    "export:dataset": "vitest run benchmark/export-dataset.test.ts"
   },
   "publishConfig": {
     "access": "public"

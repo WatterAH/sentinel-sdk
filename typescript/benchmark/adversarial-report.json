@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-10T04:34:13.704Z",
+  "timestamp": "2026-07-10T04:57:01.686Z",
   "baselineDetectionRate": 0.825,
   "byTransform": [
     {
@@ -29,8 +29,8 @@
       "stillDetected": 45,
       "survivalRate": 0.957,
       "broken": [
-        "TP-009",
-        "RP-007"
+        "RP-008",
+        "RP-011"
       ]
     },
     {

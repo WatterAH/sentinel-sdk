@@ -11,6 +11,7 @@ import { DampenerLayer } from "./dampener-layer.js";
 import { TemporalLayer } from "./temporal-layer.js";
 import { ActorLayer } from "./actor-layer.js";
 import { ageCategoryMultiplier, type AgeBand } from "./age-policy.js";
+import { featurize } from "./featurizer.js";
 import type { Message, EngineResult, RiskLevel } from "../types/SentinelEngine.js";
 
 /** Contexto opcional que la plataforma puede pasar para afinar el análisis. */
@@ -18,6 +19,22 @@ export interface AnalyzeOptions {
   /** Banda de edad del usuario protegido; ajusta pesos por categoría (7.4). */
   ageBand?: AgeBand;
 }
+
+/**
+ * Clasificador semántico en MODO SOMBRA: recibe el vector de features y devuelve
+ * una probabilidad de riesgo [0..1]. El motor lo llama SIN usar su salida para
+ * decidir — solo la registra vía el observador — para poder recolectar datos de
+ * concordancia en producción de forma segura antes de darle peso real (8.8).
+ */
+export type ShadowClassifier = (features: number[]) => number;
+
+/** Observa la comparación motor-léxico vs. clasificador-sombra (telemetría). */
+export type ShadowObserver = (info: {
+  lexicalRisk: RiskLevel;
+  lexicalEscalate: boolean;
+  shadowProbability: number;
+  features: number[];
+}) => void;
 
 export class Engine {
   private normalizer: NormalizerLayer;
@@ -28,6 +45,8 @@ export class Engine {
   private temporal: TemporalLayer;
   private actor: ActorLayer;
   private sessionThreshold: number;
+  private shadowClassifier?: ShadowClassifier;
+  private shadowObserver?: ShadowObserver;
 
   constructor() {
     this.normalizer = new NormalizerLayer();
@@ -41,6 +60,17 @@ export class Engine {
     this.temporal = new TemporalLayer();
     this.actor = new ActorLayer();
     this.sessionThreshold = this.v3.sessionThreshold;
+  }
+
+  /**
+   * Registra un clasificador en modo sombra (8.8). El motor lo evalúa en cada
+   * análisis pero NO usa su salida para decidir; se reporta al observador para
+   * medir concordancia con el motor léxico. Preparación para el clasificador
+   * semántico on-device sin arriesgar decisiones en producción.
+   */
+  setShadowClassifier(classifier: ShadowClassifier, observer?: ShadowObserver): void {
+    this.shadowClassifier = classifier;
+    this.shadowObserver = observer;
   }
 
   /** Inyecta términos dinámicos en el V3Layer desde la API. */
@@ -247,15 +277,35 @@ export class Engine {
       reciprocalCapped = true;
     }
 
-    const escalate =
-      !reciprocalCapped &&
-      (totalScore >= this.sessionThreshold ||
-        (hasActiveRule && !hasDampeners) ||
-        hasTemporalChain ||
-        actor.aggressorSender !== null ||
-        risk === "CRITICAL");
+    // ── Política de escalación: escalar por INCERTIDUMBRE, no por nivel ──────
+    // El motor determinista es CONFIABLE cuando tiene prueba dura (reglas MCR/CR,
+    // señal explícita V4, agresor por asimetría, o cadena temporal): en ese caso
+    // actúa solo, sin gastar el LLM. El LLM se reserva para la zona gris genuina.
+    // Esto minimiza el costo de API (solo lo ambiguo escala) y hace de `escalate`
+    // la única fuente de verdad para decidir la acción (antes duplicada en el SDK).
+    const hasHardProof =
+      hasActiveRule ||
+      v4.explicitSignals.length > 0 ||
+      actor.aggressorSender !== null ||
+      hasTemporalChain;
 
-    return {
+    let escalate: boolean;
+    let escalationReason: EngineResult["escalationReason"];
+    if (risk === "LOW") {
+      escalate = false;
+      escalationReason = "none_low_risk";
+    } else if ((risk === "HIGH" || risk === "CRITICAL") && hasHardProof) {
+      // Riesgo alto CON prueba determinista → veredicto local confiable, sin API.
+      escalate = false;
+      escalationReason = "confident_local_proof";
+    } else {
+      // Zona gris (MEDIUM), o HIGH/CRITICAL solo por acumulación de puntaje sin
+      // regla dura → el LLM aporta valor (confirma / evita falso bloqueo).
+      escalate = true;
+      escalationReason = "uncertain_needs_llm";
+    }
+
+    const engineResult: EngineResult = {
       score: totalScore,
       risk,
       escalate,
@@ -288,7 +338,26 @@ export class Engine {
       messagesAnalyzed: messages.length,
       uniqueCategories,
       ageBand,
+      escalationReason,
     };
+
+    // Modo sombra (8.8): evaluar el clasificador candidato sin usar su salida.
+    if (this.shadowClassifier) {
+      try {
+        const { values } = featurize(engineResult, messages);
+        const shadowProbability = this.shadowClassifier(values);
+        this.shadowObserver?.({
+          lexicalRisk: risk,
+          lexicalEscalate: escalate,
+          shadowProbability,
+          features: values,
+        });
+      } catch {
+        // El modo sombra jamás debe afectar el análisis real.
+      }
+    }
+
+    return engineResult;
   }
 
   private resolveRisk(
