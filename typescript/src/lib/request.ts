@@ -1,4 +1,4 @@
-import { ApiResponse } from "../types/SentinelAnalysisResult.js";
+import type { ApiResponse } from "../types/SentinelAnalysisResult.js";
 import { SentinelError } from "../errors/SentinelError.js";
 
 async function throwApiError(res: Response): Promise<never> {
@@ -40,7 +40,7 @@ class Request {
     return data.data;
   }
 
-  async post<T>(url: string, body: any, headers?: Record<string, string>): Promise<T> {
+  async post<T>(url: string, body: unknown, headers?: Record<string, string>): Promise<T> {
     const res = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json", ...headers },

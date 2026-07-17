@@ -49,7 +49,9 @@ describe("modo sombra — no afecta el resultado", () => {
     expect(withShadow.score).toBe(plain.score);
     // Pero el observador recibió la comparación.
     expect(observed).not.toBeNull();
-    expect(observed!.features.length).toBe(FEATURE_NAMES.length);
+    const observation = observed as { shadowProbability: number; features: number[] } | null;
+    if (!observation) throw new Error("El observador de modo sombra no fue invocado");
+    expect(observation.features.length).toBe(FEATURE_NAMES.length);
   });
 
   it("un clasificador que lanza excepción no rompe el análisis", () => {

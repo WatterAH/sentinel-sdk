@@ -129,7 +129,9 @@ export class TemporalLayer {
     // (los índices de etapa deben ser estrictamente crecientes en la línea de tiempo)
     let orderedProgression = timeline.length >= 2;
     for (let i = 1; i < timeline.length; i++) {
-      if (STAGE_INDEX[timeline[i]!.stage] <= STAGE_INDEX[timeline[i - 1]!.stage]) {
+      const current = timeline[i];
+      const previous = timeline[i - 1];
+      if (!current || !previous || STAGE_INDEX[current.stage] <= STAGE_INDEX[previous.stage]) {
         orderedProgression = false;
         break;
       }

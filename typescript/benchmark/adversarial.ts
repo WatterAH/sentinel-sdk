@@ -35,7 +35,17 @@ function toFullwidth(s: string): string {
 
 function aggressiveLeet(s: string): string {
   const map: Record<string, string> = { a: "4", e: "3", i: "1", o: "0", s: "$", t: "7", l: "1" };
-  return [...s].map((ch) => (Math.random() < 0.5 ? map[ch.toLowerCase()] ?? ch : ch)).join("");
+  // Determinista: alterna únicamente entre caracteres sustituibles. El uso
+  // previo de Math.random() hacía que el guardrail cambiara sin cambios de
+  // código y volvía imposible comparar un benchmark antes/después.
+  let eligibleIndex = 0;
+  return [...s].map((ch) => {
+    const replacement = map[ch.toLowerCase()];
+    if (!replacement) return ch;
+    const transformed = eligibleIndex % 2 === 0 ? replacement : ch;
+    eligibleIndex++;
+    return transformed;
+  }).join("");
 }
 
 function intraWordSpaces(s: string): string {

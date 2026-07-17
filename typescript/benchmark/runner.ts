@@ -10,14 +10,14 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { Engine } from "../src/analyzer/engine.js";
-import type { Message, RiskLevel } from "../src/types/SentinelEngine.js";
+import type { Message, MessageSource, RiskLevel } from "../src/types/SentinelEngine.js";
 
 export interface CorpusCase {
   id: string;
   group: string;
   label: "RISK" | "BENIGN";
   description: string;
-  messages: Array<{ text: string; offset_s: number; sender?: string }>;
+  messages: Array<{ text: string; offset_s: number; sender?: string; source?: MessageSource }>;
 }
 
 export interface Corpus {
@@ -118,6 +118,7 @@ function toMessages(c: CorpusCase): Message[] {
     text: m.text,
     timestamp: BASE_EPOCH_MS + m.offset_s * 1000,
     sender: m.sender,
+    source: m.source,
   }));
 }
 

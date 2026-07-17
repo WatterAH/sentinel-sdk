@@ -1,43 +1,44 @@
 {
-  "timestamp": "2026-07-10T04:57:01.686Z",
-  "baselineDetectionRate": 0.825,
+  "timestamp": "2026-07-17T16:35:29.078Z",
+  "baselineDetectionRate": 0.82,
   "byTransform": [
     {
       "transform": "homoglyphs",
-      "riskCases": 47,
-      "stillDetected": 47,
+      "riskCases": 50,
+      "stillDetected": 50,
       "survivalRate": 1,
       "broken": []
     },
     {
       "transform": "invisibles",
-      "riskCases": 47,
-      "stillDetected": 47,
+      "riskCases": 50,
+      "stillDetected": 50,
       "survivalRate": 1,
       "broken": []
     },
     {
       "transform": "fullwidth",
-      "riskCases": 47,
-      "stillDetected": 47,
+      "riskCases": 50,
+      "stillDetected": 50,
       "survivalRate": 1,
       "broken": []
     },
     {
       "transform": "leet_aggressive",
-      "riskCases": 47,
-      "stillDetected": 45,
-      "survivalRate": 0.957,
+      "riskCases": 50,
+      "stillDetected": 47,
+      "survivalRate": 0.94,
       "broken": [
+        "RP-007",
         "RP-008",
-        "RP-011"
+        "VOICE-003"
       ]
     },
     {
       "transform": "intra_word_spaces",
-      "riskCases": 47,
-      "stillDetected": 34,
-      "survivalRate": 0.723,
+      "riskCases": 50,
+      "stillDetected": 36,
+      "survivalRate": 0.72,
       "broken": [
         "TP-013",
         "TP-021",
@@ -51,14 +52,15 @@
         "RP-008",
         "RP-010",
         "RP-011",
-        "AC-003"
+        "AC-003",
+        "VOICE-003"
       ]
     },
     {
       "transform": "message_splitting",
-      "riskCases": 47,
-      "stillDetected": 39,
-      "survivalRate": 0.83,
+      "riskCases": 50,
+      "stillDetected": 42,
+      "survivalRate": 0.84,
       "broken": [
         "TP-010",
         "TP-013",

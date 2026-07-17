@@ -1,12 +1,12 @@
 import request from "../lib/request.js";
 import { Engine } from "../analyzer/engine.js";
-import { SentinelConfig } from "../types/SentinelConfig.js";
-import {
+import type { SentinelConfig } from "../types/SentinelConfig.js";
+import type {
   ApiAnalysisResponse,
   SentinelAnalysisResponse,
 } from "../types/SentinelAnalysisResult.js";
-import { SentinelResult, ok, err } from "../types/SentinelResult.js";
-import { ApiMessage, EngineResult, Message, RiskLevel } from "../types/SentinelEngine.js";
+import { type SentinelResult, ok, err } from "../types/SentinelResult.js";
+import type { ApiMessage, EngineResult, Message, MessageSource, RiskLevel } from "../types/SentinelEngine.js";
 import { SentinelError } from "../errors/SentinelError.js";
 import { buildLocalIntervention } from "./intervention.js";
 import type { AgeBand } from "../analyzer/age-policy.js";
@@ -15,6 +15,26 @@ import type { AgeBand } from "../analyzer/age-policy.js";
 export interface AnalyzeContext {
   /** Banda de edad del usuario; ajusta la sensibilidad del motor (7.4). */
   ageBand?: AgeBand;
+  /** Marca transcripciones ASR para aplicar normalización de voz, no de teclado. */
+  source?: MessageSource;
+}
+
+function isStoredApiMessage(value: unknown, cutoff: number): value is ApiMessage {
+  if (typeof value !== "object" || value === null) return false;
+  const message = value as Record<string, unknown>;
+  const validSource =
+    message.source === undefined ||
+    message.source === "text" ||
+    message.source === "voice_transcript";
+  return (
+    typeof message.id === "string" &&
+    typeof message.user_id === "string" &&
+    typeof message.session_id === "string" &&
+    typeof message.content === "string" &&
+    typeof message.timestamp === "number" &&
+    message.timestamp >= cutoff &&
+    validSource
+  );
 }
 
 export class Sentinel {
@@ -22,6 +42,7 @@ export class Sentinel {
   private readonly baseUrl: string;
   private readonly serverSideSessions: boolean;
   private engine: Engine;
+  private hotTermsDatasetVersion: number | null = null;
   private sessionStore = new Map<string, ApiMessage[]>();
   // Deduplicación de escalaciones: cachea el último veredicto del LLM por sesión
   // y el nivel de riesgo con que se obtuvo. Evita re-escalar (y re-pagar) en cada
@@ -87,13 +108,7 @@ export class Sentinel {
         const [sessionId, messages] = entry as [unknown, unknown];
         if (typeof sessionId !== "string" || !Array.isArray(messages)) continue;
 
-        const valid = messages.filter(
-          (m: any) =>
-            m &&
-            typeof m.content === "string" &&
-            typeof m.timestamp === "number" &&
-            m.timestamp >= cutoff,
-        ) as ApiMessage[];
+        const valid = messages.filter((message) => isStoredApiMessage(message, cutoff));
 
         if (valid.length > 0) {
           this.sessionStore.set(sessionId, valid);
@@ -112,6 +127,8 @@ export class Sentinel {
       if (!response.ok) return;
       const json = await response.json();
       const terms = json?.data ?? [];
+      this.hotTermsDatasetVersion =
+        typeof json?.dataset_version === "number" ? json.dataset_version : null;
       if (terms.length > 0) {
         this.engine.injectHotTerms(terms);
       }
@@ -161,7 +178,8 @@ export class Sentinel {
         session_id: sessionId,
         user_id: userId,
         content: text,
-        timestamp: new Date().getTime(),
+        timestamp: Date.now(),
+        source: context?.source,
       };
       
       messages.push(newMessage);
@@ -173,8 +191,8 @@ export class Sentinel {
       if (messages.length > MAX_SESSION_MESSAGES) {
         const head = messages.slice(0, 50);
         const tail = messages.slice(messages.length - (MAX_SESSION_MESSAGES - 50));
-        this.sessionStore.set(sessionId, [...head, ...tail]);
-        messages = this.sessionStore.get(sessionId)!;
+        messages = [...head, ...tail];
+        this.sessionStore.set(sessionId, messages);
       }
 
       if (this.serverSideSessions) {
@@ -192,8 +210,12 @@ export class Sentinel {
         text: m.content,
         timestamp: m.timestamp,
         sender: m.user_id,
+        source: m.source,
       }));
       const result = this.engine.analyze(engineMessages, { ageBand: context?.ageBand });
+      if (result.datasetVersions) {
+        result.datasetVersions.apiHotTerms = this.hotTermsDatasetVersion;
+      }
 
       // 3. DECIDIR ACCIÓN — `result.escalate` es la ÚNICA fuente de verdad:
       //    true solo cuando el motor local está INSEGURO (zona gris). Esto
@@ -261,6 +283,7 @@ export class Sentinel {
         text: message.text,
         timestamp: message.timestamp ?? Date.now(),
         sender: message.sender,
+        source: message.source,
       }));
 
       const result = this.engine.analyze(engineMessages, { ageBand: context?.ageBand });
@@ -388,7 +411,7 @@ export class Sentinel {
         session_id: sessionId,
         user_id: userId,
         content: text,
-        timestamp: new Date().getTime(),
+        timestamp: Date.now(),
       },
     }, this.authHeaders());
   }

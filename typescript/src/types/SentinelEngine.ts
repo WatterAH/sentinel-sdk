@@ -2,10 +2,14 @@
 
 export type RiskLevel = "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
 
+export type MessageSource = "text" | "voice_transcript";
+
 export interface Message {
   text: string;
   timestamp?: number; // Unix ms
   sender?: string; // id del emisor — habilita el análisis de asimetría de actor
+  /** Origen del contenido; omitido equivale a texto escrito (retrocompatible). */
+  source?: MessageSource;
 }
 
 export interface ApiMessage {
@@ -14,6 +18,8 @@ export interface ApiMessage {
   session_id: string;
   content: string;
   timestamp: number;
+  /** Se conserva localmente para normalizar correctamente el historial mixto. */
+  source?: MessageSource;
 }
 
 // ─── Desglose por capa ───────────────────────────────────────────────────────
@@ -106,6 +112,11 @@ export interface EngineResult {
    * - uncertain_needs_llm: zona gris → el LLM aporta valor.
    */
   escalationReason?: "none_low_risk" | "confident_local_proof" | "uncertain_needs_llm";
+  /** Versiones exactas declaradas al generar el análisis/evidencia. */
+  datasetVersions?: {
+    regionPacks: Record<string, string>;
+    apiHotTerms: number | null;
+  };
 }
 
 // ─── Tipos internos compartidos entre capas ──────────────────────────────────

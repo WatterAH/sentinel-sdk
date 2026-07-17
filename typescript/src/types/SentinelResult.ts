@@ -1,4 +1,4 @@
-import { SentinelError } from "../errors/SentinelError.js";
+import type { SentinelError } from "../errors/SentinelError.js";
 
 /**
  * The result type returned by all Sentinel SDK methods.

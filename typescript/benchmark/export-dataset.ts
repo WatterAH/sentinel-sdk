@@ -29,6 +29,7 @@ export function buildDataset(corpus: Corpus): { schemaVersion: number; names: re
       text: m.text,
       timestamp: BASE + m.offset_s * 1000,
       sender: m.sender,
+      source: m.source,
     }));
     const result = engine.analyze(messages);
     const { values } = featurize(result, messages);

@@ -12,6 +12,7 @@ import { TemporalLayer } from "./temporal-layer.js";
 import { ActorLayer } from "./actor-layer.js";
 import { ageCategoryMultiplier, type AgeBand } from "./age-policy.js";
 import { featurize } from "./featurizer.js";
+import type { HotTermInput } from "../packs/v3-region-pack.js";
 import type { Message, EngineResult, RiskLevel } from "../types/SentinelEngine.js";
 
 /** Contexto opcional que la plataforma puede pasar para afinar el análisis. */
@@ -74,7 +75,7 @@ export class Engine {
   }
 
   /** Inyecta términos dinámicos en el V3Layer desde la API. */
-  injectHotTerms(terms: Array<{ id: string; term: string; category: string; weight: number; variants: string[] }>): void {
+  injectHotTerms(terms: HotTermInput[]): void {
     this.v3.injectHotTerms(terms);
   }
 
@@ -271,10 +272,8 @@ export class Engine {
       !hasActiveRule && // sin regla MCR/CR fuerte (independiente del emisor)
       !hasCoercive && // sin tácticas de secreto/aislamiento
       !hasTemporalChain;
-    let reciprocalCapped = false;
     if (reciprocal && risk === "MEDIUM") {
       risk = "LOW";
-      reciprocalCapped = true;
     }
 
     // ── Política de escalación: escalar por INCERTIDUMBRE, no por nivel ──────
@@ -339,6 +338,10 @@ export class Engine {
       uniqueCategories,
       ageBand,
       escalationReason,
+      datasetVersions: {
+        regionPacks: this.v3.getRegionPackVersions(),
+        apiHotTerms: null,
+      },
     };
 
     // Modo sombra (8.8): evaluar el clasificador candidato sin usar su salida.

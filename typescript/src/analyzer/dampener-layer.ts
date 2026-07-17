@@ -12,6 +12,19 @@ export interface DampenerHit {
   hardContext: boolean;
 }
 
+interface DampenerDatasetEntry {
+  id: string;
+  term: string;
+  variants?: string[];
+  dampen_categories: string[];
+  factor: number;
+  hard_context?: boolean;
+}
+
+interface DampenerDataset {
+  dampeners?: DampenerDatasetEntry[];
+}
+
 export class DampenerLayer {
   private dampeners: Array<{
     id: string;
@@ -23,8 +36,8 @@ export class DampenerLayer {
   }>;
 
   constructor() {
-    const data = dampenersDataset as any;
-    this.dampeners = (data.dampeners ?? []).map((d: any) => {
+    const data = dampenersDataset as DampenerDataset;
+    this.dampeners = (data.dampeners ?? []).map((d) => {
       const all = [d.term, ...(d.variants ?? [])];
       return {
         id: d.id,

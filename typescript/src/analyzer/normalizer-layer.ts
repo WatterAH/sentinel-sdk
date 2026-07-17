@@ -7,6 +7,31 @@
 import normalizerDataset from "../constants/sentinel_dataset_normalizer_v2.json" with { type: "json" };
 import { removeAccents, collapseRepeated, sanitizeUnicode, collapseIntraWordSpacing, deLeet } from "./text-utils.js";
 import type { Message, NormalizerOutput, Hit } from "../types/SentinelEngine.js";
+import { preprocessVoiceTranscript } from "./voice-normalizer.js";
+
+interface PairEntry { raw: string; canonical: string }
+interface AbbreviationEntry { abbr: string; canonical: string }
+interface PhoneticRule { find: string; replace: string }
+interface LexiconDefinition { entries: string[] }
+interface N0FeatureDefinition {
+  id: string;
+  derived_from?: string[];
+  weight?: number;
+  logic?: string;
+}
+interface NormalizerDataset {
+  normalization_rules: {
+    unicode_and_symbols: PairEntry[];
+    chat_abbreviations: { entries: AbbreviationEntry[] };
+    phonetic_rules?: { rules?: PhoneticRule[] };
+    common_misspellings?: PairEntry[];
+  };
+  lexicons?: Record<string, LexiconDefinition | string>;
+  N0_features?: { features?: N0FeatureDefinition[] };
+  N0_combination_rules?: {
+    rules?: Array<{ id: string; features_required: string[]; bonus_score: number }>;
+  };
+}
 
 export class NormalizerLayer {
   private unicodeMap: Map<string, string>;
@@ -20,21 +45,19 @@ export class NormalizerLayer {
     features_required: string[];
     bonus_score: number;
   }>;
-  private negationRules: Array<{ pattern: RegExp; effect: "CANCEL" | "KEEP"; signal?: string }>;
-
   constructor() {
-    const data = normalizerDataset as any;
+    const data = normalizerDataset as unknown as NormalizerDataset;
 
     // Emojis y símbolos → texto canónico
     this.unicodeMap = new Map(
-      data.normalization_rules.unicode_and_symbols.map((e: any) => [e.raw, e.canonical])
+      data.normalization_rules.unicode_and_symbols.map((entry) => [entry.raw, entry.canonical])
     );
 
     // Abreviaciones de chat → forma canónica
     this.abbrMap = new Map(
-      data.normalization_rules.chat_abbreviations.entries.map((e: any) => [
-        e.abbr.toLowerCase(),
-        e.canonical,
+      data.normalization_rules.chat_abbreviations.entries.map((entry) => [
+        entry.abbr.toLowerCase(),
+        entry.canonical,
       ])
     );
 
@@ -44,46 +67,39 @@ export class NormalizerLayer {
     // inserta "\1" literal y corrompe la palabra (ej. "facebook" → "faceb\1qu",
     // rompiendo el término insignia del pitch). Bug detectado por el red-team.
     const pRules = data.normalization_rules?.phonetic_rules?.rules ?? [];
-    this.phoneticRules = pRules.map((r: any) => ({
-      pattern: new RegExp(r.find, "gi"),
-      replacement: String(r.replace).replace(/\\(\d)/g, "$$$1"),
+    this.phoneticRules = pRules.map((rule) => ({
+      pattern: new RegExp(rule.find, "gi"),
+      replacement: String(rule.replace).replace(/\\(\d)/g, "$$$1"),
     }));
 
     // Errores de tipeo comunes (fallback if missing in v2)
     const mRules = data.normalization_rules?.common_misspellings ?? [];
     this.misspellingMap = new Map(
-      mRules.map((e: any) => [
-        e.raw.toLowerCase(),
-        e.canonical,
+      mRules.map((entry) => [
+        entry.raw.toLowerCase(),
+        entry.canonical,
       ])
     );
 
     // Lexicons N0
     this.lexicons = new Map(
-      Object.entries(data.lexicons ?? {}).map(([key, value]) => [
-        key,
-        (value as any).entries as string[],
-      ])
+      Object.entries(data.lexicons ?? {})
+        .filter((entry): entry is [string, LexiconDefinition] => typeof entry[1] !== "string")
+        .map(([key, value]) => [key, value.entries])
     );
 
     // Features N0
     const fRules = data.N0_features?.features ?? [];
-    this.features = fRules.map((f: any) => ({
-      id: f.id,
-      lexicons: f.derived_from ?? [],
-      weight: f.weight ?? 1,
-      negated: f.logic === "NEGATED",
+    this.features = fRules.map((feature) => ({
+      id: feature.id,
+      lexicons: feature.derived_from ?? [],
+      weight: feature.weight ?? 1,
+      negated: feature.logic === "NEGATED",
     }));
 
     // Reglas de combinación N0
     this.combinationRules = data.N0_combination_rules?.rules ?? [];
 
-    // Reglas de negación
-    this.negationRules = (data.negation_rules?.rules ?? []).map((r: any) => ({
-      pattern: new RegExp(r.pattern, "i"),
-      effect: r.signal_effect.startsWith("CANCEL") ? "CANCEL" as const : "KEEP" as const,
-      signal: r.signal_effect.startsWith("KEEP") ? r.signal_effect.split("— ")[1] : undefined,
-    }));
   }
 
   /**
@@ -97,29 +113,33 @@ export class NormalizerLayer {
   }
 
   /** Normaliza un string aplicando todas las transformaciones. */
-  normalize(raw: string): { text: string; transformations: string[] } {
+  normalize(raw: string, source: Message["source"] = "text"): { text: string; transformations: string[] } {
     const transformations: string[] = [];
 
-    // 0. Blindaje anti-evasión ANTES de todo: fullwidth/homóglifos/invisibles.
-    //    Sin esto, "ｆａｃｅｂｏｏｋ", texto cirílico o zero-width spaces evaden el
-    //    filtro por completo (medido en el red-team: 0-5% de supervivencia).
-    const sanitized = sanitizeUnicode(raw);
-    if (sanitized !== raw) transformations.push("unicode-sanitize");
+    let text: string;
+    if (source === "voice_transcript") {
+      const voice = preprocessVoiceTranscript(raw);
+      text = voice.text;
+      transformations.push(...voice.transformations);
+    } else {
+      // 0. Blindaje anti-evasión específico de TEXTO ESCRITO: fullwidth,
+      // homóglifos, invisibles, espaciado intra-palabra y leet son técnicas de
+      // teclado. Sobre voz serían no-ops o artefactos del proveedor ASR.
+      const sanitized = sanitizeUnicode(raw);
+      if (sanitized !== raw) transformations.push("unicode-sanitize");
+      text = sanitized.toLowerCase().trim();
 
-    let text = sanitized.toLowerCase().trim();
+      const despaced = collapseIntraWordSpacing(text);
+      if (despaced !== text) {
+        transformations.push("collapse-spacing");
+        text = despaced;
+      }
 
-    // 0b. Colapsar espaciado intra-palabra ("f a c e b o o k" → "facebook").
-    const despaced = collapseIntraWordSpacing(text);
-    if (despaced !== text) {
-      transformations.push("collapse-spacing");
-      text = despaced;
-    }
-
-    // 0c. De-leet condicional en tokens mixtos letra+dígito ("h4lc0n"→"halcon").
-    const deleeted = deLeet(text);
-    if (deleeted !== text) {
-      transformations.push("de-leet");
-      text = deleeted;
+      const deleeted = deLeet(text);
+      if (deleeted !== text) {
+        transformations.push("de-leet");
+        text = deleeted;
+      }
     }
 
     // 1. Expandir emojis y símbolos
@@ -220,8 +240,8 @@ export class NormalizerLayer {
     const hits: Hit[] = [];
 
     for (const msg of messages) {
-      const { text, transformations } = this.normalize(msg.text);
-      normalizedMessages.push({ text, timestamp: msg.timestamp, sender: msg.sender });
+      const { text, transformations } = this.normalize(msg.text, msg.source);
+      normalizedMessages.push({ text, timestamp: msg.timestamp, sender: msg.sender, source: msg.source });
       allTransformations.push(...transformations);
 
       const features = this.detectFeatures(text);

@@ -19,8 +19,9 @@ export class VelocityDetector {
     if (hits.length < this.minHits) return { flag: false, windowSeconds: 0 };
 
     const timestamps = hits.map((h) => h.timestamp).sort((a, b) => a - b);
-    const first = timestamps[0]!;
-    const last = timestamps[timestamps.length - 1]!;
+    const first = timestamps.at(0);
+    const last = timestamps.at(-1);
+    if (first === undefined || last === undefined) return { flag: false, windowSeconds: 0 };
     const windowSeconds = Math.round((last - first) / 1000);
 
     return windowSeconds <= this.windowSeconds

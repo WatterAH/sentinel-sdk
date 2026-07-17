@@ -23,7 +23,8 @@
       "tp_narcocultura_puente": "Empieza como plática de fan de corridos y PIVOTEA a reclutamiento real — debe marcar",
       "tp_reclutamiento_parafraseado": "Reclutamiento real redactado SIN los términos literales del dataset (estresa recall/generalización)",
       "tp_actor_asimetrico": "Reclutador que CONCENTRA tácticas de acción dirigida hacia el menor (ActorLayer ACR-001); el menor solo responde",
-      "benign_reciproco": "Conversación entre pares con términos del dataset REPARTIDOS/recíprocos — ningún actor concentra, NO debe marcar por asimetría"
+      "benign_reciproco": "Conversación entre pares con términos del dataset REPARTIDOS/recíprocos — ningún actor concentra, NO debe marcar por asimetría",
+      "voice_transcript_cases": "Transcripciones ASR riesgosas y benignas con pausas, muletillas y poca puntuación"
     },
     "notes": "Los timestamps son offsets en segundos desde el inicio de la conversación. El runner los convierte a epoch ms. Casos benign_trampa espaciados >5min entre hits para no activar velocity de forma artificial."
   },
@@ -2652,6 +2653,172 @@
           "text": "bueno va, pero tu lavas los platos",
           "offset_s": 120,
           "sender": "hermano1"
+        }
+      ]
+    },
+    {
+      "id": "VOICE-001",
+      "group": "voice_transcript_cases",
+      "label": "RISK",
+      "description": "Oferta, pago y ubicación partidos por pausas y muletillas",
+      "messages": [
+        {
+          "text": "eh... hay... este... jale por si te interesa",
+          "offset_s": 0,
+          "source": "voice_transcript"
+        },
+        {
+          "text": "te pago... pues... bien sin preguntas",
+          "offset_s": 40,
+          "source": "voice_transcript"
+        },
+        {
+          "text": "manda... o sea... tu ubicación y paso por ti",
+          "offset_s": 80,
+          "source": "voice_transcript"
+        }
+      ]
+    },
+    {
+      "id": "VOICE-002",
+      "group": "voice_transcript_cases",
+      "label": "RISK",
+      "description": "Traslado de paquete y pago quincenal con relleno oral",
+      "messages": [
+        {
+          "text": "vas a pasar... eh... el paquete a otro lado",
+          "offset_s": 0,
+          "source": "voice_transcript"
+        },
+        {
+          "text": "son 5 mil... pues... quincenales y en efectivo",
+          "offset_s": 50,
+          "source": "voice_transcript"
+        },
+        {
+          "text": "este no necesitas saber más",
+          "offset_s": 90,
+          "source": "voice_transcript"
+        }
+      ]
+    },
+    {
+      "id": "VOICE-003",
+      "group": "voice_transcript_cases",
+      "label": "RISK",
+      "description": "Aislamiento y borrado del chat en dictado sin puntuación confiable",
+      "messages": [
+        {
+          "text": "te... este... necesitamos para algo de confianza",
+          "offset_s": 0,
+          "source": "voice_transcript"
+        },
+        {
+          "text": "ven... pues... solo mañana",
+          "offset_s": 35,
+          "source": "voice_transcript"
+        },
+        {
+          "text": "borra... eh... el chat y no le digas a nadie",
+          "offset_s": 70,
+          "source": "voice_transcript"
+        }
+      ]
+    },
+    {
+      "id": "VOICE-004",
+      "group": "voice_transcript_cases",
+      "label": "RISK",
+      "description": "Captación vía gaming transcrita con marcadores discursivos",
+      "messages": [
+        {
+          "text": "te doy objetos... eh... del juego si me ayudas",
+          "offset_s": 0,
+          "source": "voice_transcript"
+        },
+        {
+          "text": "entra al grupo... este... de whatsapp de trabajo",
+          "offset_s": 45,
+          "source": "voice_transcript"
+        },
+        {
+          "text": "manda... pues... tu ubicación",
+          "offset_s": 90,
+          "source": "voice_transcript"
+        }
+      ]
+    },
+    {
+      "id": "VOICE-005",
+      "group": "voice_transcript_cases",
+      "label": "BENIGN",
+      "description": "Plomería familiar con jale y las mismas muletillas",
+      "messages": [
+        {
+          "text": "eh... hay... este... jale de plomería en casa de mi tía",
+          "offset_s": 0,
+          "source": "voice_transcript"
+        },
+        {
+          "text": "pues mi papá ya compró los tubos para arreglar la fuga",
+          "offset_s": 60,
+          "source": "voice_transcript"
+        }
+      ]
+    },
+    {
+      "id": "VOICE-006",
+      "group": "voice_transcript_cases",
+      "label": "BENIGN",
+      "description": "Amigos comparten ubicación recíprocamente para una fiesta",
+      "messages": [
+        {
+          "text": "eh manda... este... tu ubicación para llegar a la fiesta",
+          "offset_s": 0,
+          "sender": "amiga-a",
+          "source": "voice_transcript"
+        },
+        {
+          "text": "sí y tú manda... pues... tu ubicación también",
+          "offset_s": 60,
+          "sender": "amiga-b",
+          "source": "voice_transcript"
+        }
+      ]
+    },
+    {
+      "id": "VOICE-007",
+      "group": "voice_transcript_cases",
+      "label": "BENIGN",
+      "description": "Instrucción para repartir hojas en el salón de clases",
+      "messages": [
+        {
+          "text": "mmm el profe dijo que vamos a repartir... este... las hojas por cada banca",
+          "offset_s": 0,
+          "source": "voice_transcript"
+        },
+        {
+          "text": "pues al final lo entregamos en el escritorio",
+          "offset_s": 70,
+          "source": "voice_transcript"
+        }
+      ]
+    },
+    {
+      "id": "VOICE-008",
+      "group": "voice_transcript_cases",
+      "label": "BENIGN",
+      "description": "Pago de boletos escolares con ruido de transcripción",
+      "messages": [
+        {
+          "text": "te pago... eh... bien lo de los boletos de la rifa de la escuela",
+          "offset_s": 0,
+          "source": "voice_transcript"
+        },
+        {
+          "text": "o sea mañana te doy lo que falta con el recibo",
+          "offset_s": 80,
+          "source": "voice_transcript"
         }
       ]
     }

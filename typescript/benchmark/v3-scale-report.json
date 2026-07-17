@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-07-17T06:11:09.168Z",
+  "targetP95Ms": 8,
+  "rows": [
+    {
+      "syntheticTerms": 0,
+      "samples": 715,
+      "p50Ms": 0.39,
+      "p95Ms": 0.847,
+      "meanMs": 0.426,
+      "maxMs": 1.806,
+      "indexBuildMs": 0
+    },
+    {
+      "syntheticTerms": 2000,
+      "samples": 715,
+      "p50Ms": 0.869,
+      "p95Ms": 1.889,
+      "meanMs": 0.952,
+      "maxMs": 4.467,
+      "indexBuildMs": 170.015
+    }
+  ]
+}

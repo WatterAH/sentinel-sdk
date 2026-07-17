@@ -1,34 +1,34 @@
 {
-  "timestamp": "2026-07-10T04:57:01.142Z",
-  "totalCases": 135,
+  "timestamp": "2026-07-17T16:35:22.768Z",
+  "totalCases": 143,
   "detection": {
-    "truePositives": 47,
+    "truePositives": 51,
     "falsePositives": 4,
-    "trueNegatives": 74,
+    "trueNegatives": 78,
     "falseNegatives": 10,
-    "precision": 0.9216,
-    "recall": 0.8246,
-    "f1": 0.8704,
-    "falsePositiveRate": 0.0513,
-    "accuracy": 0.8963
+    "precision": 0.9273,
+    "recall": 0.8361,
+    "f1": 0.8793,
+    "falsePositiveRate": 0.0488,
+    "accuracy": 0.9021
   },
   "escalation": {
-    "benignEscalationRate": 0.0513,
-    "riskCoverage": 0.8246
+    "benignEscalationRate": 0.0488,
+    "riskCoverage": 0.8361
   },
   "action": {
     "falseBlocks": 0,
     "falseBlockRate": 0,
-    "benignReviewRate": 0.0513,
+    "benignReviewRate": 0.0488,
     "missedRisks": 10,
-    "missRate": 0.1754,
-    "riskReachRate": 0.8246
+    "missRate": 0.1639,
+    "riskReachRate": 0.8361
   },
   "latency": {
-    "p50Ms": 0.439,
-    "p95Ms": 1.19,
-    "maxMs": 13.055,
-    "meanMs": 0.543
+    "p50Ms": 0.478,
+    "p95Ms": 1.87,
+    "maxMs": 36.559,
+    "meanMs": 0.76
   },
   "byGroup": [
     {
@@ -126,6 +126,12 @@
       "total": 4,
       "correct": 3,
       "accuracy": 0.75
+    },
+    {
+      "group": "voice_transcript_cases",
+      "total": 8,
+      "correct": 8,
+      "accuracy": 1
     }
   ],
   "failures": [
@@ -296,7 +302,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.808,
+      "latencyMs": 0.597,
       "termsMatched": [
         "REC-001",
         "SD-006",
@@ -322,7 +328,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.295,
+      "latencyMs": 0.274,
       "termsMatched": [
         "CN-005",
         "REC-045",
@@ -344,7 +350,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.513,
+      "latencyMs": 0.413,
       "termsMatched": [
         "REC-003",
         "REC-008",
@@ -364,7 +370,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.508,
+      "latencyMs": 0.429,
       "termsMatched": [
         "REC-005",
         "REC-017",
@@ -389,7 +395,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.606,
+      "latencyMs": 0.443,
       "termsMatched": [
         "REC-009",
         "REC-031",
@@ -415,7 +421,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.287,
+      "latencyMs": 0.283,
       "termsMatched": [
         "REC-004",
         "REC-012",
@@ -441,7 +447,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.26,
+      "latencyMs": 0.266,
       "termsMatched": [
         "CN-005",
         "LF-010",
@@ -466,7 +472,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.483,
+      "latencyMs": 0.371,
       "termsMatched": [
         "REC-001",
         "REC-005",
@@ -492,7 +498,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.367,
+      "latencyMs": 0.391,
       "termsMatched": [
         "CN-005",
         "REC-045",
@@ -516,7 +522,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.271,
+      "latencyMs": 0.268,
       "termsMatched": [
         "REC-002",
         "REC-012",
@@ -537,7 +543,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.979,
+      "latencyMs": 0.797,
       "termsMatched": [
         "RS-007",
         "SD-001",
@@ -564,7 +570,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.712,
+      "latencyMs": 0.414,
       "termsMatched": [
         "CC-001",
         "CC-006",
@@ -586,7 +592,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 1.909,
+      "latencyMs": 0.545,
       "termsMatched": [
         "SI-001",
         "SI-006",
@@ -608,7 +614,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.381,
+      "latencyMs": 0.495,
       "termsMatched": [
         "MS-002",
         "PG-005",
@@ -629,7 +635,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 1.169,
+      "latencyMs": 0.513,
       "termsMatched": [
         "VJ-001",
         "REC-032",
@@ -654,7 +660,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.452,
+      "latencyMs": 0.407,
       "termsMatched": [
         "VJ-003",
         "VJ-004",
@@ -678,7 +684,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.425,
+      "latencyMs": 0.369,
       "termsMatched": [
         "OE-006",
         "RS-001",
@@ -700,7 +706,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.43,
+      "latencyMs": 0.482,
       "termsMatched": [
         "FD-001",
         "FD-002",
@@ -727,7 +733,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 1.809,
+      "latencyMs": 1.105,
       "termsMatched": [
         "FD-003",
         "LF-009",
@@ -749,7 +755,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.584,
+      "latencyMs": 7.849,
       "termsMatched": [
         "REC-017",
         "FD-009",
@@ -776,7 +782,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.494,
+      "latencyMs": 1.375,
       "termsMatched": [
         "CN-001",
         "OE-009",
@@ -797,7 +803,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.418,
+      "latencyMs": 0.555,
       "termsMatched": [
         "OE-011",
         "REC-009",
@@ -823,7 +829,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.468,
+      "latencyMs": 1.19,
       "termsMatched": [
         "LF-010",
         "REC-013",
@@ -849,7 +855,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.186,
+      "latencyMs": 0.175,
       "termsMatched": [
         "REC-001",
         "REC-006",
@@ -870,7 +876,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.439,
+      "latencyMs": 2.016,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -884,7 +890,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.427,
+      "latencyMs": 0.514,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -898,7 +904,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.426,
+      "latencyMs": 0.411,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -912,7 +918,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.399,
+      "latencyMs": 0.41,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -926,7 +932,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.46,
+      "latencyMs": 0.405,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -940,7 +946,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.234,
+      "latencyMs": 0.8,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -956,7 +962,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.382,
+      "latencyMs": 0.35,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -970,7 +976,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.372,
+      "latencyMs": 0.987,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -986,7 +992,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.439,
+      "latencyMs": 0.561,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1000,7 +1006,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.449,
+      "latencyMs": 0.581,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1014,7 +1020,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.432,
+      "latencyMs": 0.565,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1030,7 +1036,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.266,
+      "latencyMs": 0.278,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1044,7 +1050,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.492,
+      "latencyMs": 0.384,
       "termsMatched": [
         "REC-002",
         "SD-004"
@@ -1061,7 +1067,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.469,
+      "latencyMs": 0.556,
       "termsMatched": [
         "REC-002",
         "REC-005",
@@ -1084,7 +1090,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.395,
+      "latencyMs": 0.468,
       "termsMatched": [
         "LF-010"
       ],
@@ -1100,7 +1106,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.4,
+      "latencyMs": 0.441,
       "termsMatched": [
         "LF-001"
       ],
@@ -1116,7 +1122,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.278,
+      "latencyMs": 0.302,
       "termsMatched": [
         "REC-006"
       ],
@@ -1132,7 +1138,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.41,
+      "latencyMs": 0.458,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1146,7 +1152,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.278,
+      "latencyMs": 0.262,
       "termsMatched": [
         "REC-004"
       ],
@@ -1162,7 +1168,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.418,
+      "latencyMs": 0.554,
       "termsMatched": [
         "OE-011"
       ],
@@ -1180,7 +1186,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.376,
+      "latencyMs": 0.362,
       "termsMatched": [
         "SI-001"
       ],
@@ -1198,7 +1204,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.418,
+      "latencyMs": 0.73,
       "termsMatched": [
         "LF-008"
       ],
@@ -1216,7 +1222,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.288,
+      "latencyMs": 0.279,
       "termsMatched": [
         "REC-005"
       ],
@@ -1232,7 +1238,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.471,
+      "latencyMs": 0.39,
       "termsMatched": [
         "REC-031",
         "FD-002",
@@ -1250,7 +1256,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.254,
+      "latencyMs": 0.28,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1266,7 +1272,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.403,
+      "latencyMs": 0.462,
       "termsMatched": [
         "MS-012",
         "MS-011"
@@ -1285,7 +1291,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.323,
+      "latencyMs": 0.271,
       "termsMatched": [
         "REC-025"
       ],
@@ -1301,7 +1307,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.182,
+      "latencyMs": 0.145,
       "termsMatched": [
         "REC-002",
         "REC-005",
@@ -1322,7 +1328,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.413,
+      "latencyMs": 0.492,
       "termsMatched": [
         "SD-005",
         "SD-006",
@@ -1344,7 +1350,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.541,
+      "latencyMs": 0.486,
       "termsMatched": [
         "SD-001",
         "SD-005",
@@ -1368,7 +1374,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.379,
+      "latencyMs": 0.396,
       "termsMatched": [
         "SD-004",
         "SD-006",
@@ -1390,7 +1396,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.355,
+      "latencyMs": 0.414,
       "termsMatched": [
         "SI-001"
       ],
@@ -1408,7 +1414,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.492,
+      "latencyMs": 0.507,
       "termsMatched": [
         "REC-002",
         "SD-004",
@@ -1431,7 +1437,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.418,
+      "latencyMs": 0.501,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1447,7 +1453,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.505,
+      "latencyMs": 1.48,
       "termsMatched": [
         "REC-005"
       ],
@@ -1463,7 +1469,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.432,
+      "latencyMs": 0.502,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1477,7 +1483,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.55,
+      "latencyMs": 0.736,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1491,7 +1497,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.561,
+      "latencyMs": 0.417,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1507,7 +1513,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.436,
+      "latencyMs": 0.41,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1521,7 +1527,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.289,
+      "latencyMs": 0.274,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1535,7 +1541,7 @@
       "escalate": true,
       "flagged": true,
       "correct": false,
-      "latencyMs": 0.498,
+      "latencyMs": 0.501,
       "termsMatched": [
         "REC-029",
         "REC-027"
@@ -1554,7 +1560,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.846,
+      "latencyMs": 1.201,
       "termsMatched": [
         "REC-005",
         "REC-022"
@@ -1571,7 +1577,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.317,
+      "latencyMs": 0.897,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1585,7 +1591,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.48,
+      "latencyMs": 0.53,
       "termsMatched": [
         "REC-030",
         "SD-001"
@@ -1602,7 +1608,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.458,
+      "latencyMs": 0.495,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1616,7 +1622,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.439,
+      "latencyMs": 0.406,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1632,7 +1638,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.264,
+      "latencyMs": 0.651,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1646,7 +1652,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.377,
+      "latencyMs": 0.445,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1660,7 +1666,7 @@
       "escalate": true,
       "flagged": true,
       "correct": false,
-      "latencyMs": 0.284,
+      "latencyMs": 0.873,
       "termsMatched": [
         "REC-006",
         "REC-026"
@@ -1677,7 +1683,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.39,
+      "latencyMs": 0.417,
       "termsMatched": [
         "SD-006"
       ],
@@ -1695,7 +1701,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.26,
+      "latencyMs": 1.159,
       "termsMatched": [
         "SD-006"
       ],
@@ -1711,7 +1717,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.398,
+      "latencyMs": 2.251,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1727,7 +1733,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.321,
+      "latencyMs": 0.439,
       "termsMatched": [
         "REC-026"
       ],
@@ -1743,7 +1749,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.335,
+      "latencyMs": 0.312,
       "termsMatched": [
         "REC-002",
         "SD-004"
@@ -1762,7 +1768,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.313,
+      "latencyMs": 1.241,
       "termsMatched": [
         "REC-018",
         "SD-004"
@@ -1779,7 +1785,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.273,
+      "latencyMs": 0.311,
       "termsMatched": [
         "REC-016"
       ],
@@ -1795,7 +1801,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.264,
+      "latencyMs": 0.298,
       "termsMatched": [
         "LF-015"
       ],
@@ -1811,7 +1817,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.256,
+      "latencyMs": 0.3,
       "termsMatched": [
         "LF-017"
       ],
@@ -1829,7 +1835,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 1.002,
+      "latencyMs": 1.573,
       "termsMatched": [
         "FD-003",
         "REC-031"
@@ -1846,7 +1852,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.313,
+      "latencyMs": 0.324,
       "termsMatched": [
         "LF-004",
         "REC-032"
@@ -1865,7 +1871,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.444,
+      "latencyMs": 0.796,
       "termsMatched": [
         "LF-011"
       ],
@@ -1881,7 +1887,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.29,
+      "latencyMs": 0.339,
       "termsMatched": [
         "CC-002"
       ],
@@ -1899,7 +1905,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.435,
+      "latencyMs": 0.434,
       "termsMatched": [
         "OE-002",
         "SD-006"
@@ -1916,7 +1922,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.281,
+      "latencyMs": 0.329,
       "termsMatched": [
         "SI-005"
       ],
@@ -1932,7 +1938,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.292,
+      "latencyMs": 0.286,
       "termsMatched": [
         "VJ-004"
       ],
@@ -1950,7 +1956,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.323,
+      "latencyMs": 0.375,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1964,7 +1970,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.311,
+      "latencyMs": 0.328,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -1978,7 +1984,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.498,
+      "latencyMs": 0.607,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -1994,7 +2000,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.417,
+      "latencyMs": 0.382,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -2008,7 +2014,7 @@
       "escalate": true,
       "flagged": true,
       "correct": false,
-      "latencyMs": 0.339,
+      "latencyMs": 0.75,
       "termsMatched": [
         "OE-007"
       ],
@@ -2026,7 +2032,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.247,
+      "latencyMs": 0.254,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -2042,7 +2048,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.259,
+      "latencyMs": 0.28,
       "termsMatched": [],
       "triggeredRules": [
         "N0-EVASION"
@@ -2058,7 +2064,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.238,
+      "latencyMs": 0.228,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -2072,7 +2078,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.463,
+      "latencyMs": 0.509,
       "termsMatched": [
         "REC-005",
         "SD-001",
@@ -2096,7 +2102,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.443,
+      "latencyMs": 0.966,
       "termsMatched": [
         "LF-001"
       ],
@@ -2114,7 +2120,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.407,
+      "latencyMs": 0.739,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -2128,7 +2134,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.357,
+      "latencyMs": 0.679,
       "termsMatched": [
         "REC-004"
       ],
@@ -2146,7 +2152,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.45,
+      "latencyMs": 0.586,
       "termsMatched": [
         "REC-034",
         "REC-009",
@@ -2167,7 +2173,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.417,
+      "latencyMs": 0.621,
       "termsMatched": [
         "OE-021",
         "REC-004",
@@ -2188,7 +2194,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.446,
+      "latencyMs": 1.029,
       "termsMatched": [
         "OE-021",
         "SD-004",
@@ -2209,7 +2215,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.45,
+      "latencyMs": 0.681,
       "termsMatched": [
         "REC-006",
         "MS-012"
@@ -2228,7 +2234,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.462,
+      "latencyMs": 0.571,
       "termsMatched": [
         "SD-002"
       ],
@@ -2244,7 +2250,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.508,
+      "latencyMs": 0.525,
       "termsMatched": [
         "OE-021",
         "REC-032",
@@ -2264,7 +2270,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.414,
+      "latencyMs": 0.526,
       "termsMatched": [
         "LF-002"
       ],
@@ -2283,7 +2289,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.468,
+      "latencyMs": 0.474,
       "termsMatched": [
         "REC-006",
         "REC-031",
@@ -2303,7 +2309,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.562,
+      "latencyMs": 0.61,
       "termsMatched": [
         "REC-001",
         "OE-002",
@@ -2325,7 +2331,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.461,
+      "latencyMs": 0.484,
       "termsMatched": [
         "SD-001",
         "REC-006",
@@ -2348,7 +2354,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.484,
+      "latencyMs": 0.711,
       "termsMatched": [
         "REC-022",
         "OE-004"
@@ -2365,7 +2371,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.445,
+      "latencyMs": 0.607,
       "termsMatched": [
         "REC-031",
         "MS-012",
@@ -2386,7 +2392,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.447,
+      "latencyMs": 0.503,
       "termsMatched": [
         "SD-004",
         "REC-040",
@@ -2409,7 +2415,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 1.154,
+      "latencyMs": 1.474,
       "termsMatched": [
         "SI-020",
         "LF-010",
@@ -2429,7 +2435,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.39,
+      "latencyMs": 0.458,
       "termsMatched": [
         "REC-042"
       ],
@@ -2445,7 +2451,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.435,
+      "latencyMs": 0.678,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -2459,7 +2465,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.407,
+      "latencyMs": 0.602,
       "termsMatched": [
         "REC-042"
       ],
@@ -2475,7 +2481,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.417,
+      "latencyMs": 0.453,
       "termsMatched": [
         "MS-011"
       ],
@@ -2491,7 +2497,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.441,
+      "latencyMs": 0.44,
       "termsMatched": [
         "REC-031"
       ],
@@ -2507,7 +2513,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.467,
+      "latencyMs": 0.51,
       "termsMatched": [
         "REC-044",
         "REC-009"
@@ -2524,7 +2530,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.51,
+      "latencyMs": 0.453,
       "termsMatched": [
         "REC-007",
         "REC-043"
@@ -2541,7 +2547,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.465,
+      "latencyMs": 0.463,
       "termsMatched": [
         "REC-031",
         "REC-032",
@@ -2562,7 +2568,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.466,
+      "latencyMs": 0.508,
       "termsMatched": [
         "SD-004",
         "REC-006"
@@ -2579,7 +2585,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.468,
+      "latencyMs": 0.373,
       "termsMatched": [
         "REC-038"
       ],
@@ -2597,7 +2603,7 @@
       "escalate": true,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.507,
+      "latencyMs": 0.442,
       "termsMatched": [
         "MS-006",
         "REC-003"
@@ -2616,7 +2622,7 @@
       "escalate": false,
       "flagged": false,
       "correct": false,
-      "latencyMs": 0.459,
+      "latencyMs": 0.523,
       "termsMatched": [],
       "triggeredRules": []
     },
@@ -2630,7 +2636,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 1.14,
+      "latencyMs": 1.248,
       "termsMatched": [
         "SD-003",
         "SD-006",
@@ -2659,7 +2665,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 1.172,
+      "latencyMs": 1.032,
       "termsMatched": [
         "VJ-001",
         "SD-001",
@@ -2680,7 +2686,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.986,
+      "latencyMs": 0.9,
       "termsMatched": [
         "SI-001",
         "SI-006",
@@ -2701,7 +2707,7 @@
       "escalate": false,
       "flagged": true,
       "correct": true,
-      "latencyMs": 0.674,
+      "latencyMs": 0.659,
       "termsMatched": [
         "SD-007",
         "REC-007",
@@ -2741,7 +2747,7 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.774,
+      "latencyMs": 0.886,
       "termsMatched": [
         "SI-001",
         "SD-001"
@@ -2776,9 +2782,172 @@
       "escalate": false,
       "flagged": false,
       "correct": true,
-      "latencyMs": 0.507,
+      "latencyMs": 0.675,
       "termsMatched": [
         "REC-004"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "VOICE-001",
+      "group": "voice_transcript_cases",
+      "label": "RISK",
+      "description": "Oferta, pago y ubicación partidos por pausas y muletillas",
+      "risk": "CRITICAL",
+      "score": 44,
+      "escalate": false,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.444,
+      "termsMatched": [
+        "REC-001",
+        "REC-007",
+        "OE-001",
+        "OE-003",
+        "OE-007",
+        "LF-002"
+      ],
+      "triggeredRules": [
+        "MCR-001",
+        "MCR-002",
+        "MCR-007"
+      ]
+    },
+    {
+      "id": "VOICE-002",
+      "group": "voice_transcript_cases",
+      "label": "RISK",
+      "description": "Traslado de paquete y pago quincenal con relleno oral",
+      "risk": "CRITICAL",
+      "score": 70,
+      "escalate": false,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.376,
+      "termsMatched": [
+        "REC-012",
+        "LF-010",
+        "OE-004",
+        "OE-014",
+        "REC-007"
+      ],
+      "triggeredRules": [
+        "MCR-001",
+        "MCR-002",
+        "MCR-007",
+        "CR-003",
+        "CR-008"
+      ]
+    },
+    {
+      "id": "VOICE-003",
+      "group": "voice_transcript_cases",
+      "label": "RISK",
+      "description": "Aislamiento y borrado del chat en dictado sin puntuación confiable",
+      "risk": "CRITICAL",
+      "score": 36,
+      "escalate": false,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.428,
+      "termsMatched": [
+        "REC-010",
+        "REC-011",
+        "LF-005",
+        "MS-012"
+      ],
+      "triggeredRules": [
+        "MCR-001",
+        "MCR-007",
+        "MCR-008"
+      ]
+    },
+    {
+      "id": "VOICE-004",
+      "group": "voice_transcript_cases",
+      "label": "RISK",
+      "description": "Captación vía gaming transcrita con marcadores discursivos",
+      "risk": "CRITICAL",
+      "score": 30,
+      "escalate": false,
+      "flagged": true,
+      "correct": true,
+      "latencyMs": 0.37,
+      "termsMatched": [
+        "OE-005",
+        "REC-032",
+        "FD-009",
+        "REC-031",
+        "LF-002"
+      ],
+      "triggeredRules": [
+        "MCR-001",
+        "MCR-002",
+        "MCR-003",
+        "MCR-007"
+      ]
+    },
+    {
+      "id": "VOICE-005",
+      "group": "voice_transcript_cases",
+      "label": "BENIGN",
+      "description": "Plomería familiar con jale y las mismas muletillas",
+      "risk": "LOW",
+      "score": 2,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.32,
+      "termsMatched": [
+        "REC-001"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "VOICE-006",
+      "group": "voice_transcript_cases",
+      "label": "BENIGN",
+      "description": "Amigos comparten ubicación recíprocamente para una fiesta",
+      "risk": "LOW",
+      "score": 7,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.576,
+      "termsMatched": [
+        "LF-002"
+      ],
+      "triggeredRules": []
+    },
+    {
+      "id": "VOICE-007",
+      "group": "voice_transcript_cases",
+      "label": "BENIGN",
+      "description": "Instrucción para repartir hojas en el salón de clases",
+      "risk": "LOW",
+      "score": 0,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.246,
+      "termsMatched": [],
+      "triggeredRules": []
+    },
+    {
+      "id": "VOICE-008",
+      "group": "voice_transcript_cases",
+      "label": "BENIGN",
+      "description": "Pago de boletos escolares con ruido de transcripción",
+      "risk": "LOW",
+      "score": 8,
+      "escalate": false,
+      "flagged": false,
+      "correct": true,
+      "latencyMs": 0.259,
+      "termsMatched": [
+        "OE-001",
+        "OE-003",
+        "OE-007"
       ],
       "triggeredRules": []
     }

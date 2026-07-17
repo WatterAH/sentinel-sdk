@@ -7,6 +7,30 @@ import v4Dataset from "../constants/sentinel_dataset_v4.json" with { type: "json
 import type { Message, V4Output, Hit } from "../types/SentinelEngine.js";
 import { removeAccents, buildRegex } from "./text-utils.js";
 
+interface V4FeatureDefinition {
+  id: string;
+  name: string;
+  weight?: number;
+  derived_from?: string[];
+  logic?: string;
+  category?: string;
+}
+interface V4ExplicitSignalDefinition {
+  id: string;
+  label: string;
+  patterns?: string[];
+  weight: number;
+  category: string;
+}
+interface V4IntentDefinition { id: string; name: string; patterns?: string[] }
+interface V4Dataset {
+  lexicons?: Record<string, string[]>;
+  features?: V4FeatureDefinition[];
+  combination_rules?: Array<{ id: string; features_required: string[]; bonus_score: number }>;
+  explicit_signals?: V4ExplicitSignalDefinition[];
+  intent_signals?: V4IntentDefinition[];
+}
+
 export class V4Layer {
   private lexicons: Map<string, RegExp[]>;
   private features: Array<{
@@ -45,7 +69,7 @@ export class V4Layer {
    *   NO se normalizan porque son regex crudos.
    */
   constructor(normalizeFn?: (raw: string) => string) {
-    const data = v4Dataset as any;
+    const data = v4Dataset as V4Dataset;
     this.normalizeKey = normalizeFn ?? ((raw: string) => removeAccents(raw.toLowerCase().trim()));
 
     // Compilar lexicones a expresiones regulares normalizadas
@@ -59,19 +83,19 @@ export class V4Layer {
       }
     }
 
-    this.features = (data.features ?? []).map((f: any) => ({
-      id: f.id,
-      name: f.name,
-      weight: f.weight ?? 1,
-      lexiconKeys: f.derived_from ?? [],
-      negated: f.logic === "NEGATED — se activa cuando NO hay match",
-      category: f.category,
+    this.features = (data.features ?? []).map((feature) => ({
+      id: feature.id,
+      name: feature.name,
+      weight: feature.weight ?? 1,
+      lexiconKeys: feature.derived_from ?? [],
+      negated: feature.logic === "NEGATED — se activa cuando NO hay match",
+      category: feature.category,
     }));
 
     this.combinationRules = data.combination_rules ?? [];
 
     // Compilar señales explícitas (literales vía buildRegex, se normalizan igual)
-    this.explicitSignals = (data.explicit_signals ?? []).map((signal: any) => ({
+    this.explicitSignals = (data.explicit_signals ?? []).map((signal) => ({
       id: signal.id,
       label: signal.label,
       patterns: (signal.patterns ?? []).map((pat: string) =>
@@ -82,7 +106,7 @@ export class V4Layer {
     }));
 
     // Compilar señales de intención
-    this.intentSignals = (data.intent_signals ?? []).map((intent: any) => ({
+    this.intentSignals = (data.intent_signals ?? []).map((intent) => ({
       id: intent.id,
       name: intent.name,
       patterns: (intent.patterns ?? []).map((pat: string) =>
@@ -220,4 +244,3 @@ export class V4Layer {
     return sig?.category ?? "";
   }
 }
-

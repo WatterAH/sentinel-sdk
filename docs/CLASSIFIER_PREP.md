@@ -41,7 +41,41 @@ evalúa en CADA análisis **sin usar su salida para decidir**. El observador rec
 - Medir precision/recall del modelo contra el mismo benchmark antes de darle peso real.
 - Fallar sin consecuencias: si el modelo lanza excepción, el análisis no se altera.
 
-## 4. La ruta que queda (cuando haya corpus + pilotos)
+## 4. Experimento lineal preliminar (2026-07-16)
+
+Ya existe un primer experimento **solo en sombra**, no promovido al flujo real:
+
+- `model-training/train_shadow_classifier.py` entrena regresión logística con
+  scikit-learn fuera del paquete TypeScript.
+- `src/analyzer/shadow-model-v1.json` contiene únicamente 28 coeficientes, bias
+  y metadatos del schema; no añade TensorFlow.js ni ONNX Runtime.
+- `src/analyzer/shadow-classifier.ts` valida versión/orden y ejecuta dot product
+  + sigmoid.
+- `npm run bench:shadow` registra el clasificador con `setShadowClassifier()`,
+  comprueba que cada `EngineResult` sea idéntico con/sin sombra y genera la tabla
+  completa `benchmark/shadow-comparison.md`.
+- `benchmark/shadow-training-report.json` conserva métricas out-of-fold tanto
+  estratificadas como agrupadas por familia de escenario. La vista agrupada es
+  la lectura conservadora porque evita entrenar y evaluar con variantes cercanas.
+
+El corpus actual tiene 143 filas (incluye 8 casos sintéticos de transcripción de
+voz). Es demasiado pequeño y curado para concluir que el modelo generaliza. El
+modelo `full-fit` se exporta para medir la integración; sus predicciones sobre el
+mismo corpus **no son métricas**. Solo las métricas de validación cruzada son
+evaluación preliminar, y tampoco sustituyen un holdout de conversaciones reales.
+
+Para reproducir el entrenamiento:
+
+```bash
+cd sentinel-sdk
+python3 -m venv /tmp/sentinel-shadow-venv
+/tmp/sentinel-shadow-venv/bin/pip install -r model-training/requirements.txt
+cd typescript && npm run export:dataset && cd ..
+/tmp/sentinel-shadow-venv/bin/python model-training/train_shadow_classifier.py
+cd typescript && npm run bench:shadow
+```
+
+## 5. La ruta que queda (cuando haya corpus + pilotos)
 
 1. Expandir el corpus a 300–500 casos revisados (0.2) → el `dataset.jsonl` crece solo.
 2. Entrenar un modelo pequeño (regresión logística / árbol / MLP diminuto, o fine-tune de un

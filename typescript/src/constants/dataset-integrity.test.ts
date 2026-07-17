@@ -10,8 +10,29 @@ import v4 from "./sentinel_dataset_v4.json" with { type: "json" };
 import dampeners from "./sentinel_dataset_dampeners.json" with { type: "json" };
 import normalizer from "./sentinel_dataset_normalizer_v2.json" with { type: "json" };
 
+interface V3Term { id: string; term: string; category: string; weight: number; variants?: string[] }
+interface McrRule { id: string; categories_required?: string[] }
+interface V3Dataset {
+  terms: V3Term[];
+  metadata: { multi_category_escalation_rules: { rules: McrRule[] } };
+}
+interface PhoneticRule { id: string; find: string; replace?: string }
+interface NormalizerDataset {
+  normalization_rules?: { phonetic_rules?: { rules?: PhoneticRule[] } };
+}
+interface DampenerDefinition { id: string; factor: number; dampen_categories: string[] }
+interface DampenerDataset { dampeners: DampenerDefinition[] }
+interface ExplicitSignal { id: string; weight: number }
+interface IntentSignal { id: string; patterns?: string[] }
+interface V4Dataset { explicit_signals?: ExplicitSignal[]; intent_signals?: IntentSignal[] }
+
+const typedV3 = v3 as V3Dataset;
+const typedNormalizer = normalizer as NormalizerDataset;
+const typedDampeners = dampeners as DampenerDataset;
+const typedV4 = v4 as V4Dataset;
+
 describe("Integridad del dataset V3", () => {
-  const terms = (v3 as any).terms as any[];
+  const terms = typedV3.terms;
 
   it("todos los términos tienen id, category y weight numérico válido", () => {
     for (const t of terms) {
@@ -38,7 +59,7 @@ describe("Integridad del dataset V3", () => {
 
   it("las categorías de las reglas MCR existen en algún término", () => {
     const categories = new Set(terms.map((t) => t.category));
-    const rules = (v3 as any).metadata.multi_category_escalation_rules.rules;
+    const rules = typedV3.metadata.multi_category_escalation_rules.rules;
     for (const rule of rules) {
       for (const c of rule.categories_required ?? []) {
         expect(categories.has(c), `MCR ${rule.id} exige categoría inexistente '${c}'`).toBe(true);
@@ -54,7 +75,7 @@ describe("Integridad del dataset V3", () => {
 
 describe("Integridad de las reglas fonéticas (bug del \\1)", () => {
   it("ningún reemplazo usa backreference estilo PCRE (\\1) — JS usa $1", () => {
-    const rules = (normalizer as any).normalization_rules?.phonetic_rules?.rules ?? [];
+    const rules = typedNormalizer.normalization_rules?.phonetic_rules?.rules ?? [];
     for (const r of rules) {
       expect(
         /\\\d/.test(r.replace ?? ""),
@@ -64,7 +85,7 @@ describe("Integridad de las reglas fonéticas (bug del \\1)", () => {
   });
 
   it("todos los patrones 'find' compilan como RegExp válido", () => {
-    const rules = (normalizer as any).normalization_rules?.phonetic_rules?.rules ?? [];
+    const rules = typedNormalizer.normalization_rules?.phonetic_rules?.rules ?? [];
     for (const r of rules) {
       expect(() => new RegExp(r.find, "gi"), `regla ${r.id} find inválido`).not.toThrow();
     }
@@ -72,7 +93,7 @@ describe("Integridad de las reglas fonéticas (bug del \\1)", () => {
 });
 
 describe("Integridad de los dampeners", () => {
-  const damps = (dampeners as any).dampeners as any[];
+  const damps = typedDampeners.dampeners;
   it("factor entre 0 y 1 y categorías declaradas", () => {
     for (const d of damps) {
       expect(d.factor).toBeGreaterThanOrEqual(0);
@@ -89,7 +110,7 @@ describe("Integridad de los dampeners", () => {
 
 describe("Integridad del dataset V4", () => {
   it("las señales explícitas tienen id, weight y category", () => {
-    const signals = (v4 as any).explicit_signals ?? [];
+    const signals = typedV4.explicit_signals ?? [];
     for (const s of signals) {
       expect(s.id).toBeTruthy();
       expect(typeof s.weight).toBe("number");
@@ -97,7 +118,7 @@ describe("Integridad del dataset V4", () => {
   });
 
   it("los patrones de intención compilan como RegExp válidos", () => {
-    const intents = (v4 as any).intent_signals ?? [];
+    const intents = typedV4.intent_signals ?? [];
     for (const intent of intents) {
       for (const pat of intent.patterns ?? []) {
         expect(() => new RegExp(pat, "ui"), `intent ${intent.id} patrón inválido: ${pat}`).not.toThrow();

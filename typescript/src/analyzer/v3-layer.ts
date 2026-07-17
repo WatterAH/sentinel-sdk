@@ -1,137 +1,192 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // CAPA 1: V3Layer
-// Responsabilidad: términos exactos documentados + reglas MCR
+// Responsabilidad: términos exactos documentados + reglas MCR por region pack
 // ─────────────────────────────────────────────────────────────────────────────
 
-import v3Dataset from "../constants/sentinel_dataset_v3.json" with { type: "json" };
-import type { Message, V3Output, Hit } from "../types/SentinelEngine.js";
+import { MX_REGION_PACK } from "../packs/mx.js";
+import {
+  canonicalRegionId,
+  type HotTermInput,
+  outputRegionId,
+  type RegionCategoryRequirement,
+  type RegionMcrRule,
+  type V3RegionPack,
+  validateRegionPacks,
+} from "../packs/v3-region-pack.js";
+import type { Hit, Message, V3Output } from "../types/SentinelEngine.js";
 import { removeAccents } from "./text-utils.js";
 
+interface IndexedEntry {
+  canonicalId: string;
+  outputId: string;
+  weight: number;
+  category: string;
+  regex: RegExp;
+  ambiguous: boolean;
+}
+
+interface IndexedRule extends RegionMcrRule {
+  packId: string;
+  outputId: string;
+}
+
+interface PackIndex {
+  pack: V3RegionPack;
+  entries: Map<string, IndexedEntry>;
+  rules: IndexedRule[];
+}
+
 export class V3Layer {
-  private index: Map<string, { id: string; weight: number; category: string; regex: RegExp; ambiguous: boolean }>;
-  private mcrRules: Array<{
-    id: string;
-    categories_required?: string[];
-    min_categories?: number;
-    min_messages: number;
-  }>;
+  private packIndexes: PackIndex[];
   readonly sessionThreshold: number;
   private normalizeKey: (raw: string) => string;
 
   /**
-   * @param normalizeFn opcional: normalizador de términos, para que el índice
-   *   pase por el mismo pipeline (reglas fonéticas, etc.) que el texto de
-   *   entrada. Si no se pasa, cae a solo quitar acentos (comportamiento previo).
+   * @param normalizeFn normalizador compartido índice/texto. La firma original
+   *   sigue vigente; `packs` es opcional y por default carga solo México.
    */
-  constructor(normalizeFn?: (raw: string) => string) {
-    const data = v3Dataset as any;
-    this.sessionThreshold = data.metadata.tier1_session_threshold;
-    this.mcrRules = data.metadata.multi_category_escalation_rules.rules;
+  constructor(
+    normalizeFn?: (raw: string) => string,
+    packs: readonly V3RegionPack[] = [MX_REGION_PACK],
+  ) {
+    validateRegionPacks(packs);
     this.normalizeKey = normalizeFn ?? ((raw: string) => removeAccents(raw.toLowerCase().trim()));
+    this.sessionThreshold = packs[0].metadata.sessionThreshold;
+    this.packIndexes = packs.map((pack) => this.buildPackIndex(pack));
+  }
 
-    // Construir índice plano de término/variante → entrada
-    this.index = new Map();
-    for (const entry of data.terms) {
-      const all = [entry.term, ...(entry.variants ?? [])];
-      for (const variant of all) {
+  /** Versiones editoriales de los packs que realmente integran este índice. */
+  getRegionPackVersions(): Record<string, string> {
+    return Object.fromEntries(
+      this.packIndexes.map(({ pack }) => [pack.id, pack.version]),
+    );
+  }
+
+  private buildPackIndex(pack: V3RegionPack): PackIndex {
+    const entries = new Map<string, IndexedEntry>();
+    for (const term of pack.terms) {
+      for (const variant of [term.term, ...(term.variants ?? [])]) {
         const key = this.normalizeKey(variant);
         if (!key) continue;
-        this.index.set(key, {
-          id: entry.id,
-          weight: entry.weight,
-          category: entry.category,
+        entries.set(key, {
+          canonicalId: canonicalRegionId(pack.id, term.id),
+          outputId: outputRegionId(pack, term.id),
+          weight: term.weight,
+          category: term.category,
           regex: this.buildRegex(key),
-          // Términos-clave polisémicos (ej. "facebook"=fentanilo, "papaya"=arma):
-          // son jerga real pero colisionan con lenguaje cotidiano. Solo cuentan
-          // si otra señal de riesgo los acompaña (ver scan()).
-          ambiguous: entry.requires_corroboration === true,
+          ambiguous: term.requires_corroboration === true,
+        });
+      }
+    }
+    return {
+      pack,
+      entries,
+      rules: pack.rules.map((rule) => ({
+        ...rule,
+        packId: pack.id,
+        outputId: outputRegionId(pack, rule.id),
+      })),
+    };
+  }
+
+  private buildRegex(term: string): RegExp {
+    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const flexible = escaped.replace(/\s+/g, "\\s+");
+    return new RegExp(`(?<![\\p{L}\\p{N}])${flexible}(?![\\p{L}\\p{N}])`, "ui");
+  }
+
+  /**
+   * Inyecta hot terms sin reemplazar entradas estáticas. `packId` es opcional;
+   * la API histórica continúa inyectando en MX.
+   */
+  injectHotTerms(terms: HotTermInput[]): void {
+    for (const term of terms) {
+      const packId = term.packId ?? "MX";
+      const target = this.packIndexes.find((candidate) => candidate.pack.id === packId);
+      if (!target) throw new Error(`Cannot inject hot term into unloaded pack: ${packId}`);
+
+      for (const variant of [term.term, ...term.variants]) {
+        const key = this.normalizeKey(variant);
+        if (!key || target.entries.has(key)) continue;
+        target.entries.set(key, {
+          canonicalId: canonicalRegionId(target.pack.id, term.id),
+          outputId: outputRegionId(target.pack, term.id),
+          weight: term.weight,
+          category: term.category,
+          regex: this.buildRegex(key),
+          ambiguous: term.requires_corroboration === true,
         });
       }
     }
   }
 
-  private buildRegex(term: string): RegExp {
-    // Escapar caracteres especiales de RegExp
-    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    // Reemplazar espacios por \s+ para tolerar espaciado flexible
-    const flexible = escaped.replace(/\s+/g, '\\s+');
-    // Usar fronteras de palabra compatibles con Unicode (letras y números)
-    return new RegExp(`(?<![\\p{L}\\p{N}])${flexible}(?![\\p{L}\\p{N}])`, 'ui');
-  }
-
-  /**
-   * Inyecta términos dinámicos desde la API (hot-terms).
-   * Se mezclan con el dataset estático sin reemplazarlo.
-   * Si un término ya existe, se ignora para no alterar el peso original.
-   */
-  injectHotTerms(terms: Array<{ id: string; term: string; category: string; weight: number; variants: string[] }>): void {
-    for (const entry of terms) {
-      const all = [entry.term, ...entry.variants];
-      for (const variant of all) {
-        const key = this.normalizeKey(variant);
-        if (!key) continue;
-        if (!this.index.has(key)) {
-          this.index.set(key, {
-            id: entry.id,
-            weight: entry.weight,
-            category: entry.category,
-            regex: this.buildRegex(key),
-            ambiguous: (entry as any).requires_corroboration === true,
-          });
-        }
-      }
-    }
-  }
-
-  /** Escanea mensajes buscando términos V3 y evalúa reglas MCR. */
+  /** Escanea mensajes buscando términos V3 en todos los packs activos. */
   scan(messages: Message[]): V3Output {
-    // ── Pasada 1: recolectar todos los matches (una vez por término único) ──
-    interface Match { id: string; weight: number; category: string; ambiguous: boolean; timestamp: number }
+    interface Match {
+      canonicalId: string;
+      outputId: string;
+      packId: string;
+      weight: number;
+      category: string;
+      ambiguous: boolean;
+      timestamp: number;
+    }
+
     const matchesById = new Map<string, Match>();
+    const claimedSurfaceCategories = new Set<string>();
 
     for (const msg of messages) {
-      for (const [, entry] of this.index) {
-        if (matchesById.has(entry.id)) continue;
-        if (entry.regex.test(msg.text)) {
-          matchesById.set(entry.id, {
-            id: entry.id,
-            weight: entry.weight,
-            category: entry.category,
-            ambiguous: entry.ambiguous,
-            timestamp: msg.timestamp ?? Date.now(),
-          });
+      for (const packIndex of this.packIndexes) {
+        for (const [surface, entry] of packIndex.entries) {
+          if (matchesById.has(entry.canonicalId)) continue;
+          if (entry.regex.test(msg.text)) {
+            // Construir la clave de colisión solo ante un match. Hacerlo para
+            // cada miss recreaba miles de strings y elevaba p95 ~0.4 ms.
+            const surfaceCategory = `${surface}\u0000${entry.category}`;
+            if (claimedSurfaceCategories.has(surfaceCategory)) continue;
+            matchesById.set(entry.canonicalId, {
+              canonicalId: entry.canonicalId,
+              outputId: entry.outputId,
+              packId: packIndex.pack.id,
+              weight: entry.weight,
+              category: entry.category,
+              ambiguous: entry.ambiguous,
+              timestamp: msg.timestamp ?? Date.now(),
+            });
+            // La precedencia del array de packs evita doble score por la misma
+            // evidencia y categoría, sin sobrescribir índices entre regiones.
+            claimedSurfaceCategories.add(surfaceCategory);
+          }
         }
       }
     }
 
-    // ── Corroboración: ¿hay alguna señal de riesgo NO ambigua y de peso real? ──
-    // Un término inequívoco de categoría distinta a señal_debil corrobora a los
-    // términos-clave ambiguos. Sin corroboración, lo ambiguo no cuenta: "la rola"
-    // (canción) suelta no es MDMA; "tengo facebook, jalas al bisne" sí lo es
-    // porque "jale" (reclutamiento) corrobora.
     const hasSolidSignal = [...matchesById.values()].some(
-      (m) => !m.ambiguous && m.category !== "señal_debil"
+      (match) => !match.ambiguous && match.category !== "señal_debil",
     );
 
-    // ── Pasada 2: score y categorías, aplicando corroboración ──────────────
     let score = 0;
     const termsFound = new Set<string>();
     const categoriesFound = new Set<string>();
+    const scopedCategories = new Set<string>();
     const hits: Hit[] = [];
 
-    for (const m of matchesById.values()) {
-      // Un término ambiguo sin corroboración se ignora por completo (no suma
-      // score ni aporta su categoría a las reglas MCR).
-      if (m.ambiguous && !hasSolidSignal) continue;
+    for (const match of matchesById.values()) {
+      if (match.ambiguous && !hasSolidSignal) continue;
 
-      score += m.weight;
-      termsFound.add(m.id);
-      categoriesFound.add(m.category);
-      hits.push({ id: m.id, score: m.weight, category: m.category, timestamp: m.timestamp });
+      score += match.weight;
+      termsFound.add(match.outputId);
+      categoriesFound.add(match.category);
+      scopedCategories.add(this.scopedCategory(match.packId, match.category));
+      hits.push({
+        id: match.outputId,
+        score: match.weight,
+        category: match.category,
+        timestamp: match.timestamp,
+      });
     }
 
-    const triggeredRules = this.checkMCR(categoriesFound, messages.length);
-
+    const triggeredRules = this.checkMCR(categoriesFound, scopedCategories, messages.length);
     return {
       score,
       terms: [...termsFound],
@@ -141,18 +196,40 @@ export class V3Layer {
     };
   }
 
-  private checkMCR(categories: Set<string>, messageCount: number): string[] {
+  private scopedCategory(packId: string, category: string): string {
+    return `${packId}\u0000${category}`;
+  }
+
+  private requirementPresent(
+    requirement: RegionCategoryRequirement,
+    categories: Set<string>,
+    scopedCategories: Set<string>,
+  ): boolean {
+    return typeof requirement === "string"
+      ? categories.has(requirement)
+      : scopedCategories.has(this.scopedCategory(requirement.packId, requirement.category));
+  }
+
+  private checkMCR(
+    categories: Set<string>,
+    scopedCategories: Set<string>,
+    messageCount: number,
+  ): string[] {
     const triggered: string[] = [];
-    for (const rule of this.mcrRules) {
-      if (rule.categories_required) {
-        const allPresent = rule.categories_required.every((c) => categories.has(c));
-        if (allPresent && messageCount >= rule.min_messages) {
-          triggered.push(rule.id);
+    for (const packIndex of this.packIndexes) {
+      for (const rule of packIndex.rules) {
+        if (rule.categories_required) {
+          const allPresent = rule.categories_required.every((requirement) =>
+            this.requirementPresent(requirement, categories, scopedCategories),
+          );
+          if (allPresent && messageCount >= rule.min_messages) triggered.push(rule.outputId);
         }
-      }
-      if (rule.min_categories !== undefined) {
-        if (categories.size >= rule.min_categories && messageCount >= rule.min_messages) {
-          triggered.push(rule.id);
+        if (
+          rule.min_categories !== undefined &&
+          categories.size >= rule.min_categories &&
+          messageCount >= rule.min_messages
+        ) {
+          triggered.push(rule.outputId);
         }
       }
     }
