@@ -22,7 +22,10 @@ Sentinel SDK resuelve esto con un pipeline de detección de múltiples capas que
 
 ## Arquitectura del motor de detección
 
-El SDK procesa cada conversación a través de un pipeline de 3 capas locales antes de decidir si escala a la IA:
+El SDK procesa cada conversación mediante normalización, léxico regional,
+features abstractas, velocidad, progresión temporal, asimetría de actor,
+dampeners culturales y política de edad. Escala por incertidumbre, no por nivel
+de riesgo: LOW y las pruebas deterministas altas se resuelven localmente.
 
 ```
 Mensaje del usuario
@@ -104,7 +107,8 @@ npm install @sentinel-sdk/typescript
 
 ### Análisis con sesión completa (recomendado)
 
-Registra el mensaje en el servidor, obtiene el historial y analiza la sesión completa.
+Mantiene la sesión en memoria local. Solo sincroniza todo al servidor cuando
+`serverSideSessions: true`; por default únicamente escala la zona gris.
 
 ```typescript
 import { Sentinel } from "@sentinel-sdk/typescript";
@@ -125,6 +129,36 @@ if (error) {
   console.log(data.ux_recommendation); // "SOFT_BLOCK"
 }
 ```
+
+### Memoria entre reinicios sin guardar chats
+
+```typescript
+const sentinel = new Sentinel({
+  apiKey: "tu_api_key",
+  riskMemory: {
+    secret: secretAleatorioDe32BytesDesdeKeychain,
+    retentionDays: 30,
+  },
+});
+
+await sentinel.importRiskMemory(snapshotGuardado);
+// ... analyze() normalmente ...
+const snapshotNuevo = await sentinel.exportRiskMemory();
+```
+
+El snapshot contiene únicamente fechas agregadas de cuatro etapas conductuales.
+Los IDs de sesión se reemplazan con HMAC-SHA-256 y el archivo se autentica para
+detectar manipulación. **Nunca incluye texto, IDs de usuario, IDs de emisor ni
+términos detectados.** Vea `docs/LONGITUDINAL_MEMORY.md` y conserve el secreto en
+el almacén seguro de la plataforma.
+
+### Packs y modelos remotos firmados
+
+En producción configure `artifactVerification.publicKeys`. Los packs regionales
+y modelos sombra se verifican con Ed25519 antes de cargarse; firmas inválidas,
+llaves desconocidas, artefactos expirados y rollbacks de versión se rechazan.
+El modo `shadowClassifier: "remote"` sigue siendo observacional: nunca modifica
+el veredicto real.
 
 ### Análisis de mensajes sin sesión
 
@@ -224,7 +258,9 @@ npm test        # corre los tests con Vitest
 
 ## Documentación de IA utilizada
 
-El SDK en sí **no invoca ninguna IA directamente**. El motor de 3 capas es 100% local y determinístico. La IA se invoca solo a través de la Sentinel API cuando el score local cae en zona gris.
+El SDK puede ejecutar modelos lineales/hash muy pequeños **en modo sombra y
+100% local**, sin enviar texto ni instalar un runtime de ML. La capa cognitiva
+Groq se invoca por la API únicamente cuando la política marca incertidumbre.
 
 Ver documentación completa de la IA en el [README de la API](../sentinel-api/README.md#documentación-de-ia-utilizada).
 
@@ -254,8 +290,9 @@ Ver documentación completa de la IA en el [README de la API](../sentinel-api/RE
 
 ## Licencia
 
-MIT License — Copyright (c) 2026 Samuel Tlahuel
-
-Este proyecto fue desarrollado durante el **Hackathon 404 · Marriott Reforma CDMX · Abril 2026** y se publica como código abierto bajo licencia MIT como condición de participación.
+Las versiones históricas publicadas permanecen bajo sus condiciones originales.
+La licencia de la siguiente publicación y la separación código/dataset siguen
+pendientes de ratificación de los fundadores y revisión de IP; consulte
+`docs/LICENSING.md`. `package.json` permanece `private: true` hasta esa decisión.
 
 Ver archivo [LICENSE](./LICENSE) para el texto completo.

@@ -93,13 +93,15 @@ Publicar el paquete actual significa:
 - Consecuencia de pricing natural: el SDK es gratis; la suscripción paga el léxico vivo +
   la capa cognitiva. Alineado con el roadmap Fase 6.
 
-**Especificación del seed split (delegable):** separar
+**Especificación del seed split (implementada 2026-07-17):** separar
 `src/constants/sentinel_dataset_v3.json` en `seed_dataset_v3.json` (subconjunto: los
 ~30 términos de mayor peso y menor sensibilidad — los que igual ya son públicos por el
 MIT histórico) y mover el resto a la API como "base pack" servido por
 `GET /hot-terms?pack=full` (client key). `V3Layer` no cambia: `injectHotTerms` ya mezcla.
-El benchmark debe correr en DOS modos: solo-semilla (lo que ve un no-cliente) y completo
-(cliente autenticado) — las métricas del modo completo son las comerciales.
+El benchmark corre en DOS modos: solo-semilla (`seed-report.json`, lo que ve un
+no-cliente) y completo (`report.json`, cliente autenticado) — las métricas del
+modo completo son las comerciales. El paquete permanece `private: true` hasta
+la confirmación manual del dueño.
 
 ## Qué tienen que hacer los fundadores (checklist, en orden)
 

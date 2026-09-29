@@ -1,5 +1,12 @@
 # Hallazgos del motor — corpus expandido (2026-07-09)
 
+> Actualización 2026-07-17: el corpus creció a 353 casos, pero 210 están
+> pendientes de revisión humana. La medición provisional tiene 44.4% recall.
+> Cuatro bloqueos falsos (`BT-046`, `BT-050`, `NC-017`, `NC-023`) fueron
+> confirmados humanamente y resueltos corrigiendo `CR-009`: precision 91.8%, FPR
+> 3.0%, cero bloqueos falsos, sin perder verdaderos positivos. El guardrail aún
+> falla por recall. Las cifras históricas de abajo ya no representan el estado actual.
+
 Este documento registra qué reveló expandir el corpus de evaluación de 52 a 127 casos,
 qué se corrigió, y —lo más importante— el límite arquitectónico que quedó medido.
 

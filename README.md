@@ -22,7 +22,7 @@ Sentinel SDK resuelve esto con un pipeline de detección de múltiples capas que
 
 ## Arquitectura del motor de detección
 
-El SDK procesa cada conversación a través de un pipeline de 3 capas locales antes de decidir si escala a la IA:
+El SDK procesa cada conversación mediante un pipeline local multicapa antes de decidir si escala a la IA. El diagrama resume las capas de contenido; después también intervienen velocidad, progresión temporal, asimetría de actor, dampeners culturales y política de edad:
 
 ```
 Mensaje del usuario
@@ -197,17 +197,98 @@ if (error) {
 
 ---
 
-## Configuración para desarrollo y producción
+## Telemetría agregada y privada (opt-in)
 
-En [`src/core/sentinel.ts`](sentinel-sdk/typescript/src/core/sentinel.ts) se configura la URL de la API:
+La telemetría está **DESACTIVADA por default**. Sentinel no recolecta nada a
+menos que la plataforma establezca expresamente `telemetry: true`.
 
 ```typescript
-// Desarrollo local:
-this.baseUrl = "http://localhost:8000/api/v1";
-
-// Producción (Railway) — descomentar al hacer deploy:
-// this.baseUrl = "https://sentinel-api-production-95e9.up.railway.app/api/v1";
+const sentinel = new Sentinel({
+  apiKey: "tu_api_key",
+  telemetry: true,
+  // Opt-in separado: evalúa el modelo incluido, pero NO cambia decisiones.
+  shadowClassifier: "bundled",
+  telemetryFlushIntervalMinutes: 15,
+  telemetryFlushAnalysisCount: 500,
+});
 ```
+
+### Lo que sí se envía
+
+- Cantidad total de análisis y conteos por nivel de riesgo.
+- Conteos por ID editorial V3, por ejemplo `REC-001`.
+- Resoluciones locales, llamadas reales a API y respuestas API reutilizadas desde caché.
+- Concordancias y discrepancias del clasificador sombra, separadas por un ID
+  opaco de versión del modelo y versión del esquema de features.
+
+### Lo que NUNCA se envía
+
+**El payload de telemetría nunca contiene:**
+
+- Texto ni fragmentos de mensajes.
+- Identificadores de usuarios, menores, reclutadores o sesiones.
+- Timestamps de mensajes.
+- Features individuales del clasificador sombra.
+- Errores, stack traces o prompts.
+- Términos escritos por el usuario; solo IDs editoriales del dataset.
+
+Los contadores viven únicamente en memoria hasta enviarse. El test
+`src/core/telemetry.test.ts` analiza un mensaje con un marcador secreto y verifica
+que ni el texto ni el identificador del emisor aparezcan en el payload.
+
+En navegadores, `sendBeacon` no permite enviar `X-API-Key`. El SDK obtiene antes
+un token efímero de cinco minutos, limitado exclusivamente a telemetría, y pone
+ese token en la URL del beacon. La API key de larga duración nunca se agrega a
+la URL. Si no puede obtener el token, usa `fetch(..., {keepalive: true})` con la
+API key en el header.
+
+La telemetría es puramente observacional: no modifica scores, risk levels,
+intervenciones ni decisiones de escalación. Puede forzarse un envío con
+`await sentinel.flushTelemetry()`.
+
+El modelo sombra también está desactivado por defecto. `shadowClassifier:
+"bundled"` es la forma pública y reproducible de activarlo en un piloto. Su
+salida se registra únicamente como concordancia/discrepancia agregada; no puede
+elevar, reducir ni reemplazar el resultado determinista.
+
+### Packs y modelos firmados
+
+En producción, configura el trust store Ed25519. Así un proxy, caché o servidor
+comprometido no puede inyectar términos o pesos modificados:
+
+```typescript
+const sentinel = new Sentinel({
+  apiKey: "tu_api_key",
+  shadowClassifier: "remote",
+  artifactVerification: {
+    publicKeys: {
+      "sentinel-artifacts-2026-a": "LLAVE_PUBLICA_ED25519_BASE64URL",
+    },
+  },
+});
+
+await sentinel.initialize();
+console.log(sentinel.getArtifactVerificationStatus("region_pack"));
+console.log(sentinel.getArtifactVerificationStatus("shadow_model"));
+```
+
+La verificación cubre firma, llave confiable, emisión, expiración y prevención
+de rollback. Los modelos remotos siguen ejecutándose exclusivamente en sombra.
+
+## Configuración para desarrollo y producción
+
+Configura la URL completa sin editar el SDK:
+
+```typescript
+const sentinel = new Sentinel({
+  apiKey: "tu_api_key",
+  baseUrl: "http://localhost:8000/api/v1",
+});
+```
+
+`baseUrl` es opcional y debe incluir `/api/v1`. Si se omite, se usa Railway
+producción. Solo se aceptan URLs HTTP(S), lo que permite separar local, staging
+y producción sin modificar el código publicado.
 
 ---
 
@@ -224,7 +305,7 @@ npm test        # corre los tests con Vitest
 
 ## Documentación de IA utilizada
 
-El SDK en sí **no invoca ninguna IA directamente**. El motor de 3 capas es 100% local y determinístico. La IA se invoca solo a través de la Sentinel API cuando el score local cae en zona gris.
+El SDK en sí **no invoca ninguna IA directamente**. El motor multicapa es 100% local y determinístico. La IA se invoca solo a través de la Sentinel API cuando el motor queda genuinamente incierto.
 
 Ver documentación completa de la IA en el [README de la API](../sentinel-api/README.md#documentación-de-ia-utilizada).
 
