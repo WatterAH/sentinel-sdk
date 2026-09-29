@@ -1,44 +1,47 @@
 {
-  "timestamp": "2026-07-17T16:35:29.078Z",
-  "baselineDetectionRate": 0.82,
+  "timestamp": "2026-09-28T23:31:28.843Z",
+  "baselineDetectionRate": 0.437,
   "byTransform": [
     {
       "transform": "homoglyphs",
-      "riskCases": 50,
-      "stillDetected": 50,
+      "riskCases": 66,
+      "stillDetected": 66,
       "survivalRate": 1,
       "broken": []
     },
     {
       "transform": "invisibles",
-      "riskCases": 50,
-      "stillDetected": 50,
+      "riskCases": 66,
+      "stillDetected": 66,
       "survivalRate": 1,
       "broken": []
     },
     {
       "transform": "fullwidth",
-      "riskCases": 50,
-      "stillDetected": 50,
+      "riskCases": 66,
+      "stillDetected": 66,
       "survivalRate": 1,
       "broken": []
     },
     {
       "transform": "leet_aggressive",
-      "riskCases": 50,
-      "stillDetected": 47,
-      "survivalRate": 0.94,
+      "riskCases": 66,
+      "stillDetected": 60,
+      "survivalRate": 0.909,
       "broken": [
         "RP-007",
         "RP-008",
-        "VOICE-003"
+        "VOICE-003",
+        "TP-025",
+        "TP-026",
+        "TP-037"
       ]
     },
     {
       "transform": "intra_word_spaces",
-      "riskCases": 50,
-      "stillDetected": 36,
-      "survivalRate": 0.72,
+      "riskCases": 66,
+      "stillDetected": 43,
+      "survivalRate": 0.652,
       "broken": [
         "TP-013",
         "TP-021",
@@ -53,14 +56,23 @@
         "RP-010",
         "RP-011",
         "AC-003",
-        "VOICE-003"
+        "VOICE-003",
+        "RP-048",
+        "TP-026",
+        "TP-027",
+        "TP-032",
+        "TP-034",
+        "TP-041",
+        "TP-053",
+        "NP-008",
+        "VOICE-009"
       ]
     },
     {
       "transform": "message_splitting",
-      "riskCases": 50,
-      "stillDetected": 42,
-      "survivalRate": 0.84,
+      "riskCases": 66,
+      "stillDetected": 55,
+      "survivalRate": 0.833,
       "broken": [
         "TP-010",
         "TP-013",
@@ -69,7 +81,10 @@
         "TL-003",
         "ED-008",
         "RP-011",
-        "AC-004"
+        "AC-004",
+        "TP-025",
+        "TP-032",
+        "TP-037"
       ]
     }
   ]

@@ -1,149 +1,359 @@
 # Comparación caso por caso del clasificador sombra
 
-> La predicción `full-fit` usa un modelo entrenado con todo este mismo corpus y no es una métrica de evaluación. Para estimar generalización se debe usar la probabilidad OOF agrupada y `shadow-training-report.json`.
+> La predicción `full-fit` no es una métrica de evaluación. Solo los 185 casos que pasaron el gate de revisión tienen probabilidad OOF agrupada; las otras etiquetas se muestran como `pending_review` y no se usan para evaluar ni entrenar.
 
-| Caso | Grupo | Etiqueta | Léxico | Sombra full-fit | Prob. full-fit | Prob. OOF agrupada | Comparación |
-|---|---|---:|---:|---:|---:|---:|---|
-| TP-001 | tp_reclutamiento_directo | RISK | true | true | 0.9974 | 0.9953 | both_correct |
-| TP-002 | tp_reclutamiento_directo | RISK | true | true | 0.919 | 0.9371 | both_correct |
-| TP-003 | tp_reclutamiento_directo | RISK | true | true | 0.965 | 0.9647 | both_correct |
-| TP-004 | tp_reclutamiento_directo | RISK | true | true | 0.9951 | 0.9944 | both_correct |
-| TP-005 | tp_reclutamiento_directo | RISK | true | true | 0.9889 | 0.9908 | both_correct |
-| TP-006 | tp_reclutamiento_directo | RISK | true | true | 0.9974 | 0.9955 | both_correct |
-| TP-007 | tp_ofuscado | RISK | true | true | 0.9722 | 0.9696 | both_correct |
-| TP-008 | tp_ofuscado | RISK | true | true | 0.9941 | 0.995 | both_correct |
-| TP-009 | tp_ofuscado | RISK | true | true | 0.9541 | 0.951 | both_correct |
-| TP-010 | tp_ofuscado | RISK | true | true | 0.8698 | 0.834 | both_correct |
-| TP-011 | tp_grooming_progresivo | RISK | true | true | 0.9974 | 0.9955 | both_correct |
-| TP-012 | tp_grooming_progresivo | RISK | true | true | 0.9612 | 0.9394 | both_correct |
-| TP-013 | tp_grooming_progresivo | RISK | true | true | 0.7658 | 0.7216 | both_correct |
-| TP-014 | tp_grooming_progresivo | RISK | true | true | 0.9279 | 0.8842 | both_correct |
-| TP-015 | tp_vector_gaming | RISK | true | true | 0.9813 | 0.9784 | both_correct |
-| TP-016 | tp_vector_gaming | RISK | true | true | 0.9881 | 0.985 | both_correct |
-| TP-017 | tp_vector_gaming | RISK | true | true | 0.9735 | 0.9701 | both_correct |
-| TP-018 | tp_formalidad_deceptiva | RISK | true | true | 0.9968 | 0.9941 | both_correct |
-| TP-019 | tp_formalidad_deceptiva | RISK | true | true | 0.958 | 0.9376 | both_correct |
-| TP-020 | tp_formalidad_deceptiva | RISK | true | true | 0.997 | 0.9945 | both_correct |
-| TP-021 | tp_reclutamiento_directo | RISK | true | true | 0.9312 | 0.9307 | both_correct |
-| TP-022 | tp_grooming_progresivo | RISK | true | true | 0.9977 | 0.9958 | both_correct |
-| TP-023 | tp_ofuscado | RISK | true | true | 0.9975 | 0.9974 | both_correct |
-| TP-024 | tp_reclutamiento_directo | RISK | true | true | 0.9945 | 0.986 | both_correct |
-| BN-001 | benign_cotidiano | BENIGN | false | false | 0.2093 | 0.2923 | both_correct |
-| BN-002 | benign_cotidiano | BENIGN | false | false | 0.0873 | 0.1097 | both_correct |
-| BN-003 | benign_cotidiano | BENIGN | false | false | 0.2328 | 0.3156 | both_correct |
-| BN-004 | benign_cotidiano | BENIGN | false | false | 0.086 | 0.1079 | both_correct |
-| BN-005 | benign_cotidiano | BENIGN | false | false | 0.0926 | 0.113 | both_correct |
-| BN-006 | benign_cotidiano | BENIGN | false | false | 0.1947 | 0.2597 | both_correct |
-| BN-007 | benign_cotidiano | BENIGN | false | false | 0.0835 | 0.1048 | both_correct |
-| BN-008 | benign_cotidiano | BENIGN | false | false | 0.0644 | 0.08 | both_correct |
-| BN-009 | benign_cotidiano | BENIGN | false | false | 0.0767 | 0.099 | both_correct |
-| BN-010 | benign_cotidiano | BENIGN | false | false | 0.1272 | 0.1676 | both_correct |
-| BN-011 | benign_cotidiano | BENIGN | false | false | 0.0721 | 0.0871 | both_correct |
-| BN-012 | benign_cotidiano | BENIGN | false | false | 0.083 | 0.1041 | both_correct |
-| BT-001 | benign_trampa | BENIGN | false | false | 0.0896 | 0.1644 | both_correct |
-| BT-002 | benign_trampa | BENIGN | false | false | 0.4169 | 0.5393 | both_correct |
-| BT-003 | benign_trampa | BENIGN | false | false | 0.0935 | 0.1173 | both_correct |
-| BT-004 | benign_trampa | BENIGN | false | false | 0.2096 | 0.2527 | both_correct |
-| BT-005 | benign_trampa | BENIGN | false | false | 0.0869 | 0.1537 | both_correct |
-| BT-006 | benign_trampa | BENIGN | false | false | 0.0818 | 0.1085 | both_correct |
-| BT-007 | benign_trampa | BENIGN | false | false | 0.082 | 0.1461 | both_correct |
-| BT-008 | benign_trampa | BENIGN | false | false | 0.2578 | 0.2796 | both_correct |
-| BT-009 | benign_trampa | BENIGN | false | false | 0.1243 | 0.1438 | both_correct |
-| BT-010 | benign_trampa | BENIGN | false | false | 0.1809 | 0.2346 | both_correct |
-| BT-011 | benign_trampa | BENIGN | false | false | 0.0846 | 0.1504 | both_correct |
-| BT-012 | benign_trampa | BENIGN | false | false | 0.1211 | 0.2182 | both_correct |
-| BT-013 | benign_trampa | BENIGN | false | false | 0.0798 | 0.1123 | both_correct |
-| BT-014 | benign_trampa | BENIGN | false | false | 0.1214 | 0.1395 | both_correct |
-| BT-015 | benign_trampa | BENIGN | false | false | 0.1448 | 0.1095 | both_correct |
-| BT-016 | benign_trampa | BENIGN | false | false | 0.2035 | 0.2893 | both_correct |
-| TL-001 | tp_grooming_lento | RISK | true | true | 0.8917 | 0.7067 | both_correct |
-| TL-002 | tp_grooming_lento | RISK | true | true | 0.9435 | 0.7496 | both_correct |
-| TL-003 | tp_grooming_lento | RISK | true | true | 0.7166 | 0.3876 | both_correct |
-| BL-001 | benign_amistad_larga | BENIGN | false | false | 0.1239 | 0.1434 | both_correct |
-| BL-002 | benign_amistad_larga | BENIGN | false | false | 0.2739 | 0.452 | both_correct |
-| NC-001 | benign_narcocultura | BENIGN | false | false | 0.0617 | 0.0759 | both_correct |
-| NC-002 | benign_narcocultura | BENIGN | false | false | 0.0723 | 0.1082 | both_correct |
-| NC-003 | benign_narcocultura | BENIGN | false | false | 0.2381 | 0.2389 | both_correct |
-| NC-004 | benign_narcocultura | BENIGN | false | false | 0.0786 | 0.0926 | both_correct |
-| NC-005 | benign_narcocultura | BENIGN | false | false | 0.0679 | 0.0867 | both_correct |
-| NC-006 | benign_narcocultura | BENIGN | false | false | 0.0891 | 0.1029 | both_correct |
-| NC-007 | benign_narcocultura | BENIGN | false | false | 0.0841 | 0.1076 | both_correct |
-| NC-008 | benign_narcocultura | BENIGN | true | false | 0.1084 | 0.1423 | shadow_only |
-| NC-009 | benign_narcocultura | BENIGN | false | false | 0.0854 | 0.1447 | both_correct |
-| NC-010 | benign_narcocultura | BENIGN | false | false | 0.0794 | 0.0935 | both_correct |
-| NC-011 | benign_narcocultura | BENIGN | false | false | 0.0288 | 0.0487 | both_correct |
-| NC-012 | benign_narcocultura | BENIGN | false | false | 0.0807 | 0.1007 | both_correct |
-| JJ-001 | benign_jerga_juvenil | BENIGN | false | false | 0.062 | 0.0699 | both_correct |
-| JJ-002 | benign_jerga_juvenil | BENIGN | false | false | 0.0814 | 0.0811 | both_correct |
-| JJ-003 | benign_jerga_juvenil | BENIGN | false | false | 0.2437 | 0.1791 | both_correct |
-| JJ-004 | benign_jerga_juvenil | BENIGN | true | true | 0.5413 | 0.4471 | both_wrong |
-| JJ-005 | benign_jerga_juvenil | BENIGN | false | false | 0.1525 | 0.1485 | both_correct |
-| JJ-006 | benign_jerga_juvenil | BENIGN | false | false | 0.1049 | 0.1042 | both_correct |
-| JJ-007 | benign_jerga_juvenil | BENIGN | false | false | 0.1897 | 0.1517 | both_correct |
-| JJ-008 | benign_jerga_juvenil | BENIGN | false | false | 0.1244 | 0.189 | both_correct |
-| JJ-009 | benign_jerga_juvenil | BENIGN | false | false | 0.2215 | 0.1404 | both_correct |
-| JJ-010 | benign_jerga_juvenil | BENIGN | false | false | 0.2298 | 0.1326 | both_correct |
-| BT-017 | benign_trampa | BENIGN | false | true | 0.5572 | 0.6299 | lexical_only |
-| BT-018 | benign_trampa | BENIGN | false | false | 0.2104 | 0.2527 | both_correct |
-| BT-019 | benign_trampa | BENIGN | false | false | 0.2811 | 0.3396 | both_correct |
-| BT-020 | benign_trampa | BENIGN | false | false | 0.1121 | 0.1981 | both_correct |
-| BT-021 | benign_trampa | BENIGN | false | false | 0.1692 | 0.2755 | both_correct |
-| BT-022 | benign_trampa | BENIGN | false | false | 0.2615 | 0.3096 | both_correct |
-| BT-023 | benign_trampa | BENIGN | false | false | 0.2313 | 0.3013 | both_correct |
-| BT-024 | benign_trampa | BENIGN | false | false | 0.0291 | 0.0478 | both_correct |
-| BT-025 | benign_trampa | BENIGN | false | false | 0.206 | 0.1889 | both_correct |
-| BT-026 | benign_trampa | BENIGN | false | false | 0.3786 | 0.4476 | both_correct |
-| BN-013 | benign_cotidiano | BENIGN | false | false | 0.198 | 0.2805 | both_correct |
-| BN-014 | benign_cotidiano | BENIGN | false | false | 0.0819 | 0.1027 | both_correct |
-| BN-015 | benign_cotidiano | BENIGN | false | false | 0.1883 | 0.2512 | both_correct |
-| BN-016 | benign_cotidiano | BENIGN | false | false | 0.0763 | 0.0984 | both_correct |
-| BN-017 | benign_cotidiano | BENIGN | true | false | 0.4694 | 0.8556 | shadow_only |
-| BN-018 | benign_cotidiano | BENIGN | false | false | 0.0697 | 0.0842 | both_correct |
-| BN-019 | benign_cotidiano | BENIGN | false | false | 0.0776 | 0.0912 | both_correct |
-| BN-020 | benign_cotidiano | BENIGN | false | false | 0.0737 | 0.0964 | both_correct |
-| BL-003 | benign_amistad_larga | BENIGN | false | true | 0.7534 | 0.8242 | lexical_only |
-| BL-004 | benign_amistad_larga | BENIGN | false | false | 0.4152 | 0.4223 | both_correct |
-| BL-005 | benign_amistad_larga | BENIGN | false | false | 0.1258 | 0.1237 | both_correct |
-| BL-006 | benign_amistad_larga | BENIGN | false | false | 0.1988 | 0.2735 | both_correct |
-| ED-001 | tp_extorsion_deuda | RISK | true | true | 0.9865 | 0.9787 | both_correct |
-| ED-002 | tp_extorsion_deuda | RISK | true | true | 0.9367 | 0.9126 | both_correct |
-| ED-003 | tp_extorsion_deuda | RISK | true | true | 0.7137 | 0.5713 | both_correct |
-| ED-004 | tp_extorsion_deuda | RISK | true | true | 0.959 | 0.9481 | both_correct |
-| ED-005 | tp_extorsion_deuda | RISK | false | true | 0.6215 | 0.5903 | shadow_only |
-| ED-006 | tp_extorsion_deuda | RISK | true | true | 0.6913 | 0.6287 | both_correct |
-| ED-007 | tp_extorsion_deuda | RISK | true | true | 0.8233 | 0.768 | both_correct |
-| ED-008 | tp_extorsion_deuda | RISK | true | true | 0.9797 | 0.9708 | both_correct |
-| NP-001 | tp_narcocultura_puente | RISK | true | true | 0.7264 | 0.691 | both_correct |
-| NP-002 | tp_narcocultura_puente | RISK | true | true | 0.7164 | 0.6988 | both_correct |
-| NP-003 | tp_narcocultura_puente | RISK | false | false | 0.3346 | 0.2277 | both_wrong |
-| NP-004 | tp_narcocultura_puente | RISK | true | true | 0.856 | 0.8035 | both_correct |
-| NP-005 | tp_narcocultura_puente | RISK | true | true | 0.9084 | 0.8954 | both_correct |
-| NP-006 | tp_narcocultura_puente | RISK | true | false | 0.4409 | 0.4354 | lexical_only |
-| RP-001 | tp_reclutamiento_parafraseado | RISK | false | true | 0.8704 | 0.5717 | shadow_only |
-| RP-002 | tp_reclutamiento_parafraseado | RISK | false | false | 0.3659 | 0.145 | both_wrong |
-| RP-003 | tp_reclutamiento_parafraseado | RISK | false | true | 0.8581 | 0.5476 | shadow_only |
-| RP-004 | tp_reclutamiento_parafraseado | RISK | false | false | 0.3122 | 0.2262 | both_wrong |
-| RP-005 | tp_reclutamiento_parafraseado | RISK | false | true | 0.6295 | 0.3048 | shadow_only |
-| RP-006 | tp_reclutamiento_parafraseado | RISK | false | false | 0.2573 | 0.1503 | both_wrong |
-| RP-007 | tp_reclutamiento_parafraseado | RISK | true | true | 0.7863 | 0.521 | both_correct |
-| RP-008 | tp_reclutamiento_parafraseado | RISK | true | true | 0.9348 | 0.8354 | both_correct |
-| RP-009 | tp_reclutamiento_parafraseado | RISK | false | true | 0.7656 | 0.4882 | shadow_only |
-| RP-010 | tp_reclutamiento_parafraseado | RISK | true | true | 0.6956 | 0.3464 | both_correct |
-| RP-011 | tp_reclutamiento_parafraseado | RISK | true | true | 0.8216 | 0.6759 | both_correct |
-| RP-012 | tp_reclutamiento_parafraseado | RISK | false | true | 0.5542 | 0.2901 | shadow_only |
-| AC-001 | tp_actor_asimetrico | RISK | true | true | 0.9994 | 0.9993 | both_correct |
-| AC-002 | tp_actor_asimetrico | RISK | true | true | 0.9369 | 0.9319 | both_correct |
-| AC-003 | tp_actor_asimetrico | RISK | true | true | 0.6802 | 0.6199 | both_correct |
-| AC-004 | tp_actor_asimetrico | RISK | true | true | 0.9514 | 0.9428 | both_correct |
-| BR-001 | benign_reciproco | BENIGN | false | true | 0.6416 | 0.8664 | lexical_only |
-| BR-002 | benign_reciproco | BENIGN | false | false | 0.1698 | 0.1785 | both_correct |
-| BR-003 | benign_reciproco | BENIGN | true | true | 0.5049 | 0.8451 | both_wrong |
-| BR-004 | benign_reciproco | BENIGN | false | false | 0.3325 | 0.5635 | both_correct |
-| VOICE-001 | voice_transcript_cases | RISK | true | true | 0.9966 | 0.997 | both_correct |
-| VOICE-002 | voice_transcript_cases | RISK | true | true | 0.989 | 0.9862 | both_correct |
-| VOICE-003 | voice_transcript_cases | RISK | true | true | 0.9734 | 0.9718 | both_correct |
-| VOICE-004 | voice_transcript_cases | RISK | true | true | 0.9759 | 0.9783 | both_correct |
-| VOICE-005 | voice_transcript_cases | BENIGN | false | false | 0.0797 | 0.0708 | both_correct |
-| VOICE-006 | voice_transcript_cases | BENIGN | false | false | 0.4587 | 0.608 | both_correct |
-| VOICE-007 | voice_transcript_cases | BENIGN | false | false | 0.0794 | 0.0994 | both_correct |
-| VOICE-008 | voice_transcript_cases | BENIGN | false | false | 0.4506 | 0.8047 | both_correct |
+| Caso | Grupo | Revisado | Etiqueta | Léxico | Sombra full-fit | Prob. full-fit | Sombra OOF agrupada | Prob. OOF agrupada | Comparación |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---|
+| TP-001 | tp_reclutamiento_directo | true | RISK | true | true | 0.9872 | true | 0.9946 | both_correct |
+| TP-002 | tp_reclutamiento_directo | true | RISK | true | true | 0.8183 | true | 0.8991 | both_correct |
+| TP-003 | tp_reclutamiento_directo | true | RISK | true | true | 0.9673 | true | 0.9479 | both_correct |
+| TP-004 | tp_reclutamiento_directo | true | RISK | true | true | 0.9992 | true | 0.9976 | both_correct |
+| TP-005 | tp_reclutamiento_directo | true | RISK | true | true | 0.9505 | true | 0.9937 | both_correct |
+| TP-006 | tp_reclutamiento_directo | true | RISK | true | true | 0.9977 | true | 0.998 | both_correct |
+| TP-007 | tp_ofuscado | true | RISK | true | true | 0.906 | true | 0.7828 | both_correct |
+| TP-008 | tp_ofuscado | true | RISK | true | true | 0.994 | true | 0.9888 | both_correct |
+| TP-009 | tp_ofuscado | true | RISK | true | true | 0.887 | true | 0.7189 | both_correct |
+| TP-010 | tp_ofuscado | true | RISK | true | true | 0.9512 | true | 0.9401 | both_correct |
+| TP-011 | tp_grooming_progresivo | true | RISK | true | true | 0.9986 | true | 0.9972 | both_correct |
+| TP-012 | tp_grooming_progresivo | true | RISK | true | true | 0.9907 | true | 0.9856 | both_correct |
+| TP-013 | tp_grooming_progresivo | true | RISK | true | true | 0.6748 | true | 0.5648 | both_correct |
+| TP-014 | tp_grooming_progresivo | true | RISK | true | true | 0.9807 | true | 0.969 | both_correct |
+| TP-015 | tp_vector_gaming | true | RISK | true | true | 0.9964 | true | 0.9956 | both_correct |
+| TP-016 | tp_vector_gaming | true | RISK | true | true | 0.98 | true | 0.971 | both_correct |
+| TP-017 | tp_vector_gaming | true | RISK | true | true | 0.9884 | true | 0.9855 | both_correct |
+| TP-018 | tp_formalidad_deceptiva | true | RISK | true | true | 0.9894 | true | 0.9757 | both_correct |
+| TP-019 | tp_formalidad_deceptiva | true | RISK | true | true | 0.9654 | true | 0.9393 | both_correct |
+| TP-020 | tp_formalidad_deceptiva | true | RISK | true | true | 0.993 | true | 0.9863 | both_correct |
+| TP-021 | tp_reclutamiento_directo | true | RISK | true | true | 0.8934 | true | 0.9011 | both_correct |
+| TP-022 | tp_grooming_progresivo | true | RISK | true | true | 0.9911 | true | 0.984 | both_correct |
+| TP-023 | tp_ofuscado | true | RISK | true | true | 0.9987 | true | 0.9983 | both_correct |
+| TP-024 | tp_reclutamiento_directo | true | RISK | true | true | 0.9849 | true | 0.9796 | both_correct |
+| BN-001 | benign_cotidiano | true | BENIGN | false | false | 0.1781 | false | 0.2124 | both_correct |
+| BN-002 | benign_cotidiano | true | BENIGN | false | false | 0.1556 | false | 0.2113 | both_correct |
+| BN-003 | benign_cotidiano | true | BENIGN | false | false | 0.3361 | false | 0.401 | both_correct |
+| BN-004 | benign_cotidiano | true | BENIGN | false | false | 0.1124 | false | 0.1376 | both_correct |
+| BN-005 | benign_cotidiano | true | BENIGN | false | false | 0.1282 | false | 0.1433 | both_correct |
+| BN-006 | benign_cotidiano | true | BENIGN | false | false | 0.2977 | false | 0.3347 | both_correct |
+| BN-007 | benign_cotidiano | true | BENIGN | false | false | 0.0609 | false | 0.0649 | both_correct |
+| BN-008 | benign_cotidiano | true | BENIGN | false | false | 0.0834 | false | 0.1022 | both_correct |
+| BN-009 | benign_cotidiano | true | BENIGN | false | false | 0.0522 | false | 0.0613 | both_correct |
+| BN-010 | benign_cotidiano | true | BENIGN | false | false | 0.0883 | false | 0.1507 | both_correct |
+| BN-011 | benign_cotidiano | true | BENIGN | false | false | 0.0461 | false | 0.0519 | both_correct |
+| BN-012 | benign_cotidiano | true | BENIGN | false | false | 0.1122 | false | 0.1775 | both_correct |
+| BT-001 | benign_trampa | true | BENIGN | false | false | 0.0845 | false | 0.1525 | both_correct |
+| BT-002 | benign_trampa | true | BENIGN | false | false | 0.3495 | true | 0.5205 | lexical_only |
+| BT-003 | benign_trampa | true | BENIGN | false | false | 0.072 | false | 0.0698 | both_correct |
+| BT-004 | benign_trampa | true | BENIGN | false | false | 0.0687 | false | 0.0454 | both_correct |
+| BT-005 | benign_trampa | true | BENIGN | false | false | 0.0826 | false | 0.1448 | both_correct |
+| BT-006 | benign_trampa | true | BENIGN | false | false | 0.0594 | false | 0.0602 | both_correct |
+| BT-007 | benign_trampa | true | BENIGN | false | false | 0.0793 | false | 0.1396 | both_correct |
+| BT-008 | benign_trampa | true | BENIGN | false | false | 0.1519 | false | 0.2244 | both_correct |
+| BT-009 | benign_trampa | true | BENIGN | false | false | 0.1046 | false | 0.1032 | both_correct |
+| BT-010 | benign_trampa | true | BENIGN | false | false | 0.1091 | false | 0.0977 | both_correct |
+| BT-011 | benign_trampa | true | BENIGN | false | false | 0.0401 | false | 0.0567 | both_correct |
+| BT-012 | benign_trampa | true | BENIGN | false | false | 0.1072 | false | 0.1919 | both_correct |
+| BT-013 | benign_trampa | true | BENIGN | false | false | 0.1077 | false | 0.1425 | both_correct |
+| BT-014 | benign_trampa | true | BENIGN | false | false | 0.4924 | true | 0.6633 | lexical_only |
+| BT-015 | benign_trampa | true | BENIGN | false | false | 0.155 | false | 0.1612 | both_correct |
+| BT-016 | benign_trampa | true | BENIGN | false | false | 0.1308 | false | 0.2071 | both_correct |
+| TL-001 | tp_grooming_lento | true | RISK | true | true | 0.9244 | true | 0.6952 | both_correct |
+| TL-002 | tp_grooming_lento | true | RISK | true | true | 0.9526 | true | 0.9054 | both_correct |
+| TL-003 | tp_grooming_lento | true | RISK | true | true | 0.5703 | true | 0.5227 | both_correct |
+| BL-001 | benign_amistad_larga | true | BENIGN | false | false | 0.1945 | false | 0.2376 | both_correct |
+| BL-002 | benign_amistad_larga | true | BENIGN | false | false | 0.1451 | false | 0.1984 | both_correct |
+| NC-001 | benign_narcocultura | true | BENIGN | false | false | 0.079 | false | 0.0959 | both_correct |
+| NC-002 | benign_narcocultura | true | BENIGN | false | false | 0.035 | false | 0.0498 | both_correct |
+| NC-003 | benign_narcocultura | true | BENIGN | false | false | 0.3845 | false | 0.3957 | both_correct |
+| NC-004 | benign_narcocultura | true | BENIGN | false | false | 0.1104 | false | 0.1328 | both_correct |
+| NC-005 | benign_narcocultura | true | BENIGN | false | false | 0.0529 | false | 0.0699 | both_correct |
+| NC-006 | benign_narcocultura | true | BENIGN | false | false | 0.063 | false | 0.0763 | both_correct |
+| NC-007 | benign_narcocultura | true | BENIGN | false | false | 0.1681 | false | 0.2273 | both_correct |
+| NC-008 | benign_narcocultura | true | BENIGN | true | false | 0.0451 | false | 0.0502 | shadow_only |
+| NC-009 | benign_narcocultura | true | BENIGN | false | false | 0.0639 | false | 0.0914 | both_correct |
+| NC-010 | benign_narcocultura | true | BENIGN | false | false | 0.1065 | false | 0.1363 | both_correct |
+| NC-011 | benign_narcocultura | true | BENIGN | false | false | 0.0137 | false | 0.0197 | both_correct |
+| NC-012 | benign_narcocultura | true | BENIGN | false | false | 0.1271 | false | 0.1597 | both_correct |
+| JJ-001 | benign_jerga_juvenil | true | BENIGN | false | false | 0.0743 | false | 0.0622 | both_correct |
+| JJ-002 | benign_jerga_juvenil | true | BENIGN | false | false | 0.0524 | false | 0.0529 | both_correct |
+| JJ-003 | benign_jerga_juvenil | true | BENIGN | false | false | 0.2162 | false | 0.1365 | both_correct |
+| JJ-004 | benign_jerga_juvenil | true | BENIGN | true | false | 0.2828 | false | 0.398 | shadow_only |
+| JJ-005 | benign_jerga_juvenil | true | BENIGN | false | false | 0.1044 | false | 0.1009 | both_correct |
+| JJ-006 | benign_jerga_juvenil | true | BENIGN | false | false | 0.0718 | false | 0.0693 | both_correct |
+| JJ-007 | benign_jerga_juvenil | true | BENIGN | false | false | 0.2895 | false | 0.1548 | both_correct |
+| JJ-008 | benign_jerga_juvenil | true | BENIGN | false | false | 0.1301 | false | 0.0911 | both_correct |
+| JJ-009 | benign_jerga_juvenil | true | BENIGN | false | false | 0.2349 | false | 0.1597 | both_correct |
+| JJ-010 | benign_jerga_juvenil | true | BENIGN | false | false | 0.2547 | false | 0.1472 | both_correct |
+| BT-017 | benign_trampa | true | BENIGN | false | true | 0.5773 | true | 0.664 | lexical_only |
+| BT-018 | benign_trampa | true | BENIGN | false | false | 0.068 | false | 0.0447 | both_correct |
+| BT-019 | benign_trampa | true | BENIGN | false | false | 0.418 | false | 0.4493 | both_correct |
+| BT-020 | benign_trampa | true | BENIGN | false | false | 0.1003 | false | 0.1766 | both_correct |
+| BT-021 | benign_trampa | true | BENIGN | false | false | 0.0336 | false | 0.0315 | both_correct |
+| BT-022 | benign_trampa | true | BENIGN | false | false | 0.3443 | false | 0.3785 | both_correct |
+| BT-023 | benign_trampa | true | BENIGN | false | false | 0.1651 | false | 0.1833 | both_correct |
+| BT-024 | benign_trampa | true | BENIGN | false | false | 0.0481 | false | 0.0517 | both_correct |
+| BT-025 | benign_trampa | true | BENIGN | false | false | 0.2251 | false | 0.1773 | both_correct |
+| BT-026 | benign_trampa | true | BENIGN | false | false | 0.1456 | false | 0.1483 | both_correct |
+| BN-013 | benign_cotidiano | true | BENIGN | false | false | 0.287 | false | 0.363 | both_correct |
+| BN-014 | benign_cotidiano | true | BENIGN | false | false | 0.205 | false | 0.3227 | both_correct |
+| BN-015 | benign_cotidiano | true | BENIGN | false | false | 0.2871 | false | 0.3227 | both_correct |
+| BN-016 | benign_cotidiano | true | BENIGN | false | false | 0.1019 | false | 0.1272 | both_correct |
+| BN-017 | benign_cotidiano | true | BENIGN | true | true | 0.6714 | true | 0.9478 | both_wrong |
+| BN-018 | benign_cotidiano | true | BENIGN | false | false | 0.0959 | false | 0.107 | both_correct |
+| BN-019 | benign_cotidiano | true | BENIGN | false | false | 0.1041 | false | 0.114 | both_correct |
+| BN-020 | benign_cotidiano | true | BENIGN | false | false | 0.0956 | false | 0.125 | both_correct |
+| BL-003 | benign_amistad_larga | true | BENIGN | false | true | 0.5894 | true | 0.7384 | lexical_only |
+| BL-004 | benign_amistad_larga | true | BENIGN | false | false | 0.3062 | false | 0.2529 | both_correct |
+| BL-005 | benign_amistad_larga | true | BENIGN | false | false | 0.0975 | false | 0.0782 | both_correct |
+| BL-006 | benign_amistad_larga | true | BENIGN | false | false | 0.2187 | false | 0.3171 | both_correct |
+| ED-001 | tp_extorsion_deuda | true | RISK | true | true | 0.9707 | true | 0.947 | both_correct |
+| ED-002 | tp_extorsion_deuda | true | RISK | true | true | 0.961 | true | 0.9459 | both_correct |
+| ED-003 | tp_extorsion_deuda | true | RISK | true | true | 0.6894 | true | 0.577 | both_correct |
+| ED-004 | tp_extorsion_deuda | true | RISK | true | true | 0.963 | true | 0.9473 | both_correct |
+| ED-005 | tp_extorsion_deuda | true | RISK | false | true | 0.572 | true | 0.528 | shadow_only |
+| ED-006 | tp_extorsion_deuda | true | RISK | true | true | 0.8891 | true | 0.8705 | both_correct |
+| ED-007 | tp_extorsion_deuda | true | RISK | true | true | 0.8177 | true | 0.7277 | both_correct |
+| ED-008 | tp_extorsion_deuda | true | RISK | true | true | 0.9574 | true | 0.9305 | both_correct |
+| NP-001 | tp_narcocultura_puente | true | RISK | true | true | 0.8327 | true | 0.7052 | both_correct |
+| NP-002 | tp_narcocultura_puente | true | RISK | true | true | 0.5203 | false | 0.4244 | lexical_only |
+| NP-003 | tp_narcocultura_puente | true | RISK | false | true | 0.6858 | true | 0.5334 | shadow_only |
+| NP-004 | tp_narcocultura_puente | true | RISK | true | true | 0.84 | true | 0.8004 | both_correct |
+| NP-005 | tp_narcocultura_puente | true | RISK | true | true | 0.9443 | true | 0.9261 | both_correct |
+| NP-006 | tp_narcocultura_puente | true | RISK | true | false | 0.2289 | false | 0.1362 | lexical_only |
+| RP-001 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.9375 | true | 0.6961 | shadow_only |
+| RP-002 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.7894 | false | 0.3737 | both_wrong |
+| RP-003 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.9758 | true | 0.675 | shadow_only |
+| RP-004 | tp_reclutamiento_parafraseado | true | RISK | false | false | 0.4579 | false | 0.2119 | both_wrong |
+| RP-005 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.7898 | false | 0.3551 | both_wrong |
+| RP-006 | tp_reclutamiento_parafraseado | true | RISK | false | false | 0.1474 | false | 0.1259 | both_wrong |
+| RP-007 | tp_reclutamiento_parafraseado | true | RISK | true | true | 0.9277 | true | 0.6819 | both_correct |
+| RP-008 | tp_reclutamiento_parafraseado | true | RISK | true | true | 0.8907 | true | 0.7763 | both_correct |
+| RP-009 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.8796 | true | 0.6461 | shadow_only |
+| RP-010 | tp_reclutamiento_parafraseado | true | RISK | true | true | 0.5495 | false | 0.3978 | lexical_only |
+| RP-011 | tp_reclutamiento_parafraseado | true | RISK | true | true | 0.9868 | true | 0.672 | both_correct |
+| RP-012 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.697 | false | 0.2998 | both_wrong |
+| AC-001 | tp_actor_asimetrico | true | RISK | true | true | 0.9998 | true | 0.9997 | both_correct |
+| AC-002 | tp_actor_asimetrico | true | RISK | true | true | 0.981 | true | 0.9798 | both_correct |
+| AC-003 | tp_actor_asimetrico | true | RISK | true | true | 0.5982 | true | 0.5365 | both_correct |
+| AC-004 | tp_actor_asimetrico | true | RISK | true | true | 0.9908 | true | 0.9888 | both_correct |
+| BR-001 | benign_reciproco | true | BENIGN | false | true | 0.7463 | true | 0.9519 | lexical_only |
+| BR-002 | benign_reciproco | true | BENIGN | false | false | 0.1425 | false | 0.1479 | both_correct |
+| BR-003 | benign_reciproco | true | BENIGN | true | false | 0.3395 | true | 0.7553 | both_wrong |
+| BR-004 | benign_reciproco | true | BENIGN | false | false | 0.2297 | false | 0.3388 | both_correct |
+| VOICE-001 | voice_transcript_cases | true | RISK | true | true | 0.9957 | true | 0.9985 | both_correct |
+| VOICE-002 | voice_transcript_cases | true | RISK | true | true | 0.9879 | true | 0.991 | both_correct |
+| VOICE-003 | voice_transcript_cases | true | RISK | true | true | 0.9926 | true | 0.992 | both_correct |
+| VOICE-004 | voice_transcript_cases | true | RISK | true | true | 0.9896 | true | 0.9962 | both_correct |
+| VOICE-005 | voice_transcript_cases | true | BENIGN | false | false | 0.0765 | false | 0.0597 | both_correct |
+| VOICE-006 | voice_transcript_cases | true | BENIGN | false | true | 0.6638 | true | 0.8939 | lexical_only |
+| VOICE-007 | voice_transcript_cases | true | BENIGN | false | false | 0.0571 | false | 0.0608 | both_correct |
+| VOICE-008 | voice_transcript_cases | true | BENIGN | false | false | 0.4544 | true | 0.8171 | lexical_only |
+| RP-013 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.9836 | false | 0.4957 | both_wrong |
+| RP-014 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.9681 | false | 0.314 | both_wrong |
+| RP-015 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.951 | false | 0.2725 | both_wrong |
+| RP-016 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.4163 | N/A | N/A | pending_review |
+| RP-017 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.5368 | false | 0.1609 | both_wrong |
+| RP-018 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.8511 | false | 0.138 | both_wrong |
+| RP-019 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.9002 | false | 0.1357 | both_wrong |
+| RP-020 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.3856 | N/A | N/A | pending_review |
+| RP-021 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.7386 | false | 0.0757 | both_wrong |
+| RP-022 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.9096 | false | 0.3061 | both_wrong |
+| RP-023 | tp_reclutamiento_parafraseado | true | RISK | false | false | 0.4683 | false | 0.0989 | both_wrong |
+| RP-024 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.4715 | N/A | N/A | pending_review |
+| RP-025 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.4401 | N/A | N/A | pending_review |
+| RP-026 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.2201 | N/A | N/A | pending_review |
+| RP-027 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.7346 | false | 0.2363 | both_wrong |
+| RP-028 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.7773 | false | 0.2168 | both_wrong |
+| RP-029 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.8904 | false | 0.3246 | both_wrong |
+| RP-030 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.8714 | false | 0.4999 | both_wrong |
+| RP-031 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.5392 | false | 0.105 | both_wrong |
+| RP-032 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.181 | N/A | N/A | pending_review |
+| RP-033 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.8058 | false | 0.1586 | both_wrong |
+| RP-034 | tp_reclutamiento_parafraseado | false | RISK | false | true | 0.7053 | N/A | N/A | pending_review |
+| RP-035 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.8627 | false | 0.2827 | both_wrong |
+| RP-036 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.0916 | N/A | N/A | pending_review |
+| RP-037 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.8879 | false | 0.1776 | both_wrong |
+| RP-038 | tp_reclutamiento_parafraseado | false | RISK | false | true | 0.7086 | N/A | N/A | pending_review |
+| RP-039 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.1397 | N/A | N/A | pending_review |
+| RP-040 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.943 | false | 0.2429 | both_wrong |
+| RP-041 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.7732 | false | 0.2595 | both_wrong |
+| RP-042 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.3484 | N/A | N/A | pending_review |
+| RP-043 | tp_reclutamiento_parafraseado | false | RISK | false | true | 0.5754 | N/A | N/A | pending_review |
+| RP-044 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.8428 | false | 0.1174 | both_wrong |
+| RP-045 | tp_reclutamiento_parafraseado | false | RISK | false | true | 0.5363 | N/A | N/A | pending_review |
+| RP-046 | tp_reclutamiento_parafraseado | false | RISK | false | true | 0.7041 | N/A | N/A | pending_review |
+| RP-047 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.9099 | false | 0.3306 | both_wrong |
+| RP-048 | tp_reclutamiento_parafraseado | false | RISK | true | true | 0.666 | N/A | N/A | pending_review |
+| RP-049 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.1209 | N/A | N/A | pending_review |
+| RP-050 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.5578 | false | 0.1139 | both_wrong |
+| RP-051 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.3492 | N/A | N/A | pending_review |
+| RP-052 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.4587 | N/A | N/A | pending_review |
+| RP-053 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.7713 | false | 0.258 | both_wrong |
+| RP-054 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.0619 | N/A | N/A | pending_review |
+| RP-055 | tp_reclutamiento_parafraseado | false | RISK | false | false | 0.3741 | N/A | N/A | pending_review |
+| RP-056 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.5598 | false | 0.1146 | both_wrong |
+| RP-057 | tp_reclutamiento_parafraseado | true | RISK | false | true | 0.7992 | false | 0.0603 | both_wrong |
+| TP-025 | tp_reclutamiento_directo | false | RISK | true | true | 0.9463 | N/A | N/A | pending_review |
+| TP-026 | tp_reclutamiento_directo | false | RISK | true | true | 0.8452 | N/A | N/A | pending_review |
+| TP-027 | tp_reclutamiento_directo | false | RISK | true | true | 0.7788 | N/A | N/A | pending_review |
+| TP-028 | tp_reclutamiento_directo | false | RISK | false | true | 0.8807 | N/A | N/A | pending_review |
+| TP-029 | tp_reclutamiento_directo | false | RISK | true | true | 0.9032 | N/A | N/A | pending_review |
+| TP-030 | tp_reclutamiento_directo | false | RISK | false | true | 0.9321 | N/A | N/A | pending_review |
+| TP-031 | tp_reclutamiento_directo | false | RISK | false | true | 0.5047 | N/A | N/A | pending_review |
+| TP-032 | tp_reclutamiento_directo | false | RISK | true | true | 0.9531 | N/A | N/A | pending_review |
+| TP-033 | tp_reclutamiento_directo | false | RISK | false | true | 0.8078 | N/A | N/A | pending_review |
+| TP-034 | tp_reclutamiento_directo | false | RISK | true | true | 0.7596 | N/A | N/A | pending_review |
+| TP-035 | tp_ofuscado | false | RISK | true | true | 0.6356 | N/A | N/A | pending_review |
+| TP-036 | tp_ofuscado | false | RISK | true | true | 0.988 | N/A | N/A | pending_review |
+| TP-037 | tp_ofuscado | false | RISK | true | true | 0.7083 | N/A | N/A | pending_review |
+| TP-038 | tp_ofuscado | false | RISK | false | false | 0.1025 | N/A | N/A | pending_review |
+| TP-039 | tp_ofuscado | false | RISK | true | true | 0.7306 | N/A | N/A | pending_review |
+| TP-040 | tp_grooming_progresivo | false | RISK | false | false | 0.2199 | N/A | N/A | pending_review |
+| TP-041 | tp_grooming_progresivo | false | RISK | true | true | 0.9927 | N/A | N/A | pending_review |
+| TP-042 | tp_grooming_progresivo | false | RISK | false | true | 0.7779 | N/A | N/A | pending_review |
+| TP-043 | tp_grooming_progresivo | false | RISK | false | true | 0.7763 | N/A | N/A | pending_review |
+| TP-044 | tp_grooming_progresivo | false | RISK | false | false | 0.3234 | N/A | N/A | pending_review |
+| TP-045 | tp_grooming_progresivo | false | RISK | false | true | 0.7491 | N/A | N/A | pending_review |
+| TP-046 | tp_grooming_progresivo | false | RISK | false | true | 0.6836 | N/A | N/A | pending_review |
+| TP-047 | tp_grooming_progresivo | false | RISK | false | true | 0.5999 | N/A | N/A | pending_review |
+| TP-048 | tp_vector_gaming | false | RISK | false | true | 0.9614 | N/A | N/A | pending_review |
+| TP-049 | tp_vector_gaming | false | RISK | false | true | 0.6388 | N/A | N/A | pending_review |
+| TP-050 | tp_vector_gaming | false | RISK | false | false | 0.3582 | N/A | N/A | pending_review |
+| TP-051 | tp_vector_gaming | false | RISK | false | false | 0.4737 | N/A | N/A | pending_review |
+| TP-052 | tp_vector_gaming | false | RISK | false | false | 0.3547 | N/A | N/A | pending_review |
+| TP-053 | tp_formalidad_deceptiva | false | RISK | true | false | 0.3698 | N/A | N/A | pending_review |
+| TP-054 | tp_formalidad_deceptiva | false | RISK | false | false | 0.4927 | N/A | N/A | pending_review |
+| TP-055 | tp_formalidad_deceptiva | false | RISK | false | false | 0.1197 | N/A | N/A | pending_review |
+| TP-056 | tp_formalidad_deceptiva | false | RISK | false | true | 0.7156 | N/A | N/A | pending_review |
+| ED-009 | tp_extorsion_deuda | false | RISK | false | true | 0.8628 | N/A | N/A | pending_review |
+| ED-010 | tp_extorsion_deuda | false | RISK | false | true | 0.9375 | N/A | N/A | pending_review |
+| ED-011 | tp_extorsion_deuda | false | RISK | false | false | 0.445 | N/A | N/A | pending_review |
+| ED-012 | tp_extorsion_deuda | false | RISK | false | true | 0.8932 | N/A | N/A | pending_review |
+| ED-013 | tp_extorsion_deuda | false | RISK | false | true | 0.517 | N/A | N/A | pending_review |
+| NP-007 | tp_narcocultura_puente | false | RISK | false | false | 0.0817 | N/A | N/A | pending_review |
+| NP-008 | tp_narcocultura_puente | false | RISK | true | true | 0.7945 | N/A | N/A | pending_review |
+| NP-009 | tp_narcocultura_puente | false | RISK | false | false | 0.2546 | N/A | N/A | pending_review |
+| AC-005 | tp_actor_asimetrico | false | RISK | false | true | 0.5333 | N/A | N/A | pending_review |
+| AC-006 | tp_actor_asimetrico | true | RISK | true | true | 0.9626 | true | 0.9572 | both_correct |
+| AC-007 | tp_actor_asimetrico | false | RISK | false | false | 0.1736 | N/A | N/A | pending_review |
+| VOICE-009 | voice_transcript_cases | false | RISK | true | true | 0.9112 | N/A | N/A | pending_review |
+| VOICE-010 | voice_transcript_cases | false | RISK | false | true | 0.6197 | N/A | N/A | pending_review |
+| BT-027 | benign_trampa | false | BENIGN | false | false | 0.0829 | N/A | N/A | pending_review |
+| BT-028 | benign_trampa | false | BENIGN | false | false | 0.0416 | N/A | N/A | pending_review |
+| BT-029 | benign_trampa | false | BENIGN | false | false | 0.2566 | N/A | N/A | pending_review |
+| BT-030 | benign_trampa | false | BENIGN | false | false | 0.1728 | N/A | N/A | pending_review |
+| BT-031 | benign_trampa | false | BENIGN | false | false | 0.2292 | N/A | N/A | pending_review |
+| BT-032 | benign_trampa | false | BENIGN | false | false | 0.1986 | N/A | N/A | pending_review |
+| BT-033 | benign_trampa | false | BENIGN | false | false | 0.1048 | N/A | N/A | pending_review |
+| BT-034 | benign_trampa | false | BENIGN | false | false | 0.0876 | N/A | N/A | pending_review |
+| BT-035 | benign_trampa | false | BENIGN | false | false | 0.1238 | N/A | N/A | pending_review |
+| BT-036 | benign_trampa | false | BENIGN | false | false | 0.1234 | N/A | N/A | pending_review |
+| BT-037 | benign_trampa | false | BENIGN | false | false | 0.0747 | N/A | N/A | pending_review |
+| BT-038 | benign_trampa | false | BENIGN | false | false | 0.3706 | N/A | N/A | pending_review |
+| BT-039 | benign_trampa | false | BENIGN | false | true | 0.8272 | N/A | N/A | pending_review |
+| BT-040 | benign_trampa | false | BENIGN | false | false | 0.2423 | N/A | N/A | pending_review |
+| BT-041 | benign_trampa | false | BENIGN | false | false | 0.2353 | N/A | N/A | pending_review |
+| BT-042 | benign_trampa | false | BENIGN | false | false | 0.1238 | N/A | N/A | pending_review |
+| BT-043 | benign_trampa | false | BENIGN | false | false | 0.0627 | N/A | N/A | pending_review |
+| BT-044 | benign_trampa | false | BENIGN | false | false | 0.1221 | N/A | N/A | pending_review |
+| BT-045 | benign_trampa | false | BENIGN | false | false | 0.0842 | N/A | N/A | pending_review |
+| BT-046 | benign_trampa | true | BENIGN | false | false | 0.2525 | false | 0.2854 | both_correct |
+| BT-047 | benign_trampa | false | BENIGN | false | false | 0.1242 | N/A | N/A | pending_review |
+| BT-048 | benign_trampa | false | BENIGN | false | false | 0.0358 | N/A | N/A | pending_review |
+| BT-049 | benign_trampa | false | BENIGN | false | false | 0.0628 | N/A | N/A | pending_review |
+| BT-050 | benign_trampa | true | BENIGN | false | false | 0.1511 | false | 0.1877 | both_correct |
+| BT-051 | benign_trampa | false | BENIGN | false | false | 0.1234 | N/A | N/A | pending_review |
+| BT-052 | benign_trampa | false | BENIGN | false | false | 0.2157 | N/A | N/A | pending_review |
+| BT-053 | benign_trampa | false | BENIGN | false | false | 0.1223 | N/A | N/A | pending_review |
+| BT-054 | benign_trampa | false | BENIGN | false | false | 0.1361 | N/A | N/A | pending_review |
+| BT-055 | benign_trampa | false | BENIGN | false | false | 0.2 | N/A | N/A | pending_review |
+| BT-056 | benign_trampa | false | BENIGN | false | false | 0.2305 | N/A | N/A | pending_review |
+| BT-057 | benign_trampa | false | BENIGN | false | false | 0.1361 | N/A | N/A | pending_review |
+| BT-058 | benign_trampa | false | BENIGN | true | false | 0.2584 | N/A | N/A | pending_review |
+| BT-059 | benign_trampa | false | BENIGN | false | false | 0.1248 | N/A | N/A | pending_review |
+| BT-060 | benign_trampa | false | BENIGN | false | false | 0.3594 | N/A | N/A | pending_review |
+| BT-061 | benign_trampa | true | BENIGN | false | false | 0.0641 | false | 0.0649 | both_correct |
+| BT-062 | benign_trampa | false | BENIGN | false | false | 0.1219 | N/A | N/A | pending_review |
+| BT-063 | benign_trampa | false | BENIGN | false | false | 0.0627 | N/A | N/A | pending_review |
+| BT-064 | benign_trampa | false | BENIGN | false | false | 0.1231 | N/A | N/A | pending_review |
+| BT-065 | benign_trampa | false | BENIGN | false | false | 0.124 | N/A | N/A | pending_review |
+| BT-066 | benign_trampa | false | BENIGN | false | false | 0.1602 | N/A | N/A | pending_review |
+| BT-067 | benign_trampa | false | BENIGN | false | false | 0.1217 | N/A | N/A | pending_review |
+| BT-068 | benign_trampa | true | BENIGN | false | false | 0.1261 | false | 0.1608 | both_correct |
+| BT-069 | benign_trampa | false | BENIGN | false | false | 0.1219 | N/A | N/A | pending_review |
+| BT-070 | benign_trampa | false | BENIGN | false | false | 0.1593 | N/A | N/A | pending_review |
+| BT-071 | benign_trampa | false | BENIGN | false | false | 0.1251 | N/A | N/A | pending_review |
+| BT-072 | benign_trampa | false | BENIGN | false | false | 0.2473 | N/A | N/A | pending_review |
+| BT-073 | benign_trampa | false | BENIGN | false | false | 0.0131 | N/A | N/A | pending_review |
+| BT-074 | benign_trampa | true | BENIGN | false | false | 0.0967 | false | 0.1705 | both_correct |
+| BT-075 | benign_trampa | false | BENIGN | false | false | 0.1223 | N/A | N/A | pending_review |
+| BT-076 | benign_trampa | false | BENIGN | false | false | 0.121 | N/A | N/A | pending_review |
+| BT-077 | benign_trampa | false | BENIGN | false | false | 0.1238 | N/A | N/A | pending_review |
+| BT-078 | benign_trampa | false | BENIGN | false | false | 0.1231 | N/A | N/A | pending_review |
+| BT-079 | benign_trampa | true | BENIGN | false | false | 0.1389 | false | 0.181 | both_correct |
+| BT-080 | benign_trampa | false | BENIGN | false | false | 0.1472 | N/A | N/A | pending_review |
+| BT-081 | benign_trampa | false | BENIGN | false | false | 0.1205 | N/A | N/A | pending_review |
+| BT-082 | benign_trampa | false | BENIGN | false | false | 0.1257 | N/A | N/A | pending_review |
+| BT-083 | benign_trampa | false | BENIGN | false | false | 0.1229 | N/A | N/A | pending_review |
+| BT-084 | benign_trampa | false | BENIGN | false | false | 0.2292 | N/A | N/A | pending_review |
+| BT-085 | benign_trampa | false | BENIGN | false | true | 0.5594 | N/A | N/A | pending_review |
+| BT-086 | benign_trampa | false | BENIGN | false | false | 0.1321 | N/A | N/A | pending_review |
+| BT-087 | benign_trampa | true | BENIGN | false | false | 0.062 | false | 0.0628 | both_correct |
+| BT-088 | benign_trampa | false | BENIGN | false | false | 0.2175 | N/A | N/A | pending_review |
+| BT-089 | benign_trampa | false | BENIGN | false | false | 0.0812 | N/A | N/A | pending_review |
+| BT-090 | benign_trampa | false | BENIGN | false | false | 0.2726 | N/A | N/A | pending_review |
+| BT-091 | benign_trampa | true | BENIGN | false | false | 0.0601 | false | 0.0609 | both_correct |
+| BN-021 | benign_cotidiano | false | BENIGN | false | false | 0.098 | N/A | N/A | pending_review |
+| BN-022 | benign_cotidiano | false | BENIGN | false | false | 0.2225 | N/A | N/A | pending_review |
+| BN-023 | benign_cotidiano | false | BENIGN | false | false | 0.3622 | N/A | N/A | pending_review |
+| BN-024 | benign_cotidiano | false | BENIGN | false | false | 0.1249 | N/A | N/A | pending_review |
+| BN-025 | benign_cotidiano | false | BENIGN | false | false | 0.0637 | N/A | N/A | pending_review |
+| BN-026 | benign_cotidiano | false | BENIGN | false | false | 0.1365 | N/A | N/A | pending_review |
+| BN-027 | benign_cotidiano | false | BENIGN | false | false | 0.0647 | N/A | N/A | pending_review |
+| BN-028 | benign_cotidiano | false | BENIGN | false | false | 0.1263 | N/A | N/A | pending_review |
+| BN-029 | benign_cotidiano | false | BENIGN | false | false | 0.1251 | N/A | N/A | pending_review |
+| BN-030 | benign_cotidiano | false | BENIGN | false | false | 0.3606 | N/A | N/A | pending_review |
+| BN-031 | benign_cotidiano | false | BENIGN | false | false | 0.0648 | N/A | N/A | pending_review |
+| BN-032 | benign_cotidiano | false | BENIGN | false | false | 0.1249 | N/A | N/A | pending_review |
+| BN-033 | benign_cotidiano | false | BENIGN | false | false | 0.1246 | N/A | N/A | pending_review |
+| BN-034 | benign_cotidiano | false | BENIGN | false | false | 0.1251 | N/A | N/A | pending_review |
+| BN-035 | benign_cotidiano | false | BENIGN | false | false | 0.1249 | N/A | N/A | pending_review |
+| BN-036 | benign_cotidiano | false | BENIGN | false | false | 0.1246 | N/A | N/A | pending_review |
+| BN-037 | benign_cotidiano | false | BENIGN | false | false | 0.1255 | N/A | N/A | pending_review |
+| BN-038 | benign_cotidiano | false | BENIGN | false | false | 0.124 | N/A | N/A | pending_review |
+| BN-039 | benign_cotidiano | false | BENIGN | false | false | 0.3271 | N/A | N/A | pending_review |
+| BN-040 | benign_cotidiano | false | BENIGN | false | false | 0.1236 | N/A | N/A | pending_review |
+| BN-041 | benign_cotidiano | false | BENIGN | false | false | 0.1521 | N/A | N/A | pending_review |
+| BN-042 | benign_cotidiano | false | BENIGN | false | false | 0.1005 | N/A | N/A | pending_review |
+| BN-043 | benign_cotidiano | false | BENIGN | false | false | 0.1248 | N/A | N/A | pending_review |
+| BN-044 | benign_cotidiano | false | BENIGN | false | false | 0.1261 | N/A | N/A | pending_review |
+| BN-045 | benign_cotidiano | false | BENIGN | false | false | 0.124 | N/A | N/A | pending_review |
+| NC-013 | benign_narcocultura | false | BENIGN | false | false | 0.079 | N/A | N/A | pending_review |
+| NC-014 | benign_narcocultura | false | BENIGN | false | false | 0.1229 | N/A | N/A | pending_review |
+| NC-015 | benign_narcocultura | false | BENIGN | false | false | 0.0631 | N/A | N/A | pending_review |
+| NC-016 | benign_narcocultura | false | BENIGN | false | false | 0.1485 | N/A | N/A | pending_review |
+| NC-017 | benign_narcocultura | true | BENIGN | false | false | 0.1502 | false | 0.17 | both_correct |
+| NC-018 | benign_narcocultura | false | BENIGN | false | false | 0.1242 | N/A | N/A | pending_review |
+| NC-019 | benign_narcocultura | true | BENIGN | false | false | 0.0626 | false | 0.0765 | both_correct |
+| NC-020 | benign_narcocultura | false | BENIGN | false | false | 0.1225 | N/A | N/A | pending_review |
+| NC-021 | benign_narcocultura | false | BENIGN | false | false | 0.1347 | N/A | N/A | pending_review |
+| NC-022 | benign_narcocultura | false | BENIGN | false | false | 0.1238 | N/A | N/A | pending_review |
+| NC-023 | benign_narcocultura | true | BENIGN | false | false | 0.2499 | false | 0.3144 | both_correct |
+| NC-024 | benign_narcocultura | true | BENIGN | false | false | 0.1199 | false | 0.1427 | both_correct |
+| NC-025 | benign_narcocultura | false | BENIGN | false | false | 0.0321 | N/A | N/A | pending_review |
+| NC-026 | benign_narcocultura | false | BENIGN | false | false | 0.1234 | N/A | N/A | pending_review |
+| NC-027 | benign_narcocultura | false | BENIGN | false | false | 0.1627 | N/A | N/A | pending_review |
+| JJ-011 | benign_jerga_juvenil | false | BENIGN | false | false | 0.105 | N/A | N/A | pending_review |
+| JJ-012 | benign_jerga_juvenil | false | BENIGN | false | false | 0.3594 | N/A | N/A | pending_review |
+| JJ-013 | benign_jerga_juvenil | true | BENIGN | false | false | 0.0646 | false | 0.0567 | both_correct |
+| JJ-014 | benign_jerga_juvenil | false | BENIGN | false | false | 0.1259 | N/A | N/A | pending_review |
+| JJ-015 | benign_jerga_juvenil | false | BENIGN | false | false | 0.1267 | N/A | N/A | pending_review |
+| JJ-016 | benign_jerga_juvenil | false | BENIGN | false | false | 0.0647 | N/A | N/A | pending_review |
+| JJ-017 | benign_jerga_juvenil | false | BENIGN | true | false | 0.3043 | N/A | N/A | pending_review |
+| JJ-018 | benign_jerga_juvenil | false | BENIGN | false | false | 0.1434 | N/A | N/A | pending_review |
+| JJ-019 | benign_jerga_juvenil | true | BENIGN | false | false | 0.0627 | false | 0.0554 | both_correct |
+| JJ-020 | benign_jerga_juvenil | false | BENIGN | false | false | 0.2747 | N/A | N/A | pending_review |
+| BR-005 | benign_reciproco | true | BENIGN | false | false | 0.2734 | true | 0.6371 | lexical_only |
+| BR-006 | benign_reciproco | false | BENIGN | false | true | 0.7857 | N/A | N/A | pending_review |
+| BR-007 | benign_reciproco | false | BENIGN | false | false | 0.4335 | N/A | N/A | pending_review |
+| BR-008 | benign_reciproco | false | BENIGN | false | false | 0.1096 | N/A | N/A | pending_review |
+| BR-009 | benign_reciproco | true | BENIGN | false | false | 0.166 | false | 0.3679 | both_correct |

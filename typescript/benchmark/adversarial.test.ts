@@ -21,5 +21,5 @@ describe("red-team adversarial", () => {
     for (const t of report.byTransform) {
       expect(t.survivalRate, `evasión '${t.transform}' rompe demasiadas detecciones`).toBeGreaterThanOrEqual(0.6);
     }
-  }, 30000);
+  }, 90000);
 });

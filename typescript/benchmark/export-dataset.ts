@@ -9,6 +9,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { Engine } from "../src/analyzer/engine.js";
+import { injectFullDataset } from "./full-dataset.js";
 import { featurize, FEATURE_NAMES, FEATURE_SCHEMA_VERSION } from "../src/analyzer/featurizer.js";
 import type { Corpus, CorpusCase } from "./runner.js";
 
@@ -25,6 +26,7 @@ export function buildDataset(corpus: Corpus): { schemaVersion: number; names: re
   const rows: DatasetRow[] = [];
   for (const c of corpus.cases as CorpusCase[]) {
     const engine = new Engine();
+    injectFullDataset(engine);
     const messages = c.messages.map((m) => ({
       text: m.text,
       timestamp: BASE + m.offset_s * 1000,

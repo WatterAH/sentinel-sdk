@@ -9,6 +9,7 @@ import { Engine } from "../src/analyzer/engine.js";
 import type { Message } from "../src/types/SentinelEngine.js";
 import corpusJson from "./corpus.json" with { type: "json" };
 import type { Corpus, CorpusCase } from "./runner.js";
+import { injectFullDataset } from "./full-dataset.js";
 
 const BASE = 1_750_000_000_000;
 const WARMUP_RUNS = 2;
@@ -78,6 +79,7 @@ runScaleProbe("sonda manual de escala V3", () => {
       // Sentinel construye y conserva un Engine; recrearlo por conversación
       // mediría GC/JIT de miles de RegExp, no el costo real por analyze().
       const engine = new Engine();
+      injectFullDataset(engine);
       const buildStart = performance.now();
       if (size > 0) engine.injectHotTerms(allSynthetic.slice(0, size));
       const indexBuildMs = performance.now() - buildStart;

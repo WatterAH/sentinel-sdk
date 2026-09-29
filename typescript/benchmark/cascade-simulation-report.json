@@ -1,0 +1,6018 @@
+{
+  "scope": {
+    "rows": 185,
+    "predictionPolicy": "grouped out-of-fold only",
+    "decisionPolicy": "model may add API review for lexical LOW; never local block"
+  },
+  "baseline": {
+    "riskCoverage": 0.5977011494252874,
+    "benignReviewRate": 0.04081632653061224,
+    "apiReviewRate": 0.07567567567567568,
+    "apiCallsPer10000Analyses": 757,
+    "falseBlocks": 0
+  },
+  "candidates": {
+    "structured_v2": {
+      "curve": [
+        {
+          "threshold": 0.5,
+          "riskCoverage": 0.6551724137931034,
+          "benignReviewRate": 0.12244897959183673,
+          "apiReviewRate": 0.14594594594594595,
+          "apiCallsPer10000Analyses": 1459,
+          "additionalReviews": 13,
+          "additionalRiskRecovered": 5,
+          "additionalBenignReviewed": 8,
+          "additionalReviewPrecision": 0.38461538461538464,
+          "paraphraseCoverage": 0.1891891891891892,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.55,
+          "riskCoverage": 0.632183908045977,
+          "benignReviewRate": 0.11224489795918367,
+          "apiReviewRate": 0.12972972972972974,
+          "apiCallsPer10000Analyses": 1297,
+          "additionalReviews": 10,
+          "additionalRiskRecovered": 3,
+          "additionalBenignReviewed": 7,
+          "additionalReviewPrecision": 0.3,
+          "paraphraseCoverage": 0.1891891891891892,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.6,
+          "riskCoverage": 0.632183908045977,
+          "benignReviewRate": 0.11224489795918367,
+          "apiReviewRate": 0.12972972972972974,
+          "apiCallsPer10000Analyses": 1297,
+          "additionalReviews": 10,
+          "additionalRiskRecovered": 3,
+          "additionalBenignReviewed": 7,
+          "additionalReviewPrecision": 0.3,
+          "paraphraseCoverage": 0.1891891891891892,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.65,
+          "riskCoverage": 0.6206896551724138,
+          "benignReviewRate": 0.10204081632653061,
+          "apiReviewRate": 0.11891891891891893,
+          "apiCallsPer10000Analyses": 1189,
+          "additionalReviews": 8,
+          "additionalRiskRecovered": 2,
+          "additionalBenignReviewed": 6,
+          "additionalReviewPrecision": 0.25,
+          "paraphraseCoverage": 0.16216216216216217,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.7,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.08163265306122448,
+          "apiReviewRate": 0.0972972972972973,
+          "apiCallsPer10000Analyses": 973,
+          "additionalReviews": 4,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 4,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.75,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.07142857142857142,
+          "apiReviewRate": 0.0918918918918919,
+          "apiCallsPer10000Analyses": 919,
+          "additionalReviews": 3,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 3,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.8,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.07142857142857142,
+          "apiReviewRate": 0.0918918918918919,
+          "apiCallsPer10000Analyses": 919,
+          "additionalReviews": 3,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 3,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.85,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.061224489795918366,
+          "apiReviewRate": 0.08648648648648649,
+          "apiCallsPer10000Analyses": 865,
+          "additionalReviews": 2,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 2,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.9,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.05102040816326531,
+          "apiReviewRate": 0.08108108108108109,
+          "apiCallsPer10000Analyses": 811,
+          "additionalReviews": 1,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 1,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.95,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.05102040816326531,
+          "apiReviewRate": 0.08108108108108109,
+          "apiCallsPer10000Analyses": 811,
+          "additionalReviews": 1,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 1,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        }
+      ],
+      "researchSelection": {
+        "threshold": 0.9,
+        "riskCoverage": 0.5977011494252874,
+        "benignReviewRate": 0.05102040816326531,
+        "apiReviewRate": 0.08108108108108109,
+        "apiCallsPer10000Analyses": 811,
+        "additionalReviews": 1,
+        "additionalRiskRecovered": 0,
+        "additionalBenignReviewed": 1,
+        "additionalReviewPrecision": 0.0,
+        "paraphraseCoverage": 0.10810810810810811,
+        "falseBlocks": 0,
+        "cases": [
+          {
+            "id": "TP-001",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.994555049660476,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-002",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.8990705747771413,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-003",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.9479463364034367,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-004",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9976055317816294,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-005",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9937445019757547,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-006",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9980178663115099,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-007",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.7915881037943497,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-008",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9892681522793915,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-009",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.7277594628942989,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-010",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9416884392928391,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-011",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9976473065393988,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-012",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9872940878920542,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-013",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5745617392106747,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-014",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9701999186302134,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-015",
+            "group": "tp_vector_gaming",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9958009283116119,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-016",
+            "group": "tp_vector_gaming",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9724576598610332,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-017",
+            "group": "tp_vector_gaming",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9858877502728719,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-018",
+            "group": "tp_formalidad_deceptiva",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9772845789355766,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-019",
+            "group": "tp_formalidad_deceptiva",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9412371217628657,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-020",
+            "group": "tp_formalidad_deceptiva",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9869036964883497,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-021",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9010601903520362,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-022",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9858989429749444,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-023",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9983829469594381,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-024",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.9796273170504005,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BN-001",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.21225290924826756,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-002",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.21464274876574027,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-003",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4041912862439739,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-004",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14008359444348673,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-005",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14513197713230283,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-006",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.33554863820505887,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-007",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06501684627883596,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-008",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.10383124175946265,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-009",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06176165313871476,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-010",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1512411971962869,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-011",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.052212791701801306,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-012",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.17721336533169021,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-001",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.15384450127485333,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-002",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5242236898000909,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-003",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.0694206455515224,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-004",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.04546423082260078,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-005",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1456881986386652,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-006",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06023277834204269,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-007",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14042689614418163,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-008",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.22325502041410245,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-009",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.10421446194759351,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-010",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.09822813851964732,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-011",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.05665468638996203,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-012",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1940359409864071,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-013",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14334618465573865,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-014",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6637470717302936,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-015",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.16253843791396078,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-016",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.20859423235602062,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "TL-001",
+            "group": "tp_grooming_lento",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.6952413490041458,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TL-002",
+            "group": "tp_grooming_lento",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9054042430752526,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TL-003",
+            "group": "tp_grooming_lento",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5227020962100701,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BL-001",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.24083164005766938,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-002",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.20362959710716802,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-001",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.09718955969734949,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-002",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.04917977709084373,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-003",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3974187579371263,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-004",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.13416627184937246,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-005",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.0698587519926364,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-006",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.07650089336416238,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-007",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.22941831833013077,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-008",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.050542169691694644,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NC-009",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.09157164018579377,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-010",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.13612355257795045,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-011",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.019685116632274954,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-012",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.16124120958125657,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-001",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06224825211988091,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-002",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.05289175318853657,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-003",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.13649517579355758,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-004",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.39803907463100324,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "JJ-005",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.10085500831809766,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-006",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06932371764696653,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-007",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.15477267358531474,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-008",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.09109740807551335,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-009",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.15971536605424144,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-010",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14723350785492115,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-017",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.667158287912851,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-018",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.04469962135275285,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-019",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.45126168053549326,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-020",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1782643962094833,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-021",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.03168796107916448,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-022",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3811321716606173,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-023",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1841094676634403,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-024",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.05159947444502671,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-025",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.17819959599073212,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-026",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14874248870028767,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-013",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.36635116545274193,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-014",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.32500167903923505,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-015",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3234419714697009,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-016",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.12938511417557386,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-017",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.945610713135631,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BN-018",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.10815189312745556,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-019",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.11530590013130308,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-020",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.12755609749827684,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-003",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.7413328131828554,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-004",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.2539168447555255,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-005",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.0783805436871655,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-006",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3173884152444957,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "ED-001",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9475988849422473,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-002",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9467536489317228,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-003",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5842919950477443,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-004",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9483576517405167,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-005",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5305505227849552,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "ED-006",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.8720052687071985,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-007",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.7279507427242664,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-008",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9312414413132359,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-001",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.7055130306244551,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-002",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.42687026871223027,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-003",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5313824733950564,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NP-004",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.8112731679218463,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-005",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9273985064911292,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-006",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.1372242363998498,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-001",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6960881697165938,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-002",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.37370316797943676,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-003",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6750215121056532,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-004",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.21194218362176773,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-005",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.355144141952822,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-006",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.12585241254992105,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-007",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.6819456912454623,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-008",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.7762688038100396,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-009",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6461365618671558,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-010",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.39780325416058177,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-011",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.6719590921535821,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-012",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.2998465729361295,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "AC-001",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9997761015005175,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "AC-002",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9801981356222784,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "AC-003",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5417637923689153,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "AC-004",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9891120019729804,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BR-001",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.9512097727743554,
+            "addedModelReview": true,
+            "reachesReview": true
+          },
+          {
+            "id": "BR-002",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.15149501968170562,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BR-003",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.7472903828805172,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BR-004",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3294237562246627,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-001",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9985657459052322,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-002",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9911909700653947,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-003",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.992247920231767,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-004",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9962708925387166,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-005",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.059720457246816856,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-006",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.8936930452148899,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-007",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.060807250594495675,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-008",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.8085775677164457,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-013",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4956719928551158,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-014",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.31400652450596345,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-015",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.27254048533763,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-017",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.16085083856133076,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-018",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.13799506084268953,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-019",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1357354784379829,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-021",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.07566486141391544,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-022",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3061157408811494,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-023",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.0989308247143498,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-027",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.23626848412512164,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-028",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.21680042524307247,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-029",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.32458711966785986,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-030",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4998548105769897,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-031",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1050092845651651,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-033",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1586429179537352,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-035",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.28269674478244017,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-037",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.17761170722575031,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-040",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.24293542870733922,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-041",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.2595443202364876,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-044",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.11743654022448026,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-047",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3305751050290612,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-050",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.11394635285193097,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-053",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.25795144493135885,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-056",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.11460014379719857,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-057",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.060256410864979335,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "AC-006",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9570194633878136,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BT-046",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.2868025133869565,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-050",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.18902942085819172,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-061",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06501977227533595,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-068",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.16186001029038946,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-074",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.17188485664286707,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-079",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.18281415461266465,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-087",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06286866977613959,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-091",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06097981850812622,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-017",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.17216018114198994,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-019",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.0767252070909053,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-023",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3165286417618025,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-024",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14425796340611136,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-013",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.0567054344824365,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-019",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.055387357480367466,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BR-005",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6369312478122509,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BR-009",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3682909279393583,
+            "addedModelReview": false,
+            "reachesReview": false
+          }
+        ]
+      }
+    },
+    "hashed_ngram_2048": {
+      "curve": [
+        {
+          "threshold": 0.5,
+          "riskCoverage": 0.8160919540229885,
+          "benignReviewRate": 0.24489795918367346,
+          "apiReviewRate": 0.2864864864864865,
+          "apiCallsPer10000Analyses": 2865,
+          "additionalReviews": 39,
+          "additionalRiskRecovered": 19,
+          "additionalBenignReviewed": 20,
+          "additionalReviewPrecision": 0.48717948717948717,
+          "paraphraseCoverage": 0.5675675675675675,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.55,
+          "riskCoverage": 0.7241379310344828,
+          "benignReviewRate": 0.11224489795918367,
+          "apiReviewRate": 0.17297297297297298,
+          "apiCallsPer10000Analyses": 1730,
+          "additionalReviews": 18,
+          "additionalRiskRecovered": 11,
+          "additionalBenignReviewed": 7,
+          "additionalReviewPrecision": 0.6111111111111112,
+          "paraphraseCoverage": 0.35135135135135137,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.6,
+          "riskCoverage": 0.6091954022988506,
+          "benignReviewRate": 0.07142857142857142,
+          "apiReviewRate": 0.0972972972972973,
+          "apiCallsPer10000Analyses": 973,
+          "additionalReviews": 4,
+          "additionalRiskRecovered": 1,
+          "additionalBenignReviewed": 3,
+          "additionalReviewPrecision": 0.25,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.65,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.05102040816326531,
+          "apiReviewRate": 0.08108108108108109,
+          "apiCallsPer10000Analyses": 811,
+          "additionalReviews": 1,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 1,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.7,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.04081632653061224,
+          "apiReviewRate": 0.07567567567567568,
+          "apiCallsPer10000Analyses": 757,
+          "additionalReviews": 0,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 0,
+          "additionalReviewPrecision": 1.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.75,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.04081632653061224,
+          "apiReviewRate": 0.07567567567567568,
+          "apiCallsPer10000Analyses": 757,
+          "additionalReviews": 0,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 0,
+          "additionalReviewPrecision": 1.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.8,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.04081632653061224,
+          "apiReviewRate": 0.07567567567567568,
+          "apiCallsPer10000Analyses": 757,
+          "additionalReviews": 0,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 0,
+          "additionalReviewPrecision": 1.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.85,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.04081632653061224,
+          "apiReviewRate": 0.07567567567567568,
+          "apiCallsPer10000Analyses": 757,
+          "additionalReviews": 0,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 0,
+          "additionalReviewPrecision": 1.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.9,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.04081632653061224,
+          "apiReviewRate": 0.07567567567567568,
+          "apiCallsPer10000Analyses": 757,
+          "additionalReviews": 0,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 0,
+          "additionalReviewPrecision": 1.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.95,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.04081632653061224,
+          "apiReviewRate": 0.07567567567567568,
+          "apiCallsPer10000Analyses": 757,
+          "additionalReviews": 0,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 0,
+          "additionalReviewPrecision": 1.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        }
+      ],
+      "researchSelection": {
+        "threshold": 0.7,
+        "riskCoverage": 0.5977011494252874,
+        "benignReviewRate": 0.04081632653061224,
+        "apiReviewRate": 0.07567567567567568,
+        "apiCallsPer10000Analyses": 757,
+        "additionalReviews": 0,
+        "additionalRiskRecovered": 0,
+        "additionalBenignReviewed": 0,
+        "additionalReviewPrecision": 1.0,
+        "paraphraseCoverage": 0.10810810810810811,
+        "falseBlocks": 0,
+        "cases": [
+          {
+            "id": "TP-001",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6738562220050437,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-002",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5562195209246275,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-003",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.4868005350049779,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-004",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5471134152219805,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-005",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.45952023915528717,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-006",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.4982527640660081,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-007",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5390096625486809,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-008",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.44548802022388767,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-009",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.44656597838400347,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-010",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5033272602164751,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-011",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6593014972435899,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-012",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6304187963945922,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-013",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.589067348675054,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-014",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5992000882566029,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-015",
+            "group": "tp_vector_gaming",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6075050255347794,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-016",
+            "group": "tp_vector_gaming",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5465537592079908,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-017",
+            "group": "tp_vector_gaming",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6050320247057879,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-018",
+            "group": "tp_formalidad_deceptiva",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.543420823390085,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-019",
+            "group": "tp_formalidad_deceptiva",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5744761379436665,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-020",
+            "group": "tp_formalidad_deceptiva",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5932755254126107,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-021",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5529914692685736,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-022",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6012562910189543,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-023",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6909232596889102,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-024",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.6112286299347108,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BN-001",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.39363957866233273,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-002",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3215059760649227,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-003",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5448893153386175,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-004",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3364562350558484,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-005",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.339625661334655,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-006",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5823840071248683,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-007",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.36176914852877556,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-008",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.30147312557824263,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-009",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4172217074395748,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-010",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.364043480218358,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-011",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4747966519370271,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-012",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5009395538366925,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-001",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.46623483281955047,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-002",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4933232798828934,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-003",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3915697124713916,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-004",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.38206159234882603,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-005",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.44009089239394356,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-006",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3968827427751167,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-007",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.39576978383109196,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-008",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5822449908786953,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-009",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.48273100174831546,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-010",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4085228479644654,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-011",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4316720130877088,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-012",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.49803478126025535,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-013",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4034684624268406,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-014",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4362006805639224,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-015",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4509915470710423,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-016",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.507780537862328,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "TL-001",
+            "group": "tp_grooming_lento",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.5576119215216745,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TL-002",
+            "group": "tp_grooming_lento",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6309662282847986,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TL-003",
+            "group": "tp_grooming_lento",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5257192856371166,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BL-001",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5184133113733285,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-002",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.44162276982896176,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-001",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4035555853162165,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-002",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.36538209970799523,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-003",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3378739030749231,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-004",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5264899086836965,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-005",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4622964735456796,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-006",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3330906629870026,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-007",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.41923556100416703,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-008",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.3274998866551694,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NC-009",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.36091105676677443,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-010",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3139316492111477,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-011",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4839583025241492,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-012",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4200279771902615,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-001",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.39023801787666557,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-002",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3367729931353424,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-003",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4555094938729597,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-004",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.2811939421836016,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "JJ-005",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.26955307494077124,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-006",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4053657854816212,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-007",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.33827388438529893,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-008",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.40238231040559536,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-009",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.37178178622903635,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-010",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.17842852244306212,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-017",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4025381310205237,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-018",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.28550399544754734,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-019",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4848277277452542,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-020",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.48474136934801404,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-021",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.40725394985456026,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-022",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.38334531986349035,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-023",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.34100057500070524,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-024",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5322753457712168,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-025",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.27382938250269667,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-026",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.44387746921670285,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-013",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5395987781500944,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-014",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.48142096338616364,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-015",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5638799264762938,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-016",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4541881610135102,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-017",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.35801458592480123,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BN-018",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4439167197212697,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-019",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.38959253787434395,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-020",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5097176851868771,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-003",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.46596400112248165,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-004",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4232021528651295,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-005",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.49456953907548157,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-006",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4816060736505891,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "ED-001",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6546176215255922,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-002",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6216202026075065,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-003",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5823790017824733,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-004",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6237725584169196,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-005",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5994002986070073,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "ED-006",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.6218019621937741,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-007",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.4907987556005816,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-008",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5369636559760155,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-001",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.4301113535105145,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-002",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.5389854965251735,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-003",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6316481780519031,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NP-004",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5692647573667434,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-005",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5129443797367681,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-006",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.46613656662148384,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-001",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5620132868669379,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-002",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5039024427847846,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-003",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5550876519176865,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-004",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4578883064714393,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-005",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.41448234552175306,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-006",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5893693437253562,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-007",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.5592683519755989,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-008",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5514587629567391,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-009",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5422471336642262,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-010",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.503854975618618,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-011",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.4745990928929553,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-012",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5709586403016544,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "AC-001",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.7321523287661958,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "AC-002",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.589648533222381,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "AC-003",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5783318089724725,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "AC-004",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6436584616008194,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BR-001",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6483179671015338,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BR-002",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4348422749523928,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BR-003",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.4625343753632282,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BR-004",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4625666126221343,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-001",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6950028563774403,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-002",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6093627850791162,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-003",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5530217514051887,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-004",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6080883857646224,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-005",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3020911287794845,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-006",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6355084972636914,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-007",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.47923212857490877,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-008",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4290849058006411,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-013",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.48737869458833166,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-014",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.515223985832428,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-015",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.33774342412335845,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-017",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5842438264119265,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-018",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.502426279881135,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-019",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4581051315576753,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-021",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.43598604834481963,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-022",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5762605000289344,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-023",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5322962401301273,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-027",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5595022128824357,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-028",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5135835505733134,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-029",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.49666374634807375,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-030",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5930331897215128,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-031",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.37195862963826765,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-033",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4654762686698049,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-035",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4061558845350972,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-037",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4231988205826882,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-040",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5089054205249666,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-041",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5743158918388972,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-044",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4248913220011987,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-047",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.43200837601075476,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-050",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3699875557334656,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-053",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5021931560429049,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-056",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4677090089106473,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-057",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.413983553079615,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "AC-006",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6714624398283534,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BT-046",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.40285981810284255,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-050",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.48386208074636144,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-061",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.46221604231587504,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-068",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5707994480480711,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-074",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4109813299586339,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-079",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5374165492412695,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-087",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.501802614233752,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-091",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5478650775699,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-017",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4372916804697847,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-019",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5013671447552538,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-023",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5119594007511166,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-024",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4530979514572413,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-013",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4310687757413585,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-019",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.39172382227672864,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BR-005",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4877614027644906,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BR-009",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6502542641671999,
+            "addedModelReview": false,
+            "reachesReview": false
+          }
+        ]
+      }
+    },
+    "hybrid_v2_hash2048": {
+      "curve": [
+        {
+          "threshold": 0.5,
+          "riskCoverage": 0.6666666666666666,
+          "benignReviewRate": 0.12244897959183673,
+          "apiReviewRate": 0.15135135135135136,
+          "apiCallsPer10000Analyses": 1514,
+          "additionalReviews": 14,
+          "additionalRiskRecovered": 6,
+          "additionalBenignReviewed": 8,
+          "additionalReviewPrecision": 0.42857142857142855,
+          "paraphraseCoverage": 0.21621621621621623,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.55,
+          "riskCoverage": 0.6551724137931034,
+          "benignReviewRate": 0.11224489795918367,
+          "apiReviewRate": 0.14054054054054055,
+          "apiCallsPer10000Analyses": 1405,
+          "additionalReviews": 12,
+          "additionalRiskRecovered": 5,
+          "additionalBenignReviewed": 7,
+          "additionalReviewPrecision": 0.4166666666666667,
+          "paraphraseCoverage": 0.1891891891891892,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.6,
+          "riskCoverage": 0.6436781609195402,
+          "benignReviewRate": 0.10204081632653061,
+          "apiReviewRate": 0.12972972972972974,
+          "apiCallsPer10000Analyses": 1297,
+          "additionalReviews": 10,
+          "additionalRiskRecovered": 4,
+          "additionalBenignReviewed": 6,
+          "additionalReviewPrecision": 0.4,
+          "paraphraseCoverage": 0.1891891891891892,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.65,
+          "riskCoverage": 0.6206896551724138,
+          "benignReviewRate": 0.08163265306122448,
+          "apiReviewRate": 0.10810810810810811,
+          "apiCallsPer10000Analyses": 1081,
+          "additionalReviews": 6,
+          "additionalRiskRecovered": 2,
+          "additionalBenignReviewed": 4,
+          "additionalReviewPrecision": 0.3333333333333333,
+          "paraphraseCoverage": 0.16216216216216217,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.7,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.08163265306122448,
+          "apiReviewRate": 0.0972972972972973,
+          "apiCallsPer10000Analyses": 973,
+          "additionalReviews": 4,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 4,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.75,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.07142857142857142,
+          "apiReviewRate": 0.0918918918918919,
+          "apiCallsPer10000Analyses": 919,
+          "additionalReviews": 3,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 3,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.8,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.061224489795918366,
+          "apiReviewRate": 0.08648648648648649,
+          "apiCallsPer10000Analyses": 865,
+          "additionalReviews": 2,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 2,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.85,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.061224489795918366,
+          "apiReviewRate": 0.08648648648648649,
+          "apiCallsPer10000Analyses": 865,
+          "additionalReviews": 2,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 2,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.9,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.061224489795918366,
+          "apiReviewRate": 0.08648648648648649,
+          "apiCallsPer10000Analyses": 865,
+          "additionalReviews": 2,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 2,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        },
+        {
+          "threshold": 0.95,
+          "riskCoverage": 0.5977011494252874,
+          "benignReviewRate": 0.05102040816326531,
+          "apiReviewRate": 0.08108108108108109,
+          "apiCallsPer10000Analyses": 811,
+          "additionalReviews": 1,
+          "additionalRiskRecovered": 0,
+          "additionalBenignReviewed": 1,
+          "additionalReviewPrecision": 0.0,
+          "paraphraseCoverage": 0.10810810810810811,
+          "falseBlocks": 0
+        }
+      ],
+      "researchSelection": {
+        "threshold": 0.95,
+        "riskCoverage": 0.5977011494252874,
+        "benignReviewRate": 0.05102040816326531,
+        "apiReviewRate": 0.08108108108108109,
+        "apiCallsPer10000Analyses": 811,
+        "additionalReviews": 1,
+        "additionalRiskRecovered": 0,
+        "additionalBenignReviewed": 1,
+        "additionalReviewPrecision": 0.0,
+        "paraphraseCoverage": 0.10810810810810811,
+        "falseBlocks": 0,
+        "cases": [
+          {
+            "id": "TP-001",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9936298766209012,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-002",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9079011180690467,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-003",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.9398548682578268,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-004",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9967871601888876,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-005",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9913933479701454,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-006",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.997348427266983,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-007",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.8145502403420423,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-008",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9833891471322744,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-009",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.7295205194071169,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-010",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9334473244011062,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-011",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9967290960048603,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-012",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9860863680630931,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-013",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6431404085749048,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-014",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9669057251587002,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-015",
+            "group": "tp_vector_gaming",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9957712471362375,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-016",
+            "group": "tp_vector_gaming",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9693909109696625,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-017",
+            "group": "tp_vector_gaming",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9844719614671518,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-018",
+            "group": "tp_formalidad_deceptiva",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9722947502895516,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-019",
+            "group": "tp_formalidad_deceptiva",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9438027097596764,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-020",
+            "group": "tp_formalidad_deceptiva",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9876744844152093,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-021",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9044334159820105,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-022",
+            "group": "tp_grooming_progresivo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.985482386954754,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-023",
+            "group": "tp_ofuscado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9980078609353897,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TP-024",
+            "group": "tp_reclutamiento_directo",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.9767264228682143,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BN-001",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.18614841186916017,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-002",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1593156122270075,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-003",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4155675899786867,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-004",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1175983487319424,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-005",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.12508728791784235,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-006",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.38667916815355874,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-007",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06187451614753802,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-008",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.08307209947836368,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-009",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.05894516555982486,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-010",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.13510937179568364,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-011",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.05407044334290699,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-012",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.17855674357444692,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-001",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.17999471548132995,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-002",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5424144100329102,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-003",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06977218942054071,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-004",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.053394012166946,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-005",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.16777593749689051,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-006",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.0572412259459962,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-007",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.12609449349096755,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-008",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.2579445366344545,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-009",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.10642805651990811,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-010",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.11906870228889452,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-011",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06497619987839057,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-012",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.2180017798236628,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-013",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.12579651193877792,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-014",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5943996164387674,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-015",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.16886259869614642,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-016",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.2602859883227949,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "TL-001",
+            "group": "tp_grooming_lento",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.6896762790011504,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TL-002",
+            "group": "tp_grooming_lento",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9093647861988746,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "TL-003",
+            "group": "tp_grooming_lento",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5407273369341811,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BL-001",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.24970199423104236,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-002",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.20529852995585163,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-001",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.09938257263605423,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-002",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.04448557083729678,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-003",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.34590216976272065,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-004",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1790951151038264,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-005",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.074674879637886,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-006",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06409827635018149,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-007",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.22025891733146685,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-008",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.04252806319741062,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NC-009",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.08955404676907354,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-010",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.09591332505903426,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-011",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.025726765569828818,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-012",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1685271762672083,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-001",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.0650045993876193,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-002",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.04538387350662618,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-003",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.12162701791433539,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-004",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.31704913638360693,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "JJ-005",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.0828069963284293,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-006",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06863422078918624,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-007",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.12683180808811065,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-008",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.08435259265906316,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-009",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14094299698908658,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-010",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.09905412720976112,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-017",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6404234742578178,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-018",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.045133032454306984,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-019",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.48204249086328255,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-020",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.191356364404986,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-021",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.04530977395665718,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-022",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.36183829565453796,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-023",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1576644222450651,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-024",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.07318346668136465,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-025",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.11739400306795315,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-026",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14163742838854965,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-013",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.39826778756042097,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-014",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3307610892370859,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-015",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.355302453402327,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-016",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.13019047298854788,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-017",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.9138465331252155,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BN-018",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.10895585492517976,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-019",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.10702838432415454,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BN-020",
+            "group": "benign_cotidiano",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14093484129306433,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-003",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.7474084563872807,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-004",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.27334411515257584,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-005",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1114275232717305,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BL-006",
+            "group": "benign_amistad_larga",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.30333306557567763,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "ED-001",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.954220232560797,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-002",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9418378489465675,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-003",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.6198504068863718,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-004",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9527658050749361,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-005",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5684893674156843,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "ED-006",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.8531883479435439,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-007",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.7017699020021463,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "ED-008",
+            "group": "tp_extorsion_deuda",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9301482759055567,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-001",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.7209544104779736,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-002",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.4899621442682822,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-003",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.602042870696862,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NP-004",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.818920551337416,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-005",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9201030208721837,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "NP-006",
+            "group": "tp_narcocultura_puente",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.14636879362819025,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-001",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6800096987788854,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-002",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.34489996158920444,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-003",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6673698914199607,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-004",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.20471894349753608,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-005",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.33311543509668007,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-006",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14763220662283644,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-007",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.6786958032080849,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-008",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.7856395404973276,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-009",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6087212694434357,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-010",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.40137884805146684,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-011",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.6572895442431739,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "RP-012",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.31641013374585086,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "AC-001",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9996847581046951,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "AC-002",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9805119170292386,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "AC-003",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.5779763997173146,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "AC-004",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9901143653945471,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BR-001",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.9507744787769233,
+            "addedModelReview": true,
+            "reachesReview": true
+          },
+          {
+            "id": "BR-002",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1650907333833248,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BR-003",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": true,
+            "lexicalApi": true,
+            "probability": 0.6955183852572787,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BR-004",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3398234039848639,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-001",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9983736316827131,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-002",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9896605697283325,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-003",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9917328050984618,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-004",
+            "group": "voice_transcript_cases",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9959533264718468,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "VOICE-005",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.05140689069008798,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-006",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.9050245951694967,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-007",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06765028256674115,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "VOICE-008",
+            "group": "voice_transcript_cases",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.7830331239916308,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-013",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4534360950395609,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-014",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3137612834366174,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-015",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.2486127786167629,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-017",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1822955004238094,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-018",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.147493603111064,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-019",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.14426627587183224,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-021",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.07809620754871842,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-022",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.34601034693887295,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-023",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.11916361082325815,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-027",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.24147104790403762,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-028",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.24259662886393732,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-029",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3248059196641689,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-030",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.5084120165017028,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-031",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.09466262861086845,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-033",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.16309132578397698,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-035",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.273881056426534,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-037",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1760626762282401,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-040",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.24359493028858614,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-041",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.27613323188040395,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-044",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.11674528912665176,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-047",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.331983189934912,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-050",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.11282400371718045,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-053",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.2601437848928506,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-056",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.11245026190644912,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "RP-057",
+            "group": "tp_reclutamiento_parafraseado",
+            "label": "RISK",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06307308055329094,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "AC-006",
+            "group": "tp_actor_asimetrico",
+            "label": "RISK",
+            "lexicalRisk": true,
+            "lexicalApi": false,
+            "probability": 0.9592723946972688,
+            "addedModelReview": false,
+            "reachesReview": true
+          },
+          {
+            "id": "BT-046",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.2674276925273614,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-050",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.19605723365982747,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-061",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.0700701288068667,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-068",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.18268420290454035,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-074",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1717232193770036,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-079",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.21968037903910081,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-087",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06886759964857309,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BT-091",
+            "group": "benign_trampa",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.08002396584911367,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-017",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.1800212932128863,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-019",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.08713097216821829,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-023",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.3077702430763745,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "NC-024",
+            "group": "benign_narcocultura",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.15275596442353653,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-013",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.06437189182316297,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "JJ-019",
+            "group": "benign_jerga_juvenil",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.057281746735868166,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BR-005",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.6125118733130058,
+            "addedModelReview": false,
+            "reachesReview": false
+          },
+          {
+            "id": "BR-009",
+            "group": "benign_reciproco",
+            "label": "BENIGN",
+            "lexicalRisk": false,
+            "lexicalApi": false,
+            "probability": 0.4183233490240362,
+            "addedModelReview": false,
+            "reachesReview": false
+          }
+        ]
+      }
+    }
+  },
+  "limitations": [
+    "API review is counted as risk coverage opportunity; this simulation does not assume the LLM verdict is correct.",
+    "The 185 review-eligible conversations are not an independent production holdout.",
+    "The +2 percentage-point benign-review budget is a research constraint, not a production threshold."
+  ]
+}

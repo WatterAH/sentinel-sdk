@@ -6,6 +6,7 @@
 
 import { Engine } from "../src/analyzer/engine.js";
 import type { CorpusCase, Corpus } from "./runner.js";
+import { injectFullDataset } from "./full-dataset.js";
 
 const BASE = 1_750_000_000_000;
 
@@ -105,11 +106,17 @@ function detected(engine: Engine, msgs: CorpusCase["messages"]): boolean {
   return r.risk !== "LOW";
 }
 
+function fullEngine(): Engine {
+  const engine = new Engine();
+  injectFullDataset(engine);
+  return engine;
+}
+
 export function runAdversarial(corpus: Corpus): AdversarialReport {
   const riskCases = corpus.cases.filter((c) => c.label === "RISK");
 
   // Baseline: cuántos RISK se detectan SIN transformar (para medir supervivencia relativa).
-  const baseDetected = riskCases.filter((c) => detected(new Engine(), c.messages));
+  const baseDetected = riskCases.filter((c) => detected(fullEngine(), c.messages));
   const baselineRate = baseDetected.length / riskCases.length;
 
   const byTransform = TRANSFORMS.map((t) => {
@@ -118,7 +125,7 @@ export function runAdversarial(corpus: Corpus): AdversarialReport {
     let stillDetected = 0;
     for (const c of baseDetected) {
       const transformed = t.apply(c.messages);
-      if (detected(new Engine(), transformed)) stillDetected++;
+      if (detected(fullEngine(), transformed)) stillDetected++;
       else broken.push(c.id);
     }
     return {

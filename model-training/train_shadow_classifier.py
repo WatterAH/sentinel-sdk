@@ -30,15 +30,24 @@ from sklearn.model_selection import StratifiedGroupKFold, StratifiedKFold, cross
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATASET = ROOT / "typescript" / "benchmark" / "dataset.jsonl"
-DEFAULT_MODEL = ROOT / "typescript" / "src" / "analyzer" / "shadow-model-v1.json"
+DEFAULT_CORPUS = ROOT / "typescript" / "benchmark" / "corpus.json"
+DEFAULT_BENCHMARK = ROOT / "typescript" / "benchmark" / "reviewed-report.json"
+DEFAULT_MODEL = ROOT / "typescript" / "src" / "analyzer" / "shadow-model-v2.json"
 DEFAULT_REPORT = ROOT / "typescript" / "benchmark" / "shadow-training-report.json"
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", type=Path, default=DEFAULT_DATASET)
+    parser.add_argument("--corpus", type=Path, default=DEFAULT_CORPUS)
+    parser.add_argument("--benchmark", type=Path, default=DEFAULT_BENCHMARK)
     parser.add_argument("--model-out", type=Path, default=DEFAULT_MODEL)
     parser.add_argument("--report-out", type=Path, default=DEFAULT_REPORT)
+    parser.add_argument(
+        "--include-unreviewed",
+        action="store_true",
+        help="Research only: include labels that have not passed the corpus review gate.",
+    )
     return parser.parse_args()
 
 
@@ -66,16 +75,102 @@ def new_model() -> LogisticRegression:
     )
 
 
-def metric_block(labels: np.ndarray, probabilities: np.ndarray) -> dict[str, Any]:
-    predictions = (probabilities >= 0.5).astype(int)
+def bootstrap_interval(
+    labels: np.ndarray,
+    probabilities: np.ndarray,
+    metric: str,
+    *,
+    threshold: float = 0.5,
+    samples: int = 2_000,
+) -> list[float]:
+    """Non-parametric 95% interval over the fixed out-of-fold predictions."""
+    rng = np.random.default_rng(42)
+    values: list[float] = []
+    predictions = (probabilities >= threshold).astype(int)
+    for _ in range(samples):
+        indices = rng.integers(0, len(labels), len(labels))
+        y = labels[indices]
+        p = probabilities[indices]
+        predicted = predictions[indices]
+        if metric == "precision":
+            value = precision_score(y, predicted, zero_division=0)
+        elif metric == "recall":
+            value = recall_score(y, predicted, zero_division=0)
+        elif metric == "f1":
+            value = f1_score(y, predicted, zero_division=0)
+        elif metric == "accuracy":
+            value = accuracy_score(y, predicted)
+        elif metric == "rocAuc":
+            if len(np.unique(y)) < 2:
+                continue
+            value = roc_auc_score(y, p)
+        else:
+            raise ValueError(f"Unknown bootstrap metric: {metric}")
+        values.append(float(value))
+    if not values:
+        return [0.0, 0.0]
+    return [float(np.quantile(values, 0.025)), float(np.quantile(values, 0.975))]
+
+
+def metric_block(
+    labels: np.ndarray,
+    probabilities: np.ndarray,
+    *,
+    threshold: float = 0.5,
+    with_intervals: bool = True,
+) -> dict[str, Any]:
+    predictions = (probabilities >= threshold).astype(int)
     tn, fp, fn, tp = confusion_matrix(labels, predictions, labels=[0, 1]).ravel()
-    return {
+    has_both_classes = len(np.unique(labels)) == 2
+    result: dict[str, Any] = {
         "precision": float(precision_score(labels, predictions, zero_division=0)),
         "recall": float(recall_score(labels, predictions, zero_division=0)),
         "f1": float(f1_score(labels, predictions, zero_division=0)),
         "accuracy": float(accuracy_score(labels, predictions)),
-        "rocAuc": float(roc_auc_score(labels, probabilities)),
+        "rocAuc": float(roc_auc_score(labels, probabilities)) if has_both_classes else None,
         "confusion": {"trueNegative": int(tn), "falsePositive": int(fp), "falseNegative": int(fn), "truePositive": int(tp)},
+    }
+    if with_intervals:
+        result["bootstrap95"] = {
+            name: bootstrap_interval(labels, probabilities, name, threshold=threshold)
+            for name in ("precision", "recall", "f1", "accuracy", "rocAuc")
+            if name != "rocAuc" or has_both_classes
+        }
+    return result
+
+
+def trusted_ids(corpus: dict[str, Any]) -> tuple[set[str], dict[str, Any]]:
+    metadata = corpus["metadata"]
+    baseline_count = int(metadata["review_gate"]["baseline_case_count"])
+    reviewed = set(metadata["expansion_2026_07_17"]["human_reviewed_ids"])
+    baseline = {row["id"] for row in corpus["cases"][:baseline_count]}
+    return baseline | reviewed, {
+        "baselineRows": len(baseline),
+        "reviewedExpansionRows": len(reviewed),
+        "policy": "baseline corpus plus owner-accepted human-review sample",
+    }
+
+
+def comparison_block(
+    rows: list[dict[str, Any]],
+    labels: np.ndarray,
+    probabilities: np.ndarray,
+    benchmark_path: Path,
+) -> dict[str, Any]:
+    benchmark = json.loads(benchmark_path.read_text(encoding="utf-8"))
+    lexical_by_id = {case["id"]: bool(case["flagged"]) for case in benchmark["cases"]}
+    shadow = probabilities >= 0.5
+    lexical = np.asarray([lexical_by_id[row["id"]] for row in rows], dtype=bool)
+    expected = labels.astype(bool)
+    return {
+        "lexicalCorrect": int((lexical == expected).sum()),
+        "shadowOofCorrect": int((shadow == expected).sum()),
+        "bothCorrect": int(((lexical == expected) & (shadow == expected)).sum()),
+        "shadowOnlyCorrect": int(((lexical != expected) & (shadow == expected)).sum()),
+        "lexicalOnlyCorrect": int(((lexical == expected) & (shadow != expected)).sum()),
+        "bothWrong": int(((lexical != expected) & (shadow != expected)).sum()),
+        "shadowRescuedLexicalRiskMisses": int(((~lexical) & expected & shadow).sum()),
+        "shadowFalsePositivesOnLexicalBenign": int(((~lexical) & (~expected) & shadow).sum()),
     }
 
 
@@ -101,7 +196,12 @@ def out_of_fold(
 
 def main() -> None:
     args = parse_args()
-    header, rows = load_dataset(args.dataset)
+    header, all_rows = load_dataset(args.dataset)
+    corpus = json.loads(args.corpus.read_text(encoding="utf-8"))
+    eligible_ids, selection = trusted_ids(corpus)
+    rows = all_rows if args.include_unreviewed else [row for row in all_rows if row["id"] in eligible_ids]
+    if not rows:
+        raise ValueError("Review gate selected no training rows")
     features = np.asarray([row["values"] for row in rows], dtype=float)
     labels = np.asarray([row["label"] for row in rows], dtype=int)
     groups = np.asarray([row["group"] for row in rows])
@@ -115,18 +215,25 @@ def main() -> None:
 
     model_payload = {
         "kind": "logistic_regression",
+        "modelId": f"sentinel-linear-sv{int(header['schemaVersion'])}-reviewed-{len(rows)}",
         "schemaVersion": int(header["schemaVersion"]),
         "featureNames": header["names"],
         "coefficients": [float(value) for value in coefficients],
         "bias": bias,
         "threshold": 0.5,
         "trainedRows": len(rows),
-        "trainingNote": "Fitted on the complete small benchmark corpus for shadow-only inference; use cross-validation report for evaluation.",
+        "trainingNote": "Fitted only on review-eligible rows for shadow-only inference; use grouped cross-validation and its intervals for evaluation.",
     }
     report_payload = {
         "dataset": str(args.dataset.relative_to(ROOT)),
         "schemaVersion": int(header["schemaVersion"]),
         "rows": len(rows),
+        "availableRows": len(all_rows),
+        "selection": {
+            **selection,
+            "mode": "all_rows_research_only" if args.include_unreviewed else "reviewed_only",
+            "excludedUnreviewedRows": 0 if args.include_unreviewed else len(all_rows) - len(rows),
+        },
         "classCounts": {
             "benign": int((labels == 0).sum()),
             "risk": int((labels == 1).sum()),
@@ -136,6 +243,17 @@ def main() -> None:
             "stratified5Fold": metric_block(labels, stratified_probabilities),
             "stratifiedGroup5Fold": metric_block(labels, grouped_probabilities),
         },
+        "groupedOofByGroup": {
+            group: metric_block(
+                labels[groups == group],
+                grouped_probabilities[groups == group],
+                with_intervals=False,
+            )
+            for group in sorted(set(groups))
+        },
+        "lexicalVsGroupedOofShadow": comparison_block(
+            rows, labels, grouped_probabilities, args.benchmark
+        ),
         "cases": [
             {
                 "id": row["id"],
@@ -147,9 +265,11 @@ def main() -> None:
             for index, row in enumerate(rows)
         ],
         "limitations": [
-            "Only 135 labeled conversations are available.",
-            "Rows come from a curated benchmark rather than independent production traffic.",
-            "The exported full-data model is for shadow measurement, not decision-making.",
+            f"Only {len(rows)} review-eligible conversations are used; this is still small for model promotion.",
+            f"{len(all_rows) - len(rows)} additional synthetic rows remain excluded from training until review.",
+            "Rows come from a curated synthetic benchmark rather than independent production traffic.",
+            "Confidence intervals quantify sampling uncertainty over these OOF predictions, not domain shift in real traffic.",
+            "The exported full-data model remains shadow-only and must not affect decisions.",
         ],
     }
 
@@ -158,7 +278,11 @@ def main() -> None:
     args.model_out.write_text(json.dumps(model_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     args.report_out.write_text(json.dumps(report_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    print(json.dumps(report_payload["crossValidation"], indent=2))
+    print(json.dumps({
+        "selection": report_payload["selection"],
+        "crossValidation": report_payload["crossValidation"],
+        "lexicalVsGroupedOofShadow": report_payload["lexicalVsGroupedOofShadow"],
+    }, indent=2))
     print(f"Exported model to {args.model_out}")
 
 

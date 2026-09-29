@@ -1,1046 +1,1627 @@
 {
   "dataset": "typescript/benchmark/dataset.jsonl",
-  "schemaVersion": 1,
-  "rows": 143,
+  "schemaVersion": 2,
+  "rows": 185,
+  "availableRows": 353,
+  "selection": {
+    "baselineRows": 143,
+    "reviewedExpansionRows": 42,
+    "policy": "baseline corpus plus owner-accepted human-review sample",
+    "mode": "reviewed_only",
+    "excludedUnreviewedRows": 168
+  },
   "classCounts": {
-    "benign": 82,
-    "risk": 61
+    "benign": 98,
+    "risk": 87
   },
   "threshold": 0.5,
   "crossValidation": {
     "stratified5Fold": {
-      "precision": 0.8615384615384616,
-      "recall": 0.9180327868852459,
+      "precision": 0.9047619047619048,
+      "recall": 0.8735632183908046,
       "f1": 0.8888888888888888,
-      "accuracy": 0.9020979020979021,
-      "rocAuc": 0.9694122351059576,
+      "accuracy": 0.8972972972972973,
+      "rocAuc": 0.9571897724607085,
       "confusion": {
-        "trueNegative": 73,
-        "falsePositive": 9,
-        "falseNegative": 5,
-        "truePositive": 56
+        "trueNegative": 90,
+        "falsePositive": 8,
+        "falseNegative": 11,
+        "truePositive": 76
+      },
+      "bootstrap95": {
+        "precision": [
+          0.8372093023255814,
+          0.9620253164556962
+        ],
+        "recall": [
+          0.7934782608695652,
+          0.9418771718791766
+        ],
+        "f1": [
+          0.8304038397881496,
+          0.9359826289862586
+        ],
+        "accuracy": [
+          0.8486486486486486,
+          0.9405405405405406
+        ],
+        "rocAuc": [
+          0.9243603995820308,
+          0.9817546892331468
+        ]
       }
     },
     "stratifiedGroup5Fold": {
-      "precision": 0.85,
-      "recall": 0.8360655737704918,
-      "f1": 0.8429752066115702,
-      "accuracy": 0.8671328671328671,
-      "rocAuc": 0.936625349860056,
+      "precision": 0.84375,
+      "recall": 0.6206896551724138,
+      "f1": 0.7152317880794702,
+      "accuracy": 0.7675675675675676,
+      "rocAuc": 0.8396669012432559,
       "confusion": {
-        "trueNegative": 73,
-        "falsePositive": 9,
-        "falseNegative": 10,
-        "truePositive": 51
+        "trueNegative": 88,
+        "falsePositive": 10,
+        "falseNegative": 33,
+        "truePositive": 54
+      },
+      "bootstrap95": {
+        "precision": [
+          0.745399262899263,
+          0.9285714285714286
+        ],
+        "recall": [
+          0.5157813347802497,
+          0.7209302325581395
+        ],
+        "f1": [
+          0.6212097684923772,
+          0.7919528458119062
+        ],
+        "accuracy": [
+          0.7027027027027027,
+          0.827027027027027
+        ],
+        "rocAuc": [
+          0.7777386670185316,
+          0.8930340678824721
+        ]
       }
     }
+  },
+  "groupedOofByGroup": {
+    "benign_amistad_larga": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 0.8333333333333334,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 5,
+        "falsePositive": 1,
+        "falseNegative": 0,
+        "truePositive": 0
+      }
+    },
+    "benign_cotidiano": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 0.95,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 19,
+        "falsePositive": 1,
+        "falseNegative": 0,
+        "truePositive": 0
+      }
+    },
+    "benign_jerga_juvenil": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 1.0,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 12,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "truePositive": 0
+      }
+    },
+    "benign_narcocultura": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 1.0,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 16,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "truePositive": 0
+      }
+    },
+    "benign_reciproco": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 0.5,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 3,
+        "falsePositive": 3,
+        "falseNegative": 0,
+        "truePositive": 0
+      }
+    },
+    "benign_trampa": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 0.9117647058823529,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 31,
+        "falsePositive": 3,
+        "falseNegative": 0,
+        "truePositive": 0
+      }
+    },
+    "tp_actor_asimetrico": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "truePositive": 5
+      }
+    },
+    "tp_extorsion_deuda": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "truePositive": 8
+      }
+    },
+    "tp_formalidad_deceptiva": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "truePositive": 3
+      }
+    },
+    "tp_grooming_lento": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "truePositive": 3
+      }
+    },
+    "tp_grooming_progresivo": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "truePositive": 5
+      }
+    },
+    "tp_narcocultura_puente": {
+      "precision": 1.0,
+      "recall": 0.6666666666666666,
+      "f1": 0.8,
+      "accuracy": 0.6666666666666666,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 0,
+        "falsePositive": 0,
+        "falseNegative": 2,
+        "truePositive": 4
+      }
+    },
+    "tp_ofuscado": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "truePositive": 5
+      }
+    },
+    "tp_reclutamiento_directo": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "truePositive": 8
+      }
+    },
+    "tp_reclutamiento_parafraseado": {
+      "precision": 1.0,
+      "recall": 0.16216216216216217,
+      "f1": 0.27906976744186046,
+      "accuracy": 0.16216216216216217,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 0,
+        "falsePositive": 0,
+        "falseNegative": 31,
+        "truePositive": 6
+      }
+    },
+    "tp_vector_gaming": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0,
+      "rocAuc": null,
+      "confusion": {
+        "trueNegative": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "truePositive": 3
+      }
+    },
+    "voice_transcript_cases": {
+      "precision": 0.6666666666666666,
+      "recall": 1.0,
+      "f1": 0.8,
+      "accuracy": 0.75,
+      "rocAuc": 1.0,
+      "confusion": {
+        "trueNegative": 2,
+        "falsePositive": 2,
+        "falseNegative": 0,
+        "truePositive": 4
+      }
+    }
+  },
+  "lexicalVsGroupedOofShadow": {
+    "lexicalCorrect": 146,
+    "shadowOofCorrect": 142,
+    "bothCorrect": 135,
+    "shadowOnlyCorrect": 7,
+    "lexicalOnlyCorrect": 11,
+    "bothWrong": 32,
+    "shadowRescuedLexicalRiskMisses": 5,
+    "shadowFalsePositivesOnLexicalBenign": 8
   },
   "cases": [
     {
       "id": "TP-001",
       "group": "tp_reclutamiento_directo",
       "label": 1,
-      "stratifiedOofProbability": 0.995950128022761,
-      "groupedOofProbability": 0.995340676687195
+      "stratifiedOofProbability": 0.9862781472555076,
+      "groupedOofProbability": 0.994555049660476
     },
     {
       "id": "TP-002",
       "group": "tp_reclutamiento_directo",
       "label": 1,
-      "stratifiedOofProbability": 0.8858755686061875,
-      "groupedOofProbability": 0.9370519717917619
+      "stratifiedOofProbability": 0.5496549658309735,
+      "groupedOofProbability": 0.8990705747771413
     },
     {
       "id": "TP-003",
       "group": "tp_reclutamiento_directo",
       "label": 1,
-      "stratifiedOofProbability": 0.9388264246911956,
-      "groupedOofProbability": 0.9647008094601729
+      "stratifiedOofProbability": 0.9509428408671321,
+      "groupedOofProbability": 0.9479463364034367
     },
     {
       "id": "TP-004",
       "group": "tp_reclutamiento_directo",
       "label": 1,
-      "stratifiedOofProbability": 0.9952584929295012,
-      "groupedOofProbability": 0.9943876773636552
+      "stratifiedOofProbability": 0.9992220536494475,
+      "groupedOofProbability": 0.9976055317816294
     },
     {
       "id": "TP-005",
       "group": "tp_reclutamiento_directo",
       "label": 1,
-      "stratifiedOofProbability": 0.9865849865481269,
-      "groupedOofProbability": 0.9907761372428021
+      "stratifiedOofProbability": 0.914329440051078,
+      "groupedOofProbability": 0.9937445019757547
     },
     {
       "id": "TP-006",
       "group": "tp_reclutamiento_directo",
       "label": 1,
-      "stratifiedOofProbability": 0.9975894885576101,
-      "groupedOofProbability": 0.9955329358008833
+      "stratifiedOofProbability": 0.9970675957115845,
+      "groupedOofProbability": 0.9980178663115099
     },
     {
       "id": "TP-007",
       "group": "tp_ofuscado",
       "label": 1,
-      "stratifiedOofProbability": 0.9479936731597676,
-      "groupedOofProbability": 0.9695625062727977
+      "stratifiedOofProbability": 0.5857300431309914,
+      "groupedOofProbability": 0.782824293874152
     },
     {
       "id": "TP-008",
       "group": "tp_ofuscado",
       "label": 1,
-      "stratifiedOofProbability": 0.9910405757275543,
-      "groupedOofProbability": 0.9950270894066442
+      "stratifiedOofProbability": 0.9892192088325975,
+      "groupedOofProbability": 0.9888107288859234
     },
     {
       "id": "TP-009",
       "group": "tp_ofuscado",
       "label": 1,
-      "stratifiedOofProbability": 0.9060351144347538,
-      "groupedOofProbability": 0.9509597965313943
+      "stratifiedOofProbability": 0.5038055256495458,
+      "groupedOofProbability": 0.7189253095382412
     },
     {
       "id": "TP-010",
       "group": "tp_ofuscado",
       "label": 1,
-      "stratifiedOofProbability": 0.8475174511378565,
-      "groupedOofProbability": 0.8339534658394573
+      "stratifiedOofProbability": 0.9530034722916862,
+      "groupedOofProbability": 0.9401057598820663
     },
     {
       "id": "TP-011",
       "group": "tp_grooming_progresivo",
       "label": 1,
-      "stratifiedOofProbability": 0.9951028383202312,
-      "groupedOofProbability": 0.9955468399788423
+      "stratifiedOofProbability": 0.9988816439196371,
+      "groupedOofProbability": 0.9972017953580213
     },
     {
       "id": "TP-012",
       "group": "tp_grooming_progresivo",
       "label": 1,
-      "stratifiedOofProbability": 0.9570148952928159,
-      "groupedOofProbability": 0.9393545903381375
+      "stratifiedOofProbability": 0.9887179686367674,
+      "groupedOofProbability": 0.9856240727404391
     },
     {
       "id": "TP-013",
       "group": "tp_grooming_progresivo",
       "label": 1,
-      "stratifiedOofProbability": 0.651258101736579,
-      "groupedOofProbability": 0.7216021131583189
+      "stratifiedOofProbability": 0.6013375311077201,
+      "groupedOofProbability": 0.5648241359475542
     },
     {
       "id": "TP-014",
       "group": "tp_grooming_progresivo",
       "label": 1,
-      "stratifiedOofProbability": 0.9034665853231891,
-      "groupedOofProbability": 0.8841694562802382
+      "stratifiedOofProbability": 0.9691503712966605,
+      "groupedOofProbability": 0.9690075177783224
     },
     {
       "id": "TP-015",
       "group": "tp_vector_gaming",
       "label": 1,
-      "stratifiedOofProbability": 0.982719838253941,
-      "groupedOofProbability": 0.9783930528011837
+      "stratifiedOofProbability": 0.9947054555721037,
+      "groupedOofProbability": 0.9956252378017452
     },
     {
       "id": "TP-016",
       "group": "tp_vector_gaming",
       "label": 1,
-      "stratifiedOofProbability": 0.9811181266710514,
-      "groupedOofProbability": 0.9849797029816886
+      "stratifiedOofProbability": 0.9775658548393025,
+      "groupedOofProbability": 0.971019133834651
     },
     {
       "id": "TP-017",
       "group": "tp_vector_gaming",
       "label": 1,
-      "stratifiedOofProbability": 0.957898353795398,
-      "groupedOofProbability": 0.9701041131426431
+      "stratifiedOofProbability": 0.9958892217595479,
+      "groupedOofProbability": 0.985452736235151
     },
     {
       "id": "TP-018",
       "group": "tp_formalidad_deceptiva",
       "label": 1,
-      "stratifiedOofProbability": 0.9953976643683865,
-      "groupedOofProbability": 0.9941355454448249
+      "stratifiedOofProbability": 0.9857871802662298,
+      "groupedOofProbability": 0.9757253547309308
     },
     {
       "id": "TP-019",
       "group": "tp_formalidad_deceptiva",
       "label": 1,
-      "stratifiedOofProbability": 0.9578832204877389,
-      "groupedOofProbability": 0.9376458629497731
+      "stratifiedOofProbability": 0.9776270806263174,
+      "groupedOofProbability": 0.9392831678275139
     },
     {
       "id": "TP-020",
       "group": "tp_formalidad_deceptiva",
       "label": 1,
-      "stratifiedOofProbability": 0.9955087467928952,
-      "groupedOofProbability": 0.99445812959752
+      "stratifiedOofProbability": 0.9904547616455708,
+      "groupedOofProbability": 0.9863418018903606
     },
     {
       "id": "TP-021",
       "group": "tp_reclutamiento_directo",
       "label": 1,
-      "stratifiedOofProbability": 0.9019733484092284,
-      "groupedOofProbability": 0.9306821654503843
+      "stratifiedOofProbability": 0.7201451564386471,
+      "groupedOofProbability": 0.9010601903520362
     },
     {
       "id": "TP-022",
       "group": "tp_grooming_progresivo",
       "label": 1,
-      "stratifiedOofProbability": 0.9956934761190687,
-      "groupedOofProbability": 0.9958193956296716
+      "stratifiedOofProbability": 0.9936876090111575,
+      "groupedOofProbability": 0.9840327860398719
     },
     {
       "id": "TP-023",
       "group": "tp_ofuscado",
       "label": 1,
-      "stratifiedOofProbability": 0.9966185030897389,
-      "groupedOofProbability": 0.9973681315924537
+      "stratifiedOofProbability": 0.9977063727117497,
+      "groupedOofProbability": 0.9983491370505461
     },
     {
       "id": "TP-024",
       "group": "tp_reclutamiento_directo",
       "label": 1,
-      "stratifiedOofProbability": 0.995319471076352,
-      "groupedOofProbability": 0.9859504552234615
+      "stratifiedOofProbability": 0.9890838639333056,
+      "groupedOofProbability": 0.9796273170504005
     },
     {
       "id": "BN-001",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.2244475471266855,
-      "groupedOofProbability": 0.29232703748450745
+      "stratifiedOofProbability": 0.19610446816379917,
+      "groupedOofProbability": 0.21235690392745737
     },
     {
       "id": "BN-002",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.09711303084552703,
-      "groupedOofProbability": 0.10965098132069435
+      "stratifiedOofProbability": 0.1914660537737511,
+      "groupedOofProbability": 0.21129584810837523
     },
     {
       "id": "BN-003",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.259936619895246,
-      "groupedOofProbability": 0.3156489462123301
+      "stratifiedOofProbability": 0.3613002292207955,
+      "groupedOofProbability": 0.4010424348823856
     },
     {
       "id": "BN-004",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.1092243709641017,
-      "groupedOofProbability": 0.10788953178470904
+      "stratifiedOofProbability": 0.12158412373506722,
+      "groupedOofProbability": 0.13759544835053653
     },
     {
       "id": "BN-005",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.11739171910439702,
-      "groupedOofProbability": 0.11303882811413148
+      "stratifiedOofProbability": 0.16148233118774166,
+      "groupedOofProbability": 0.14330842754479578
     },
     {
       "id": "BN-006",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.206498255746755,
-      "groupedOofProbability": 0.259705846487803
+      "stratifiedOofProbability": 0.31112685217901787,
+      "groupedOofProbability": 0.33465022799841276
     },
     {
       "id": "BN-007",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.10691418482441147,
-      "groupedOofProbability": 0.10478991555035307
+      "stratifiedOofProbability": 0.06824697950176566,
+      "groupedOofProbability": 0.06493168197976688
     },
     {
       "id": "BN-008",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.0869096691909785,
-      "groupedOofProbability": 0.08001926756710258
+      "stratifiedOofProbability": 0.10415799361839838,
+      "groupedOofProbability": 0.10219220064469993
     },
     {
       "id": "BN-009",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.08888920360706844,
-      "groupedOofProbability": 0.09897928487368035
+      "stratifiedOofProbability": 0.061650949219344574,
+      "groupedOofProbability": 0.06134070674069356
     },
     {
       "id": "BN-010",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.14774846143620804,
-      "groupedOofProbability": 0.1676179796932605
+      "stratifiedOofProbability": 0.1324425647565586,
+      "groupedOofProbability": 0.15072907205958175
     },
     {
       "id": "BN-011",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.09627368551362206,
-      "groupedOofProbability": 0.08714702234867903
+      "stratifiedOofProbability": 0.052196853034752404,
+      "groupedOofProbability": 0.05191522141452666
     },
     {
       "id": "BN-012",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.09546119401011906,
-      "groupedOofProbability": 0.10412886319393566
+      "stratifiedOofProbability": 0.12943878855440955,
+      "groupedOofProbability": 0.17746262713594302
     },
     {
       "id": "BT-001",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.1144279302964079,
-      "groupedOofProbability": 0.16442817242140384
+      "stratifiedOofProbability": 0.09919991624176627,
+      "groupedOofProbability": 0.15252008055448973
     },
     {
       "id": "BT-002",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.5034570367315891,
-      "groupedOofProbability": 0.5393481181786165
+      "stratifiedOofProbability": 0.46729409822709583,
+      "groupedOofProbability": 0.5205060839993361
     },
     {
       "id": "BT-003",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.1063636291264434,
-      "groupedOofProbability": 0.11734902751637195
+      "stratifiedOofProbability": 0.05441995155725078,
+      "groupedOofProbability": 0.06977606823150233
     },
     {
       "id": "BT-004",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.28180662652662103,
-      "groupedOofProbability": 0.2527209542705184
+      "stratifiedOofProbability": 0.0811144252050704,
+      "groupedOofProbability": 0.04544572230075205
     },
     {
       "id": "BT-005",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.11903814173630864,
-      "groupedOofProbability": 0.15372604026996717
+      "stratifiedOofProbability": 0.07884164344081344,
+      "groupedOofProbability": 0.14482392333845379
     },
     {
       "id": "BT-006",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.09428187899038765,
-      "groupedOofProbability": 0.10846884999405244
+      "stratifiedOofProbability": 0.06734217443224788,
+      "groupedOofProbability": 0.060189301114986375
     },
     {
       "id": "BT-007",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.11324150032274975,
-      "groupedOofProbability": 0.1460747808140821
+      "stratifiedOofProbability": 0.10891701205913827,
+      "groupedOofProbability": 0.13964277517680038
     },
     {
       "id": "BT-008",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.4264309653944304,
-      "groupedOofProbability": 0.279600496996684
+      "stratifiedOofProbability": 0.39326872216082087,
+      "groupedOofProbability": 0.22444915144740823
     },
     {
       "id": "BT-009",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.11892342285769557,
-      "groupedOofProbability": 0.14376667296221132
+      "stratifiedOofProbability": 0.0874641799057192,
+      "groupedOofProbability": 0.10317332619532435
     },
     {
       "id": "BT-010",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.23486268735655016,
-      "groupedOofProbability": 0.23457139992045092
+      "stratifiedOofProbability": 0.20137124606717235,
+      "groupedOofProbability": 0.09768501670320823
     },
     {
       "id": "BT-011",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.12403087608155346,
-      "groupedOofProbability": 0.15038468390135
+      "stratifiedOofProbability": 0.05104394610708478,
+      "groupedOofProbability": 0.05665442485016889
     },
     {
       "id": "BT-012",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.16500791173546747,
-      "groupedOofProbability": 0.21819693229109144
+      "stratifiedOofProbability": 0.11812440697533337,
+      "groupedOofProbability": 0.1918777783056722
     },
     {
       "id": "BT-013",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.10621371864944451,
-      "groupedOofProbability": 0.11229843834027976
+      "stratifiedOofProbability": 0.10797722744478959,
+      "groupedOofProbability": 0.14246996383984015
     },
     {
       "id": "BT-014",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.12816023889419043,
-      "groupedOofProbability": 0.13953621781744072
+      "stratifiedOofProbability": 0.6703657983247597,
+      "groupedOofProbability": 0.6633320147649818
     },
     {
       "id": "BT-015",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.16475178003743393,
-      "groupedOofProbability": 0.1095054148098155
+      "stratifiedOofProbability": 0.19729299822274907,
+      "groupedOofProbability": 0.1612086599207994
     },
     {
       "id": "BT-016",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.21913116911271666,
-      "groupedOofProbability": 0.2893429667404783
+      "stratifiedOofProbability": 0.12005648879367818,
+      "groupedOofProbability": 0.2071491792682517
     },
     {
       "id": "TL-001",
       "group": "tp_grooming_lento",
       "label": 1,
-      "stratifiedOofProbability": 0.8707839633282783,
-      "groupedOofProbability": 0.7067221016709653
+      "stratifiedOofProbability": 0.8450791401143394,
+      "groupedOofProbability": 0.6952413490041458
     },
     {
       "id": "TL-002",
       "group": "tp_grooming_lento",
       "label": 1,
-      "stratifiedOofProbability": 0.929829435026725,
-      "groupedOofProbability": 0.7495591948058619
+      "stratifiedOofProbability": 0.954097845923307,
+      "groupedOofProbability": 0.9054042430752526
     },
     {
       "id": "TL-003",
       "group": "tp_grooming_lento",
       "label": 1,
-      "stratifiedOofProbability": 0.5873212380288187,
-      "groupedOofProbability": 0.3876294825468661
+      "stratifiedOofProbability": 0.4562757743132442,
+      "groupedOofProbability": 0.5227020962100701
     },
     {
       "id": "BL-001",
       "group": "benign_amistad_larga",
       "label": 0,
-      "stratifiedOofProbability": 0.1303047822993858,
-      "groupedOofProbability": 0.1433620420859991
+      "stratifiedOofProbability": 0.17889262993871916,
+      "groupedOofProbability": 0.23757007627701768
     },
     {
       "id": "BL-002",
       "group": "benign_amistad_larga",
       "label": 0,
-      "stratifiedOofProbability": 0.3044642586761458,
-      "groupedOofProbability": 0.4520458461869786
+      "stratifiedOofProbability": 0.10252669547805733,
+      "groupedOofProbability": 0.19838311825427782
     },
     {
       "id": "NC-001",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.07588012609062976,
-      "groupedOofProbability": 0.07590173553268498
+      "stratifiedOofProbability": 0.08307933464878178,
+      "groupedOofProbability": 0.09592493623515312
     },
     {
       "id": "NC-002",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.07540340288324704,
-      "groupedOofProbability": 0.10823349271176225
+      "stratifiedOofProbability": 0.027419549736627073,
+      "groupedOofProbability": 0.049824520686318576
     },
     {
       "id": "NC-003",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.255104291900923,
-      "groupedOofProbability": 0.23885162616045993
+      "stratifiedOofProbability": 0.41552460810162517,
+      "groupedOofProbability": 0.3956509703781281
     },
     {
       "id": "NC-004",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.0951058237085132,
-      "groupedOofProbability": 0.0926165556164446
+      "stratifiedOofProbability": 0.1415411062473552,
+      "groupedOofProbability": 0.13281413110855878
     },
     {
       "id": "NC-005",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.07940728788904124,
-      "groupedOofProbability": 0.08672621832347685
+      "stratifiedOofProbability": 0.061995194064546476,
+      "groupedOofProbability": 0.069903209205911
     },
     {
       "id": "NC-006",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.1092787296446716,
-      "groupedOofProbability": 0.10287351303330662
+      "stratifiedOofProbability": 0.061668627212773545,
+      "groupedOofProbability": 0.07628746754069533
     },
     {
       "id": "NC-007",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.10057318032479261,
-      "groupedOofProbability": 0.10759678266749406
+      "stratifiedOofProbability": 0.15719833543239933,
+      "groupedOofProbability": 0.2273074452690941
     },
     {
       "id": "NC-008",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.19619980679747734,
-      "groupedOofProbability": 0.14234213476032817
+      "stratifiedOofProbability": 0.03799210875773173,
+      "groupedOofProbability": 0.050205801941955945
     },
     {
       "id": "NC-009",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.07187870818457195,
-      "groupedOofProbability": 0.14473778813770524
+      "stratifiedOofProbability": 0.048937363908706205,
+      "groupedOofProbability": 0.09136818550572318
     },
     {
       "id": "NC-010",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.08320834089370194,
-      "groupedOofProbability": 0.09347708840901746
+      "stratifiedOofProbability": 0.12366798919836391,
+      "groupedOofProbability": 0.1363112147105591
     },
     {
       "id": "NC-011",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.034898730949021614,
-      "groupedOofProbability": 0.0487484679546219
+      "stratifiedOofProbability": 0.018302126279376635,
+      "groupedOofProbability": 0.019684389110159302
     },
     {
       "id": "NC-012",
       "group": "benign_narcocultura",
       "label": 0,
-      "stratifiedOofProbability": 0.09887894235890826,
-      "groupedOofProbability": 0.1006751237408737
+      "stratifiedOofProbability": 0.13353945505763914,
+      "groupedOofProbability": 0.15965678672060643
     },
     {
       "id": "JJ-001",
       "group": "benign_jerga_juvenil",
       "label": 0,
-      "stratifiedOofProbability": 0.06983481178470803,
-      "groupedOofProbability": 0.06988195527963474
+      "stratifiedOofProbability": 0.08670383914687138,
+      "groupedOofProbability": 0.06224825211988091
     },
     {
       "id": "JJ-002",
       "group": "benign_jerga_juvenil",
       "label": 0,
-      "stratifiedOofProbability": 0.10361319980871662,
-      "groupedOofProbability": 0.08107297556963979
+      "stratifiedOofProbability": 0.0567366697985056,
+      "groupedOofProbability": 0.05289175318853657
     },
     {
       "id": "JJ-003",
       "group": "benign_jerga_juvenil",
       "label": 0,
-      "stratifiedOofProbability": 0.24730833653162207,
-      "groupedOofProbability": 0.17905867128403352
+      "stratifiedOofProbability": 0.21518506789024355,
+      "groupedOofProbability": 0.13649517579355758
     },
     {
       "id": "JJ-004",
       "group": "benign_jerga_juvenil",
       "label": 0,
-      "stratifiedOofProbability": 0.6395858848804401,
-      "groupedOofProbability": 0.4471072646918769
+      "stratifiedOofProbability": 0.2781712064124197,
+      "groupedOofProbability": 0.39803907463100324
     },
     {
       "id": "JJ-005",
       "group": "benign_jerga_juvenil",
       "label": 0,
-      "stratifiedOofProbability": 0.1872186134125041,
-      "groupedOofProbability": 0.14847535554531366
+      "stratifiedOofProbability": 0.10492131968173084,
+      "groupedOofProbability": 0.10085500831809766
     },
     {
       "id": "JJ-006",
       "group": "benign_jerga_juvenil",
       "label": 0,
-      "stratifiedOofProbability": 0.12210885087067737,
-      "groupedOofProbability": 0.10419772667078542
+      "stratifiedOofProbability": 0.07492256819205467,
+      "groupedOofProbability": 0.06932371764696653
     },
     {
       "id": "JJ-007",
       "group": "benign_jerga_juvenil",
       "label": 0,
-      "stratifiedOofProbability": 0.2087002996246011,
-      "groupedOofProbability": 0.1517432884917549
+      "stratifiedOofProbability": 0.3253379256807316,
+      "groupedOofProbability": 0.15477267358531474
     },
     {
       "id": "JJ-008",
       "group": "benign_jerga_juvenil",
       "label": 0,
-      "stratifiedOofProbability": 0.14639536089702423,
-      "groupedOofProbability": 0.18901876981587226
+      "stratifiedOofProbability": 0.13083447502488638,
+      "groupedOofProbability": 0.09109740807551335
     },
     {
       "id": "JJ-009",
       "group": "benign_jerga_juvenil",
       "label": 0,
-      "stratifiedOofProbability": 0.27401924403265837,
-      "groupedOofProbability": 0.14042598352410074
+      "stratifiedOofProbability": 0.3171629908954147,
+      "groupedOofProbability": 0.15971536605424144
     },
     {
       "id": "JJ-010",
       "group": "benign_jerga_juvenil",
       "label": 0,
-      "stratifiedOofProbability": 0.2823766008625115,
-      "groupedOofProbability": 0.13262530041440523
+      "stratifiedOofProbability": 0.2940706192484675,
+      "groupedOofProbability": 0.14723350785492115
     },
     {
       "id": "BT-017",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.621447180236011,
-      "groupedOofProbability": 0.629891063786051
+      "stratifiedOofProbability": 0.5762106427488878,
+      "groupedOofProbability": 0.6639919638852702
     },
     {
       "id": "BT-018",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.24163314696717803,
-      "groupedOofProbability": 0.25274631638533995
+      "stratifiedOofProbability": 0.0747628894996274,
+      "groupedOofProbability": 0.04469888500510395
     },
     {
       "id": "BT-019",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.324798589419851,
-      "groupedOofProbability": 0.33957831982822
+      "stratifiedOofProbability": 0.45983344180049235,
+      "groupedOofProbability": 0.4492730486905837
     },
     {
       "id": "BT-020",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.15792323551869017,
-      "groupedOofProbability": 0.19812738553856934
+      "stratifiedOofProbability": 0.11300989207489957,
+      "groupedOofProbability": 0.17658129509488613
     },
     {
       "id": "BT-021",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.2271732713964904,
-      "groupedOofProbability": 0.2755136193100926
+      "stratifiedOofProbability": 0.05121303909551808,
+      "groupedOofProbability": 0.03154545034286365
     },
     {
       "id": "BT-022",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.2853359434602717,
-      "groupedOofProbability": 0.30958851145985844
+      "stratifiedOofProbability": 0.4085793615539733,
+      "groupedOofProbability": 0.37848618853085314
     },
     {
       "id": "BT-023",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.28530715606901447,
-      "groupedOofProbability": 0.3012802385703356
+      "stratifiedOofProbability": 0.1940197215033734,
+      "groupedOofProbability": 0.18326886298262954
     },
     {
       "id": "BT-024",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.028078695664737394,
-      "groupedOofProbability": 0.04784396842013856
+      "stratifiedOofProbability": 0.0557684262851145,
+      "groupedOofProbability": 0.051674093856155554
     },
     {
       "id": "BT-025",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.19226258856652892,
-      "groupedOofProbability": 0.18891075474371344
+      "stratifiedOofProbability": 0.19425070283038134,
+      "groupedOofProbability": 0.17725244708186588
     },
     {
       "id": "BT-026",
       "group": "benign_trampa",
       "label": 0,
-      "stratifiedOofProbability": 0.3804681442355843,
-      "groupedOofProbability": 0.4476319498377589
+      "stratifiedOofProbability": 0.14316170953216728,
+      "groupedOofProbability": 0.14826349863943117
     },
     {
       "id": "BN-013",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.2116828640165094,
-      "groupedOofProbability": 0.2804734625187613
+      "stratifiedOofProbability": 0.3079395360075576,
+      "groupedOofProbability": 0.3629772248770627
     },
     {
       "id": "BN-014",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.09435520216967573,
-      "groupedOofProbability": 0.10272472311847122
+      "stratifiedOofProbability": 0.19442248517562688,
+      "groupedOofProbability": 0.3226624825663076
     },
     {
       "id": "BN-015",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.21060503705850578,
-      "groupedOofProbability": 0.2511627125642225
+      "stratifiedOofProbability": 0.31284795012878674,
+      "groupedOofProbability": 0.3226927081524919
     },
     {
       "id": "BN-016",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.10018648963535028,
-      "groupedOofProbability": 0.0983508609548392
+      "stratifiedOofProbability": 0.13144693095417448,
+      "groupedOofProbability": 0.12717239128556576
     },
     {
       "id": "BN-017",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.6734342505152848,
-      "groupedOofProbability": 0.8556209042354183
+      "stratifiedOofProbability": 0.9471957735890381,
+      "groupedOofProbability": 0.9477995056756862
     },
     {
       "id": "BN-018",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.09025608813178931,
-      "groupedOofProbability": 0.08423573486305388
+      "stratifiedOofProbability": 0.12301440419154508,
+      "groupedOofProbability": 0.1070236643997079
     },
     {
       "id": "BN-019",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.10337236866882783,
-      "groupedOofProbability": 0.09119837988076133
+      "stratifiedOofProbability": 0.10452935661141054,
+      "groupedOofProbability": 0.11403126231962063
     },
     {
       "id": "BN-020",
       "group": "benign_cotidiano",
       "label": 0,
-      "stratifiedOofProbability": 0.0856577246001671,
-      "groupedOofProbability": 0.09635850384428317
+      "stratifiedOofProbability": 0.12414235741881874,
+      "groupedOofProbability": 0.1250344008436475
     },
     {
       "id": "BL-003",
       "group": "benign_amistad_larga",
       "label": 0,
-      "stratifiedOofProbability": 0.8547602917106579,
-      "groupedOofProbability": 0.8241688239971223
+      "stratifiedOofProbability": 0.698121274709905,
+      "groupedOofProbability": 0.7383661637402251
     },
     {
       "id": "BL-004",
       "group": "benign_amistad_larga",
       "label": 0,
-      "stratifiedOofProbability": 0.47683245363338034,
-      "groupedOofProbability": 0.4222523067622622
+      "stratifiedOofProbability": 0.26996256512994293,
+      "groupedOofProbability": 0.25286187606509464
     },
     {
       "id": "BL-005",
       "group": "benign_amistad_larga",
       "label": 0,
-      "stratifiedOofProbability": 0.1366387190521989,
-      "groupedOofProbability": 0.12371349163543563
+      "stratifiedOofProbability": 0.09753042606520768,
+      "groupedOofProbability": 0.07823271566304188
     },
     {
       "id": "BL-006",
       "group": "benign_amistad_larga",
       "label": 0,
-      "stratifiedOofProbability": 0.20635515633680018,
-      "groupedOofProbability": 0.27352790222102563
+      "stratifiedOofProbability": 0.20356508259191253,
+      "groupedOofProbability": 0.3170555291140201
     },
     {
       "id": "ED-001",
       "group": "tp_extorsion_deuda",
       "label": 1,
-      "stratifiedOofProbability": 0.9875932883998177,
-      "groupedOofProbability": 0.9786691582457238
+      "stratifiedOofProbability": 0.9480437184422847,
+      "groupedOofProbability": 0.9470194139467558
     },
     {
       "id": "ED-002",
       "group": "tp_extorsion_deuda",
       "label": 1,
-      "stratifiedOofProbability": 0.9153422433339355,
-      "groupedOofProbability": 0.9126360844229685
+      "stratifiedOofProbability": 0.9729291016815066,
+      "groupedOofProbability": 0.945891938990747
     },
     {
       "id": "ED-003",
       "group": "tp_extorsion_deuda",
       "label": 1,
-      "stratifiedOofProbability": 0.6748487726519156,
-      "groupedOofProbability": 0.5713302285200097
+      "stratifiedOofProbability": 0.6872542636597363,
+      "groupedOofProbability": 0.5769644723309222
     },
     {
       "id": "ED-004",
       "group": "tp_extorsion_deuda",
       "label": 1,
-      "stratifiedOofProbability": 0.949158635113225,
-      "groupedOofProbability": 0.9481118368381665
+      "stratifiedOofProbability": 0.9528817612901026,
+      "groupedOofProbability": 0.9472575308739803
     },
     {
       "id": "ED-005",
       "group": "tp_extorsion_deuda",
       "label": 1,
-      "stratifiedOofProbability": 0.5676688286893757,
-      "groupedOofProbability": 0.5902553168986783
+      "stratifiedOofProbability": 0.5579988736086784,
+      "groupedOofProbability": 0.5280242127767564
     },
     {
       "id": "ED-006",
       "group": "tp_extorsion_deuda",
       "label": 1,
-      "stratifiedOofProbability": 0.6919551685247816,
-      "groupedOofProbability": 0.6286807623876868
+      "stratifiedOofProbability": 0.8059317558054552,
+      "groupedOofProbability": 0.8704575976907332
     },
     {
       "id": "ED-007",
       "group": "tp_extorsion_deuda",
       "label": 1,
-      "stratifiedOofProbability": 0.7557599085319769,
-      "groupedOofProbability": 0.7680497632126486
+      "stratifiedOofProbability": 0.7445421960931585,
+      "groupedOofProbability": 0.7277280762676482
     },
     {
       "id": "ED-008",
       "group": "tp_extorsion_deuda",
       "label": 1,
-      "stratifiedOofProbability": 0.9715686780817537,
-      "groupedOofProbability": 0.9708090899060207
+      "stratifiedOofProbability": 0.9616523610117281,
+      "groupedOofProbability": 0.9305477591080579
     },
     {
       "id": "NP-001",
       "group": "tp_narcocultura_puente",
       "label": 1,
-      "stratifiedOofProbability": 0.7529387481097021,
-      "groupedOofProbability": 0.6909931885988931
+      "stratifiedOofProbability": 0.7658183250605703,
+      "groupedOofProbability": 0.7051577003979616
     },
     {
       "id": "NP-002",
       "group": "tp_narcocultura_puente",
       "label": 1,
-      "stratifiedOofProbability": 0.7056622895699133,
-      "groupedOofProbability": 0.6987890588847915
+      "stratifiedOofProbability": 0.33368733812309015,
+      "groupedOofProbability": 0.42435463075541785
     },
     {
       "id": "NP-003",
       "group": "tp_narcocultura_puente",
       "label": 1,
-      "stratifiedOofProbability": 0.39502983277492765,
-      "groupedOofProbability": 0.22765803390182893
+      "stratifiedOofProbability": 0.34470861882022663,
+      "groupedOofProbability": 0.5334332797153962
     },
     {
       "id": "NP-004",
       "group": "tp_narcocultura_puente",
       "label": 1,
-      "stratifiedOofProbability": 0.857915655063139,
-      "groupedOofProbability": 0.8035080923787764
+      "stratifiedOofProbability": 0.8575455745574729,
+      "groupedOofProbability": 0.800369142429484
     },
     {
       "id": "NP-005",
       "group": "tp_narcocultura_puente",
       "label": 1,
-      "stratifiedOofProbability": 0.8576074481201766,
-      "groupedOofProbability": 0.895442411334631
+      "stratifiedOofProbability": 0.9509961221585054,
+      "groupedOofProbability": 0.9261291848493262
     },
     {
       "id": "NP-006",
       "group": "tp_narcocultura_puente",
       "label": 1,
-      "stratifiedOofProbability": 0.28152037932724644,
-      "groupedOofProbability": 0.43539432671310024
+      "stratifiedOofProbability": 0.13318458861773047,
+      "groupedOofProbability": 0.13622638909805337
     },
     {
       "id": "RP-001",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.8235704156231958,
-      "groupedOofProbability": 0.5717466003103323
+      "stratifiedOofProbability": 0.9245063957437367,
+      "groupedOofProbability": 0.6960881697165938
     },
     {
       "id": "RP-002",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.32795698734913603,
-      "groupedOofProbability": 0.14497485271076047
+      "stratifiedOofProbability": 0.7414674393227649,
+      "groupedOofProbability": 0.37370316797943676
     },
     {
       "id": "RP-003",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.8322046805153197,
-      "groupedOofProbability": 0.5476406052612242
+      "stratifiedOofProbability": 0.9807455864340091,
+      "groupedOofProbability": 0.6750215121056532
     },
     {
       "id": "RP-004",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.3289072685304355,
-      "groupedOofProbability": 0.226179044077455
+      "stratifiedOofProbability": 0.44308364710961823,
+      "groupedOofProbability": 0.21194218362176773
     },
     {
       "id": "RP-005",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.5392028926802508,
-      "groupedOofProbability": 0.3048461603461708
+      "stratifiedOofProbability": 0.7000546328148333,
+      "groupedOofProbability": 0.355144141952822
     },
     {
       "id": "RP-006",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.18501970004616575,
-      "groupedOofProbability": 0.1502997308929613
+      "stratifiedOofProbability": 0.10102608557771854,
+      "groupedOofProbability": 0.12585241254992105
     },
     {
       "id": "RP-007",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.7875179325744228,
-      "groupedOofProbability": 0.520984797758396
+      "stratifiedOofProbability": 0.8676834684738713,
+      "groupedOofProbability": 0.6819456912454623
     },
     {
       "id": "RP-008",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.9212140955422905,
-      "groupedOofProbability": 0.8354218278965861
+      "stratifiedOofProbability": 0.8425755368550347,
+      "groupedOofProbability": 0.7762688038100396
     },
     {
       "id": "RP-009",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.7308489101365293,
-      "groupedOofProbability": 0.48821892571273
+      "stratifiedOofProbability": 0.8207698123835536,
+      "groupedOofProbability": 0.6461365618671558
     },
     {
       "id": "RP-010",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.5943393704353848,
-      "groupedOofProbability": 0.3463922716636558
+      "stratifiedOofProbability": 0.436788727233417,
+      "groupedOofProbability": 0.39780325416058177
     },
     {
       "id": "RP-011",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.8093855294640692,
-      "groupedOofProbability": 0.6758694135308235
+      "stratifiedOofProbability": 0.9846938732247058,
+      "groupedOofProbability": 0.6719590921535821
     },
     {
       "id": "RP-012",
       "group": "tp_reclutamiento_parafraseado",
       "label": 1,
-      "stratifiedOofProbability": 0.5121418797105206,
-      "groupedOofProbability": 0.29008594094771517
+      "stratifiedOofProbability": 0.7313164831596721,
+      "groupedOofProbability": 0.2998465729361295
     },
     {
       "id": "AC-001",
       "group": "tp_actor_asimetrico",
       "label": 1,
-      "stratifiedOofProbability": 0.9993014474551288,
-      "groupedOofProbability": 0.9993138135121327
+      "stratifiedOofProbability": 0.9997935214809326,
+      "groupedOofProbability": 0.999746730810645
     },
     {
       "id": "AC-002",
       "group": "tp_actor_asimetrico",
       "label": 1,
-      "stratifiedOofProbability": 0.9098563318837876,
-      "groupedOofProbability": 0.9319238126802238
+      "stratifiedOofProbability": 0.9879071885249067,
+      "groupedOofProbability": 0.9797611714150524
     },
     {
       "id": "AC-003",
       "group": "tp_actor_asimetrico",
       "label": 1,
-      "stratifiedOofProbability": 0.5979045537796492,
-      "groupedOofProbability": 0.6199111430792081
+      "stratifiedOofProbability": 0.43155395015588305,
+      "groupedOofProbability": 0.5365339058408852
     },
     {
       "id": "AC-004",
       "group": "tp_actor_asimetrico",
       "label": 1,
-      "stratifiedOofProbability": 0.9273056261970835,
-      "groupedOofProbability": 0.942812939434894
+      "stratifiedOofProbability": 0.9883012741523791,
+      "groupedOofProbability": 0.9887592929950192
     },
     {
       "id": "BR-001",
       "group": "benign_reciproco",
       "label": 0,
-      "stratifiedOofProbability": 0.7366714999222784,
-      "groupedOofProbability": 0.8664237797246135
+      "stratifiedOofProbability": 0.8699704226173504,
+      "groupedOofProbability": 0.9518921712589213
     },
     {
       "id": "BR-002",
       "group": "benign_reciproco",
       "label": 0,
-      "stratifiedOofProbability": 0.17767824356462952,
-      "groupedOofProbability": 0.17846827487411923
+      "stratifiedOofProbability": 0.17587972336810095,
+      "groupedOofProbability": 0.14794196177121743
     },
     {
       "id": "BR-003",
       "group": "benign_reciproco",
       "label": 0,
-      "stratifiedOofProbability": 0.5582777391983728,
-      "groupedOofProbability": 0.8451085134408028
+      "stratifiedOofProbability": 0.7658360589585278,
+      "groupedOofProbability": 0.7552632530786113
     },
     {
       "id": "BR-004",
       "group": "benign_reciproco",
       "label": 0,
-      "stratifiedOofProbability": 0.4631692570190699,
-      "groupedOofProbability": 0.5634710301393723
+      "stratifiedOofProbability": 0.2863873397965409,
+      "groupedOofProbability": 0.3388390199884546
     },
     {
       "id": "VOICE-001",
       "group": "voice_transcript_cases",
       "label": 1,
-      "stratifiedOofProbability": 0.9954676644271232,
-      "groupedOofProbability": 0.9970175743758862
+      "stratifiedOofProbability": 0.9931029030004701,
+      "groupedOofProbability": 0.9985465783750838
     },
     {
       "id": "VOICE-002",
       "group": "voice_transcript_cases",
       "label": 1,
-      "stratifiedOofProbability": 0.9842000137088674,
-      "groupedOofProbability": 0.9862090557044806
+      "stratifiedOofProbability": 0.981292322500573,
+      "groupedOofProbability": 0.9909580909005445
     },
     {
       "id": "VOICE-003",
       "group": "voice_transcript_cases",
       "label": 1,
-      "stratifiedOofProbability": 0.9712691980320497,
-      "groupedOofProbability": 0.9718023511276912
+      "stratifiedOofProbability": 0.9832958371011651,
+      "groupedOofProbability": 0.9919976989459609
     },
     {
       "id": "VOICE-004",
       "group": "voice_transcript_cases",
       "label": 1,
-      "stratifiedOofProbability": 0.9697827445589846,
-      "groupedOofProbability": 0.9783417486406673
+      "stratifiedOofProbability": 0.9841092229673757,
+      "groupedOofProbability": 0.9962047300449376
     },
     {
       "id": "VOICE-005",
       "group": "voice_transcript_cases",
       "label": 0,
-      "stratifiedOofProbability": 0.11789027710257721,
-      "groupedOofProbability": 0.07076733248232453
+      "stratifiedOofProbability": 0.08765222473100948,
+      "groupedOofProbability": 0.05969583066720318
     },
     {
       "id": "VOICE-006",
       "group": "voice_transcript_cases",
       "label": 0,
-      "stratifiedOofProbability": 0.5679728279385584,
-      "groupedOofProbability": 0.6080119595763481
+      "stratifiedOofProbability": 0.5814443210081709,
+      "groupedOofProbability": 0.8938565888762138
     },
     {
       "id": "VOICE-007",
       "group": "voice_transcript_cases",
       "label": 0,
-      "stratifiedOofProbability": 0.09731175135205664,
-      "groupedOofProbability": 0.09942302773976551
+      "stratifiedOofProbability": 0.0650490143074951,
+      "groupedOofProbability": 0.06077232146430742
     },
     {
       "id": "VOICE-008",
       "group": "voice_transcript_cases",
       "label": 0,
-      "stratifiedOofProbability": 0.6529368380799351,
-      "groupedOofProbability": 0.8046973058359388
+      "stratifiedOofProbability": 0.8487371089535187,
+      "groupedOofProbability": 0.8170713761218817
+    },
+    {
+      "id": "RP-013",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.984046698956475,
+      "groupedOofProbability": 0.4956719928551158
+    },
+    {
+      "id": "RP-014",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.9689493197055363,
+      "groupedOofProbability": 0.31400652450596345
+    },
+    {
+      "id": "RP-015",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.9193115071617098,
+      "groupedOofProbability": 0.27254048533763
+    },
+    {
+      "id": "RP-017",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.4923831570591242,
+      "groupedOofProbability": 0.16085083856133076
+    },
+    {
+      "id": "RP-018",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.8324971203837493,
+      "groupedOofProbability": 0.13799506084268953
+    },
+    {
+      "id": "RP-019",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.8582245178174626,
+      "groupedOofProbability": 0.1357354784379829
+    },
+    {
+      "id": "RP-021",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.7099158891618952,
+      "groupedOofProbability": 0.07566486141391544
+    },
+    {
+      "id": "RP-022",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.9103752571611713,
+      "groupedOofProbability": 0.3061157408811494
+    },
+    {
+      "id": "RP-023",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.36935103060754126,
+      "groupedOofProbability": 0.0989308247143498
+    },
+    {
+      "id": "RP-027",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.6078254523545379,
+      "groupedOofProbability": 0.23626848412512164
+    },
+    {
+      "id": "RP-028",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.7557120123965126,
+      "groupedOofProbability": 0.21680042524307247
+    },
+    {
+      "id": "RP-029",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.9059602058141953,
+      "groupedOofProbability": 0.32458711966785986
+    },
+    {
+      "id": "RP-030",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.8247803821424031,
+      "groupedOofProbability": 0.4998548105769897
+    },
+    {
+      "id": "RP-031",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.39892833118504434,
+      "groupedOofProbability": 0.1050092845651651
+    },
+    {
+      "id": "RP-033",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.76675528585439,
+      "groupedOofProbability": 0.1586429179537352
+    },
+    {
+      "id": "RP-035",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.8453939902272375,
+      "groupedOofProbability": 0.28269674478244017
+    },
+    {
+      "id": "RP-037",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.8615211572667816,
+      "groupedOofProbability": 0.17761170722575031
+    },
+    {
+      "id": "RP-040",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.9198220873671605,
+      "groupedOofProbability": 0.24293542870733922
+    },
+    {
+      "id": "RP-041",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.7579244233681576,
+      "groupedOofProbability": 0.2595443202364876
+    },
+    {
+      "id": "RP-044",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.791678118781158,
+      "groupedOofProbability": 0.11743654022448026
+    },
+    {
+      "id": "RP-047",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.867906387574915,
+      "groupedOofProbability": 0.3305751050290612
+    },
+    {
+      "id": "RP-050",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.5556886868204634,
+      "groupedOofProbability": 0.11394635285193097
+    },
+    {
+      "id": "RP-053",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.7231876709591325,
+      "groupedOofProbability": 0.25795144493135885
+    },
+    {
+      "id": "RP-056",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.5300676405136386,
+      "groupedOofProbability": 0.11460014379719857
+    },
+    {
+      "id": "RP-057",
+      "group": "tp_reclutamiento_parafraseado",
+      "label": 1,
+      "stratifiedOofProbability": 0.7207714219903808,
+      "groupedOofProbability": 0.060256410864979335
+    },
+    {
+      "id": "AC-006",
+      "group": "tp_actor_asimetrico",
+      "label": 1,
+      "stratifiedOofProbability": 0.9492647790995058,
+      "groupedOofProbability": 0.9571992673660286
+    },
+    {
+      "id": "BT-046",
+      "group": "benign_trampa",
+      "label": 0,
+      "stratifiedOofProbability": 0.2820621073252124,
+      "groupedOofProbability": 0.2853767608910603
+    },
+    {
+      "id": "BT-050",
+      "group": "benign_trampa",
+      "label": 0,
+      "stratifiedOofProbability": 0.15887498564247513,
+      "groupedOofProbability": 0.18766869069885067
+    },
+    {
+      "id": "BT-061",
+      "group": "benign_trampa",
+      "label": 0,
+      "stratifiedOofProbability": 0.07899862364681111,
+      "groupedOofProbability": 0.06494421556455014
+    },
+    {
+      "id": "BT-068",
+      "group": "benign_trampa",
+      "label": 0,
+      "stratifiedOofProbability": 0.15100137761184,
+      "groupedOofProbability": 0.16076817758363707
+    },
+    {
+      "id": "BT-074",
+      "group": "benign_trampa",
+      "label": 0,
+      "stratifiedOofProbability": 0.1067187654636885,
+      "groupedOofProbability": 0.17053406422248724
+    },
+    {
+      "id": "BT-079",
+      "group": "benign_trampa",
+      "label": 0,
+      "stratifiedOofProbability": 0.14865106268291475,
+      "groupedOofProbability": 0.18099826439144776
+    },
+    {
+      "id": "BT-087",
+      "group": "benign_trampa",
+      "label": 0,
+      "stratifiedOofProbability": 0.07005465339398337,
+      "groupedOofProbability": 0.06280776687611411
+    },
+    {
+      "id": "BT-091",
+      "group": "benign_trampa",
+      "label": 0,
+      "stratifiedOofProbability": 0.07458722318320782,
+      "groupedOofProbability": 0.06093146361482148
+    },
+    {
+      "id": "NC-017",
+      "group": "benign_narcocultura",
+      "label": 0,
+      "stratifiedOofProbability": 0.1721775595166026,
+      "groupedOofProbability": 0.16998529997896655
+    },
+    {
+      "id": "NC-019",
+      "group": "benign_narcocultura",
+      "label": 0,
+      "stratifiedOofProbability": 0.07067873386310908,
+      "groupedOofProbability": 0.07651608101368011
+    },
+    {
+      "id": "NC-023",
+      "group": "benign_narcocultura",
+      "label": 0,
+      "stratifiedOofProbability": 0.31095535529934043,
+      "groupedOofProbability": 0.31440763385932613
+    },
+    {
+      "id": "NC-024",
+      "group": "benign_narcocultura",
+      "label": 0,
+      "stratifiedOofProbability": 0.15176942229158277,
+      "groupedOofProbability": 0.1427023156558262
+    },
+    {
+      "id": "JJ-013",
+      "group": "benign_jerga_juvenil",
+      "label": 0,
+      "stratifiedOofProbability": 0.07945265348255937,
+      "groupedOofProbability": 0.0567054344824365
+    },
+    {
+      "id": "JJ-019",
+      "group": "benign_jerga_juvenil",
+      "label": 0,
+      "stratifiedOofProbability": 0.061975150244636484,
+      "groupedOofProbability": 0.055387357480367466
+    },
+    {
+      "id": "BR-005",
+      "group": "benign_reciproco",
+      "label": 0,
+      "stratifiedOofProbability": 0.30515363634939524,
+      "groupedOofProbability": 0.6370501374239312
+    },
+    {
+      "id": "BR-009",
+      "group": "benign_reciproco",
+      "label": 0,
+      "stratifiedOofProbability": 0.24490591574609558,
+      "groupedOofProbability": 0.36794414426917876
     }
   ],
   "limitations": [
-    "Only 135 labeled conversations are available.",
-    "Rows come from a curated benchmark rather than independent production traffic.",
-    "The exported full-data model is for shadow measurement, not decision-making."
+    "Only 185 review-eligible conversations are used; this is still small for model promotion.",
+    "168 additional synthetic rows remain excluded from training until review.",
+    "Rows come from a curated synthetic benchmark rather than independent production traffic.",
+    "Confidence intervals quantify sampling uncertainty over these OOF predictions, not domain shift in real traffic.",
+    "The exported full-data model remains shadow-only and must not affect decisions."
   ]
 }

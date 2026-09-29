@@ -11,6 +11,7 @@
 
 import { Engine } from "../src/analyzer/engine.js";
 import type { Message, MessageSource, RiskLevel } from "../src/types/SentinelEngine.js";
+import { injectFullDataset } from "./full-dataset.js";
 
 export interface CorpusCase {
   id: string;
@@ -47,6 +48,12 @@ export interface GroupStats {
   accuracy: number;
 }
 
+export interface ConfidenceInterval {
+  lower: number;
+  upper: number;
+  method: "wilson95";
+}
+
 export interface BenchmarkReport {
   timestamp: string;
   totalCases: number;
@@ -60,6 +67,12 @@ export interface BenchmarkReport {
     f1: number;
     falsePositiveRate: number;
     accuracy: number;
+    intervals95: {
+      precision: ConfidenceInterval;
+      recall: ConfidenceInterval;
+      falsePositiveRate: ConfidenceInterval;
+      accuracy: ConfidenceInterval;
+    };
   };
   escalation: {
     /** % de casos BENIGN que escalarían a la API (costo innecesario) */
@@ -89,6 +102,11 @@ export interface BenchmarkReport {
     missRate: number;
     /** RISK que llega al menos a MEDIUM: lo ve el LLM o se bloquea. */
     riskReachRate: number;
+    intervals95: {
+      falseBlockRate: ConfidenceInterval;
+      benignReviewRate: ConfidenceInterval;
+      riskReachRate: ConfidenceInterval;
+    };
   };
   latency: {
     p50Ms: number;
@@ -133,7 +151,30 @@ function round(n: number, decimals = 4): number {
   return Math.round(n * f) / f;
 }
 
-export function runBenchmark(corpus: Corpus): BenchmarkReport {
+/** Wilson score interval; remains informative when observed errors are zero. */
+export function wilson95(successes: number, total: number): ConfidenceInterval {
+  if (total <= 0) return { lower: 0, upper: 0, method: "wilson95" };
+  const z = 1.959963984540054;
+  const proportion = successes / total;
+  const denominator = 1 + (z * z) / total;
+  const center = (proportion + (z * z) / (2 * total)) / denominator;
+  const margin =
+    (z / denominator) *
+    Math.sqrt(
+      (proportion * (1 - proportion)) / total +
+        (z * z) / (4 * total * total),
+    );
+  return {
+    lower: round(Math.max(0, center - margin)),
+    upper: round(Math.min(1, center + margin)),
+    method: "wilson95",
+  };
+}
+
+export function runBenchmark(
+  corpus: Corpus,
+  options: { datasetMode?: "full" | "seed" } = {},
+): BenchmarkReport {
   const results: CaseResult[] = [];
   const allLatencies: number[] = [];
 
@@ -143,6 +184,7 @@ export function runBenchmark(corpus: Corpus): BenchmarkReport {
     // Engine nuevo por caso: VelocityDetector y estado de sesión no deben
     // contaminarse entre casos.
     const engine = new Engine();
+    if ((options.datasetMode ?? "full") === "full") injectFullDataset(engine);
 
     for (let i = 0; i < WARMUP_RUNS; i++) engine.analyze(messages);
 
@@ -231,6 +273,12 @@ export function runBenchmark(corpus: Corpus): BenchmarkReport {
       f1: round(f1),
       falsePositiveRate: round(fpr),
       accuracy: round((tp + tn) / results.length),
+      intervals95: {
+        precision: wilson95(tp, tp + fp),
+        recall: wilson95(tp, tp + fn),
+        falsePositiveRate: wilson95(fp, fp + tn),
+        accuracy: wilson95(tp + tn, results.length),
+      },
     },
     escalation: {
       benignEscalationRate: round(benignCases.length ? benignEscalations / benignCases.length : 0),
@@ -243,6 +291,11 @@ export function runBenchmark(corpus: Corpus): BenchmarkReport {
       missedRisks,
       missRate: round(riskCases.length ? missedRisks / riskCases.length : 0),
       riskReachRate: round(riskCases.length ? riskReached / riskCases.length : 0),
+      intervals95: {
+        falseBlockRate: wilson95(falseBlocks, benignCases.length),
+        benignReviewRate: wilson95(benignReviews, benignCases.length),
+        riskReachRate: wilson95(riskReached, riskCases.length),
+      },
     },
     latency: {
       p50Ms: round(percentile(allLatencies, 50), 3),
@@ -269,6 +322,8 @@ export function runBenchmark(corpus: Corpus): BenchmarkReport {
 export function formatReport(report: BenchmarkReport): string {
   const d = report.detection;
   const pct = (n: number) => `${(n * 100).toFixed(1)}%`;
+  const interval = (value: ConfidenceInterval) =>
+    `${pct(value.lower)}–${pct(value.upper)}`;
   const lines: string[] = [];
 
   lines.push("");
@@ -278,15 +333,15 @@ export function formatReport(report: BenchmarkReport): string {
   lines.push(`Casos: ${report.totalCases}  ·  ${report.timestamp}`);
   lines.push("");
   lines.push("── Detección (flagged = risk ≥ MEDIUM) ──");
-  lines.push(`  Precision:            ${pct(d.precision)}   (${d.truePositives}/${d.truePositives + d.falsePositives} marcados son riesgo real)`);
-  lines.push(`  Recall:               ${pct(d.recall)}   (${d.truePositives}/${d.truePositives + d.falseNegatives} riesgos detectados)`);
+  lines.push(`  Precision:            ${pct(d.precision)}   IC95 ${interval(d.intervals95.precision)}   (${d.truePositives}/${d.truePositives + d.falsePositives} marcados son riesgo real)`);
+  lines.push(`  Recall:               ${pct(d.recall)}   IC95 ${interval(d.intervals95.recall)}   (${d.truePositives}/${d.truePositives + d.falseNegatives} riesgos detectados)`);
   lines.push(`  F1:                   ${pct(d.f1)}`);
-  lines.push(`  Falsos positivos:     ${pct(d.falsePositiveRate)}   (${d.falsePositives}/${d.falsePositives + d.trueNegatives} benignos marcados)`);
+  lines.push(`  Falsos positivos:     ${pct(d.falsePositiveRate)}   IC95 ${interval(d.intervals95.falsePositiveRate)}   (${d.falsePositives}/${d.falsePositives + d.trueNegatives} benignos marcados)`);
   lines.push(`  Accuracy:             ${pct(d.accuracy)}`);
   lines.push("");
   lines.push("── Modelo de acción de 2 capas (lo que importa en producción) ──");
   const a = report.action;
-  lines.push(`  Bloqueos falsos:      ${pct(a.falseBlockRate)}   (${a.falseBlocks} benignos → HIGH/CRITICAL · DEBE ser 0)`);
+  lines.push(`  Bloqueos falsos:      ${pct(a.falseBlockRate)}   IC95 ${interval(a.intervals95.falseBlockRate)}   (${a.falseBlocks} benignos → HIGH/CRITICAL · DEBE ser 0)`);
   lines.push(`  Benignos a revisión:  ${pct(a.benignReviewRate)}   (→ MEDIUM · escalan al LLM, tolerable)`);
   lines.push(`  Riesgos no vistos:    ${pct(a.missRate)}   (${a.missedRisks} riesgos → LOW · el error caro)`);
   lines.push(`  Riesgos que el sistema alcanza a ver: ${pct(a.riskReachRate)}`);

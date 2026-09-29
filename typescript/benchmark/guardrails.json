@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "reviewedBaseline": {
+    "caseCount": 185,
+    "recall": 0.5977,
+    "precision": 0.9286,
+    "measuredAt": "2026-07-17",
+    "maxRecallRegression": 0.01
+  },
+  "productTargets": {
+    "reviewedRecall": 0.75,
+    "falseBlocks": 0,
+    "maxBenignReviewRate": 0.12,
+    "maxP95LatencyMs": 8
+  }
+}
