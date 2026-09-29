@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
+import { injectFullDataset } from '../../benchmark/full-dataset.js';
 import { Engine } from './engine.js';
 
 describe('Engine', () => {
@@ -6,6 +7,7 @@ describe('Engine', () => {
 
   beforeEach(() => {
     engine = new Engine();
+    injectFullDataset(engine);
   });
 
   it('debe requerir corroboración multi-señal para HIGH y CRITICAL', () => {
@@ -67,5 +69,28 @@ describe('Engine', () => {
     if (hasRules) {
       expect(result.layers.v3.dampenersApplied?.length).toBe(0);
     }
+  });
+
+  it('mantiene en LOW las menciones benignas de cártel confirmadas por revisión humana', () => {
+    const benignos = [
+      ['terminemos el cartel del sistema solar', 'falta pegar Saturno'],
+      ['investigamos un cártel para historia', 'solo usamos fuentes del museo'],
+      ['el podcast habla del cártel en los noventa', 'entrevistaron a periodistas'],
+      ['la biografía explica por qué canta de la maña', 'no es una invitación'],
+    ];
+
+    for (const messages of benignos) {
+      const result = engine.analyze(messages.map((text) => ({ text })));
+      expect(result.layers.v4.triggeredRules).not.toContain('CR-009');
+      expect(result.risk).toBe('LOW');
+    }
+  });
+
+  it('conserva CR-009 como prueba dura cuando hay cártel más llamada a actuar', () => {
+    const result = engine.analyze([{ text: 'la maña está reclutando, ¿le entras?' }]);
+
+    expect(result.layers.v4.triggeredRules).toContain('CR-009');
+    expect(['HIGH', 'CRITICAL']).toContain(result.risk);
+    expect(result.escalationReason).toBe('confident_local_proof');
   });
 });

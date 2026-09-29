@@ -79,6 +79,28 @@ export interface TemporalLayerResult {
   timeline: Array<{ stage: string; firstSeenAt: number }>;
 }
 
+export type TemporalStage = "CONTACTO" | "ENGANCHE" | "AISLAMIENTO" | "LOGISTICA";
+
+/**
+ * Resumen longitudinal mínimo. Conserva cuándo apareció cada etapa, nunca el
+ * texto, término, usuario ni emisor que la originó.
+ */
+export interface TemporalMemoryState {
+  schemaVersion: 1;
+  updatedAt: number;
+  stages: Partial<
+    Record<
+      TemporalStage,
+      {
+        firstSeenAt: number;
+        lastSeenAt: number;
+        /** Días Unix distintos; acotados por la política de retención. */
+        activeDays: number[];
+      }
+    >
+  >;
+}
+
 // ─── Resultado principal del Engine ──────────────────────────────────────────
 
 export interface EngineResult {

@@ -1,4 +1,4 @@
-import v3Dataset from "../constants/sentinel_dataset_v3.json" with { type: "json" };
+import v3Dataset from "../constants/sentinel_dataset_v3_seed.json" with { type: "json" };
 import type { RegionMcrRule, RegionTerm, V3RegionPack } from "./v3-region-pack.js";
 
 interface CurrentV3Dataset {
@@ -13,12 +13,12 @@ interface CurrentV3Dataset {
 
 const current = v3Dataset as unknown as CurrentV3Dataset;
 
-/** Primer y único pack real: adapta el dataset mexicano actual sin duplicarlo. */
+/** Pack público de México: motor completo con el seed de 30 términos. */
 export const MX_REGION_PACK: V3RegionPack = {
   schemaVersion: 1,
   id: "MX",
   version: current.metadata.version,
-  displayName: "México — dataset nacional actual",
+  displayName: "México — seed público",
   // Mantiene REC-001/MCR-001 en resultados públicos durante la migración.
   legacyOutputIds: true,
   metadata: {

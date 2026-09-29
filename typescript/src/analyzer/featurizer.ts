@@ -16,8 +16,12 @@
 
 import type { EngineResult, Message } from "../types/SentinelEngine.js";
 
-/** Versión del esquema de features. Cambiarlo invalida datasets/modelos previos. */
-export const FEATURE_SCHEMA_VERSION = 1;
+/**
+ * v2 agrega primitivas conductuales independientes de la jerga exacta. v1
+ * dependía demasiado del score léxico y no generalizó al grupo parafraseado
+ * (13.5% recall OOF agrupado). El cambio invalida correctamente el modelo v1.
+ */
+export const FEATURE_SCHEMA_VERSION = 2;
 
 /** Nombres de las features, en orden fijo. El índice = posición en el vector. */
 export const FEATURE_NAMES: readonly string[] = [
@@ -54,6 +58,19 @@ export const FEATURE_NAMES: readonly string[] = [
   "txt_money_mention",    // menciona dinero/pago sin categoría léxica
   "txt_meet_mention",     // menciona encuentro/lugar sin categoría léxica
   "txt_avg_len",          // longitud media de mensaje (normalizada)
+  // Primitivas de intención: describen conducta, no vocabulario narco regional.
+  "intent_directed_action",
+  "intent_secrecy_or_erasure",
+  "intent_opaque_transfer",
+  "intent_surveillance",
+  "intent_isolation",
+  "intent_coercion_or_debt",
+  "intent_reward_or_leverage",
+  "intent_authority_avoidance",
+  "intent_minor_targeting",
+  "intent_signal_density",
+  // Contexto que ayuda al modelo a no confundir instrucciones cotidianas.
+  "context_supervised_or_institutional",
 ] as const;
 
 const KEY_CATEGORIES = [
@@ -61,10 +78,26 @@ const KEY_CATEGORIES = [
   "aislamiento", "cambio_canal", "slang_operativo", "contenido_normalizado",
 ];
 
-const IMPERATIVE = /\b(manda|mándame|ven|vente|dame|dime|trae|tráeme|escríbeme|agrégame|pásame|acude|recoge|entrega|borra)\b/i;
+const IMPERATIVE = /\b(manda|mándame|ven|vente|dame|dime|trae|tráeme|escríbeme|agrégame|pásame|acude|recoge|entrega|borra|quédate|ponte|guarda|lleva|sube|baja|mira|anota|registra|toma|fotografía|esconde|espera|camina|cruza|avisa)\b/i;
 const SECOND_PERSON = /\b(t[úu]|te|tuyo|tuya|contigo|tienes|puedes|quieres)\b/i;
 const MONEY = /\b(dinero|lana|varo|feria|pago|pagar|paga|pesos|mil|quincenal|efectivo|billete|cash)\b/i;
 const MEET = /\b(ubicaci[oó]n|direcci[oó]n|d[oó]nde vives|nos vemos|paso por ti|encuentro|lugar|hotel|rancho|central|esquina)\b/i;
+
+// Estas expresiones son deliberadamente amplias. Individualmente NO deciden
+// riesgo: son entradas de un modelo lineal que aprende combinaciones y puede
+// ponderar el contexto benigno. Esto evita convertir el featurizer en otra
+// colección de reglas de bloqueo específicas de México.
+const DIRECTED_ACTION = /\b(quédate|ponte|párate|manda|avisa|escríbeme|anota|registra|recoge|lleva|deja|guarda|esconde|entra|toma|fotografía|borra|destruye|espera|camina|cruza|sube|baja|acompaña|entrega|haz|dáselo)\b/i;
+const SECRECY_OR_ERASURE = /\b(no (?:le )?digas|que nadie|nadie debe|sin que (?:nadie|se|tu)|no (?:se )?entere|borra|destruye|otra cuenta|no (?:la|lo|los) abras|no preguntes|una sola vez|debe quedar entre|no lo escribas|no voy a escribir)\b/i;
+const OPAQUE_TRANSFER = /\b(caja|bolsa|mochila|sobre|paquete|objeto|recipiente|envoltorio|credencial|billetes)\b/i;
+const TRANSFER_ACTION = /\b(recoge|lleva|deja|guarda|esconde|entrega|transporta|recibas?|cruza|sube)\b/i;
+const SURVEILLANCE = /\b(vigila|vigilando|mira qui[eé]n|avisa qui[eé]n|anota cu[aá]nt|registra (?:a qu[eé] hora|qui[eé]n)|qui[eé]n entra|qui[eé]n pasa|personas uniformadas|camioneta oficial|cuida la entrada)\b/i;
+const ISOLATION = /\b(ven solo|ve solo|sin compa(?:ñ|n)[ií]a|sin nadie|nadie m[aá]s|tu familia no|ning[uú]n adulto|tus pap[aá]s no|sin (?:tu|que) (?:mam[aá]|pap[aá]|familia)|ve sin|llega sin)\b/i;
+const COERCION_OR_DEBT = /\b(debes|deb[ií]as|deuda|te toca|corresponde|no puedes echarte|nadie tendr[aá] problemas|haz lo que te indiqu[eé]|cumplas?|obedeces?|consecuencias)\b/i;
+const REWARD_OR_LEVERAGE = /\b(te (?:doy|pago|transfiero|compro|pongo)|vas a recibir|recibir[aá]s|ganas?|mil|pesos|saldo|celular nuevo|puedo ayudar|puedo cubrir|resolv[ií]|apoyo|cosas mejores)\b/i;
+const AUTHORITY_AVOIDANCE = /\b(nadie (?:revisa|sospecha)|uniformad[oa]s?|oficial(?:es)?|patrulla|polic[ií]a|soldados?|militares?|autoridad)\b/i;
+const MINOR_TARGETING = /\b(menor(?:es)?|niñ[oa]|chav[oa] como t[uú]|de tu edad|secundaria|tus pap[aá]s|tu mam[aá]|tu pap[aá]|adulto)\b/i;
+const SUPERVISED_OR_INSTITUTIONAL = /\b(profe(?:sor|sora)?|maestr[oa]|escuela|clase|tarea|examen|equipo|entrenador|con permiso|mis pap[aá]s|mi mam[aá]|mi pap[aá]|protecci[oó]n civil|documental|serie|canci[oó]n|videojuego)\b/i;
 
 function sat(x: number, max: number): number {
   return Math.max(0, Math.min(1, x / max));
@@ -90,6 +123,22 @@ export function featurize(result: EngineResult, messages: Message[]): {
   const moneyMention = texts.some((t) => MONEY.test(t)) ? 1 : 0;
   const meetMention = texts.some((t) => MEET.test(t)) ? 1 : 0;
   const avgLen = sat(texts.reduce((s, t) => s + t.length, 0) / n, 200);
+  const conversation = texts.join(" ");
+  const directedAction = texts.filter((text) => DIRECTED_ACTION.test(text)).length / n;
+  const secrecy = SECRECY_OR_ERASURE.test(conversation) ? 1 : 0;
+  const opaqueTransfer =
+    OPAQUE_TRANSFER.test(conversation) && TRANSFER_ACTION.test(conversation) ? 1 : 0;
+  const intentSignals = [
+    directedAction > 0 ? 1 : 0,
+    secrecy,
+    opaqueTransfer,
+    SURVEILLANCE.test(conversation) ? 1 : 0,
+    ISOLATION.test(conversation) ? 1 : 0,
+    COERCION_OR_DEBT.test(conversation) ? 1 : 0,
+    REWARD_OR_LEVERAGE.test(conversation) ? 1 : 0,
+    AUTHORITY_AVOIDANCE.test(conversation) ? 1 : 0,
+    MINOR_TARGETING.test(conversation) ? 1 : 0,
+  ];
 
   const values = [
     sat(result.score, 40),
@@ -114,6 +163,10 @@ export function featurize(result: EngineResult, messages: Message[]): {
     moneyMention,
     meetMention,
     avgLen,
+    directedAction,
+    ...intentSignals.slice(1),
+    sat(intentSignals.reduce((sum, value) => sum + value, 0), intentSignals.length),
+    SUPERVISED_OR_INSTITUTIONAL.test(conversation) ? 1 : 0,
   ];
 
   return { version: FEATURE_SCHEMA_VERSION, names: FEATURE_NAMES, values };

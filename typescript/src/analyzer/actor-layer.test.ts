@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
+import { injectFullDataset } from "../../benchmark/full-dataset.js";
 import { Engine } from "./engine.js";
+
+const fullEngine = () => {
+  const engine = new Engine();
+  injectFullDataset(engine);
+  return engine;
+};
 
 const T0 = 1_750_000_000_000;
 const m = (text: string, sender: string, offsetS = 0) => ({
@@ -11,7 +18,7 @@ const m = (text: string, sender: string, offsetS = 0) => ({
 describe("ActorLayer — asimetría de emisor", () => {
   it("detecta al agresor que concentra tácticas de acción dirigida", () => {
     // El adulto ofrece, pide datos y da logística; el menor solo responde.
-    const engine = new Engine();
+    const engine = fullEngine();
     const r = engine.analyze([
       m("hola, te vi por aquí", "adulto", 0),
       m("hola", "menor", 30),
@@ -27,7 +34,7 @@ describe("ActorLayer — asimetría de emisor", () => {
 
   it("NO marca agresor cuando las señales son recíprocas entre pares", () => {
     // Dos amigos organizando una fiesta: logística repartida, sin concentración.
-    const engine = new Engine();
+    const engine = fullEngine();
     const r = engine.analyze([
       m("oye dónde vives? paso por ti para la fiesta", "amigo1", 0),
       m("por el centro, y tú manda tu ubicación también", "amigo2", 60),
@@ -39,7 +46,7 @@ describe("ActorLayer — asimetría de emisor", () => {
 
   it("reúne un término partido entre mensajes consecutivos del mismo emisor", () => {
     // Evasión: partir "jale" en dos mensajes. La concatenación por emisor lo une.
-    const engine = new Engine();
+    const engine = fullEngine();
     const partido = engine.analyze([
       m("oye tengo un ja", "adulto", 0),
       m("le para ti, se gana bien, manda tu ubicacion", "adulto", 20),
@@ -50,7 +57,7 @@ describe("ActorLayer — asimetría de emisor", () => {
   });
 
   it("sin emisores se comporta como antes (retrocompatible)", () => {
-    const engine = new Engine();
+    const engine = fullEngine();
     const r = engine.analyze([
       { text: "hola qué haces", timestamp: T0 },
       { text: "nada, aquí en la escuela", timestamp: T0 + 1000 },
@@ -62,7 +69,7 @@ describe("ActorLayer — asimetría de emisor", () => {
   it("un agresor claro es prueba dura → se resuelve local (sin gastar LLM)", () => {
     // La concentración en un actor + aislamiento es señal determinista: el motor
     // NO necesita el LLM para actuar. Se marca riesgo y se resuelve localmente.
-    const engine = new Engine();
+    const engine = fullEngine();
     const r = engine.analyze([
       m("te doy skins si me ayudas", "extraño", 0),
       m("no sé", "menor", 30),

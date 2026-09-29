@@ -1,11 +1,11 @@
 {
   "metadata": {
     "name": "SENTINEL MX Dataset v4 — Hybrid Feature Engine",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "description": "Dataset híbrido para Tier 1. Complementa a v3 (regex legacy). Agrega lexicones base, features abstractas y reglas de combinación para detectar mensajes ambiguos que v3 no captura por depender de frases exactas.",
     "compatible_with": "sentinel_dataset_v3.json",
     "architecture": "lexicon-based feature extraction + combination rules",
-    "last_updated": "2026-04-25-collision-pass"
+    "last_updated": "2026-07-17-cr009-corroboration"
   },
   "explicit_signals": [
     {
@@ -673,11 +673,12 @@
       "id": "CR-009",
       "name": "Mención de Cartel + Oportunidad/CTA",
       "features_required": [
-        "cartel_mention"
+        "cartel_mention",
+        "call_to_action"
       ],
       "bonus_score": 15,
       "action": "ESCALATE",
-      "description": "Se menciona un cartel o facción armada. Es una señal crítica que anula cualquier ambigüedad."
+      "description": "Mención de cartel o facción armada acompañada de una llamada a actuar. La mención histórica o cultural aislada no constituye prueba dura."
     },
     {
       "id": "CR-010",

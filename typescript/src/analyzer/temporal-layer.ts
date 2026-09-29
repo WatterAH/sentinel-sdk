@@ -12,7 +12,11 @@
 // Por eso las reglas exigen progresión ordenada, no solo acumulación.
 // ─────────────────────────────────────────────────────────────────────────────
 
-import type { Hit, TemporalLayerResult } from "../types/SentinelEngine.js";
+import type {
+  Hit,
+  TemporalLayerResult,
+  TemporalMemoryState,
+} from "../types/SentinelEngine.js";
 
 /** Etapas del proceso de captación, en el orden documentado del guion. */
 export const STAGES = ["CONTACTO", "ENGANCHE", "AISLAMIENTO", "LOGISTICA"] as const;
@@ -75,6 +79,57 @@ export class TemporalLayer {
    * secreto sin llegar aún a la logística.
    */
   scan(hits: Hit[]): TemporalLayerResult {
+    return this.evaluate(this.mergeMemory(hits));
+  }
+
+  /**
+   * Fusiona hits actuales con memoria agregada de una ejecución anterior. La
+   * salida no contiene IDs de términos ni contenido y puede persistirse sin
+   * reconstruir la conversación.
+   */
+  mergeMemory(hits: Hit[], previous?: TemporalMemoryState): TemporalMemoryState {
+    const stages: TemporalMemoryState["stages"] = {};
+    if (previous?.schemaVersion === 1) {
+      for (const stage of STAGES) {
+        const value = previous.stages[stage];
+        if (!value) continue;
+        stages[stage] = {
+          firstSeenAt: value.firstSeenAt,
+          lastSeenAt: value.lastSeenAt,
+          activeDays: [...new Set(value.activeDays)].sort((left, right) => left - right),
+        };
+      }
+    }
+
+    let updatedAt = previous?.updatedAt ?? 0;
+    for (const hit of hits) {
+      if (!hit.category || !Number.isFinite(hit.timestamp)) continue;
+      const stage = CATEGORY_TO_STAGE[hit.category];
+      if (!stage) continue;
+      const day = Math.floor(hit.timestamp / MS_PER_DAY);
+      const current = stages[stage];
+      if (!current) {
+        stages[stage] = {
+          firstSeenAt: hit.timestamp,
+          lastSeenAt: hit.timestamp,
+          activeDays: [day],
+        };
+      } else {
+        current.firstSeenAt = Math.min(current.firstSeenAt, hit.timestamp);
+        current.lastSeenAt = Math.max(current.lastSeenAt, hit.timestamp);
+        if (!current.activeDays.includes(day)) {
+          current.activeDays.push(day);
+          current.activeDays.sort((left, right) => left - right);
+        }
+      }
+      updatedAt = Math.max(updatedAt, hit.timestamp);
+    }
+
+    return { schemaVersion: 1, updatedAt, stages };
+  }
+
+  /** Evalúa reglas TCR exclusivamente desde el resumen mínimo. */
+  evaluate(memory: TemporalMemoryState): TemporalLayerResult {
     const empty: TemporalLayerResult = {
       stagesPresent: [],
       orderedProgression: false,
@@ -82,7 +137,11 @@ export class TemporalLayer {
       triggeredRules: [],
       timeline: [],
     };
-    if (hits.length === 0) return empty;
+    const entries = STAGES.flatMap((stage) => {
+      const observation = memory.stages[stage];
+      return observation ? [{ stage, observation }] : [];
+    });
+    if (entries.length === 0) return empty;
 
     // Primera aparición de cada etapa (por timestamp del hit más temprano)
     const firstSeen = new Map<Stage, number>();
@@ -92,25 +151,11 @@ export class TemporalLayer {
     let minTs = Infinity;
     let maxTs = -Infinity;
 
-    for (const hit of hits) {
-      if (!hit.category) continue;
-      const stage = CATEGORY_TO_STAGE[hit.category];
-      if (!stage) continue;
-
-      minTs = Math.min(minTs, hit.timestamp);
-      maxTs = Math.max(maxTs, hit.timestamp);
-
-      const prev = firstSeen.get(stage);
-      if (prev === undefined || hit.timestamp < prev) {
-        firstSeen.set(stage, hit.timestamp);
-      }
-
-      let days = stageDays.get(stage);
-      if (!days) {
-        days = new Set();
-        stageDays.set(stage, days);
-      }
-      days.add(Math.floor(hit.timestamp / MS_PER_DAY));
+    for (const { stage, observation } of entries) {
+      minTs = Math.min(minTs, observation.firstSeenAt);
+      maxTs = Math.max(maxTs, observation.lastSeenAt);
+      firstSeen.set(stage, observation.firstSeenAt);
+      stageDays.set(stage, new Set(observation.activeDays));
     }
 
     if (firstSeen.size === 0) return empty;
@@ -131,7 +176,12 @@ export class TemporalLayer {
     for (let i = 1; i < timeline.length; i++) {
       const current = timeline[i];
       const previous = timeline[i - 1];
-      if (!current || !previous || STAGE_INDEX[current.stage] <= STAGE_INDEX[previous.stage]) {
+      if (
+        !current ||
+        !previous ||
+        current.firstSeenAt <= previous.firstSeenAt ||
+        STAGE_INDEX[current.stage] <= STAGE_INDEX[previous.stage]
+      ) {
         orderedProgression = false;
         break;
       }

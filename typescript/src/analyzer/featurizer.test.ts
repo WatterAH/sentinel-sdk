@@ -12,7 +12,7 @@ describe("featurizer — contrato del clasificador (8.8)", () => {
     const { names, values, version } = featurize(result, [m("hay jale para ti, manda tu ubicacion")]);
     expect(values.length).toBe(names.length);
     expect(values.length).toBe(FEATURE_NAMES.length);
-    expect(version).toBe(1);
+    expect(version).toBe(2);
     for (const v of values) {
       expect(v).toBeGreaterThanOrEqual(0);
       expect(v).toBeLessThanOrEqual(1);
@@ -29,6 +29,25 @@ describe("featurizer — contrato del clasificador (8.8)", () => {
     const idx = (n: string) => names.indexOf(n);
     expect(values[idx("txt_money_mention")]).toBe(1);
     expect(values[idx("txt_meet_mention")]).toBe(1);
+    expect(values[idx("intent_directed_action")]).toBeGreaterThan(0);
+    expect(values[idx("intent_surveillance")]).toBe(1);
+    expect(values[idx("intent_reward_or_leverage")]).toBe(1);
+  });
+
+  it("separa primitivas de intención de una decisión automática", () => {
+    const engine = new Engine();
+    const messages = [
+      m("recoge la caja y no la abras"),
+      m("que ningún adulto se entere y después te pago"),
+    ];
+    const result = engine.analyze(messages);
+    const { names, values } = featurize(result, messages);
+    const value = (name: string) => values[names.indexOf(name)];
+    expect(value("intent_opaque_transfer")).toBe(1);
+    expect(value("intent_secrecy_or_erasure")).toBe(1);
+    expect(value("intent_minor_targeting")).toBe(1);
+    // El featurizer observa; el Engine sigue siendo la única fuente del veredicto.
+    expect(result.risk).toBe(new Engine().analyze(messages).risk);
   });
 });
 

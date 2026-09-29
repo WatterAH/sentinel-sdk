@@ -29,6 +29,8 @@
     "format": "biome format --write src/",
     "bench:adversarial": "vitest run benchmark/adversarial.test.ts",
     "bench:shadow": "vitest run benchmark/shadow-classifier.test.ts",
+    "bench:models": "../model-training/.venv/bin/python ../model-training/bakeoff_models.py && vitest run benchmark/model-bakeoff.test.ts",
+    "bench:cascade": "../model-training/.venv/bin/python ../model-training/simulate_cascade.py && vitest run benchmark/cascade-simulation.test.ts",
     "bench:v3-scale": "SENTINEL_V3_SCALE=1 vitest run benchmark/v3-scale-probe.test.ts",
     "export:dataset": "vitest run benchmark/export-dataset.test.ts"
   },

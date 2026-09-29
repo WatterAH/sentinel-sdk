@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { injectFullDataset } from "../../benchmark/full-dataset.js";
 import { TemporalLayer } from "./temporal-layer.js";
 import { Engine } from "./engine.js";
 import type { Hit } from "../types/SentinelEngine.js";
@@ -126,6 +127,7 @@ describe("Engine — integración del piso temporal", () => {
     // Cada término es débil (hola=1, chambita=3, cuántos años=3 → score ~8 < 12)
     // pero la progresión ordenada en 6 días dispara TCR-001.
     const engine = new Engine();
+    injectFullDataset(engine);
     const result = engine.analyze([
       { text: "hola, qué haces", timestamp: T0 },
       { text: "hay una chambita por si te interesa", timestamp: T0 + 3 * DAY },

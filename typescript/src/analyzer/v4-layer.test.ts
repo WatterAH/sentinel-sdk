@@ -117,4 +117,28 @@ describe('V4Layer Intent Signals & CR-013', () => {
       expect(result.triggeredRules).not.toContain('CR-013');
     });
   });
+
+  describe('Corroboración de mención de cártel (CR-009)', () => {
+    it('NO activa CR-009 por menciones históricas, escolares o culturales aisladas', () => {
+      const benignos = [
+        'terminemos el cartel del sistema solar',
+        'investigamos un cártel para historia',
+        'el podcast habla del cártel en los noventa',
+        'la biografía explica por qué canta de la maña',
+      ];
+
+      for (const text of benignos) {
+        const result = layer.scan([{ text }]);
+        expect(result.features).toContain('cartel_mention');
+        expect(result.triggeredRules).not.toContain('CR-009');
+      }
+    });
+
+    it('activa CR-009 cuando la mención acompaña una llamada a actuar', () => {
+      const result = layer.scan([{ text: 'la maña está reclutando, ¿le entras?' }]);
+
+      expect(result.features).toEqual(expect.arrayContaining(['cartel_mention', 'call_to_action']));
+      expect(result.triggeredRules).toContain('CR-009');
+    });
+  });
 });

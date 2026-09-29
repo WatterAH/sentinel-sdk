@@ -13,12 +13,30 @@ import { ActorLayer } from "./actor-layer.js";
 import { ageCategoryMultiplier, type AgeBand } from "./age-policy.js";
 import { featurize } from "./featurizer.js";
 import type { HotTermInput } from "../packs/v3-region-pack.js";
-import type { Message, EngineResult, RiskLevel } from "../types/SentinelEngine.js";
+import type {
+  Message,
+  EngineResult,
+  RiskLevel,
+  TemporalMemoryState,
+} from "../types/SentinelEngine.js";
+
+import {
+  ShadowRunner,
+  type ShadowProvider,
+  type ShadowRunnerConfig,
+  type ShadowObservation,
+  wrapClassifierAsProvider,
+} from "./shadow-runner.js";
+import type { ShadowModelMetadata } from "../types/SentinelConfig.js";
 
 /** Contexto opcional que la plataforma puede pasar para afinar el análisis. */
 export interface AnalyzeOptions {
   /** Banda de edad del usuario protegido; ajusta pesos por categoría (7.4). */
   ageBand?: AgeBand;
+  /** Resumen longitudinal previo; jamás contiene contenido de mensajes. */
+  temporalMemory?: TemporalMemoryState;
+  /** Recibe el resumen actualizado para persistencia privada opcional. */
+  temporalMemoryObserver?: (memory: TemporalMemoryState) => void;
 }
 
 /**
@@ -27,7 +45,7 @@ export interface AnalyzeOptions {
  * decidir — solo la registra vía el observador — para poder recolectar datos de
  * concordancia en producción de forma segura antes de darle peso real (8.8).
  */
-export type ShadowClassifier = (features: number[]) => number;
+export type ShadowClassifier = (features: number[], messages?: Message[]) => number;
 
 /** Observa la comparación motor-léxico vs. clasificador-sombra (telemetría). */
 export type ShadowObserver = (info: {
@@ -46,8 +64,7 @@ export class Engine {
   private temporal: TemporalLayer;
   private actor: ActorLayer;
   private sessionThreshold: number;
-  private shadowClassifier?: ShadowClassifier;
-  private shadowObserver?: ShadowObserver;
+  private shadowRunner?: ShadowRunner;
 
   constructor() {
     this.normalizer = new NormalizerLayer();
@@ -69,9 +86,42 @@ export class Engine {
    * medir concordancia con el motor léxico. Preparación para el clasificador
    * semántico on-device sin arriesgar decisiones en producción.
    */
-  setShadowClassifier(classifier: ShadowClassifier, observer?: ShadowObserver): void {
-    this.shadowClassifier = classifier;
-    this.shadowObserver = observer;
+  setShadowClassifier(
+    classifier: ShadowClassifier,
+    observer?: ShadowObserver,
+    config?: ShadowRunnerConfig,
+    metadata?: ShadowModelMetadata,
+  ): void {
+    const provider = wrapClassifierAsProvider(classifier, metadata);
+    this.setShadowProvider(provider, observer ? (obs) => {
+      if (obs.shadowProbability !== null) {
+        observer({
+          lexicalRisk: obs.lexicalRisk,
+          lexicalEscalate: obs.lexicalEscalate,
+          shadowProbability: obs.shadowProbability,
+          features: obs.features ?? [],
+        });
+      }
+    } : undefined, config);
+  }
+
+  /** Registra un ShadowProvider aislado con configuración y observador enriquecido. */
+  setShadowProvider(
+    provider?: ShadowProvider,
+    observer?: (observation: ShadowObservation) => void,
+    config?: ShadowRunnerConfig,
+  ): void {
+    if (!this.shadowRunner) {
+      this.shadowRunner = new ShadowRunner(provider, observer, config);
+    } else {
+      this.shadowRunner.setProvider(provider);
+      if (observer) this.shadowRunner.setObserver(observer);
+      if (config) this.shadowRunner.setConfig(config);
+    }
+  }
+
+  getShadowRunner(): ShadowRunner | undefined {
+    return this.shadowRunner;
   }
 
   /** Inyecta términos dinámicos en el V3Layer desde la API. */
@@ -112,7 +162,9 @@ export class Engine {
     const { flag: velocityFlag, windowSeconds } = this.velocity.check(allHits);
 
     // ── Fase 4b: Progresión temporal (captación lenta multi-día) ────────────
-    const temporal = this.temporal.scan(allHits);
+    const temporalMemory = this.temporal.mergeMemory(allHits, options.temporalMemory);
+    const temporal = this.temporal.evaluate(temporalMemory);
+    options.temporalMemoryObserver?.(temporalMemory);
 
     // ── Fase 4c: Asimetría de actor (¿un solo emisor concentra las tácticas?) ─
     const actor = this.actor.analyze(n0.messages, this.v3);
@@ -344,17 +396,11 @@ export class Engine {
       },
     };
 
-    // Modo sombra (8.8): evaluar el clasificador candidato sin usar su salida.
-    if (this.shadowClassifier) {
+    // Modo sombra (8.8 / S16): evaluar el candidato de forma aislada y no bloqueante.
+    if (this.shadowRunner) {
       try {
         const { values } = featurize(engineResult, messages);
-        const shadowProbability = this.shadowClassifier(values);
-        this.shadowObserver?.({
-          lexicalRisk: risk,
-          lexicalEscalate: escalate,
-          shadowProbability,
-          features: values,
-        });
+        this.shadowRunner.execute(engineResult, values, messages);
       } catch {
         // El modo sombra jamás debe afectar el análisis real.
       }

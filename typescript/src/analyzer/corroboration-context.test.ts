@@ -2,8 +2,15 @@
 // corroboración de términos-clave polisémicos, dampeners narcoculturales, y el
 // techo de riesgo por contexto de entretenimiento.
 import { describe, expect, it } from "vitest";
+import { injectFullDataset } from "../../benchmark/full-dataset.js";
 import { Engine } from "./engine.js";
 import { V3Layer } from "./v3-layer.js";
+
+const fullEngine = () => {
+  const engine = new Engine();
+  injectFullDataset(engine);
+  return engine;
+};
 
 const T0 = 1_750_000_000_000;
 const msg = (text: string, offsetS = 0) => ({ text, timestamp: T0 + offsetS * 1000 });
@@ -43,7 +50,7 @@ describe("Corroboración de términos-clave polisémicos", () => {
 
 describe("Dampeners narcoculturales (fan de corridos ≠ reclutador)", () => {
   it("citar léxico narco hablando de una canción no dispara bloqueo", () => {
-    const engine = new Engine();
+    const engine = fullEngine();
     const r = engine.analyze([
       msg("🎵 de halcón empecé y ahora la plaza es mía 🎵 qué rola", 0),
       msg("esa canción de los alegres está durísima, la cantamos en el karaoke?", 400),
@@ -53,7 +60,7 @@ describe("Dampeners narcoculturales (fan de corridos ≠ reclutador)", () => {
   });
 
   it("hablar de una serie de narcos en netflix no produce bloqueo automático", () => {
-    const engine = new Engine();
+    const engine = fullEngine();
     const r = engine.analyze([
       msg("ya viste la serie del cartel en netflix?", 0),
       msg("voy en el capítulo del laboratorio clandestino, el que hace de sicario actúa increíble", 400),
@@ -65,7 +72,7 @@ describe("Dampeners narcoculturales (fan de corridos ≠ reclutador)", () => {
 
 describe("El dampener NO salva al reclutador que usa corridos como gancho", () => {
   it("fan de corridos + oferta económica dirigida sí escala", () => {
-    const engine = new Engine();
+    const engine = fullEngine();
     const r = engine.analyze([
       msg("también te gustan los corridos de peso pluma? qué chido", 0),
       msg("esa vida es real eh, hay jale para ti y se gana bien", 300),
