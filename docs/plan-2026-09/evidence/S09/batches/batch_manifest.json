@@ -1,0 +1,80 @@
+{
+  "total_corpus_cases": 353,
+  "baseline_143_count": 143,
+  "reviewed_42_count": 42,
+  "pending_168_count": 168,
+  "batches_exported": 7,
+  "batches": [
+    {
+      "batch_id": "batch_01",
+      "filename": "review_batch_01.json",
+      "case_count": 24,
+      "sample_ids": [
+        "RP-016",
+        "RP-020",
+        "RP-024"
+      ]
+    },
+    {
+      "batch_id": "batch_02",
+      "filename": "review_batch_02.json",
+      "case_count": 24,
+      "sample_ids": [
+        "TP-029",
+        "TP-030",
+        "TP-031"
+      ]
+    },
+    {
+      "batch_id": "batch_03",
+      "filename": "review_batch_03.json",
+      "case_count": 24,
+      "sample_ids": [
+        "TP-053",
+        "TP-054",
+        "TP-055"
+      ]
+    },
+    {
+      "batch_id": "batch_04",
+      "filename": "review_batch_04.json",
+      "case_count": 24,
+      "sample_ids": [
+        "BT-035",
+        "BT-036",
+        "BT-037"
+      ]
+    },
+    {
+      "batch_id": "batch_05",
+      "filename": "review_batch_05.json",
+      "case_count": 24,
+      "sample_ids": [
+        "BT-062",
+        "BT-063",
+        "BT-064"
+      ]
+    },
+    {
+      "batch_id": "batch_06",
+      "filename": "review_batch_06.json",
+      "case_count": 24,
+      "sample_ids": [
+        "BT-090",
+        "BN-021",
+        "BN-022"
+      ]
+    },
+    {
+      "batch_id": "batch_07",
+      "filename": "review_batch_07.json",
+      "case_count": 24,
+      "sample_ids": [
+        "BN-044",
+        "BN-045",
+        "NC-013"
+      ]
+    }
+  ],
+  "special_second_opinion_count": 2
+}

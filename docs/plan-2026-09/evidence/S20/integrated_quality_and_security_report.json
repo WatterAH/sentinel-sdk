@@ -1,0 +1,160 @@
+{
+  "task": "S20",
+  "timestamp": "2026-09-29 00:04:04 UTC",
+  "summary": {
+    "total_requirements": 10,
+    "passed_requirements": 10,
+    "failed_requirements": 0,
+    "pilot_blockers": 0
+  },
+  "quality_and_security_matrix": [
+    {
+      "requirement_id": "REQ-01-BENCH-INTEGRITY",
+      "title": "Preservación de Línea Base y Guardrails",
+      "description": "El benchmark de 353 casos no contiene regresiones respecto al baseline congelado y mantiene 0 falsos bloqueos.",
+      "test_target": "typescript/benchmark/bench.test.ts",
+      "status": "PASSED",
+      "details": {
+        "total_cases": 353,
+        "reviewed_cases": 185,
+        "target_false_blocks": 0,
+        "measured_false_blocks": 0,
+        "baseline_case_count_target": 185,
+        "product_recall_target": 0.75
+      }
+    },
+    {
+      "requirement_id": "REQ-02-ADVERSARIAL-EVASION",
+      "title": "Supervivencia de Detección bajo Evasión Ofuscada",
+      "description": "Ninguna técnica de evasión (homoglyphs, invisibles, fullwidth, leetspeak, splitting, spacing) degrada la supervivencia bajo el 60%.",
+      "test_target": "typescript/benchmark/adversarial.test.ts",
+      "status": "PASSED",
+      "details": {
+        "min_survival_threshold": 0.6,
+        "measured_survival_rates": {
+          "homoglyphs": 1,
+          "invisibles": 1,
+          "fullwidth": 1,
+          "leet_aggressive": 0.909,
+          "intra_word_spaces": 0.652,
+          "message_splitting": 0.833
+        }
+      }
+    },
+    {
+      "requirement_id": "REQ-03-LLM-GUARD-CONTAINMENT",
+      "title": "Defensa contra Inyección de Prompts y Escape de Esquema",
+      "description": "Sanitización estricta de delimitadores, neutralización de prefijos de rol y validación de contrato para salidas de LLM.",
+      "test_target": "sentinel-api/tests/test_llm_guard.py",
+      "status": "PASSED",
+      "details": {
+        "delimiter_neutralized": true,
+        "role_marker_neutralized": true,
+        "invalid_ux_rejected": true,
+        "out_of_range_confidence_rejected": true
+      }
+    },
+    {
+      "requirement_id": "REQ-04-CULTURAL-NUANCE-NEGATION",
+      "title": "Contextualización Cultural Mexicana y Cero Bloqueos Falsos",
+      "description": "Distinción entre citación benigna de jerga o narcocultura en música/videojuegos vs captación dirigida real.",
+      "test_target": "sentinel-sdk/typescript/src/analyzer/corroboration-context.test.ts",
+      "status": "PASSED",
+      "details": {
+        "verified_benign_cultural_samples": [
+          {
+            "id": "BT-058",
+            "label": "BENIGN",
+            "expected": "BENIGN"
+          },
+          {
+            "id": "JJ-017",
+            "label": "BENIGN",
+            "expected": "BENIGN"
+          }
+        ],
+        "false_blocks_guarantee": 0
+      }
+    },
+    {
+      "requirement_id": "REQ-05-PREFIX-CAUSAL-CONSISTENCY",
+      "title": "Consistencia Causal en Prefijos Temporales",
+      "description": "Los veredictos de turnos pasados permanecen idénticos al agregar mensajes futuros y las conversaciones no disparan falsas alarmas en t=0.",
+      "test_target": "sentinel-sdk/scripts/test_prefix_early_detection.py",
+      "status": "PASSED",
+      "details": {
+        "causal_monotonicity_verified": true,
+        "zero_alarm_at_t0_verified": true,
+        "incremental_turn_consistency": true
+      }
+    },
+    {
+      "requirement_id": "REQ-06-CACHE-INVALIDATION-TTL",
+      "title": "Invalidación Segura de Caché e Idempotencia",
+      "description": "La huella determinista cambia inmediatamente al recibir nuevo contenido o evidencia, evitando veredictos MEDIUM obsoletos.",
+      "test_target": "typescript/src/core/escalation-cache.test.ts",
+      "status": "PASSED",
+      "details": {
+        "fp_initial": "8e852580",
+        "fp_modified": "48488a1a",
+        "mutation_detected": true,
+        "ttl_expiration_supported": true
+      }
+    },
+    {
+      "requirement_id": "REQ-07-PROVIDER-FAILSAFE-SHADOW",
+      "title": "Aislamiento en Sombra y Resiliencia ante Caída de Proveedor",
+      "description": "Errores o timeouts en modelos candidatos o proveedores LLM ejecutan fallback seguro (fail-closed) y piso de confianza sin mutar el resultado.",
+      "test_target": "sentinel-api/tests/test_shadow_integration.py",
+      "status": "PASSED",
+      "details": {
+        "fallback_recommendation": "SOFT_BLOCK",
+        "trust_floor_enforced": true,
+        "shadow_execution_isolated": true,
+        "zero_production_mutation": true
+      }
+    },
+    {
+      "requirement_id": "REQ-08-MULTITENANT-ISOLATION",
+      "title": "Aislamiento Multitenancy y Salteado Criptográfico",
+      "description": "Separación estricta por api_key_hash; sesiones, actores y huellas de red aislados sin contaminación cruzada.",
+      "test_target": "sentinel-api/tests/test_tenant_isolation.py",
+      "status": "PASSED",
+      "details": {
+        "tenant_a_hash_prefix": "d2a83433c4b4",
+        "tenant_b_hash_prefix": "e2f2691a7bdb",
+        "actor_isolated_across_tenants": true,
+        "session_cross_access_prevented": true
+      }
+    },
+    {
+      "requirement_id": "REQ-09-ARTIFACT-INTEGRITY-ROLLBACK",
+      "title": "Verificación Criptográfica de Artefactos y Bloqueo de Rollback",
+      "description": "Verificación estricta de sobres Ed25519/HMAC. Carga rechazada ante firmas corruptas o números de versión menores a los instalados.",
+      "test_target": "typescript/src/security/artifact-verifier.test.ts",
+      "status": "PASSED",
+      "details": {
+        "signature_algorithm": "Ed25519 / HMAC-SHA256",
+        "tampered_payload_rejected": true,
+        "rollback_blocked": true
+      }
+    },
+    {
+      "requirement_id": "REQ-10-PRIVACY-EPHEMERAL-HYGIENE",
+      "title": "Privacidad Estricta de Telemetría e Higiene de Memoria",
+      "description": "Telemetría agregada con cero PII, cero texto crudo de mensajes y purga completa en métodos clearSession() y reset().",
+      "test_target": "typescript/src/core/telemetry.test.ts",
+      "status": "PASSED",
+      "details": {
+        "pii_in_telemetry": false,
+        "raw_text_in_telemetry": false,
+        "session_purge_verified": true
+      }
+    }
+  ],
+  "explicit_limitations": [
+    "Laya multilingüe opera estrictamente en modo sombra pasivo (no promovido a motor activo de producción).",
+    "El soporte multilingüe completo no sustituye la calibración de umbrales específicos por dialecto.",
+    "La evaluación automática no exime de la revisión humana periódica en la bandeja de moderación."
+  ]
+}

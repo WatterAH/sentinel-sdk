@@ -1,0 +1,5838 @@
+[
+  {
+    "case_id": "MX-CON-001-R",
+    "family_id": "fam_jale_01_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (jale_mandado - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "que onda carnal hay un jale de llevar una mochila al centro",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "de que es?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "no preguntes solo no la abras y te doy dos mil varios",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-001-B",
+    "family_id": "fam_jale_01_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-001-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign",
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (jale_mandado - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "que onda carnal hay un jale de acomodar cajas en la papelería del centro",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "de que es?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "el dueño le dijo a mi tío que necesita ayuda para surtir útiles",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-002-R",
+    "family_id": "fam_jale_01_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (jale_mandado - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "que onda carnal hay un jale de llevar una mochila al centro",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "de que es?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "no preguntes solo no la abras y te doy dos mil varios",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-002-B",
+    "family_id": "fam_jale_01_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-002-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign",
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (jale_mandado - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "que onda carnal hay un jale de acomodar cajas en la papelería del centro",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "de que es?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "el dueño le dijo a mi tío que necesita ayuda para surtir útiles",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-003-R",
+    "family_id": "fam_jale_01_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (jale_mandado - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "que onda carnal hay un jale de llevar una mochila al centro",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "de que es?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "no preguntes solo no la abras y te doy dos mil varios",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-003-B",
+    "family_id": "fam_jale_01_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-003-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign",
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (jale_mandado - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "que onda carnal hay un jale de acomodar cajas en la papelería del centro",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "de que es?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "el dueño le dijo a mi tío que necesita ayuda para surtir útiles",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-004-R",
+    "family_id": "fam_jale_02_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (chamba_vigilancia - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te pago quinientos por cuidar la esquina y avisarme si ves patrullas",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "a que hora?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "desde ahorita ponte trucha con las placas",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-004-B",
+    "family_id": "fam_jale_02_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-004-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (chamba_vigilancia - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "te pago quinientos si me ayudas a cuidar el puesto del tianguis el sábado",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "a que hora?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "desde las ocho, le avisas a tu mamá para que pase por ti",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-005-R",
+    "family_id": "fam_jale_02_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (chamba_vigilancia - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te pago quinientos por cuidar la esquina y avisarme si ves patrullas",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "a que hora?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "desde ahorita ponte trucha con las placas",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-005-B",
+    "family_id": "fam_jale_02_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-005-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (chamba_vigilancia - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "te pago quinientos si me ayudas a cuidar el puesto del tianguis el sábado",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "a que hora?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "desde las ocho, le avisas a tu mamá para que pase por ti",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-006-R",
+    "family_id": "fam_jale_02_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (chamba_vigilancia - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te pago quinientos por cuidar la esquina y avisarme si ves patrullas",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "a que hora?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "desde ahorita ponte trucha con las placas",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-006-B",
+    "family_id": "fam_jale_02_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-006-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (chamba_vigilancia - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "te pago quinientos si me ayudas a cuidar el puesto del tianguis el sábado",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "a que hora?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "desde las ocho, le avisas a tu mamá para que pase por ti",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-007-R",
+    "family_id": "fam_jale_03_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "coercive_debt_bonding",
+      "illicit_transport_mula"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (bisne_prestamo - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te presto la feria pal cel nuevo pero luego me pagas con favores",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "que tipo de favores?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "ir a entregar unos paquetes a la salida",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-007-B",
+    "family_id": "fam_jale_03_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-007-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (bisne_prestamo - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "te presto la feria pal cel nuevo pero me la vas pagando de tu domingo",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va carnal te lo pago en dos quincenas",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "sale sin bronca",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-008-R",
+    "family_id": "fam_jale_03_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "coercive_debt_bonding",
+      "illicit_transport_mula"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (bisne_prestamo - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te presto la feria pal cel nuevo pero luego me pagas con favores",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "que tipo de favores?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "ir a entregar unos paquetes a la salida",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-008-B",
+    "family_id": "fam_jale_03_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-008-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (bisne_prestamo - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "te presto la feria pal cel nuevo pero me la vas pagando de tu domingo",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va carnal te lo pago en dos quincenas",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "sale sin bronca",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-009-R",
+    "family_id": "fam_jale_03_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "coercive_debt_bonding",
+      "illicit_transport_mula"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (bisne_prestamo - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te presto la feria pal cel nuevo pero luego me pagas con favores",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "que tipo de favores?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "ir a entregar unos paquetes a la salida",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-009-B",
+    "family_id": "fam_jale_03_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-009-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (bisne_prestamo - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "te presto la feria pal cel nuevo pero me la vas pagando de tu domingo",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va carnal te lo pago en dos quincenas",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "sale sin bronca",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-010-R",
+    "family_id": "fam_jale_04_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "fake_job_offer_trafficking",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (viaje_foraneo - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "tengo chamba de chofer en otra ciudad, no le digas a tus jefes y nos vamos mañana",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "no se no tengo permiso",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "alla ganas el doble no ocupas permiso",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-010-B",
+    "family_id": "fam_jale_04_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-010-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (viaje_foraneo - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "vamos a ir a guadalajara a visitar a tu abuela, le dije a tus papás",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va ya tengo mi mochila lista",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "pasamos por ti saliendo de la secundaria",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-011-R",
+    "family_id": "fam_jale_04_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "fake_job_offer_trafficking",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (viaje_foraneo - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "tengo chamba de chofer en otra ciudad, no le digas a tus jefes y nos vamos mañana",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "no se no tengo permiso",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "alla ganas el doble no ocupas permiso",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-011-B",
+    "family_id": "fam_jale_04_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-011-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (viaje_foraneo - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "vamos a ir a guadalajara a visitar a tu abuela, le dije a tus papás",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va ya tengo mi mochila lista",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "pasamos por ti saliendo de la secundaria",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-012-R",
+    "family_id": "fam_jale_04_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "fake_job_offer_trafficking",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (viaje_foraneo - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "tengo chamba de chofer en otra ciudad, no le digas a tus jefes y nos vamos mañana",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "no se no tengo permiso",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "alla ganas el doble no ocupas permiso",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-012-B",
+    "family_id": "fam_jale_04_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-012-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (viaje_foraneo - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "vamos a ir a guadalajara a visitar a tu abuela, le dije a tus papás",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va ya tengo mi mochila lista",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "pasamos por ti saliendo de la secundaria",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-013-R",
+    "family_id": "fam_jale_05_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula",
+      "channel_triangulation_evasion"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (reparto_paquete - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "recoge el sobre sellado en el puente y lo dejas en el punto, borra el chat",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "ya lo tengo",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "apaga la ubicacion",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-013-B",
+    "family_id": "fam_jale_05_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-013-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (reparto_paquete - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "recoge el sobre sellado en la recepción de la escuela y se lo das a tu tía",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "ya lo tengo",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "le avisas cuando llegues a su casa",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-014-R",
+    "family_id": "fam_jale_05_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula",
+      "channel_triangulation_evasion"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (reparto_paquete - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "recoge el sobre sellado en el puente y lo dejas en el punto, borra el chat",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "ya lo tengo",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "apaga la ubicacion",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-014-B",
+    "family_id": "fam_jale_05_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-014-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (reparto_paquete - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "recoge el sobre sellado en la recepción de la escuela y se lo das a tu tía",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "ya lo tengo",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "le avisas cuando llegues a su casa",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-015-R",
+    "family_id": "fam_jale_05_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula",
+      "channel_triangulation_evasion"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (reparto_paquete - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "recoge el sobre sellado en el puente y lo dejas en el punto, borra el chat",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "ya lo tengo",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "apaga la ubicacion",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-015-B",
+    "family_id": "fam_jale_05_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-015-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (reparto_paquete - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "recoge el sobre sellado en la recepción de la escuela y se lo das a tu tía",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "ya lo tengo",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "le avisas cuando llegues a su casa",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-016-R",
+    "family_id": "fam_gaming_01_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "channel_triangulation_evasion",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (robux_recompensa - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te regalo 10000 robux si me mandas fotos tuyas y no le dices a nadie",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "seguro? como me los das?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "pasate a telegram rapido",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-016-B",
+    "family_id": "fam_gaming_01_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-016-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "gaming_trading_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (robux_recompensa - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "te regalo una tarjeta de robux por tu cumple, la compramos en el oxxo",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "gracias carnal! la canjeo en la tarde",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "va nos conectamos a jugar",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-017-R",
+    "family_id": "fam_gaming_01_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "channel_triangulation_evasion",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (robux_recompensa - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te regalo 10000 robux si me mandas fotos tuyas y no le dices a nadie",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "seguro? como me los das?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "pasate a telegram rapido",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-017-B",
+    "family_id": "fam_gaming_01_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-017-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "gaming_trading_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (robux_recompensa - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "te regalo una tarjeta de robux por tu cumple, la compramos en el oxxo",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "gracias carnal! la canjeo en la tarde",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "va nos conectamos a jugar",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-018-R",
+    "family_id": "fam_gaming_01_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "channel_triangulation_evasion",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (robux_recompensa - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te regalo 10000 robux si me mandas fotos tuyas y no le dices a nadie",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "seguro? como me los das?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "pasate a telegram rapido",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-018-B",
+    "family_id": "fam_gaming_01_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-018-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "gaming_trading_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (robux_recompensa - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "te regalo una tarjeta de robux por tu cumple, la compramos en el oxxo",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "gracias carnal! la canjeo en la tarde",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "va nos conectamos a jugar",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-019-R",
+    "family_id": "fam_gaming_02_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (clan_secreto - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "nuestro clan es especial y hacemos misiones reales en la calle",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "cuales misiones?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "vigilar quien entra a la privada",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-019-B",
+    "family_id": "fam_gaming_02_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-019-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "gaming_trading_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (clan_secreto - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "nuestro clan de discord va a jugar torneo de free fire el sabado",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va me anoto en la escuadra",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "entrenamos hoy en la noche",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-020-R",
+    "family_id": "fam_gaming_02_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (clan_secreto - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "nuestro clan es especial y hacemos misiones reales en la calle",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "cuales misiones?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "vigilar quien entra a la privada",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-020-B",
+    "family_id": "fam_gaming_02_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-020-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "gaming_trading_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (clan_secreto - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "nuestro clan de discord va a jugar torneo de free fire el sabado",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va me anoto en la escuadra",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "entrenamos hoy en la noche",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-021-R",
+    "family_id": "fam_gaming_02_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (clan_secreto - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "nuestro clan es especial y hacemos misiones reales en la calle",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "cuales misiones?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "vigilar quien entra a la privada",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-021-B",
+    "family_id": "fam_gaming_02_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-021-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "gaming_trading_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (clan_secreto - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "nuestro clan de discord va a jugar torneo de free fire el sabado",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va me anoto en la escuadra",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "entrenamos hoy en la noche",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-022-R",
+    "family_id": "fam_gaming_03_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (skin_fornite - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te paso la skin legendaria si me haces un paro de entregar un encargo en tu colonia",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "que encargo?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "un paquete chico",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-022-B",
+    "family_id": "fam_gaming_03_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-022-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "gaming_trading_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (skin_fornite - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "te regalo la skin del pase de batalla porque me sobraron pavos",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "neta? que chido carnal",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "si ya te llego al buzon",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-023-R",
+    "family_id": "fam_gaming_03_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (skin_fornite - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te paso la skin legendaria si me haces un paro de entregar un encargo en tu colonia",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "que encargo?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "un paquete chico",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-023-B",
+    "family_id": "fam_gaming_03_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-023-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "gaming_trading_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (skin_fornite - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "te regalo la skin del pase de batalla porque me sobraron pavos",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "neta? que chido carnal",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "si ya te llego al buzon",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-024-R",
+    "family_id": "fam_gaming_03_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (skin_fornite - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te paso la skin legendaria si me haces un paro de entregar un encargo en tu colonia",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "que encargo?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "un paquete chico",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-024-B",
+    "family_id": "fam_gaming_03_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-024-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "gaming_trading_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (skin_fornite - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "te regalo la skin del pase de batalla porque me sobraron pavos",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "neta? que chido carnal",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "si ya te llego al buzon",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-025-R",
+    "family_id": "fam_narco_01_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (corridos_letra - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "esa rola de los jefes esta con madre, tu te ves listo pa jalar con nosotros en la linea",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "como jalar?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "de estaca, vente",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-025-B",
+    "family_id": "fam_narco_01_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-025-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "narcoculture_media_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (corridos_letra - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "esa rola de peso pluma esta bien pegajosa jaja",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "si me gusta el requinto",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "esta chida la guitarra",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-026-R",
+    "family_id": "fam_narco_01_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (corridos_letra - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "esa rola de los jefes esta con madre, tu te ves listo pa jalar con nosotros en la linea",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "como jalar?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "de estaca, vente",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-026-B",
+    "family_id": "fam_narco_01_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-026-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "narcoculture_media_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (corridos_letra - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "esa rola de peso pluma esta bien pegajosa jaja",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "si me gusta el requinto",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "esta chida la guitarra",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-027-R",
+    "family_id": "fam_narco_01_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (corridos_letra - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "esa rola de los jefes esta con madre, tu te ves listo pa jalar con nosotros en la linea",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "como jalar?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "de estaca, vente",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-027-B",
+    "family_id": "fam_narco_01_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-027-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "narcoculture_media_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (corridos_letra - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "esa rola de peso pluma esta bien pegajosa jaja",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "si me gusta el requinto",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "esta chida la guitarra",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-028-R",
+    "family_id": "fam_narco_02_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "fake_job_offer_trafficking"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (serie_sicarios - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "en la serie se ve la vida de lujos, yo te puedo meter a la empresa de verdad",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "a cual empresa?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "la que controla la plaza",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-028-B",
+    "family_id": "fam_narco_02_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-028-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "narcoculture_media_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (serie_sicarios - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "viste la serie de netflix? esta bien exagerada la violencia",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "si puro drama",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "a mi me dio hueva el final",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-029-R",
+    "family_id": "fam_narco_02_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "fake_job_offer_trafficking"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (serie_sicarios - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "en la serie se ve la vida de lujos, yo te puedo meter a la empresa de verdad",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "a cual empresa?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "la que controla la plaza",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-029-B",
+    "family_id": "fam_narco_02_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-029-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "narcoculture_media_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (serie_sicarios - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "viste la serie de netflix? esta bien exagerada la violencia",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "si puro drama",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "a mi me dio hueva el final",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-030-R",
+    "family_id": "fam_narco_02_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "fake_job_offer_trafficking"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (serie_sicarios - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "en la serie se ve la vida de lujos, yo te puedo meter a la empresa de verdad",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "a cual empresa?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "la que controla la plaza",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-030-B",
+    "family_id": "fam_narco_02_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-030-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "narcoculture_media_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (serie_sicarios - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "viste la serie de netflix? esta bien exagerada la violencia",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "si puro drama",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "a mi me dio hueva el final",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-031-R",
+    "family_id": "fam_slang_01_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (paro_paro - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "tirame un paro carnal, guarda esta bolsa en tu mochila y si te para la patrulla no sabes nada",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "no quiero broncas",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te aliviano con lana",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-031-B",
+    "family_id": "fam_slang_01_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-031-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (paro_paro - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "tirame un paro carnal, prestame tu libreta para copiar la tarea de quimica",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va pero me la regresas manana",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "si temprano",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-032-R",
+    "family_id": "fam_slang_01_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (paro_paro - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "tirame un paro carnal, guarda esta bolsa en tu mochila y si te para la patrulla no sabes nada",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "no quiero broncas",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te aliviano con lana",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-032-B",
+    "family_id": "fam_slang_01_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-032-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (paro_paro - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "tirame un paro carnal, prestame tu libreta para copiar la tarea de quimica",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va pero me la regresas manana",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "si temprano",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-033-R",
+    "family_id": "fam_slang_01_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (paro_paro - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "tirame un paro carnal, guarda esta bolsa en tu mochila y si te para la patrulla no sabes nada",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "no quiero broncas",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te aliviano con lana",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-033-B",
+    "family_id": "fam_slang_01_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-033-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (paro_paro - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "tirame un paro carnal, prestame tu libreta para copiar la tarea de quimica",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va pero me la regresas manana",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "si temprano",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-034-R",
+    "family_id": "fam_slang_01_v04",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "illicit_transport_mula",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (paro_paro - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "tirame un paro carnal, guarda esta bolsa en tu mochila y si te para la patrulla no sabes nada",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "no quiero broncas",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te aliviano con lana",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-034-B",
+    "family_id": "fam_slang_01_v04",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-034-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (paro_paro - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "tirame un paro carnal, prestame tu libreta para copiar la tarea de quimica",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va pero me la regresas manana",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "si temprano",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-035-R",
+    "family_id": "fam_slang_02_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (armarla_grande - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "con nosotros la vas a armar en grande, te damos cuete y camioneta",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "tengo 14 anos",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "no le hace aqui creces rapido",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-035-B",
+    "family_id": "fam_slang_02_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-035-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (armarla_grande - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "la vamos a armar en grande en la feria de ciencias, ya terminamos la maqueta",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "quedo bien perrona",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "manana la presentamos",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-036-R",
+    "family_id": "fam_slang_02_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (armarla_grande - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "con nosotros la vas a armar en grande, te damos cuete y camioneta",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "tengo 14 anos",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "no le hace aqui creces rapido",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-036-B",
+    "family_id": "fam_slang_02_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-036-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (armarla_grande - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "la vamos a armar en grande en la feria de ciencias, ya terminamos la maqueta",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "quedo bien perrona",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "manana la presentamos",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-037-R",
+    "family_id": "fam_slang_02_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (armarla_grande - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "con nosotros la vas a armar en grande, te damos cuete y camioneta",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "tengo 14 anos",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "no le hace aqui creces rapido",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-037-B",
+    "family_id": "fam_slang_02_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-037-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (armarla_grande - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "la vamos a armar en grande en la feria de ciencias, ya terminamos la maqueta",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "quedo bien perrona",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "manana la presentamos",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-038-R",
+    "family_id": "fam_slang_02_v04",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "surveillance_halconeo",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 0,
+    "annotation_notes": "Par contrastivo mexicano sintético (armarla_grande - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "con nosotros la vas a armar en grande, te damos cuete y camioneta",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "tengo 14 anos",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "no le hace aqui creces rapido",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-038-B",
+    "family_id": "fam_slang_02_v04",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-038-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (armarla_grande - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "la vamos a armar en grande en la feria de ciencias, ya terminamos la maqueta",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "quedo bien perrona",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "manana la presentamos",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-039-R",
+    "family_id": "fam_slang_03_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (topon_encuentro - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "caele al topon con los plebes detras de la bodega, vente solo",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "para que?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te vamos a calar",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-039-B",
+    "family_id": "fam_slang_03_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-039-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (topon_encuentro - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "nos topamos en las canchas saliendo de clases para la reta de fut",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va llevo el balon",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "avisele a los demas",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-040-R",
+    "family_id": "fam_slang_03_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (topon_encuentro - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "caele al topon con los plebes detras de la bodega, vente solo",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "para que?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te vamos a calar",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-040-B",
+    "family_id": "fam_slang_03_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-040-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (topon_encuentro - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "nos topamos en las canchas saliendo de clases para la reta de fut",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va llevo el balon",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "avisele a los demas",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-041-R",
+    "family_id": "fam_slang_03_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (topon_encuentro - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "caele al topon con los plebes detras de la bodega, vente solo",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "para que?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te vamos a calar",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-041-B",
+    "family_id": "fam_slang_03_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-041-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (topon_encuentro - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "nos topamos en las canchas saliendo de clases para la reta de fut",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va llevo el balon",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "avisele a los demas",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-042-R",
+    "family_id": "fam_slang_03_v04",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (topon_encuentro - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "caele al topon con los plebes detras de la bodega, vente solo",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "para que?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "te vamos a calar",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-042-B",
+    "family_id": "fam_slang_03_v04",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-042-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "cultural_slang_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (topon_encuentro - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "nos topamos en las canchas saliendo de clases para la reta de fut",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va llevo el balon",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "avisele a los demas",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-043-R",
+    "family_id": "fam_evasion_01_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "channel_triangulation_evasion",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (cambio_app - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "no hables por aqui que tus papas leen el whats, bajate signal y me buscas",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "porque?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "negocios confidenciales",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-043-B",
+    "family_id": "fam_evasion_01_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-043-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (cambio_app - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "se me trabo el whatsapp, te mando el link del juego por discord",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va alla te veo",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "ya entre a la sala",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-044-R",
+    "family_id": "fam_evasion_01_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "channel_triangulation_evasion",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (cambio_app - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "no hables por aqui que tus papas leen el whats, bajate signal y me buscas",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "porque?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "negocios confidenciales",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-044-B",
+    "family_id": "fam_evasion_01_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-044-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (cambio_app - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "se me trabo el whatsapp, te mando el link del juego por discord",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va alla te veo",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "ya entre a la sala",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-045-R",
+    "family_id": "fam_evasion_01_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "channel_triangulation_evasion",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (cambio_app - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "no hables por aqui que tus papas leen el whats, bajate signal y me buscas",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "porque?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "negocios confidenciales",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-045-B",
+    "family_id": "fam_evasion_01_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-045-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (cambio_app - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "se me trabo el whatsapp, te mando el link del juego por discord",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va alla te veo",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "ya entre a la sala",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-046-R",
+    "family_id": "fam_evasion_01_v04",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "channel_triangulation_evasion",
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (cambio_app - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "no hables por aqui que tus papas leen el whats, bajate signal y me buscas",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "porque?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "negocios confidenciales",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-046-B",
+    "family_id": "fam_evasion_01_v04",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-046-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (cambio_app - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "se me trabo el whatsapp, te mando el link del juego por discord",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "va alla te veo",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "bystander_peer",
+        "text": "ya entre a la sala",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-047-R",
+    "family_id": "fam_evasion_02_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (ubicacion_tiempo_real - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "mandame tu ubicacion en tiempo real y no te muevas de ahi hasta que pase la troka",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "quien viene?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "el encargado",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-047-B",
+    "family_id": "fam_evasion_02_v01",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-047-R",
+    "split_suggestion": "benchmark",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (ubicacion_tiempo_real - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "mandame tu ubicacion en tiempo real para pasar a recogerte a la salida del taller",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "ya te la mande pa",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "voy en 10 min",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-048-R",
+    "family_id": "fam_evasion_02_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (ubicacion_tiempo_real - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "mandame tu ubicacion en tiempo real y no te muevas de ahi hasta que pase la troka",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "quien viene?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "el encargado",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-048-B",
+    "family_id": "fam_evasion_02_v02",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-048-R",
+    "split_suggestion": "train",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (ubicacion_tiempo_real - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "mandame tu ubicacion en tiempo real para pasar a recogerte a la salida del taller",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "ya te la mande pa",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "voy en 10 min",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-049-R",
+    "family_id": "fam_evasion_02_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (ubicacion_tiempo_real - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "mandame tu ubicacion en tiempo real y no te muevas de ahi hasta que pase la troka",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "quien viene?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "el encargado",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-049-B",
+    "family_id": "fam_evasion_02_v03",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-049-R",
+    "split_suggestion": "validation",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (ubicacion_tiempo_real - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "mandame tu ubicacion en tiempo real para pasar a recogerte a la salida del taller",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "ya te la mande pa",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "voy en 10 min",
+        "signals": []
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-050-R",
+    "family_id": "fam_evasion_02_v04",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": null,
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "RISK",
+    "behavior_targets": [
+      "isolation_secrecy_recruitment"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": 0,
+    "critical_event_turn": 2,
+    "annotation_notes": "Par contrastivo mexicano sintético (ubicacion_tiempo_real - vertiente riesgo)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "mandame tu ubicacion en tiempo real y no te muevas de ahi hasta que pase la troka",
+        "signals": [
+          "suspicious_directive"
+        ]
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "quien viene?",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "potential_perpetrator",
+        "text": "el encargado",
+        "signals": [
+          "suspicious_directive"
+        ]
+      }
+    ]
+  },
+  {
+    "case_id": "MX-CON-050-B",
+    "family_id": "fam_evasion_02_v04",
+    "source_id": "src_synth_contrast_mx",
+    "source_type": "contrastive_pair",
+    "license_or_permission_ref": "cc_by_4_0_synthetic_contrastive",
+    "allowed_uses": [
+      "training",
+      "validation",
+      "calibration",
+      "benchmark",
+      "holdout_test"
+    ],
+    "collected_at": "2026-09-28",
+    "region_declared": "general_mexico",
+    "synthetic": true,
+    "parent_id": "MX-CON-050-R",
+    "split_suggestion": "holdout_test",
+    "annotation_version": "v1.0",
+    "review_status": "adjudicated_expert",
+    "reviewers": [
+      "rev_luis"
+    ],
+    "label": "BENIGN",
+    "behavior_targets": [
+      "none_benign"
+    ],
+    "annotator_confidence": "high",
+    "first_signal_turn": null,
+    "critical_event_turn": null,
+    "annotation_notes": "Par contrastivo mexicano sintético (ubicacion_tiempo_real - vertiente benigna control)",
+    "discrepancy_log": null,
+    "turns": [
+      {
+        "turn_index": 0,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "mandame tu ubicacion en tiempo real para pasar a recogerte a la salida del taller",
+        "signals": []
+      },
+      {
+        "turn_index": 1,
+        "sender_id": "u2",
+        "role": "target_minor",
+        "text": "ya te la mande pa",
+        "signals": []
+      },
+      {
+        "turn_index": 2,
+        "sender_id": "u1",
+        "role": "adult_supervisor",
+        "text": "voy en 10 min",
+        "signals": []
+      }
+    ]
+  }
+]

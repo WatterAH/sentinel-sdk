@@ -1,0 +1,617 @@
+{
+  "batch_id": "batch_02",
+  "case_count": 24,
+  "status": "pending_human_annotation",
+  "rubric_version": "v1.0",
+  "instructions": "Ocultar la etiqueta previa. Leer solo los mensajes. Asignar BENIGN, RISK o INSUFFICIENT_CONTEXT.",
+  "items": [
+    {
+      "case_id": "TP-029",
+      "group": "tp_reclutamiento_directo",
+      "messages": [
+        {
+          "text": "la maña busca gente joven para dar piso",
+          "offset_s": 0
+        },
+        {
+          "text": "arma y moto van por cuenta nuestra",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-030",
+      "group": "tp_reclutamiento_directo",
+      "messages": [
+        {
+          "text": "cruza el paquete por la frontera",
+          "offset_s": 0
+        },
+        {
+          "text": "por ser menor no te revisan",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-031",
+      "group": "tp_reclutamiento_directo",
+      "messages": [
+        {
+          "text": "la plaza necesita nuevos",
+          "offset_s": 0
+        },
+        {
+          "text": "con la familia tendrás protección y pago",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-032",
+      "group": "tp_reclutamiento_directo",
+      "messages": [
+        {
+          "text": "vente solo al punto",
+          "offset_s": 0
+        },
+        {
+          "text": "te mandamos carro para el jale",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-033",
+      "group": "tp_reclutamiento_directo",
+      "messages": [
+        {
+          "text": "mueve bolsitas en la prepa",
+          "offset_s": 0
+        },
+        {
+          "text": "te toca comisión por cada cliente",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-034",
+      "group": "tp_reclutamiento_directo",
+      "messages": [
+        {
+          "text": "cuida el cuerno y avisa si viene la tira",
+          "offset_s": 0
+        },
+        {
+          "text": "te pagamos al acabar",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-035",
+      "group": "tp_ofuscado",
+      "messages": [
+        {
+          "text": "ｈａｙ ｊａｌｅ ｄｅ ｈａｌｃｏｎ",
+          "offset_s": 0
+        },
+        {
+          "text": "manda ubi",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-036",
+      "group": "tp_ofuscado",
+      "messages": [
+        {
+          "text": "j​a​l​e para mover p​a​q​u​e​t​e",
+          "offset_s": 0
+        },
+        {
+          "text": "te pago",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-037",
+      "group": "tp_ofuscado",
+      "messages": [
+        {
+          "text": "m4nd4 tu ub1c4c10n",
+          "offset_s": 0
+        },
+        {
+          "text": "p4s4m0s p0r t1",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-038",
+      "group": "tp_ofuscado",
+      "messages": [
+        {
+          "text": "h a y j a l e",
+          "offset_s": 0
+        },
+        {
+          "text": "m u e v e e l p a q u e t e",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-039",
+      "group": "tp_ofuscado",
+      "messages": [
+        {
+          "text": "💰 por 📦, jalas?",
+          "offset_s": 0
+        },
+        {
+          "text": "sin preguntas",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-040",
+      "group": "tp_grooming_progresivo",
+      "messages": [
+        {
+          "text": "eres más maduro que los demás",
+          "offset_s": 0
+        },
+        {
+          "text": "esto queda entre tú y yo",
+          "offset_s": 45
+        },
+        {
+          "text": "manda ubicación para vernos",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-041",
+      "group": "tp_grooming_progresivo",
+      "messages": [
+        {
+          "text": "te regalo skins porque me caes bien",
+          "offset_s": 0
+        },
+        {
+          "text": "no le digas a tus papás",
+          "offset_s": 45
+        },
+        {
+          "text": "vente solo al punto",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-042",
+      "group": "tp_grooming_progresivo",
+      "messages": [
+        {
+          "text": "yo sí te entiendo",
+          "offset_s": 0
+        },
+        {
+          "text": "tu familia no te valora",
+          "offset_s": 45
+        },
+        {
+          "text": "hazme un mandado y te ayudo",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-043",
+      "group": "tp_grooming_progresivo",
+      "messages": [
+        {
+          "text": "puedes confiar en mí",
+          "offset_s": 0
+        },
+        {
+          "text": "borra el chat",
+          "offset_s": 45
+        },
+        {
+          "text": "te mandamos uber al salir",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-044",
+      "group": "tp_grooming_progresivo",
+      "messages": [
+        {
+          "text": "aquí serías parte de la familia",
+          "offset_s": 0
+        },
+        {
+          "text": "demuestra lealtad",
+          "offset_s": 45
+        },
+        {
+          "text": "cuida la plaza esta noche",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-045",
+      "group": "tp_grooming_progresivo",
+      "messages": [
+        {
+          "text": "no tiene nada de malo ganar feria",
+          "offset_s": 0
+        },
+        {
+          "text": "todos empiezan con algo pequeño",
+          "offset_s": 45
+        },
+        {
+          "text": "lleva este paquete",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-046",
+      "group": "tp_grooming_progresivo",
+      "messages": [
+        {
+          "text": "yo te compro comida cada semana",
+          "offset_s": 0
+        },
+        {
+          "text": "ahora necesito que me ayudes",
+          "offset_s": 45
+        },
+        {
+          "text": "no puedes decir que no",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-047",
+      "group": "tp_grooming_progresivo",
+      "messages": [
+        {
+          "text": "me caes muy bien",
+          "offset_s": 0
+        },
+        {
+          "text": "hablemos por una cuenta secreta",
+          "offset_s": 45
+        },
+        {
+          "text": "allá te paso el punto",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-048",
+      "group": "tp_vector_gaming",
+      "messages": [
+        {
+          "text": "te doy el pase y skins",
+          "offset_s": 0
+        },
+        {
+          "text": "solo entrega un paquete fuera del cyber",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-049",
+      "group": "tp_vector_gaming",
+      "messages": [
+        {
+          "text": "entra a nuestro clan y tendrás protección",
+          "offset_s": 0
+        },
+        {
+          "text": "primero vigila quién entra al server",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-050",
+      "group": "tp_vector_gaming",
+      "messages": [
+        {
+          "text": "te presté monedas",
+          "offset_s": 0
+        },
+        {
+          "text": "págame llevando esto al punto",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-051",
+      "group": "tp_vector_gaming",
+      "messages": [
+        {
+          "text": "te meto al torneo privado",
+          "offset_s": 0
+        },
+        {
+          "text": "manda ubicación para recogerte solo",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-052",
+      "group": "tp_vector_gaming",
+      "messages": [
+        {
+          "text": "puedo hacerte admin",
+          "offset_s": 0
+        },
+        {
+          "text": "pásame datos de tus amigos y luego hay jale",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    }
+  ]
+}

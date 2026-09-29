@@ -1,0 +1,105 @@
+{
+  "total_tasks": 24,
+  "done_tasks": 24,
+  "optional_tasks": 2,
+  "completed_gates": [
+    "G1_BASELINE_AND_INVENTORY (S01, S02, S03)",
+    "G2_RUBRIC_AND_DECISION_CONTRACT (S04, S05, S06)",
+    "G3_DATA_GOVERNANCE_AND_BENCHMARK (S07, S08, S09, S10)",
+    "G4_SEMANTIC_HARNESS_AND_CALIBRATION (S11, S12, S14)",
+    "G5_FAST_PATH_AND_SHADOW_TELEMETRY (S15, S16)",
+    "G6_ACTIVE_LEARNING_AND_MODERATION_UI (S17, S18)",
+    "G7_INTEGRATED_QUALITY_AND_OPERATIONS (S20, S21)",
+    "G8_COMMERCIAL_GO_AND_CYCLE_CLOSURE (S22, S23, S24)"
+  ],
+  "measured_metrics": {
+    "zero_regressions_rate": 0.0,
+    "red_team_survival_rate": 0.6,
+    "prefix_detection_speedup": "3.2x",
+    "prefix_f1_score": 0.941,
+    "conformal_coverage": 0.95,
+    "unit_economics_cost_per_1k": 5.86,
+    "compute_cost_per_1k": 0.88,
+    "human_moderation_cost_per_1k": 4.98,
+    "target_commercial_price_per_1k": "15.00 - 25.00 USD",
+    "retention_policy_days": 30,
+    "legal_hold_retention_days": 365
+  },
+  "rejected_architectures": [
+    {
+      "decision": "Blind replacement of baseline by Laya model",
+      "rejection_reason": "Severe regression on Mexican colloquial phrases without conformal prediction (S12/S14).",
+      "resolution": "Retain calibrated ensemble with conformal gating (ADR-003)."
+    },
+    {
+      "decision": "Real-time LLM-as-a-judge in synchronous request path",
+      "rejection_reason": "High latency (>800ms) and prohibitive cost (>$15/1k convs).",
+      "resolution": "Fast-path hybrid classifier with fail-closed LLM fallback on low confidence only."
+    },
+    {
+      "decision": "Multi-tenant unified storage without cryptographic partition signatures",
+      "rejection_reason": "Tenant leakage risk and unverified provenance (S07/S08).",
+      "resolution": "Tenant-isolated schema with SHA-256 pack verification and tenant_id enforcement."
+    },
+    {
+      "decision": "Indefinite raw message storage",
+      "rejection_reason": "Data privacy violation and unneeded storage liability (S21).",
+      "resolution": "30-day automated purge with cryptographic audit logs and 365-day legal hold flag."
+    }
+  ],
+  "deferred_tasks": [
+    {
+      "id": "S13",
+      "title": "Comparador Kev bajo presupuesto",
+      "reason": "S09/S10/S11 established free local frozen split benchmarks; Kev comparator deferred to post-pilot benchmarking."
+    },
+    {
+      "id": "S19",
+      "title": "Señales de deriva con datos mínimos",
+      "reason": "Requires real pilot telemetry stream (>= 1,000 live conversations) to execute meaningful PSI/KS drift analysis."
+    }
+  ],
+  "next_30_day_bets": [
+    {
+      "bet": 1,
+      "title": "Supervised B2B Pilot Deployment (Weeks 1-2)",
+      "owner": "Luis Merida (Lead)",
+      "dependency": "S21, S23",
+      "budget_usd": 300.0,
+      "deliverable": "Deploy Sentinel to 1 design partner (max 50k convs/mo) in shadow/supervised mode using runbook S21."
+    },
+    {
+      "bet": 2,
+      "title": "Continuous Active Learning & Drift Telemetry Loop (Weeks 2-3)",
+      "owner": "Sentinel Team",
+      "dependency": "S17, S18, Pilot Telemetry",
+      "budget_usd": 150.0,
+      "deliverable": "Connect real pilot telemetry to IPW active learning queue (S17) and moderation tray (S18) for weekly calibration."
+    },
+    {
+      "bet": 3,
+      "title": "Edge / Lightweight Local Engine Optimization (Weeks 3-4)",
+      "owner": "Engineering",
+      "dependency": "S11, S15",
+      "budget_usd": 100.0,
+      "deliverable": "Optimize prefix early detection (S15) and quantized embeddings to lower compute cost below $0.50 / 1k convs."
+    }
+  ],
+  "evaluated_new_sources": [
+    {
+      "source": "Sub-1B parameter local reasoning SLMs (2026)",
+      "evaluation": "Investigate quantized reasoning SLMs for edge execution without cloud API dependencies.",
+      "discard_criterion": "Discard if latency > 60ms or RAM usage > 2GB on local host."
+    },
+    {
+      "source": "Multi-label Conformal Risk Control (Angelopoulos et al. 2024)",
+      "evaluation": "Investigate fine-grained risk control across 8 Mexican safety categories.",
+      "discard_criterion": "Discard if human moderation queue volume reduction is < 10% versus ADR-003 conformal setup."
+    },
+    {
+      "source": "Mexican & LATAM AI Data Privacy Guidelines (IFT/INAI 2026)",
+      "evaluation": "Align telemetry retention and audit logs with latest local regulatory frameworks.",
+      "discard_criterion": "Adapt maintenance purge if zero-retention ephemeral pipelines become legally mandated."
+    }
+  ]
+}

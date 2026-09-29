@@ -1,0 +1,90 @@
+{
+  "task": "S21",
+  "timestamp": "2026-09-29 00:04:04 UTC",
+  "summary": {
+    "total_steps": 6,
+    "passed_steps": 6,
+    "failed_steps": 0,
+    "operational_readiness": "READY_FOR_PILOT"
+  },
+  "operations_matrix": [
+    {
+      "step": "CONFIG_AUDIT",
+      "description": "Auditoría de .env.example: variables documentadas sin credenciales reales",
+      "status": "PASSED",
+      "details": {
+        "file": ".env.example",
+        "leaks_detected": 0
+      }
+    },
+    {
+      "step": "IDEMPOTENT_MIGRATION",
+      "description": "Creación e inicialización idempotente del esquema de base de datos",
+      "status": "PASSED",
+      "details": {
+        "tables_created": 19,
+        "tables": [
+          "users",
+          "sessions",
+          "hot_terms",
+          "dataset_versions",
+          "rejected_terms",
+          "data_sources",
+          "candidate_sightings",
+          "feedback",
+          "api_keys",
+          "scraper_runs",
+          "actor_sightings",
+          "analysis_records",
+          "evidence_packages",
+          "telemetry_snapshots",
+          "shadow_model_artifacts",
+          "active_learning_queue",
+          "user_sessions",
+          "messages",
+          "shadow_model_releases"
+        ]
+      }
+    },
+    {
+      "step": "BACKUP_AND_RESTORE",
+      "description": "Respaldo y restauración de emergencia con verificación de integridad",
+      "status": "PASSED",
+      "details": {
+        "backup_file": "sentinel_backup.bak",
+        "integrity_verified": true
+      }
+    },
+    {
+      "step": "LEGAL_HOLD_PURGE",
+      "description": "Purga periódica de mensajes respetando retención extendida por Legal Hold",
+      "status": "PASSED",
+      "details": {
+        "purged_regular_messages": 1,
+        "purged_legal_hold_messages": 1,
+        "total_purged": 2
+      }
+    },
+    {
+      "step": "KILL_SWITCH_TESTS",
+      "description": "Verificación de Kill Switches para modelo sombra y fallback fail-closed para LLM",
+      "status": "PASSED",
+      "details": {
+        "shadow_kill_switch": "PASSED",
+        "llm_fail_closed_fallback": "PASSED"
+      }
+    },
+    {
+      "step": "HEALTH_CHECK_ENDPOINT",
+      "description": "Comprobación del endpoint /health de la API de Sentinel",
+      "status": "PASSED",
+      "details": {
+        "status": "ok",
+        "service": "SENTINEL",
+        "scraper": "stale",
+        "oldest_message_age_days": 0
+      }
+    }
+  ],
+  "runbook_reference": "sentinel-api/docs/PILOT_OPERATIONS_RUNBOOK.md"
+}

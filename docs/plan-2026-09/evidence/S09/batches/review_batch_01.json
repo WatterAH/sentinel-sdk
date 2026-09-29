@@ -1,0 +1,665 @@
+{
+  "batch_id": "batch_01",
+  "case_count": 24,
+  "status": "pending_human_annotation",
+  "rubric_version": "v1.0",
+  "instructions": "Ocultar la etiqueta previa. Leer solo los mensajes. Asignar BENIGN, RISK o INSUFFICIENT_CONTEXT.",
+  "items": [
+    {
+      "case_id": "RP-016",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "desde tu ventana dime qué autos se estacionan",
+          "offset_s": 0
+        },
+        {
+          "text": "si aparece uno blanco mándame un punto",
+          "offset_s": 45
+        },
+        {
+          "text": "te deposito hoy",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-020",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "revisa cuáles cámaras del edificio están prendidas",
+          "offset_s": 0
+        },
+        {
+          "text": "dime por dónde no graban",
+          "offset_s": 45
+        },
+        {
+          "text": "yo te compenso",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-024",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "a ti no te revisan por tu edad",
+          "offset_s": 0
+        },
+        {
+          "text": "cruza con esto dentro de la chamarra",
+          "offset_s": 45
+        },
+        {
+          "text": "del otro lado te esperan",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-025",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "sigue al señor de camisa verde",
+          "offset_s": 0
+        },
+        {
+          "text": "cuéntame en qué edificio entra",
+          "offset_s": 45
+        },
+        {
+          "text": "no dejes que te vea",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-026",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "cuando la casa quede sola deja una cinta en la reja",
+          "offset_s": 0
+        },
+        {
+          "text": "toma una foto desde enfrente",
+          "offset_s": 45
+        },
+        {
+          "text": "yo sabré qué significa",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-032",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "toma fotos a las placas de los autos de esa calle",
+          "offset_s": 0
+        },
+        {
+          "text": "empieza por los que llegan de noche",
+          "offset_s": 45
+        },
+        {
+          "text": "recibes quinientos por cada diez",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-034",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "consigue la contraseña del perfil de tu compañero",
+          "offset_s": 0
+        },
+        {
+          "text": "cambia el correo y avísame",
+          "offset_s": 45
+        },
+        {
+          "text": "te compro lo que quieras del juego",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-036",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "memoriza esta frase",
+          "offset_s": 0
+        },
+        {
+          "text": "dísela al hombre que estará en la esquina",
+          "offset_s": 45
+        },
+        {
+          "text": "no dejes registro escrito",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-038",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "si no hay nadie cuidando pon una toalla roja en la ventana",
+          "offset_s": 0
+        },
+        {
+          "text": "quítala cuando escuches motos",
+          "offset_s": 45
+        },
+        {
+          "text": "te doy una parte después",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-039",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "entra al almacén fingiendo que buscas el baño",
+          "offset_s": 0
+        },
+        {
+          "text": "mira cuántas puertas tiene atrás",
+          "offset_s": 45
+        },
+        {
+          "text": "sal y dibújame el lugar",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-042",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "siéntate en la banca frente al edificio",
+          "offset_s": 0
+        },
+        {
+          "text": "cuando llegue seguridad toca dos veces tu gorra",
+          "offset_s": 45
+        },
+        {
+          "text": "te puedes ir después",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-043",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "dime quiénes de tu salón necesitan efectivo",
+          "offset_s": 0
+        },
+        {
+          "text": "quiero jóvenes que sepan guardar silencio",
+          "offset_s": 45
+        },
+        {
+          "text": "preséntame a dos",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-045",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "te consigo entrada al torneo",
+          "offset_s": 0
+        },
+        {
+          "text": "antes acompáñame a dejar algo",
+          "offset_s": 45
+        },
+        {
+          "text": "no invites a nadie más",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-046",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "mira cada cuánto pasan los vehículos de vigilancia",
+          "offset_s": 0
+        },
+        {
+          "text": "apunta las horas durante tres noches",
+          "offset_s": 45
+        },
+        {
+          "text": "te doy un teléfono por los datos",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-048",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "tu padrastro no entendería esta oportunidad",
+          "offset_s": 0
+        },
+        {
+          "text": "dile que vas con una amiga",
+          "offset_s": 45
+        },
+        {
+          "text": "yo paso por ti lejos de tu casa",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-049",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "necesito fotos de las entradas del edificio público",
+          "offset_s": 0
+        },
+        {
+          "text": "incluye dónde están los guardias",
+          "offset_s": 45
+        },
+        {
+          "text": "hazlo desde lejos",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-051",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "pregunta algo al vigilante para entretenerlo",
+          "offset_s": 0
+        },
+        {
+          "text": "otra persona entrará mientras hablas",
+          "offset_s": 45
+        },
+        {
+          "text": "luego te damos tu parte",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-052",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "empieza con algo sencillo",
+          "offset_s": 0
+        },
+        {
+          "text": "deja este papel bajo la puerta azul",
+          "offset_s": 45
+        },
+        {
+          "text": "si eres puntual te confiaré tareas mayores",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-054",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "vi tus problemas en el grupo de la escuela",
+          "offset_s": 0
+        },
+        {
+          "text": "puedo sacarte de eso",
+          "offset_s": 45
+        },
+        {
+          "text": "solo sigue mis instrucciones por unos días",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "RP-055",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "avísame cuando el vecino apague todas las luces",
+          "offset_s": 0
+        },
+        {
+          "text": "confirma si sale acompañado",
+          "offset_s": 45
+        },
+        {
+          "text": "no te acerques demasiado",
+          "offset_s": 90
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-025",
+      "group": "tp_reclutamiento_directo",
+      "messages": [
+        {
+          "text": "hay jale de halcón por tu colonia",
+          "offset_s": 0
+        },
+        {
+          "text": "te damos cinco mil y un radio",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-026",
+      "group": "tp_reclutamiento_directo",
+      "messages": [
+        {
+          "text": "ocupo morro para mover cristal",
+          "offset_s": 0
+        },
+        {
+          "text": "manda ubicación y te cae el patrón",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-027",
+      "group": "tp_reclutamiento_directo",
+      "messages": [
+        {
+          "text": "vas a cobrar piso en los locales",
+          "offset_s": 0
+        },
+        {
+          "text": "si cooperan te llevas lana",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "TP-028",
+      "group": "tp_reclutamiento_directo",
+      "messages": [
+        {
+          "text": "mete estas pastillas a la secundaria",
+          "offset_s": 0
+        },
+        {
+          "text": "cada venta te deja feria",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    }
+  ]
+}

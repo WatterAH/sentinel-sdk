@@ -1,0 +1,40 @@
+{
+  "evaluation_name": "Drift Detection Minimal Data (S19)",
+  "timestamp": 1774780800,
+  "checks": {
+    "insufficient_data_check": {
+      "status": "INSUFFICIENT_DATA",
+      "baseline_total": 15,
+      "target_total": 18,
+      "passed": true
+    },
+    "stable_distribution_check": {
+      "status": "STABLE",
+      "psi_score": 0.0003,
+      "passed": true
+    },
+    "traffic_shift_check": {
+      "status": "TRAFFIC_SHIFT",
+      "psi_score": 0.1368,
+      "passed": true
+    },
+    "quality_drift_check": {
+      "status": "QUALITY_DRIFT",
+      "psi_score": 2.3175,
+      "passed": true
+    }
+  },
+  "k_anonymity_min_samples": 30,
+  "psi_thresholds": {
+    "STABLE": "< 0.10",
+    "TRAFFIC_SHIFT": "0.10 - 0.25",
+    "QUALITY_DRIFT": ">= 0.25"
+  },
+  "privacy_guarantees": {
+    "no_raw_messages": true,
+    "no_user_identifiers": true,
+    "suppress_buckets_below": 2,
+    "aggregate_counters_only": true,
+    "no_automatic_retraining": true
+  }
+}

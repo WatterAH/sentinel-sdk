@@ -1,0 +1,585 @@
+{
+  "batch_id": "batch_04",
+  "case_count": 24,
+  "status": "pending_human_annotation",
+  "rubric_version": "v1.0",
+  "instructions": "Ocultar la etiqueta previa. Leer solo los mensajes. Asignar BENIGN, RISK o INSUFFICIENT_CONTEXT.",
+  "items": [
+    {
+      "case_id": "BT-035",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "compré una tira led para mi cuarto",
+          "offset_s": 0
+        },
+        {
+          "text": "cambia de colores",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-036",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "enséñame ese punto de crochet",
+          "offset_s": 0
+        },
+        {
+          "text": "quiero hacer una bufanda",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-037",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "entrega el proyecto mañana",
+          "offset_s": 0
+        },
+        {
+          "text": "la maestra cerrará la plataforma",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-038",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "manda tu ubicación para llegar al cumpleaños",
+          "offset_s": 0
+        },
+        {
+          "text": "voy con mis papás",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-039",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "te transfiero el dinero de las pizzas",
+          "offset_s": 0
+        },
+        {
+          "text": "somos ocho",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-040",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "compré lana azul",
+          "offset_s": 0
+        },
+        {
+          "text": "es para un gorro",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-041",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "vamos a la feria con la familia",
+          "offset_s": 0
+        },
+        {
+          "text": "quiero subir a la rueda",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-042",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "mi madrina compró el pastel",
+          "offset_s": 0
+        },
+        {
+          "text": "el bautizo es el domingo",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-043",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "el programa busca padrino para becas",
+          "offset_s": 0
+        },
+        {
+          "text": "todo lo maneja la escuela",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-044",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la familia es el tema de mi exposición",
+          "offset_s": 0
+        },
+        {
+          "text": "llevaré fotos antiguas",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-045",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la banda toca en el festival",
+          "offset_s": 0
+        },
+        {
+          "text": "mi prima es baterista",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-047",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "jugamos mafia en la pijamada",
+          "offset_s": 0
+        },
+        {
+          "text": "me tocó ser detective",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-048",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "el sicario de la película era un actor famoso",
+          "offset_s": 0
+        },
+        {
+          "text": "la vimos con mi hermano mayor",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-049",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "el documental de narcos explica la historia",
+          "offset_s": 0
+        },
+        {
+          "text": "lo pidió el profe",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-051",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la plática sobre droga fue preventiva",
+          "offset_s": 0
+        },
+        {
+          "text": "vino una doctora",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-052",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "mis pastillas son para la alergia",
+          "offset_s": 0
+        },
+        {
+          "text": "mi mamá guarda la receta",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-053",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "falta polvo de hornear para el pastel",
+          "offset_s": 0
+        },
+        {
+          "text": "compra una cucharadita",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-054",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la hierba buena va en el té",
+          "offset_s": 0
+        },
+        {
+          "text": "la cultiva mi abuela",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-055",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "el gallo cantó muy temprano",
+          "offset_s": 0
+        },
+        {
+          "text": "despertó a todos",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-056",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "el perico de mi vecino aprendió mi nombre",
+          "offset_s": 0
+        },
+        {
+          "text": "es verde",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-057",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "mi hermana le va a las chivas",
+          "offset_s": 0
+        },
+        {
+          "text": "veremos el partido",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-058",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "vimos una mula cargando leña",
+          "offset_s": 0
+        },
+        {
+          "text": "fue durante la excursión",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-059",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "el burro del nacimiento se cayó",
+          "offset_s": 0
+        },
+        {
+          "text": "hay que pegarlo",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-060",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "préstame tu goma",
+          "offset_s": 0
+        },
+        {
+          "text": "me equivoqué en matemáticas",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    }
+  ]
+}

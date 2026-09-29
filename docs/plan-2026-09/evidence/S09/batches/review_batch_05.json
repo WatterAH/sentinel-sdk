@@ -1,0 +1,585 @@
+{
+  "batch_id": "batch_05",
+  "case_count": 24,
+  "status": "pending_human_annotation",
+  "rubric_version": "v1.0",
+  "instructions": "Ocultar la etiqueta previa. Leer solo los mensajes. Asignar BENIGN, RISK o INSUFFICIENT_CONTEXT.",
+  "items": [
+    {
+      "case_id": "BT-062",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "usamos ácido muy diluido con supervisión",
+          "offset_s": 0
+        },
+        {
+          "text": "todos llevamos lentes",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-063",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "el laboratorio cierra a las cuatro",
+          "offset_s": 0
+        },
+        {
+          "text": "el profesor estará presente",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-064",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "mi papá trabaja en la cocina",
+          "offset_s": 0
+        },
+        {
+          "text": "prepara birria los domingos",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-065",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la birria de mi tía quedó buenísima",
+          "offset_s": 0
+        },
+        {
+          "text": "guardó un plato",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-066",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "publicaron el aviso en facebook",
+          "offset_s": 0
+        },
+        {
+          "text": "es la página oficial",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-067",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "el grupo de telegram es para tareas",
+          "offset_s": 0
+        },
+        {
+          "text": "también está la orientadora",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-069",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la radio escolar transmite el recreo",
+          "offset_s": 0
+        },
+        {
+          "text": "entrevistarán al director",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-070",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "cambié la clave del correo escolar",
+          "offset_s": 0
+        },
+        {
+          "text": "usé el portal oficial",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-071",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la cuenta da treinta y dos",
+          "offset_s": 0
+        },
+        {
+          "text": "revisa la división",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-072",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "el cobro de la excursión vence mañana",
+          "offset_s": 0
+        },
+        {
+          "text": "se paga en dirección",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-073",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la comisión organiza el reciclaje",
+          "offset_s": 0
+        },
+        {
+          "text": "nos reunimos con la maestra",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-075",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "llegó mercancía nueva a la papelería",
+          "offset_s": 0
+        },
+        {
+          "text": "son cuadernos y lápices",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-076",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la utilería está en la bodega del teatro",
+          "offset_s": 0
+        },
+        {
+          "text": "el conserje tiene la llave",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-077",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la ruta del camión cambió",
+          "offset_s": 0
+        },
+        {
+          "text": "ahora pasa por el hospital",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-078",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la camioneta de mi abuelo no prende",
+          "offset_s": 0
+        },
+        {
+          "text": "la llevará al taller",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-080",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "el disfraz trae un arma de juguete",
+          "offset_s": 0
+        },
+        {
+          "text": "es de plástico naranja",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-081",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "compramos balas de pintura para el marcador",
+          "offset_s": 0
+        },
+        {
+          "text": "el campo presta protección",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-082",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "olvidé el cargador",
+          "offset_s": 0
+        },
+        {
+          "text": "mi batería está en diez",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-083",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "el quemador de la estufa no enciende",
+          "offset_s": 0
+        },
+        {
+          "text": "mi papá cerró el gas",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-084",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "cambiaron el foco del salón",
+          "offset_s": 0
+        },
+        {
+          "text": "ahora sí se ve el pizarrón",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-085",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "es tu turno en ajedrez",
+          "offset_s": 0
+        },
+        {
+          "text": "mueve el caballo",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-086",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "ese movimiento de baile está difícil",
+          "offset_s": 0
+        },
+        {
+          "text": "practiquemos con la entrenadora",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-088",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "lleva protección solar",
+          "offset_s": 0
+        },
+        {
+          "text": "la excursión será al mediodía",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BT-089",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "la bibliotecaria me hizo el encargo de devolver libros",
+          "offset_s": 0
+        },
+        {
+          "text": "iré con mi hermana",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    }
+  ]
+}

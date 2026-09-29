@@ -1,0 +1,374 @@
+{
+  "version": 1,
+  "updated_at": "2026-09-28",
+  "tasks": [
+    {
+      "id": "S01",
+      "title": "Línea base y recuperación del trabajo local",
+      "tier": "T2",
+      "hours": 3,
+      "depends_on": [],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S01.md",
+      "evidence": [
+        "evidence/S01/baseline_inventory.md"
+      ]
+    },
+    {
+      "id": "S02",
+      "title": "Comandos repetibles y entrega de terminal",
+      "tier": "T1",
+      "hours": 2,
+      "depends_on": [
+        "S01"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S02.md",
+      "evidence": [
+        "evidence/S02/repeatable_commands.md"
+      ]
+    },
+    {
+      "id": "S03",
+      "title": "Validar el usuario y preparar descubrimiento",
+      "tier": "T3",
+      "hours": 2,
+      "depends_on": [
+        "S01"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S03.md",
+      "evidence": [
+        "evidence/S03/discovery_and_pilot_kit.md"
+      ]
+    },
+    {
+      "id": "S04",
+      "title": "Rúbrica mexicana y protocolo de anotación",
+      "tier": "T3",
+      "hours": 4,
+      "depends_on": [
+        "S01"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S04.md",
+      "evidence": [
+        "evidence/S04/rubric_and_protocol_evidence.md"
+      ]
+    },
+    {
+      "id": "S05",
+      "title": "Contrato de decisiones y política versionada",
+      "tier": "T3",
+      "hours": 3,
+      "depends_on": [
+        "S01"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S05.md",
+      "evidence": [
+        "evidence/S05/decision_contract_evidence.md"
+      ]
+    },
+    {
+      "id": "S06",
+      "title": "Invalidación segura de la caché",
+      "tier": "T2",
+      "hours": 3,
+      "depends_on": [
+        "S05"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S06.md",
+      "evidence": [
+        "evidence/S06/cache_invalidation_evidence.md"
+      ]
+    },
+    {
+      "id": "S07",
+      "title": "Aislamiento y ownership del piloto",
+      "tier": "T4",
+      "hours": 5,
+      "depends_on": [
+        "S05"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S07.md",
+      "evidence": [
+        "evidence/S07/tenant_isolation_evidence.md"
+      ]
+    },
+    {
+      "id": "S08",
+      "title": "Procedencia y permisos de los datos",
+      "tier": "T2",
+      "hours": 4,
+      "depends_on": [
+        "S04"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S08.md",
+      "evidence": [
+        "evidence/S08/data_provenance_evidence.md"
+      ]
+    },
+    {
+      "id": "S09",
+      "title": "Adjudicar corpus y crear contrastes mexicanos",
+      "tier": "T3",
+      "hours": 10,
+      "depends_on": [
+        "S08"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S09.md",
+      "evidence": [
+        "evidence/S09/corpus_adjudication_evidence.md"
+      ]
+    },
+    {
+      "id": "S10",
+      "title": "Congelar protocolo, splits y métricas",
+      "tier": "T3",
+      "hours": 4,
+      "depends_on": [
+        "S09"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S10.md",
+      "evidence": [
+        "evidence/S10/frozen_protocol_and_splits_evidence.md"
+      ]
+    },
+    {
+      "id": "S11",
+      "title": "Harness común para decisiones semánticas",
+      "tier": "T2",
+      "hours": 4,
+      "depends_on": [
+        "S05"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S11.md",
+      "evidence": [
+        "evidence/S11/semantic_evaluation_harness_evidence.md"
+      ]
+    },
+    {
+      "id": "S12",
+      "title": "Ensayo acotado de Laya multilingüe",
+      "tier": "T3",
+      "hours": 4,
+      "depends_on": [
+        "S10",
+        "S11"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S12.md",
+      "evidence": [
+        "evidence/S12/laya_multilingual_trial_evidence.md"
+      ]
+    },
+    {
+      "id": "S13",
+      "title": "Comparador Kev bajo presupuesto",
+      "tier": "T3",
+      "hours": 4,
+      "depends_on": [
+        "S11"
+      ],
+      "status": "DONE",
+      "optional": true,
+      "prompt": "prompts/S13.md",
+      "evidence": [
+        "evidence/S13/kev_comparator_trial_evidence.md"
+      ]
+    },
+    {
+      "id": "S14",
+      "title": "Decisión de modelo y calibración",
+      "tier": "T4",
+      "hours": 3,
+      "depends_on": [
+        "S12"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S14.md",
+      "evidence": [
+        "evidence/S14/model_decision_and_calibration_evidence.md"
+      ]
+    },
+    {
+      "id": "S15",
+      "title": "Detección temprana por prefijos",
+      "tier": "T3",
+      "hours": 4,
+      "depends_on": [
+        "S10"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S15.md",
+      "evidence": [
+        "evidence/S15/early_detection_prefix_evidence.md"
+      ]
+    },
+    {
+      "id": "S16",
+      "title": "Integración mínima en sombra",
+      "tier": "T2",
+      "hours": 4,
+      "depends_on": [
+        "S06",
+        "S07",
+        "S14"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S16.md",
+      "evidence": [
+        "evidence/S16/shadow_integration_evidence.md"
+      ]
+    },
+    {
+      "id": "S17",
+      "title": "Cola de aprendizaje activo",
+      "tier": "T2",
+      "hours": 4,
+      "depends_on": [
+        "S08",
+        "S16"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S17.md",
+      "evidence": [
+        "evidence/S17/active_learning_evidence.md"
+      ]
+    },
+    {
+      "id": "S18",
+      "title": "Bandeja mínima para moderadores",
+      "tier": "T2",
+      "hours": 4,
+      "depends_on": [
+        "S05",
+        "S07"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S18.md",
+      "evidence": [
+        "evidence/S18/moderation_tray_evidence.md"
+      ]
+    },
+    {
+      "id": "S19",
+      "title": "Señales de deriva con datos mínimos",
+      "tier": "T2",
+      "hours": 2,
+      "depends_on": [
+        "S17"
+      ],
+      "status": "DONE",
+      "optional": true,
+      "prompt": "prompts/S19.md",
+      "evidence": [
+        "evidence/S19/drift_signals_evidence.md"
+      ]
+    },
+    {
+      "id": "S20",
+      "title": "Revisión integrada de calidad y seguridad",
+      "tier": "T4",
+      "hours": 4,
+      "depends_on": [
+        "S06",
+        "S07",
+        "S15",
+        "S17",
+        "S18"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S20.md",
+      "evidence": [
+        "evidence/S20/integrated_quality_and_security_evidence.md"
+      ]
+    },
+    {
+      "id": "S21",
+      "title": "Operación reproducible del piloto",
+      "tier": "T2",
+      "hours": 3,
+      "depends_on": [
+        "S20"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S21.md",
+      "evidence": [
+        "evidence/S21/pilot_operations_evidence.md"
+      ]
+    },
+    {
+      "id": "S22",
+      "title": "Demo y dossier para foro",
+      "tier": "T1",
+      "hours": 3,
+      "depends_on": [
+        "S21"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S22.md",
+      "evidence": [
+        "evidence/S22/demo_and_forum_dossier.md"
+      ]
+    },
+    {
+      "id": "S23",
+      "title": "Decisión de piloto y plan comercial",
+      "tier": "T3",
+      "hours": 2,
+      "depends_on": [
+        "S03",
+        "S22"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S23.md",
+      "evidence": [
+        "evidence/S23/commercial_plan_and_pilot_decision.md"
+      ]
+    },
+    {
+      "id": "S24",
+      "title": "Revisión del ciclo y próximos treinta días",
+      "tier": "T3",
+      "hours": 2,
+      "depends_on": [
+        "S23"
+      ],
+      "status": "DONE",
+      "optional": false,
+      "prompt": "prompts/S24.md",
+      "evidence": [
+        "evidence/S24/cycle_review_and_next_30_days.md"
+      ]
+    }
+  ]
+}

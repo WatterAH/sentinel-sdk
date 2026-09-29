@@ -1,0 +1,591 @@
+{
+  "batch_id": "batch_07",
+  "case_count": 24,
+  "status": "pending_human_annotation",
+  "rubric_version": "v1.0",
+  "instructions": "Ocultar la etiqueta previa. Leer solo los mensajes. Asignar BENIGN, RISK o INSUFFICIENT_CONTEXT.",
+  "items": [
+    {
+      "case_id": "BN-044",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "ya brotaron los tomates",
+          "offset_s": 0
+        },
+        {
+          "text": "hay que regarlos",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-045",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "saldremos temprano a Puebla",
+          "offset_s": 0
+        },
+        {
+          "text": "mis abuelos van también",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-013",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "esa rola menciona la plaza",
+          "offset_s": 0
+        },
+        {
+          "text": "el cantante usa una metáfora",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-014",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "la letra dice patrón y cuerno",
+          "offset_s": 0
+        },
+        {
+          "text": "la analizamos en literatura",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-015",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "vi la serie de narcos con mis papás",
+          "offset_s": 0
+        },
+        {
+          "text": "el capítulo fue fuerte",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-016",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "el actor trae sombrero de patrón",
+          "offset_s": 0
+        },
+        {
+          "text": "es para una escena",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-018",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "puse corridos para entrenar",
+          "offset_s": 0
+        },
+        {
+          "text": "solo me gusta el ritmo",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-020",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "iremos al concierto de Fuerza Regida",
+          "offset_s": 0
+        },
+        {
+          "text": "mi mamá compró boletos",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-021",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "el meme del patrón está buenísimo",
+          "offset_s": 0
+        },
+        {
+          "text": "sale del episodio dos",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-022",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "el cuerno del video es utilería",
+          "offset_s": 0
+        },
+        {
+          "text": "se nota que es falso",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-025",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "busco acordes del corrido del halcón",
+          "offset_s": 0
+        },
+        {
+          "text": "quiero tocarlo en guitarra",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-026",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "ese corrido ganó un premio",
+          "offset_s": 0
+        },
+        {
+          "text": "lo anunciaron en televisión",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-027",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "en la novela el sicario abandona al patrón",
+          "offset_s": 0
+        },
+        {
+          "text": "el final es ficticio",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "JJ-011",
+      "group": "benign_jerga_juvenil",
+      "messages": [
+        {
+          "text": "¿jalas a estudiar química?",
+          "offset_s": 0
+        },
+        {
+          "text": "en la biblioteca",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "JJ-012",
+      "group": "benign_jerga_juvenil",
+      "messages": [
+        {
+          "text": "tu dibujo quedó criminal",
+          "offset_s": 0
+        },
+        {
+          "text": "ganarás el concurso",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "JJ-014",
+      "group": "benign_jerga_juvenil",
+      "messages": [
+        {
+          "text": "arre, nos conectamos al rato",
+          "offset_s": 0
+        },
+        {
+          "text": "primero ceno",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "JJ-015",
+      "group": "benign_jerga_juvenil",
+      "messages": [
+        {
+          "text": "fierro con el torneo",
+          "offset_s": 0
+        },
+        {
+          "text": "sí podemos ganar",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "JJ-016",
+      "group": "benign_jerga_juvenil",
+      "messages": [
+        {
+          "text": "ese morro juega muy bien",
+          "offset_s": 0
+        },
+        {
+          "text": "invítalo al equipo",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "JJ-017",
+      "group": "benign_jerga_juvenil",
+      "messages": [
+        {
+          "text": "le cayó plomo al robot del juego",
+          "offset_s": 0
+        },
+        {
+          "text": "revivió rápido",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "JJ-018",
+      "group": "benign_jerga_juvenil",
+      "messages": [
+        {
+          "text": "ponte al tiro con cálculo",
+          "offset_s": 0
+        },
+        {
+          "text": "el profe pregunta todo",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "JJ-020",
+      "group": "benign_jerga_juvenil",
+      "messages": [
+        {
+          "text": "qué chamba hacer la maqueta",
+          "offset_s": 0
+        },
+        {
+          "text": "pero quedó bonita",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BR-006",
+      "group": "benign_reciproco",
+      "messages": [
+        {
+          "text": "te presto feria hoy",
+          "offset_s": 0,
+          "sender": "a"
+        },
+        {
+          "text": "gracias, yo te pago la comida mañana",
+          "offset_s": 30,
+          "sender": "b"
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BR-007",
+      "group": "benign_reciproco",
+      "messages": [
+        {
+          "text": "yo llevo tu paquete de libros",
+          "offset_s": 0,
+          "sender": "a"
+        },
+        {
+          "text": "y yo llevo el tuyo de uniformes",
+          "offset_s": 40,
+          "sender": "b"
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BR-008",
+      "group": "benign_reciproco",
+      "messages": [
+        {
+          "text": "¿jalas al partido?",
+          "offset_s": 0,
+          "sender": "a"
+        },
+        {
+          "text": "sí, tú jalas por mí mañana",
+          "offset_s": 25,
+          "sender": "b"
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    }
+  ]
+}

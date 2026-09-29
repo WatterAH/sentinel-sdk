@@ -1,0 +1,39 @@
+{
+  "task": "S17",
+  "timestamp": "2026-09-29 00:04:03 UTC",
+  "random_seed": 42,
+  "queue_simulation_results": {
+    "total_items_in_queue": 80,
+    "sampling_distribution": {
+      "disagreement": 21,
+      "uncertainty": 9,
+      "random_baseline": 50,
+      "feedback": 0
+    },
+    "deduplicated_items_prevented": 5,
+    "quota_exceeded_items_filtered": 5,
+    "max_items_per_family_limit": 5
+  },
+  "review_workflow_results": {
+    "first_reviews_completed": 50,
+    "unanimous_consensus_adjudicated": 50,
+    "blind_review_verified": true,
+    "pending_status_never_treated_as_eligible": true
+  },
+  "population_prevalence_estimates": {
+    "total_adjudicated": 50,
+    "naive_risk_prevalence": 0.36,
+    "ipw_debiased_risk_prevalence": 0.0841,
+    "stratified_counts": {
+      "random_baseline": 23,
+      "uncertainty": 9,
+      "disagreement": 18
+    }
+  },
+  "governance_guarantees": {
+    "active_and_random_sampling_strictly_separated": true,
+    "feedback_does_not_auto_train_models": true,
+    "feedback_does_not_auto_approve_hot_terms": true,
+    "ipw_debiasing_prevents_active_queue_metric_distortion": true
+  }
+}

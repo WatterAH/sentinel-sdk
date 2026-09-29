@@ -1,0 +1,78 @@
+{
+  "task": "S18",
+  "timestamp": "2026-09-29 00:04:04 UTC",
+  "ui_surface": {
+    "html_file": "sentinel-api/public/moderation.html",
+    "route": "/moderation",
+    "offline_fixture_mode_supported": true,
+    "api_live_mode_supported": true
+  },
+  "accessibility_and_safety_checks": {
+    "aria_roles_and_labels_verified": true,
+    "password_masked_credentials": true,
+    "zero_hardcoded_admin_keys": true,
+    "non_accusatory_language_verified": true,
+    "unknown_state_explicitly_visible": true,
+    "system_rec_vs_platform_action_separated": true
+  },
+  "verified_fixture_cases_count": 10,
+  "sample_verified_cases": [
+    {
+      "case_id": "EX-001",
+      "family_id": "fam_halconeo_01",
+      "turns_count": 4,
+      "system_assessment": {
+        "system_recommendation": "HARD_BLOCK",
+        "platform_action": "ALERTA_ENVIADA",
+        "uncertainty_status": "calibrated",
+        "model_version": "v3.2.0 / laya-shadow-v1.2"
+      },
+      "human_review": {
+        "first_reviewer_id": "rev_0401",
+        "first_verdict": "RISK",
+        "second_reviewer_id": "rev_0402",
+        "second_verdict": "RISK",
+        "consensus": true,
+        "status": "adjudicated"
+      }
+    },
+    {
+      "case_id": "EX-002",
+      "family_id": "fam_gaming_01",
+      "turns_count": 3,
+      "system_assessment": {
+        "system_recommendation": "ALLOW",
+        "platform_action": "NINGUNA",
+        "uncertainty_status": "calibrated",
+        "model_version": "v3.2.0 / laya-shadow-v1.2"
+      },
+      "human_review": {
+        "first_reviewer_id": "rev_0401",
+        "first_verdict": "BENIGN",
+        "second_reviewer_id": "rev_0402",
+        "second_verdict": "BENIGN",
+        "consensus": true,
+        "status": "adjudicated"
+      }
+    },
+    {
+      "case_id": "EX-003",
+      "family_id": "fam_narcoculture_01",
+      "turns_count": 2,
+      "system_assessment": {
+        "system_recommendation": "ALLOW",
+        "platform_action": "NINGUNA",
+        "uncertainty_status": "calibrated",
+        "model_version": "v3.2.0 / laya-shadow-v1.2"
+      },
+      "human_review": {
+        "first_reviewer_id": "rev_0401",
+        "first_verdict": "BENIGN",
+        "second_reviewer_id": "rev_0403",
+        "second_verdict": "BENIGN",
+        "consensus": true,
+        "status": "adjudicated"
+      }
+    }
+  ]
+}

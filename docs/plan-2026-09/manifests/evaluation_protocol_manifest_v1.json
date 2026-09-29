@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sentinel Evaluation Protocol Manifest",
+  "protocol_version": "1.0.0",
+  "created_at": "2026-09-28T12:00:00-06:00",
+  "author": "Luis Merida <tatomerida21@gmail.com>",
+  "reproducibility": {
+    "random_seed": 42,
+    "leakage_detector": "scripts/leakage_detector.py",
+    "metrics_calculator": "scripts/evaluation_metrics.py",
+    "zero_leakage_enforcement": true
+  },
+  "dataset_manifest": {
+    "corpus_development": {
+      "path": "sentinel-sdk/typescript/benchmark/corpus.json",
+      "sha256": "6ae5ef41744a589e21247a26f1ecaa672ceddd0547cd070e7b0c56dee8e6d31b",
+      "cases_count": 353,
+      "role": "development_and_regression",
+      "is_external_holdout": false,
+      "notes": "Historical benchmark corpus (July 2026). Strictly treated as development/regression, never as external holdout."
+    },
+    "contrastive_mexican_pairs": {
+      "path": "sentinel-sdk/docs/plan-2026-09/evidence/S09/contrastive_mexican_pairs_100.json",
+      "sha256": "9ca3cee161d726eaccb4e651a78dce41e1640f3aa585586fcc5e25fe05eab3d8",
+      "cases_count": 100,
+      "pairs_count": 50,
+      "license": "CC-BY-4.0",
+      "role": "evaluation_and_contrastive_validation",
+      "is_external_holdout": false
+    },
+    "dataset_card": {
+      "path": "sentinel-sdk/docs/DATASET_CARD_MEXICAN_CORPUS_v1.md",
+      "sha256": "75af14961828950813d8c5e2e596a2810a1b400624d7c95e30e7657e1ba2de85"
+    }
+  },
+  "split_protocol": {
+    "splitting_unit": "family_id",
+    "train_ratio": 0.60,
+    "dev_cal_ratio": 0.20,
+    "test_ratio": 0.20,
+    "rules": [
+      "All contrastive pairs and paraphrased derivatives sharing family_id or parent_id must be assigned to the exact same split.",
+      "The test split must remain strictly sealed and is forbidden from prompt tuning, threshold optimization, or feature selection.",
+      "No case from the historical 353 development dataset may be reclassified as external holdout."
+    ]
+  },
+  "metrics_manifesto": {
+    "recall_at_zero_false_blocks": {
+      "definition": "Recall of RISK conversations at the minimum action threshold where false positive block rate on BENIGN conversations is strictly 0.",
+      "target_gate_g3": ">= baseline + 0.10"
+    },
+    "human_review_rate_per_1k": {
+      "definition": "(N_reviewed / N_total) * 1000",
+      "confidence_interval": "Wilson 95% score interval",
+      "target_gate_g3": "<= baseline + 20 per 1k (<= +2.0 percentage points)"
+    },
+    "brier_score": {
+      "definition": "(1/N) * sum((prob_i - y_i)^2)",
+      "range": "[0, 1]",
+      "optimal": 0.0
+    },
+    "expected_calibration_error": {
+      "definition": "Weighted absolute difference between empirical accuracy and mean confidence across 10 equal bins: [0, 0.1), [0.1, 0.2), ..., [0.9, 1.0].",
+      "bins_count": 10
+    },
+    "paired_bootstrap_comparison": {
+      "definition": "Family-level grouped bootstrap with 1,000 iterations to evaluate candidate vs baseline delta.",
+      "conclusive_rule": "Delta 95% confidence interval must exclude zero ([ci_lower, ci_upper] > 0)."
+    },
+    "latency_percentiles": {
+      "metrics": ["p50", "p95", "p99", "mean", "max"],
+      "budget_ms": {
+        "p50_max_ms": 150.0,
+        "p95_max_ms": 500.0,
+        "p99_max_ms": 1200.0
+      }
+    }
+  },
+  "pre_registered_gates": {
+    "G0": "Reproducibility: Deterministic local commands, frozen fixtures, zero production credentials.",
+    "G1": "Validity: Full data provenance, zero cross-split family leakage, sealed holdout test set.",
+    "G2": "Shadow Entry: Decision contract, timeouts, and fallbacks tested; 0 impact on production decisions or defaults.",
+    "G3": "Candidate Supervised Promotion: +10 pts recall over baseline, <= +2 pts benign review rate, 0 false blocks, paired bootstrap CI strictly > 0.",
+    "G4": "Authorized Pilot: Tenant isolation, data retention compliance, human operator oversight, rollback ready.",
+    "G5": "Autonomous Actions: Out of scope for this cycle. Requires external validation with protection authorities."
+  },
+  "methodological_disclaimers": [
+    "Accuracy on synthetic contrastive pairs evaluates model consistency and cultural nuance, but does NOT represent real-world population prevalence.",
+    "No external holdout is currently available; results on internal holdouts represent upper-bound estimates.",
+    "Human review cannot be simulated by LLM agents without explicit expert adjudication."
+  ]
+}

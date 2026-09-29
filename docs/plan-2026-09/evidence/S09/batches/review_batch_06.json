@@ -1,0 +1,585 @@
+{
+  "batch_id": "batch_06",
+  "case_count": 24,
+  "status": "pending_human_annotation",
+  "rubric_version": "v1.0",
+  "instructions": "Ocultar la etiqueta previa. Leer solo los mensajes. Asignar BENIGN, RISK o INSUFFICIENT_CONTEXT.",
+  "items": [
+    {
+      "case_id": "BT-090",
+      "group": "benign_trampa",
+      "messages": [
+        {
+          "text": "hazme el favor de traer agua",
+          "offset_s": 0
+        },
+        {
+          "text": "estoy cuidando al bebé",
+          "offset_s": 600
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-021",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "¿entendiste el ejercicio de triángulos?",
+          "offset_s": 0
+        },
+        {
+          "text": "yo sigo confundido",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-022",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "jugamos fut saliendo",
+          "offset_s": 0
+        },
+        {
+          "text": "lleva el balón",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-023",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "mi mamá hizo enchiladas",
+          "offset_s": 0
+        },
+        {
+          "text": "te guardo una",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-024",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "terminé el capítulo",
+          "offset_s": 0
+        },
+        {
+          "text": "mañana comentamos el final",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-025",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "el ensayo empieza a las cinco",
+          "offset_s": 0
+        },
+        {
+          "text": "la maestra pidió tenis",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-026",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "conéctate para la misión",
+          "offset_s": 0
+        },
+        {
+          "text": "nos falta una persona",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-027",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "estudiemos los verbos",
+          "offset_s": 0
+        },
+        {
+          "text": "el examen es el lunes",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-028",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "ya apareció mi gato",
+          "offset_s": 0
+        },
+        {
+          "text": "estaba bajo la cama",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-029",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "mi papá confirmó la fiesta",
+          "offset_s": 0
+        },
+        {
+          "text": "termina a las ocho",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-030",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "aprendí tres acordes",
+          "offset_s": 0
+        },
+        {
+          "text": "te mando el tutorial",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-031",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "llegaré tarde por tráfico",
+          "offset_s": 0
+        },
+        {
+          "text": "avísale al profe",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-032",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "mañana toca uniforme deportivo",
+          "offset_s": 0
+        },
+        {
+          "text": "no el de diario",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-033",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "iremos al museo el sábado",
+          "offset_s": 0
+        },
+        {
+          "text": "mi tía compró entradas",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-034",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "son dos huevos y harina",
+          "offset_s": 0
+        },
+        {
+          "text": "hornea veinte minutos",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-035",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "juntamos botellas limpias",
+          "offset_s": 0
+        },
+        {
+          "text": "el viernes las pesan",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-036",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "me ajustaron los brackets",
+          "offset_s": 0
+        },
+        {
+          "text": "solo puedo comer suave",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-037",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "llevo tres meses ahorrando",
+          "offset_s": 0
+        },
+        {
+          "text": "ya casi completo",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-038",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "el transporte llega a las siete",
+          "offset_s": 0
+        },
+        {
+          "text": "mi mamá ya confirmó",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-039",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "el robot ya sigue la línea",
+          "offset_s": 0
+        },
+        {
+          "text": "falta decorar",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-040",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "la película estuvo chistosa",
+          "offset_s": 0
+        },
+        {
+          "text": "mi hermana lloró al final",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-041",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "está lloviendo fuerte",
+          "offset_s": 0
+        },
+        {
+          "text": "trae paraguas",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-042",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "falté por gripe",
+          "offset_s": 0
+        },
+        {
+          "text": "¿me compartes tus apuntes?",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "BN-043",
+      "group": "benign_cotidiano",
+      "messages": [
+        {
+          "text": "hoy practicamos espalda",
+          "offset_s": 0
+        },
+        {
+          "text": "el instructor nos cuidó",
+          "offset_s": 45
+        }
+      ],
+      "blinded_prediction": true,
+      "review_sheet": {
+        "assigned_label": null,
+        "behavior_targets": [],
+        "confidence": null,
+        "first_signal_turn": null,
+        "critical_event_turn": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    }
+  ]
+}

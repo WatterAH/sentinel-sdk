@@ -1,0 +1,50 @@
+{
+  "batch_id": "special_second_opinion",
+  "description": "Casos con recomendación de segunda opinión especializada",
+  "items": [
+    {
+      "case_id": "RP-023",
+      "group": "tp_reclutamiento_parafraseado",
+      "messages": [
+        {
+          "text": "quiero saber si cumples lo que prometes",
+          "offset_s": 0
+        },
+        {
+          "text": "entra al patio vacío y toma una foto",
+          "offset_s": 45
+        },
+        {
+          "text": "después vienen cosas mejores",
+          "offset_s": 90
+        }
+      ],
+      "prior_rationale": "RP-023 (prueba de obediencia débil) / NC-023 (desambiguador editorial)",
+      "review_sheet": {
+        "assigned_label": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    },
+    {
+      "case_id": "NC-023",
+      "group": "benign_narcocultura",
+      "messages": [
+        {
+          "text": "la biografía explica por qué canta de la maña",
+          "offset_s": 0
+        },
+        {
+          "text": "no es una invitación",
+          "offset_s": 45
+        }
+      ],
+      "prior_rationale": "RP-023 (prueba de obediencia débil) / NC-023 (desambiguador editorial)",
+      "review_sheet": {
+        "assigned_label": null,
+        "reviewer": null,
+        "notes": ""
+      }
+    }
+  ]
+}

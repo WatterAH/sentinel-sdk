@@ -1,0 +1,105 @@
+{
+  "task": "S22",
+  "timestamp": "2026-09-29 00:04:05 UTC",
+  "mode": "OFFLINE_STANDALONE_DEMO",
+  "total_scenarios": 5,
+  "passed_scenarios": 5,
+  "scenarios": [
+    {
+      "scenario_id": "SCENARIO-01-CONTRASTIVE-PAIR",
+      "title": "Par Contrastivo Cultural Mexicano (Música vs Captación)",
+      "demonstration": "Diferenciación entre jerga narco citada como consumo cultural vs captación coactiva.",
+      "case_a_benign": {
+        "context": "Cita de corrido en Spotify",
+        "score": 0.0,
+        "risk": "LOW",
+        "action": "ALLOW (Sin bloqueo)"
+      },
+      "case_b_risk": {
+        "context": "Oferta económica secreta con traslado",
+        "score": 85.0,
+        "risk": "HIGH",
+        "action": "SOFT_WARN / HUMAN_REVIEW"
+      },
+      "success": true
+    },
+    {
+      "scenario_id": "SCENARIO-02-TEMPORAL-EVOLUTION",
+      "title": "Evolución Temporal Prefijo a Prefijo",
+      "demonstration": "Monitoreo incremental que eleva el riesgo progresivamente sin fuga de información del futuro.",
+      "evolution_trace": [
+        {
+          "turn": 0,
+          "last_message": "hola buenas tardes",
+          "score": 0.0,
+          "risk": "LOW"
+        },
+        {
+          "turn": 1,
+          "last_message": "hola amigo qué juegas",
+          "score": 0.0,
+          "risk": "LOW"
+        },
+        {
+          "turn": 2,
+          "last_message": "te tengo una chamba de chofer con buena lana",
+          "score": 47.5,
+          "risk": "HIGH"
+        },
+        {
+          "turn": 3,
+          "last_message": "es para halconear la camioneta y vigilar la plaza",
+          "score": 103.75,
+          "risk": "HIGH"
+        },
+        {
+          "turn": 4,
+          "last_message": "borra los mensajes y manda tu ubicacion para el uber a la frontera",
+          "score": 160.0,
+          "risk": "HIGH"
+        }
+      ],
+      "first_turn_alarm": false,
+      "final_turn_flagged": true,
+      "success": true
+    },
+    {
+      "scenario_id": "SCENARIO-03-ABSTENTION-AMBIGUITY",
+      "title": "Abstención ante Ambigüedad Contextual",
+      "demonstration": "El motor evita bloqueos categóricos prematuros ante señales incompletas, manteniendo estado de observación.",
+      "dialogue": [
+        {
+          "index": 0,
+          "role": "user",
+          "text": "te veo mañana en el parque"
+        },
+        {
+          "index": 1,
+          "role": "contact",
+          "text": "va, lleva la bolsa negra"
+        }
+      ],
+      "score": 0.0,
+      "risk": "LOW",
+      "verdict_disposition": "SILENT_OBSERVE / UNKNOWN",
+      "success": true
+    },
+    {
+      "scenario_id": "SCENARIO-04-MODERATION-AND-IPW",
+      "title": "Bandeja de Moderación y Estimación Desinsesgada IPW",
+      "demonstration": "Extracción ciega para revisores humanos y corrección de sesgo muestral mediante Inverse Probability Weighting.",
+      "pending_queue_count": 2,
+      "blind_extraction_verified": true,
+      "ipw_debiased_prevalence": null,
+      "success": true
+    },
+    {
+      "scenario_id": "SCENARIO-05-FAILSAFE-KILLSWITCH",
+      "title": "Resiliencia Fail-Closed y Kill Switches de Emergencia",
+      "demonstration": "Desconexión inmediata de modelos en sombra y conmutación a fallback conservador determinista sin degradación de seguridad.",
+      "shadow_kill_switch_status": "disabled",
+      "llm_fail_closed_action": "HARD_BLOCK",
+      "success": true
+    }
+  ]
+}

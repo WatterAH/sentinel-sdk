@@ -1,0 +1,64 @@
+{
+  "task": "S23",
+  "timestamp": "2026-09-29 00:04:05 UTC",
+  "decision": "CONDITIONAL_GO_FOR_SUPERVISED_PILOT",
+  "scope": "1 Single B2B Partner in Staging / Controlled Pilot (Max 50,000 conversations/month)",
+  "fallback_if_unstaffed": "SHADOW_AUDIT_MODE_ONLY (Zero autonomous blocking without human moderator)",
+  "unit_economics": {
+    "monthly_volume_conversations": 50000,
+    "escalation_rate_pct": 3.32,
+    "monthly_llm_cost_usd": 4.15,
+    "monthly_human_hours": 20.8,
+    "monthly_human_cost_usd": 249.0,
+    "server_infra_monthly_usd": 40.0,
+    "total_monthly_operating_cost_usd": 293.15,
+    "cost_per_1k_conversations_usd": 5.86,
+    "compute_cost_per_1k_usd": 0.883,
+    "human_moderation_cost_per_1k_usd": 4.98,
+    "human_cost_share_pct": 84.9
+  },
+  "pilot_prerequisites": [
+    {
+      "criterion": "Zero False Blocks in Benchmarks",
+      "status": "MET",
+      "evidence": "S01, S10, S20 (0 FB)"
+    },
+    {
+      "criterion": "Deterministic P95 Latency < 100ms",
+      "status": "MET",
+      "evidence": "S11, S16, S20 (p95 = 0.88ms)"
+    },
+    {
+      "criterion": "Cryptographic Multitenancy & Data Isolation",
+      "status": "MET",
+      "evidence": "S07, S20 (api_key_hash)"
+    },
+    {
+      "criterion": "Audit Runbook & Disaster Recovery",
+      "status": "MET",
+      "evidence": "S21 (PILOT_OPERATIONS_RUNBOOK.md)"
+    },
+    {
+      "criterion": "Bilingual Dossier & Offline Demo",
+      "status": "MET",
+      "evidence": "S22 (run_offline_demo.py)"
+    },
+    {
+      "criterion": "Designated Human Reviewer (rev_XXXX)",
+      "status": "CONDITIONAL_REQUIREMENT",
+      "evidence": "Must be appointed prior to live traffic"
+    }
+  ],
+  "immediate_kill_conditions": [
+    "1 confirmed false block in active production traffic",
+    "Cross-tenant data exposure or authorization leak (P0 security event)",
+    "Weekly LLM escalation spend exceeding $50 USD budget limit",
+    "Failure to review pending moderation queue items within 24 hours"
+  ],
+  "ip_and_licensing_summary": {
+    "sentinel_core_sdk": "Proprietary / Private (@sentinel-sdk/typescript)",
+    "candidate_laya_model": "Apache-2.0 (convaiinnovations/laya-multilingual@v1.2.0, passive shadow only)",
+    "corpus_and_contrastive_pairs": "CC-BY 4.0 with authenticated provenance",
+    "regulatory_framework": "General Data Protection & Child Safety compliance; DPA required"
+  }
+}

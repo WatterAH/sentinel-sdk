@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sentinel.safety/schemas/conversation_annotation.schema.json",
+  "title": "Sentinel Conversation Annotation Schema",
+  "description": "Schema for Mexican Spanish child exploitation and recruitment detection datasets.",
+  "type": "object",
+  "required": [
+    "case_id",
+    "family_id",
+    "source_id",
+    "source_type",
+    "license_or_permission_ref",
+    "allowed_uses",
+    "collected_at",
+    "synthetic",
+    "parent_id",
+    "split_suggestion",
+    "annotation_version",
+    "review_status",
+    "reviewers",
+    "label",
+    "behavior_targets",
+    "annotator_confidence",
+    "turns"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9_-]{3,32}$",
+      "description": "Unique identifier of the case (e.g. MX-001, RP-014)."
+    },
+    "family_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]{3,32}$",
+      "description": "Family identifier for grouped splitting. Paraphrases and contrastive pairs share family_id."
+    },
+    "parent_id": {
+      "type": ["string", "null"],
+      "pattern": "^[A-Z0-9_-]{3,32}$",
+      "description": "Parent case ID if this is a paraphrased or mutated variant; null if root."
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]{3,32}$",
+      "description": "Origin batch or collection campaign ID."
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "synthetic_authored",
+        "adversarial_paraphrase",
+        "contrastive_pair",
+        "deidentified_sample",
+        "curated_negative"
+      ]
+    },
+    "license_or_permission_ref": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Legal, ethical or consent reference authorizing dataset inclusion."
+    },
+    "allowed_uses": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "training",
+          "validation",
+          "calibration",
+          "benchmark",
+          "holdout_test"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "collected_at": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of collection or creation (YYYY-MM-DD)."
+    },
+    "region_declared": {
+      "type": ["string", "null"],
+      "description": "Mexican state/region or 'general_mexico' / null if unspecified."
+    },
+    "synthetic": {
+      "type": "boolean",
+      "description": "True if synthetic/scripted; false if derived from real authorized streams."
+    },
+    "split_suggestion": {
+      "type": "string",
+      "enum": ["train", "validation", "holdout_test", "benchmark"]
+    },
+    "annotation_version": {
+      "type": "string",
+      "pattern": "^v[0-9]+\\.[0-9]+$",
+      "description": "Rubric version used for annotation (e.g. v1.0)."
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "pending_review",
+        "single_reviewed",
+        "double_reviewed_consensus",
+        "adjudicated_expert",
+        "flagged_discrepancy"
+      ]
+    },
+    "reviewers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^rev_[a-z0-9]{4,16}$",
+        "description": "Pseudonymous human reviewer ID. AI/automated markers are strictly prohibited."
+      },
+      "description": "List of pseudonymous human annotators/reviewers."
+    },
+    "label": {
+      "type": "string",
+      "enum": [
+        "BENIGN",
+        "RISK",
+        "INSUFFICIENT_CONTEXT"
+      ],
+      "description": "Ground truth classification according to the Mexican rubric."
+    },
+    "behavior_targets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "none_benign",
+          "surveillance_halconeo",
+          "illicit_transport_mula",
+          "coercive_debt_bonding",
+          "isolation_secrecy_recruitment",
+          "fake_job_offer_trafficking",
+          "channel_triangulation_evasion",
+          "cultural_slang_benign",
+          "gaming_trading_benign",
+          "narcoculture_media_benign",
+          "third_party_news_report",
+          "ambiguous_errand_unclear"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "annotator_confidence": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "first_signal_turn": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "description": "Zero-indexed turn where the first grooming/recruitment signal appears (null if BENIGN/INSUFFICIENT_CONTEXT)."
+    },
+    "critical_event_turn": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "description": "Zero-indexed turn where the critical proposal or coercive act occurs (null if none)."
+    },
+    "annotation_notes": {
+      "type": "string",
+      "description": "Justification of the label referencing specific conversational dynamics."
+    },
+    "discrepancy_log": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "required": ["reviewer", "assigned_label", "rationale"],
+        "properties": {
+          "reviewer": { "type": "string" },
+          "assigned_label": { "type": "string", "enum": ["BENIGN", "RISK", "INSUFFICIENT_CONTEXT"] },
+          "rationale": { "type": "string" }
+        }
+      }
+    },
+    "turns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "turn_index",
+          "sender_id",
+          "role",
+          "text",
+          "signals"
+        ],
+        "properties": {
+          "turn_index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sender_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,16}$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "potential_perpetrator",
+              "target_minor",
+              "bystander_peer",
+              "adult_supervisor",
+              "unknown"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signals": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "minItems": 1
+    }
+  }
+}

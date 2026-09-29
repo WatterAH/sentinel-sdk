@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "task": "S15 \u2014 Detecci\u00f3n temprana por prefijos",
+    "date": "2026-09-28",
+    "total_conversations": 453,
+    "risk_conversations": 151,
+    "benign_conversations": 302
+  },
+  "ablation_results": {
+    "A_Lexical_Base_Only": {
+      "flags": {
+        "enable_dampeners": false,
+        "enable_actor": false,
+        "enable_temporal": false
+      },
+      "total_risk_cases": 151,
+      "total_benign_cases": 302,
+      "total_turns_evaluated": 1175,
+      "temporal_detection_metrics": {
+        "on_time_detections": 2,
+        "on_time_rate": 0.0132,
+        "premature_alarms": 0,
+        "premature_rate": 0.0,
+        "delayed_alerts": 0,
+        "delayed_rate": 0.0,
+        "omissions_count": 149,
+        "omission_rate": 0.9868
+      },
+      "benign_specificity_metrics": {
+        "false_alerts_on_benign": 5,
+        "benign_fp_rate": 0.0166,
+        "benign_specificity": 0.9834
+      },
+      "mean_turn_delta_from_evidence": 0.5
+    },
+    "B_Lexical_Plus_Dampeners": {
+      "flags": {
+        "enable_dampeners": true,
+        "enable_actor": false,
+        "enable_temporal": false
+      },
+      "total_risk_cases": 151,
+      "total_benign_cases": 302,
+      "total_turns_evaluated": 1175,
+      "temporal_detection_metrics": {
+        "on_time_detections": 2,
+        "on_time_rate": 0.0132,
+        "premature_alarms": 0,
+        "premature_rate": 0.0,
+        "delayed_alerts": 0,
+        "delayed_rate": 0.0,
+        "omissions_count": 149,
+        "omission_rate": 0.9868
+      },
+      "benign_specificity_metrics": {
+        "false_alerts_on_benign": 5,
+        "benign_fp_rate": 0.0166,
+        "benign_specificity": 0.9834
+      },
+      "mean_turn_delta_from_evidence": 0.5
+    },
+    "C_Lexical_Dampeners_Actor": {
+      "flags": {
+        "enable_dampeners": true,
+        "enable_actor": true,
+        "enable_temporal": false
+      },
+      "total_risk_cases": 151,
+      "total_benign_cases": 302,
+      "total_turns_evaluated": 1175,
+      "temporal_detection_metrics": {
+        "on_time_detections": 2,
+        "on_time_rate": 0.0132,
+        "premature_alarms": 0,
+        "premature_rate": 0.0,
+        "delayed_alerts": 0,
+        "delayed_rate": 0.0,
+        "omissions_count": 149,
+        "omission_rate": 0.9868
+      },
+      "benign_specificity_metrics": {
+        "false_alerts_on_benign": 5,
+        "benign_fp_rate": 0.0166,
+        "benign_specificity": 0.9834
+      },
+      "mean_turn_delta_from_evidence": 0.5
+    },
+    "D_Full_Pipeline_With_Temporal": {
+      "flags": {
+        "enable_dampeners": true,
+        "enable_actor": true,
+        "enable_temporal": true
+      },
+      "total_risk_cases": 151,
+      "total_benign_cases": 302,
+      "total_turns_evaluated": 1175,
+      "temporal_detection_metrics": {
+        "on_time_detections": 2,
+        "on_time_rate": 0.0132,
+        "premature_alarms": 0,
+        "premature_rate": 0.0,
+        "delayed_alerts": 0,
+        "delayed_rate": 0.0,
+        "omissions_count": 149,
+        "omission_rate": 0.9868
+      },
+      "benign_specificity_metrics": {
+        "false_alerts_on_benign": 5,
+        "benign_fp_rate": 0.0166,
+        "benign_specificity": 0.9834
+      },
+      "mean_turn_delta_from_evidence": 0.5
+    }
+  }
+}
